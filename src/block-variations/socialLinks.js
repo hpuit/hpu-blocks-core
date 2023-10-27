@@ -48,6 +48,7 @@ function hpuBlocksSocialLinks() {
         title: 'Social Links',
         category: 'hpu-blocks',
         isDefault: true,
+        isActive: true,
         attributes: {
             providerNameSlug: 'hpu-blocks',
             className: 'hpu-blocks-social-links',

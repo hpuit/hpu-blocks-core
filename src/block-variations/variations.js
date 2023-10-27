@@ -17,6 +17,7 @@ domReady(function () {
         title: 'Paragraph',
         category: 'hpu-blocks',
         isDefault: true,
+        isActive: true,
         attributes: {
             providerNameSlug: 'hpu-blocks',
             className: 'hpu-blocks-paragraph',
@@ -28,6 +29,7 @@ domReady(function () {
         title: 'Archives',
         category: 'hpu-blocks',
         isDefault: true,
+        isActive: true,
         attributes: {
             providerNameSlug: 'hpu-blocks',
             className: 'hpu-blocks-archives',
@@ -39,6 +41,7 @@ domReady(function () {
         title: 'Button',
         category: 'hpu-blocks',
         isDefault: true,
+        isActive: true,
         attributes: {
             providerNameSlug: 'hpu-blocks',
             className: 'hpu-blocks-button',
@@ -50,6 +53,7 @@ domReady(function () {
         title: 'Buttons',
         category: 'hpu-blocks',
         isDefault: true,
+        isActive: true,
         attributes: {
             providerNameSlug: 'hpu-blocks',
             className: 'hpu-blocks-buttons',
@@ -61,6 +65,7 @@ domReady(function () {
         title: 'Media & Text',
         category: 'hpu-blocks',
         isDefault: true,
+        isActive: true,
         attributes: {
             providerNameSlug: 'hpu-blocks',
             className: 'hpu-blocks-media-text',
@@ -72,6 +77,7 @@ domReady(function () {
         title: 'Heading',
         category: 'hpu-blocks',
         isDefault: true,
+        isActive: true,
         attributes: {
             providerNameSlug: 'hpu-blocks',
             className: 'hpu-blocks-heading',
@@ -83,6 +89,7 @@ domReady(function () {
         title: 'Navigation Link',
         category: 'hpu-blocks',
         isDefault: true,
+        isActive: true,
         attributes: {
             providerNameSlug: 'hpu-blocks',
             className: 'hpu-blocks-navigation-link',
@@ -94,6 +101,7 @@ domReady(function () {
         title: 'Post Title',
         category: 'hpu-blocks',
         isDefault: true,
+        isActive: true,
         attributes: {
             providerNameSlug: 'hpu-blocks',
             className: 'hpu-blocks-post-title',
@@ -105,6 +113,7 @@ domReady(function () {
         title: 'Navigation Submenu',
         category: 'hpu-blocks',
         isDefault: true,
+        isActive: true,
         attributes: {
             providerNameSlug: 'hpu-blocks',
             className: 'hpu-blocks-navigation-submenu',
@@ -116,6 +125,7 @@ domReady(function () {
         title: 'Post Content',
         category: 'hpu-blocks',
         isDefault: true,
+        isActive: true,
         attributes: {
             providerNameSlug: 'hpu-blocks',
             className: 'hpu-blocks-post-content',
@@ -127,6 +137,7 @@ domReady(function () {
         title: 'Post Featured Image',
         category: 'hpu-blocks',
         isDefault: true,
+        isActive: true,
         attributes: {
             providerNameSlug: 'hpu-blocks',
             className: 'hpu-blocks-post-featured-image',
@@ -138,6 +149,7 @@ domReady(function () {
         title: 'Site Title',
         category: 'hpu-blocks',
         isDefault: true,
+        isActive: true,
         attributes: {
             providerNameSlug: 'hpu-blocks',
             className: 'hpu-blocks-site-title',

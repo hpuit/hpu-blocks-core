@@ -9,7 +9,7 @@
  * Author:            HPU Web Team
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       hpu-blocks-core
+ * Text Domain:       hpu-blocks
  *
  * @package           hpu-blocks-core
  */
@@ -80,45 +80,30 @@ function hpu_blocks_core_enqueue_block_assets()
 }
 add_action('enqueue_block_assets', 'hpu_blocks_core_enqueue_block_assets');
 
-
 /**
- * Registers a new block category for the block editor in WordPress.
+ * Adding a new (custom) block category.
  *
- * @param array $categories The existing block categories.
- * @param array $hpu_blocks_category The HPU Blocks category.
- * @param object $post The post type being edited.
- * @return array The updated block categories.
- */
-function hpu_blocks_core_register_block_category($categories, $post)
+ * @param array $categories Array of block categories.
+ * @param object $post Post object.  
+ * 
+ * */
+function hpu_blocks_core_add_new_block_category($categories, $post)
 {
 	$hpu_blocks_category = array(
-		'slug' => 'hpu-blocks',
-		'title' => __('HPU Blocks', 'hpu-blocks-core'),
+		'slug'  => 'hpu-blocks',
+		'title' => esc_html__('HPU Blocks', 'hpu-blocks'),
 	);
-	
-	// bail early if not in the block editor
-	if ($post->post_type !== 'page') {
+	// Check the context of this filter, return default if not in the post/page block editor.
+	// Alternatively, use this check to add custom categories to only the customizer or widget screens.
+	if (!(isset($post) && ($post->post_type === 'post' || $post->post_type === 'page'))) {
 		return $categories;
 	}
 
-	// bail early if the HPU Blocks category already exists
-	if (in_array($hpu_blocks_category, $categories, true)) {
-		return $categories;
+	if (!in_array($hpu_blocks_category, $categories)) {
+		return array_merge(
+			$categories,
+			$hpu_blocks_category
+		);
 	}
-
-	//bail early if not on a post
-	if (!is_singular()) {
-		return $categories;
-	}
-
-	// return only the HPU Blocks category for non-admins
-	if (!current_user_can('manage_options')) {
-		return $hpu_blocks_category;
-	}
-
-	// add the HPU Blocks category to the beginning of the array
-	array_unshift($categories, $hpu_blocks_category);
-
-	return $categories;
 }
-add_filter('block_categories_all', 'hpu_blocks_core_register_block_category', 10, 3);
+add_filter('block_categories_all', 'hpu_blocks_core_add_new_block_category');

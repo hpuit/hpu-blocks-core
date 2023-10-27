@@ -1,6 +1,6 @@
 import { registerBlockVariation, unregisterBlockVariation } from '@wordpress/blocks';
 
-function hpu_blocks_social_links() {
+function hpuBlocksSocialLinks() {
     /**
      * Disable all unused icon variations in the Social Icons block.
      */
@@ -54,4 +54,4 @@ function hpu_blocks_social_links() {
         }
     });
 }
-export default hpu_blocks_social_links;
+export default hpuBlocksSocialLinks;

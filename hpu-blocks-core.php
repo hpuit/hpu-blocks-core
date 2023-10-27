@@ -66,7 +66,7 @@ function hpu_blocks_core_enqueue_block_assets()
 	wp_enqueue_script(
 		'hpu-blocks-core',
 		plugins_url('build/index.js', __FILE__),
-		array('wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor', 'wp-components'),
+		array('wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor', 'wp-components', 'wp-domReady'),
 		filemtime(plugin_dir_path(__FILE__) . 'build/index.js')
 	);
 

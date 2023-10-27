@@ -5,7 +5,7 @@
 
 import { registerBlockVariation } from '@wordpress/blocks';
 import domReady from '@wordpress/dom-ready';
-import hpu_blocks_social_links from './socialLinks.js';
+import hpuBlocksSocialLinks from './socialLinks.js';
 
 domReady(function () {
     /*
@@ -144,5 +144,5 @@ domReady(function () {
         },
     });
 
-    hpu_blocks_social_links();
+    hpuBlocksSocialLinks();
 });

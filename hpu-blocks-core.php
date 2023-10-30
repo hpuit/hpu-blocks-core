@@ -54,6 +54,39 @@ function hpu_blocks_core_activation()
 register_activation_hook(__FILE__, 'hpu_blocks_core_activation');
 
 /**
+ * Deactivates the HPU Blocks Core plugin.
+ *
+ * @return void
+ */
+function hpu_blocks_core_deactivation()
+{
+	// do nothing
+}
+register_deactivation_hook(__FILE__, 'hpu_blocks_core_deactivation');
+
+/**
+ * Loads the text domain for the HPU Blocks Core plugin.
+ *
+ * @return void
+ */
+function hpu_blocks_core_load_textdomain()
+{
+	load_plugin_textdomain('hpu-blocks-core', false, dirname(plugin_basename(__FILE__)) . '/languages');
+}
+add_action('plugins_loaded', 'hpu_blocks_core_load_textdomain');
+
+/**
+ * Registers the HPU Blocks Core plugin.
+ *
+ * @return void
+ */
+function hpu_blocks_core_register()
+{
+	// do nothing
+}
+add_action('init', 'hpu_blocks_core_register');
+
+/**
  * Enqueues the assets for the HPU Blocks Core plugin.
  *
  * This function loads the webpacked js and css files for the plugin.
@@ -77,33 +110,30 @@ function hpu_blocks_core_enqueue_block_assets()
 		array('wp-edit-blocks'),
 		filemtime(plugin_dir_path(__FILE__) . 'build/style-index.css')
 	);
+
 }
 add_action('enqueue_block_assets', 'hpu_blocks_core_enqueue_block_assets');
 
+$post = get_post();
+$categories = get_block_categories($post);
 /**
- * Adding a new (custom) block category.
+ * Adds a new category for HPU Blocks to the block inserter.
  *
  * @param array $categories Array of block categories.
- * @param object $post Post object.  
- * 
- * */
-function hpu_blocks_core_add_new_block_category($categories, $post)
+ * @return array
+ */
+function register_hpu_blocks_core_category($categories)
 {
-	$hpu_blocks_category = array(
-		'slug'  => 'hpu-blocks',
-		'title' => esc_html__('HPU Blocks', 'hpu-blocks'),
+	$hpu_blocks_core_category = array(
+		'slug'  => 'hpu-blocks-core',
+		'title' => esc_html__('HPU Blocks Core', 'hpu-blocks-core'),
 	);
-	// Check the context of this filter, return default if not in the post/page block editor.
-	// Alternatively, use this check to add custom categories to only the customizer or widget screens.
-	if (!(isset($post) && ($post->post_type === 'post' || $post->post_type === 'page'))) {
-		return $categories;
-	}
 
-	if (!in_array($hpu_blocks_category, $categories)) {
+	if (!in_array($hpu_blocks_core_category, $categories)) {
 		return array_merge(
+			$hpu_blocks_core_category,
 			$categories,
-			$hpu_blocks_category
 		);
 	}
 }
-add_filter('block_categories_all', 'hpu_blocks_core_add_new_block_category');
+add_filter('block_categories_all', 'register_hpu_blocks_core_category', 10);

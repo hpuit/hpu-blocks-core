@@ -1,46 +1,65 @@
 import { registerBlockVariation, unregisterBlockVariation } from '@wordpress/blocks';
+import { SocialLink } from '@wordpress/block-library';
 
 function hpuBlocksSocialLinks() {
+    
+    SocialLink.icon = () => {
+        return null;
+    };
+
     /**
      * Disable all unused icon variations in the Social Icons block.
+     * Comment out the icons you want to keep.
      */
     const unusedSocialIcons = [
-        'fivehundredpx',
-        'amazon',
-        'bandcamp',
-        'behance',
-        'chain',
-        'codepen',
-        'deviantart',
-        'dribbble',
-        'dropbox',
-        'etsy',
-        'feed',
-        'flickr',
-        'foursquare',
-        'goodreads',
-        'google',
-        'lastfm',
-        'mastodon',
-        'meetup',
-        'medium',
-        'patreon',
-        'pinterest',
-        'pocket',
-        'reddit',
-        'skype',
-        'snapchat',
-        'soundcloud',
-        'spotify',
-        'telegram',
-        'tumblr',
-        'twitch',
-        'vimeo',
-        'vk',
-        'whatsapp',
-        'yelp'
+        AmazonIcon,
+        BandcampIcon,
+        BehanceIcon,
+        ChainIcon,
+        CodepenIcon,
+        DeviantArtIcon,
+        DribbbleIcon,
+        DropboxIcon,
+        EtsyIcon,
+        //FacebookIcon,
+        FeedIcon,
+        FivehundredpxIcon,
+        FlickrIcon,
+        FoursquareIcon,
+        GoodreadsIcon,
+        GoogleIcon,
+        GitHubIcon,
+        //InstagramIcon,
+        LastfmIcon,
+        LinkedInIcon,
+        MailIcon,
+        MastodonIcon,
+        MeetupIcon,
+        MediumIcon,
+        PatreonIcon,
+        PinterestIcon,
+        PocketIcon,
+        RedditIcon,
+        SkypeIcon,
+        SnapchatIcon,
+        SoundCloudIcon,
+        SpotifyIcon,
+        TelegramIcon,
+        ThreadsIcon,
+        //TiktokIcon,
+        TumblrIcon,
+        TwitchIcon,
+        //TwitterIcon,
+        VimeoIcon,
+        VkIcon,
+        WhatsAppIcon,
+        WordPressIcon,
+        XIcon,
+        YelpIcon,
+        //YouTubeIcon,
     ];
-    unusedSocialIcons.forEach((icon) => unregisterBlockVariation('core/social-links', icon));
+
+    unusedSocialIcons.forEach((icon) => { unregisterBlockVariation('core/social-link', icon.name); });
 
     // then register social links block variation
     registerBlockVariation('core/social-links', {

@@ -110,7 +110,6 @@ function hpu_blocks_core_enqueue_block_assets()
 		array('wp-edit-blocks'),
 		filemtime(plugin_dir_path(__FILE__) . 'build/style-index.css')
 	);
-
 }
 add_action('enqueue_block_assets', 'hpu_blocks_core_enqueue_block_assets');
 
@@ -131,7 +130,7 @@ function register_hpu_blocks_core_category($categories)
 
 	if (!in_array($hpu_blocks_core_category, $categories)) {
 		return array_merge(
-			$hpu_blocks_core_category,
+			array($hpu_blocks_core_category),
 			$categories,
 		);
 	}

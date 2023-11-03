@@ -3,6 +3,7 @@
 // https://developer.wordpress.org/block-editor/developers/block-api/block-styles/#registering-a-block-style
 // https://developer.wordpress.org/block-editor/developers/block-api/block-variations/#registering-a-block-variation
 
+import './style.scss';
 import { registerBlockVariation } from '@wordpress/blocks';
 import domReady from '@wordpress/dom-ready';
 import hpuBlocksSocialLinks from './socialLinks.js';
@@ -15,7 +16,9 @@ domReady(function () {
     registerBlockVariation('core/paragraph', {
         name: 'hpu-blocks-paragraph',
         title: 'Paragraph',
+        description: 'Paragraph with HPU styles and settings',
         category: 'hpu-blocks',
+        isDefault: true,
         attributes: {
             providerNameSlug: 'hpu-blocks',
             className: 'hpu-blocks-paragraph',
@@ -82,6 +85,16 @@ domReady(function () {
         },
     });
 
+    registerBlockVariation('core/navigation', {
+        name: 'hpu-blocks-navigation',
+        title: 'Navigation',
+        category: 'hpu-blocks',
+        attributes: {
+            providerNameSlug: 'hpu-blocks',
+            className: 'hpu-blocks-navigation',
+        },
+    });
+
     registerBlockVariation('core/post-title', {
         name: 'hpu-blocks-post-title',
         title: 'Post Title',
@@ -129,6 +142,16 @@ domReady(function () {
         attributes: {
             providerNameSlug: 'hpu-blocks',
             className: 'hpu-blocks-site-title',
+        },
+    });
+
+    registerBlockVariation('core/site-tagline', {
+        name: 'hpu-blocks-site-tagline',
+        title: 'Site Tagline',
+        category: 'hpu-blocks',
+        attributes: {
+            providerNameSlug: 'hpu-blocks',
+            className: 'hpu-blocks-site-tagline',
         },
     });
 

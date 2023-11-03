@@ -1,65 +1,65 @@
 import { registerBlockVariation, unregisterBlockVariation } from '@wordpress/blocks';
-import { SocialLink } from '@wordpress/block-library';
+// import { SocialLink } from '@wordpress/block-library';
 
 function hpuBlocksSocialLinks() {
     
-    SocialLink.icon = () => {
-        return null;
-    };
+    // SocialLink.icon = () => {
+    //     return null;
+    // };
 
     /**
      * Disable all unused icon variations in the Social Icons block.
      * Comment out the icons you want to keep.
      */
     const unusedSocialIcons = [
-        AmazonIcon,
-        BandcampIcon,
-        BehanceIcon,
-        ChainIcon,
-        CodepenIcon,
-        DeviantArtIcon,
-        DribbbleIcon,
-        DropboxIcon,
-        EtsyIcon,
-        //FacebookIcon,
-        FeedIcon,
-        FivehundredpxIcon,
-        FlickrIcon,
-        FoursquareIcon,
-        GoodreadsIcon,
-        GoogleIcon,
-        GitHubIcon,
-        //InstagramIcon,
-        LastfmIcon,
-        LinkedInIcon,
-        MailIcon,
-        MastodonIcon,
-        MeetupIcon,
-        MediumIcon,
-        PatreonIcon,
-        PinterestIcon,
-        PocketIcon,
-        RedditIcon,
-        SkypeIcon,
-        SnapchatIcon,
-        SoundCloudIcon,
-        SpotifyIcon,
-        TelegramIcon,
-        ThreadsIcon,
-        //TiktokIcon,
-        TumblrIcon,
-        TwitchIcon,
-        //TwitterIcon,
-        VimeoIcon,
-        VkIcon,
-        WhatsAppIcon,
-        WordPressIcon,
-        XIcon,
-        YelpIcon,
-        //YouTubeIcon,
+        'amazon',
+        'bandcamp',
+        'behance',
+        'chain',
+        'codepen',
+        'deviantart',
+        'dribbble',
+        'dropbox',
+        'etsy',
+        // 'facebook',
+        'feed',
+        'fivehundredpx',
+        'flickr',
+        'foursquare',
+        'goodreads',
+        'google',
+        'github',
+        // 'instagram',
+        'lastfm',
+        'linkedin',
+        'mail',
+        'mastodon',
+        'meetup',
+        'medium',
+        'patreon',
+        'pinterest',
+        'pocket',
+        'reddit',
+        'skype',
+        'snapchat',
+        'soundcloud',
+        'spotify',
+        'telegram',
+        'threads',
+        // 'tiktok',
+        'tumblr',
+        'twitch',
+        // 'twitter',
+        'vimeo',
+        'vk',
+        'whatsapp',
+        'wordpress',
+        'x',
+        'yelp',
+        // 'youtube',
     ];
 
-    unusedSocialIcons.forEach((icon) => { unregisterBlockVariation('core/social-link', icon.name); });
+    unusedSocialIcons.forEach((icon) => { unregisterBlockVariation('core/social-link', icon); });
 
     // then register social links block variation
     registerBlockVariation('core/social-links', {
@@ -67,7 +67,6 @@ function hpuBlocksSocialLinks() {
         title: 'Social Links',
         category: 'hpu-blocks',
         isDefault: true,
-        isActive: true,
         attributes: {
             providerNameSlug: 'hpu-blocks',
             className: 'hpu-blocks-social-links',

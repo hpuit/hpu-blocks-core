@@ -23,116 +23,99 @@
  *                                                                                                              *
  ****************************************************************************************************************/
 
-// Exit if accessed directly.
-if (!defined('ABSPATH')) {
-	exit;
-}
+//Exit if accessed directly.
+defined('ABSPATH') || exit;
 
-/**
- * This plugin was built for High Point University to add custom variations of core WordPress blocks.
- * It is not intended to be used outside of the HPU web ecosystem.
- * 
- * @since 0.1.0
- * 
- */
+// Define constants.
+define('HPU_BLOCKS_CORE_VERSION', '0.1.0');
+define('HPU_BLOCKS_CORE_PLUGIN_DIR', plugin_dir_path(__FILE__));
+define('HPU_BLOCKS_CORE_PLUGIN_URL', plugin_dir_url(__FILE__));
 
-/**
- * Activates the HPU Blocks Core plugin and checks if the WordPress version is compatible.
- *
- * @return void
- */
-function hpu_blocks_core_activation()
-{
+// runs when the plugin is activated
+register_activation_hook(__FILE__, 'hpu_blocks_core_activate');
+
+function hpu_blocks_core_activate(){
+
+	// check for wp ver 6.1 or greater
 	if (version_compare(get_bloginfo('version'), '6.1', '<')) {
-		wp_die(
-			'<p>' . __('This plugin requires WordPress 6.1 or higher.', 'hpu-blocks-core') . '</p>',
-			__('Plugin Activation Error', 'hpu-blocks-core'),
-			array('back_link' => true)
-		);
+		wp_die('You must update WordPress to use this plugin.');
 	}
 }
-register_activation_hook(__FILE__, 'hpu_blocks_core_activation');
 
-/**
- * Deactivates the HPU Blocks Core plugin.
- *
- * @return void
- */
-function hpu_blocks_core_deactivation()
-{
-	// do nothing
+// runs on plugin deactivation
+register_deactivation_hook(__FILE__, 'hpu_blocks_core_deactivate');
+
+function hpu_blocks_core_deactivate(){
+
 }
-register_deactivation_hook(__FILE__, 'hpu_blocks_core_deactivation');
 
-/**
- * Loads the text domain for the HPU Blocks Core plugin.
- *
- * @return void
- */
-function hpu_blocks_core_load_textdomain()
+// Register block categories.
+add_filter('block_categories_all', 'hpu_blocks_core_register_block_category', 10, 2);
+
+function hpu_blocks_core_register_block_category($categories)
 {
-	load_plugin_textdomain('hpu-blocks-core', false, dirname(plugin_basename(__FILE__)) . '/languages');
-}
-add_action('plugins_loaded', 'hpu_blocks_core_load_textdomain');
+	global $post;
 
-/**
- * Registers the HPU Blocks Core plugin.
- *
- * @return void
- */
-function hpu_blocks_core_register()
-{
-	// do nothing
-}
-add_action('init', 'hpu_blocks_core_register');
-
-/**
- * Enqueues the assets for the HPU Blocks Core plugin.
- *
- * This function loads the webpacked js and css files for the plugin.
- *
- * @since 1.0.0
- */
-function hpu_blocks_core_enqueue_block_assets()
-{
-	// load the webpacked js file
-	wp_enqueue_script(
-		'hpu-blocks-core',
-		plugins_url('build/index.js', __FILE__),
-		array('wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor', 'wp-components', 'wp-domReady'),
-		filemtime(plugin_dir_path(__FILE__) . 'build/index.js')
-	);
-
-	// load the webpacked css file
-	wp_enqueue_style(
-		'hpu-blocks-core',
-		plugins_url('build/style-index.css', __FILE__),
-		array('wp-edit-blocks'),
-		filemtime(plugin_dir_path(__FILE__) . 'build/style-index.css')
-	);
-}
-add_action('enqueue_block_assets', 'hpu_blocks_core_enqueue_block_assets');
-
-$post = get_post();
-$categories = get_block_categories($post);
-/**
- * Adds a new category for HPU Blocks to the block inserter.
- *
- * @param array $categories Array of block categories.
- * @return array
- */
-function register_hpu_blocks_core_category($categories)
-{
-	$hpu_blocks_core_category = array(
-		'slug'  => 'hpu-blocks-core',
-		'title' => esc_html__('HPU Blocks Core', 'hpu-blocks-core'),
-	);
-
-	if (!in_array($hpu_blocks_core_category, $categories)) {
+	if ($post->post_type !== 'post' && $post->post_type !== 'page') {
+		return $categories;
+	} else {
 		return array_merge(
-			array($hpu_blocks_core_category),
 			$categories,
+			array(
+				array(
+					'slug'  => 'hpu-blocks',
+					'title' => __('HPU Blocks', 'hpu-blocks'),
+				),
+			)
 		);
+		echo 'category added';
 	}
 }
-add_filter('block_categories_all', 'register_hpu_blocks_core_category', 10);
+
+// Register block styles.
+add_action('enqueue_block_assets', 'hpu_blocks_core_register_block_styles');
+
+function hpu_blocks_core_register_block_styles()
+{
+	wp_enqueue_style(
+		'hpu-blocks-core-editor-styles',
+		HPU_BLOCKS_CORE_PLUGIN_URL . 'build/style-index.css',
+		array('wp-edit-blocks'),
+		HPU_BLOCKS_CORE_VERSION
+	);
+}
+
+// Register block scripts.
+add_action('enqueue_block_editor_assets', 'hpu_blocks_core_register_block_scripts');
+
+function hpu_blocks_core_register_block_scripts()
+{
+	wp_enqueue_script(
+		'hpu-blocks-core-editor-scripts',
+		HPU_BLOCKS_CORE_PLUGIN_URL . 'build/index.js',
+		array('wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor', 'wp-components'),
+		HPU_BLOCKS_CORE_VERSION
+	);
+}
+
+// Register init
+add_action('init', 'hpu_blocks_core_register_init');
+
+function hpu_blocks_core_register_init()
+{
+	// Register block styles.
+	wp_register_style(
+		'hpu-blocks-core-styles',
+		HPU_BLOCKS_CORE_PLUGIN_URL . 'build/style-index.css',
+		array('wp-edit-blocks'),
+		HPU_BLOCKS_CORE_VERSION
+	);
+
+	// Register block scripts.
+	wp_register_script(
+		'hpu-blocks-core-scripts',
+		HPU_BLOCKS_CORE_PLUGIN_URL . 'build/index.js',
+		array('wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor', 'wp-components'),
+		HPU_BLOCKS_CORE_VERSION
+	);
+}

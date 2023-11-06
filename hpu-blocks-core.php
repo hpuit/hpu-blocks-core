@@ -5,7 +5,7 @@
  * Description:       Adds custom variations of core blocks.
  * Requires at least: 6.1
  * Requires PHP:      7.0
- * Version:           0.1.0
+ * Version:           0.9.0
  * Author:            HPU Web Team
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
@@ -27,9 +27,12 @@
 defined('ABSPATH') || exit;
 
 // Define constants.
-define('HPU_BLOCKS_CORE_VERSION', '0.1.0');
+define('HPU_BLOCKS_CORE_VERSION', '0.9.0');
 define('HPU_BLOCKS_CORE_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('HPU_BLOCKS_CORE_PLUGIN_URL', plugin_dir_url(__FILE__));
+
+//include admin files
+require_once HPU_BLOCKS_CORE_PLUGIN_DIR . 'admin/admin.php';
 
 // runs when the plugin is activated
 register_activation_hook(__FILE__, 'hpu_blocks_core_activate');

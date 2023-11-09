@@ -21,6 +21,33 @@ domReady(function () {
         attributes: {
             providerNameSlug: 'hpu-blocks',
             className: 'hpu-blocks-archives',
+            displayAsDropdown: {
+                type: 'boolean',
+                default: false,
+            },
+            showPostCounts: {
+                type: 'boolean',
+                default: false,
+            },
+            showLabel: {
+                type: 'boolean',
+                default: false,
+            },
+        },
+        supports: {
+            align: false,
+            html: false,
+            spacing: false,
+            typography: false,
+        },
+        isActive: ( blockAttributes, variationAttributes ) => {
+            return [ 
+                blockAttributes.displayAsDropdown === variationAttributes.displayAsDropdown,
+                blockAttributes.providerNameSlug === variationAttributes.providerNameSlug,
+                blockAttributes.showPostCounts === variationAttributes.showPostCounts,
+                blockAttributes.showLabel === variationAttributes.showLabel,
+                blockAttributes.className === variationAttributes.className,
+            ];
         },
     });
 
@@ -32,7 +59,49 @@ domReady(function () {
         attributes: {
             providerNameSlug: 'hpu-blocks',
             className: 'hpu-blocks-audio',
+            autoplay: {
+                type: 'boolean',
+                default: false,
+            },
+            caption: {
+                type: 'string',
+                default: '',
+            },
+            loop: {
+                type: 'boolean',
+                default: false,
+            },
+            id: {
+                type: 'string',
+                default: '',
+            },
+            src: {
+                type: 'string',
+                default: '',
+            },
+            preload: {
+                type: 'string',
+                default: '',
+            },
         },
+        supports: {
+            align: false,
+            html: false,
+            spacing: false,
+            anchor: true,
+        },
+        isActive: ( blockAttributes, variationAttributes ) => {
+            return [
+                blockAttributes.providerNameSlug === variationAttributes.providerNameSlug,
+                blockAttributes.className === variationAttributes.className,
+                blockAttributes.autoplay === variationAttributes.autoplay,
+                blockAttributes.preload === variationAttributes.preload,
+                blockAttributes.caption === variationAttributes.caption,
+                blockAttributes.loop === variationAttributes.loop,
+                blockAttributes.src === variationAttributes.src,
+                blockAttributes.id === variationAttributes.id,
+            ];
+        }
     });
 
     registerBlockVariation('core/avatar', {
@@ -42,7 +111,7 @@ domReady(function () {
         isDefault: true,
         attributes: {
             providerNameSlug: 'hpu-blocks',
-            className: 'hpu-avatar',
+            className: 'hpu-blocks-avatar',
         },
     });
 
@@ -53,7 +122,7 @@ domReady(function () {
         isDefault: true,
         attributes: {
             providerNameSlug: 'hpu-blocks',
-            className: 'hpu-block',
+            className: 'hpu-blocks-block',
         },
     });
 
@@ -108,7 +177,7 @@ domReady(function () {
         isDefault: true,
         attributes: {
             providerNameSlug: 'hpu-blocks',
-            className: 'hpu-code',
+            className: 'hpu-blocks-code',
         },
     });
 
@@ -141,7 +210,7 @@ domReady(function () {
         isDefault: true,
         attributes: {
             providerNameSlug: 'hpu-blocks',
-            className: 'hpu-comment-author-name',
+            className: 'hpu-blocks-comment-author-name',
         },
     });
 
@@ -152,7 +221,7 @@ domReady(function () {
         isDefault: true,
         attributes: {
             providerNameSlug: 'hpu-blocks',
-            className: 'hpu-comment-content',
+            className: 'hpu-blocks-comment-content',
         },
     });
 
@@ -163,7 +232,7 @@ domReady(function () {
         isDefault: true,
         attributes: {
             providerNameSlug: 'hpu-blocks',
-            className: 'hpu-comment-date',
+            className: 'hpu-blocks-comment-date',
         },
     });
 
@@ -174,7 +243,7 @@ domReady(function () {
         isDefault: true,
         attributes: {
             providerNameSlug: 'hpu-blocks',
-            className: 'hpu-comment-edit-link',
+            className: 'hpu-blocks-comment-edit-link',
         },
     });
 
@@ -185,7 +254,7 @@ domReady(function () {
         isDefault: true,
         attributes: {
             providerNameSlug: 'hpu-blocks',
-            className: 'hpu-comment-reply-link',
+            className: 'hpu-blocks-comment-reply-link',
         },
     });
 
@@ -196,7 +265,7 @@ domReady(function () {
         isDefault: true,
         attributes: {
             providerNameSlug: 'hpu-blocks',
-            className: 'hpu-comment-template',
+            className: 'hpu-blocks-comment-template',
         },
     });
 
@@ -207,7 +276,7 @@ domReady(function () {
         isDefault: true,
         attributes: {
             providerNameSlug: 'hpu-blocks',
-            className: 'hpu-comments',
+            className: 'hpu-blocks-comments',
         },
     });
 
@@ -218,7 +287,7 @@ domReady(function () {
         isDefault: true,
         attributes: {
             providerNameSlug: 'hpu-blocks',
-            className: 'hpu-comments-pagination',
+            className: 'hpu-blocks-comments-pagination',
         },
     });
 
@@ -229,7 +298,7 @@ domReady(function () {
         isDefault: true,
         attributes: {
             providerNameSlug: 'hpu-blocks',
-            className: 'hpu-comments-pagination-next',
+            className: 'hpu-blocks-comments-pagination-next',
         },
     });
 
@@ -240,7 +309,7 @@ domReady(function () {
         isDefault: true,
         attributes: {
             providerNameSlug: 'hpu-blocks',
-            className: 'hpu-comments-pagination-numbers',
+            className: 'hpu-blocks-comments-pagination-numbers',
         },
     });
 
@@ -251,7 +320,7 @@ domReady(function () {
         isDefault: true,
         attributes: {
             providerNameSlug: 'hpu-blocks',
-            className: 'hpu-comments-pagination-previous',
+            className: 'hpu-blocks-comments-pagination-previous',
         },
     });
 
@@ -262,7 +331,7 @@ domReady(function () {
         isDefault: true,
         attributes: {
             providerNameSlug: 'hpu-blocks',
-            className: 'hpu-comments-title',
+            className: 'hpu-blocks-comments-title',
         },
     });
 
@@ -718,6 +787,18 @@ domReady(function () {
         attributes: {
             providerNameSlug: 'hpu-blocks',
             className: 'hpu-post-navigation-link',
+        },
+    });
+
+    registerBlockVariation('core/post-tag', {
+        name: 'hpu-blocks-post-tag',
+        title: 'Post Tag',
+        description: 'Post Tag with HPU styles and settings',
+        category: 'hpu-blocks',
+        isDefault: true,
+        attributes: {
+            providerNameSlug: 'hpu-blocks',
+            className:'hpu-blocks-post-tag',
         },
     });
 

@@ -42,6 +42,15 @@ add_action('admin_menu', 'hpu_blocks_core_admin_menu');
 // function to display the admin page
 function hpu_blocks_core_admin_page()
 {
+    if (!current_user_can('manage_options')) {
+        return;
+    }
+
+    //if the page isn't hpu blocks core, exit
+    if (empty($_GET['page']) || $_GET['page'] !== 'hpu-blocks-core') {
+        return;
+    }
+    
     //import the admin page html
     require_once plugin_dir_path(__FILE__) . 'admin-page.php';
 

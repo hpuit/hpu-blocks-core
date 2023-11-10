@@ -2533,7 +2533,51 @@ domReady(function () {
         attributes: {
             providerNameSlug: 'hpu-blocks',
             className: 'hpu-blocks-navigation-link',
+            text: {
+                type: 'string',
+                default: '',
+            },
+            url: {
+                type: 'string',
+                default: '',
+            },
+            target: {
+                type: 'string',
+                default: '',
+            },
+            rel: {
+                type: 'string',
+                default: '',
+            },
+            size: {
+                type: 'string',
+                default: 'default',
+            },
+            align: {
+                type: 'string',
+                default: 'none',
+            },
         },
+        supports: {
+            align: false,
+            html: false,
+            spacing: false,
+            anchor: true,
+            inserter: false,
+        },
+        isActive: (blockAttributes, variationAttributes) => {
+            return [
+                blockAttributes.text === variationAttributes.text,
+                blockAttributes.url === variationAttributes.url,
+                blockAttributes.target === variationAttributes.target,
+                blockAttributes.rel === variationAttributes.rel,
+                blockAttributes.size === variationAttributes.size,
+                blockAttributes.align === variationAttributes.align,
+                blockAttributes.providerNameSlug === variationAttributes.providerNameSlug,
+                blockAttributes.className === variationAttributes.className
+            ];
+        },
+        scope: ['block'],
     });
 
     registerBlockVariation('core/navigation-submenu', {
@@ -2544,7 +2588,51 @@ domReady(function () {
         attributes: {
             providerNameSlug: 'hpu-blocks',
             className: 'hpu-blocks-navigation-submenu',
+            text: {
+                type: 'string',
+                default: '',
+            },
+            url: {
+                type: 'string',
+                default: '',
+            },
+            target: {
+                type: 'string',
+                default: '',
+            },
+            rel: {
+                type: 'string',
+                default: '',
+            },
+            size: {
+                type: 'string',
+                default: 'default',
+            },
+            align: {
+                type: 'string',
+                default: 'none',
+            },
         },
+        supports: {
+            align: false,
+            html: false,
+            spacing: false,
+            anchor: true,
+            inserter: false,
+        },
+        isActive: (blockAttributes, variationAttributes) => {
+            return [
+                blockAttributes.text === variationAttributes.text,
+                blockAttributes.url === variationAttributes.url,
+                blockAttributes.target === variationAttributes.target,
+                blockAttributes.rel === variationAttributes.rel,
+                blockAttributes.size === variationAttributes.size,
+                blockAttributes.align === variationAttributes.align,
+                blockAttributes.providerNameSlug === variationAttributes.providerNameSlug,
+                blockAttributes.className === variationAttributes.className
+            ];
+        },
+        scope: ['block'],
     });
 
     registerBlockVariation('core/nextpage', {
@@ -2555,7 +2643,51 @@ domReady(function () {
         attributes: {
             providerNameSlug: 'hpu-blocks',
             className: 'hpu-blocks-nextpage',
+            align: {
+                type: 'string',
+                default: 'none',
+            },
+            text: {
+                type: 'string',
+                default: '',
+            },
+            url: {
+                type: 'string',
+                default: '',
+            },
+            target: {
+                type: 'string',
+                default: '',
+            },
+            rel: {
+                type: 'string',
+                default: '',
+            },
+            size: {
+                type: 'string',
+                default: 'default',
+            },
         },
+        supports: {
+            align: false,
+            html: false,
+            spacing: false,
+            anchor: true,
+            inserter: false,
+        },
+        isActive: (blockAttributes, variationAttributes) => {
+            return [
+                blockAttributes.text === variationAttributes.text,
+                blockAttributes.url === variationAttributes.url,
+                blockAttributes.target === variationAttributes.target,
+                blockAttributes.rel === variationAttributes.rel,
+                blockAttributes.size === variationAttributes.size,
+                blockAttributes.align === variationAttributes.align,
+                blockAttributes.providerNameSlug === variationAttributes.providerNameSlug,
+                blockAttributes.className === variationAttributes.className
+            ];
+        },
+        scope: ['block'],
     });
 
     registerBlockVariation('core/page-list', {
@@ -2566,7 +2698,106 @@ domReady(function () {
         attributes: {
             providerNameSlug: 'hpu-blocks',
             className: 'hpu-page-list',
+            align: {
+                type: 'string',
+                default: 'none',
+            },
+            showDate: {
+                type: 'boolean',
+                default: false,
+            },
+            showExcerpt: {
+                type: 'boolean',
+                default: false,
+            },
+            showFeaturedImage: {
+                type: 'boolean',
+                default: false,
+            },
+            showTitle: {
+                type: 'boolean',
+                default: false,
+            },
+            showContent: {
+                type: 'boolean',
+                default: false,
+            },
+            showAuthor: {
+                type: 'boolean',
+                default: false,
+            },
+            showComments: {
+                type: 'boolean',
+                default: false,
+            },
+            showLink: {
+                type: 'boolean',
+                default: false,
+            },
+            showLinkText: {
+                type: 'string',
+                default: '',
+            },
+            showLinkTarget: {
+                type: 'string',
+                default: '',
+            },
+            showLinkRel: {
+                type: 'string',
+                default: '',
+            },
+            showLinkClassName: {
+                type: 'string',
+                default: '',
+            },
+            showLinkId: {
+                type: 'string',
+                default: '',
+            },
+            showLinkHref: {
+                type: 'string',
+                default: '',
+            },
+            showLinkTitle: {
+                type: 'string',
+                default: '',
+            },
+            showPagination: {
+                type: 'boolean',
+                default: false,
+            },
         },
+        supports: {
+            align: false,
+            html: false,
+            spacing: false,
+            anchor: true,
+            inserter: false,
+        },
+        isActive: (blockAttributes, variationAttributes) => {
+            return [
+                blockAttributes.showDate === variationAttributes.showDate,
+                blockAttributes.showExcerpt === variationAttributes.showExcerpt,
+                blockAttributes.showFeaturedImage === variationAttributes.showFeaturedImage,
+                blockAttributes.showTitle === variationAttributes.showTitle,
+                blockAttributes.showContent === variationAttributes.showContent,
+                blockAttributes.showAuthor === variationAttributes.showAuthor,
+                blockAttributes.showComments === variationAttributes.showComments,
+                blockAttributes.showLink === variationAttributes.showLink,
+                blockAttributes.showLinkText === variationAttributes.showLinkText,
+                blockAttributes.showLinkTarget === variationAttributes.showLinkTarget,
+                blockAttributes.showLinkRel === variationAttributes.showLinkRel,
+                blockAttributes.showLinkClassName === variationAttributes.showLinkClassName,
+                blockAttributes.showLinkId === variationAttributes.showLinkId,
+                blockAttributes.showLinkHref === variationAttributes.showLinkHref,
+                blockAttributes.showLinkTitle === variationAttributes.showLinkTitle,
+                blockAttributes.showPagination === variationAttributes.showPagination,
+                blockAttributes.align === variationAttributes.align,
+                blockAttributes.providerNameSlug === variationAttributes.providerNameSlug,
+                blockAttributes.className === variationAttributes.className
+            ];
+        },
+        scope: ['block'],
     });
 
     registerBlockVariation('core/page-list-item', {
@@ -2577,7 +2808,106 @@ domReady(function () {
         attributes: {
             providerNameSlug: 'hpu-blocks',
             className: 'hpu-page-list-item',
+            align: {
+                type: 'string',
+                default: 'none',
+            },
+            showDate: {
+                type: 'boolean',
+                default: false,
+            },
+            showExcerpt: {
+                type: 'boolean',
+                default: false,
+            },
+            showFeaturedImage: {
+                type: 'boolean',
+                default: false,
+            },
+            showTitle: {
+                type: 'boolean',
+                default: false,
+            },
+            showContent: {
+                type: 'boolean',
+                default: false,
+            },
+            showAuthor: {
+                type: 'boolean',
+                default: false,
+            },
+            showComments: {
+                type: 'boolean',
+                default: false,
+            },
+            showLink: {
+                type: 'boolean',
+                default: false,
+            },
+            showLinkText: {
+                type: 'string',
+                default: '',
+            },
+            showLinkTarget: {
+                type: 'string',
+                default: '',
+            },
+            showLinkRel: {
+                type: 'string',
+                default: '',
+            },
+            showLinkClassName: {
+                type: 'string',
+                default: '',
+            },
+            showLinkId: {
+                type: 'string',
+                default: '',
+            },
+            showLinkHref: {
+                type: 'string',
+                default: '',
+            },
+            showLinkTitle: {
+                type: 'string',
+                default: '',
+            },
+            showPagination: {
+                type: 'boolean',
+                default: false,
+            },
         },
+        supports: {
+            align: false,
+            html: false,
+            spacing: false,
+            anchor: true,
+            inserter: true,
+        },
+        isActive: (blockAttributes, variationAttributes) => {
+            return [
+                blockAttributes.showDate === variationAttributes.showDate,
+                blockAttributes.showExcerpt === variationAttributes.showExcerpt,
+                blockAttributes.showFeaturedImage === variationAttributes.showFeaturedImage,
+                blockAttributes.showTitle === variationAttributes.showTitle,
+                blockAttributes.showContent === variationAttributes.showContent,
+                blockAttributes.showAuthor === variationAttributes.showAuthor,
+                blockAttributes.showComments === variationAttributes.showComments,
+                blockAttributes.showLink === variationAttributes.showLink,
+                blockAttributes.showLinkText === variationAttributes.showLinkText,
+                blockAttributes.showLinkTarget === variationAttributes.showLinkTarget,
+                blockAttributes.showLinkRel === variationAttributes.showLinkRel,
+                blockAttributes.showLinkClassName === variationAttributes.showLinkClassName,
+                blockAttributes.showLinkId === variationAttributes.showLinkId,
+                blockAttributes.showLinkHref === variationAttributes.showLinkHref,
+                blockAttributes.showLinkTitle === variationAttributes.showLinkTitle,
+                blockAttributes.showPagination === variationAttributes.showPagination,
+                blockAttributes.align === variationAttributes.align,
+                blockAttributes.providerNameSlug === variationAttributes.providerNameSlug,
+                blockAttributes.className === variationAttributes.className
+            ];
+        },
+        scope: ['block'],
     });
 
     registerBlockVariation('core/paragraph', {
@@ -2589,7 +2919,50 @@ domReady(function () {
         attributes: {
             providerNameSlug: 'hpu-blocks',
             className: 'hpu-blocks-paragraph',
+            align: {
+                type: 'string',
+                default: 'none',
+            },
+            verticalAlignment: {
+                type: 'string',
+                default: 'none',
+            },
+            contentJustification: {
+                type: 'string',
+                default: 'left',
+            },
+            contentWidth: {
+                type: 'string',
+                default: 'full',
+            },
+            contentWidthCustom: {
+                type: 'number',
+                default: 0,
+            },
+            contentWidthUnit: {
+                type: 'string',
+                default: 'px',
+            },
         },
+        supports: {
+            align: true,
+            html: true,
+            spacing: false,
+            anchor: true,
+        },
+        isActive: (blockAttributes, variationAttributes) => {
+            return [
+                blockAttributes.align === variationAttributes.align,
+                blockAttributes.verticalAlignment === variationAttributes.verticalAlignment,
+                blockAttributes.contentJustification === variationAttributes.contentJustification,
+                blockAttributes.contentWidth === variationAttributes.contentWidth,
+                blockAttributes.contentWidthCustom === variationAttributes.contentWidthCustom,
+                blockAttributes.contentWidthUnit === variationAttributes.contentWidthUnit,
+                blockAttributes.providerNameSlug === variationAttributes.providerNameSlug,
+                blockAttributes.className === variationAttributes.className
+            ];
+        },
+        scope: ['inserter', 'block'],
     });
 
     registerBlockVariation('core/pattern', {
@@ -2599,8 +2972,41 @@ domReady(function () {
         isDefault: true,
         attributes: {
             providerNameSlug: 'hpu-blocks',
-            className: 'hpu-pattern',
+            className: 'hpu-blocks-pattern',
+            align: {
+                type: 'string',
+                default: 'none',
+            },
+            pattern: {
+                type: 'string',
+                default: '',
+            },
+            color: {
+                type: 'string',
+                default: '',
+            },
+            opacity: {
+                type: 'number',
+                default: 0,
+            },
         },
+        supports: {
+            align: false,
+            html: false,
+            spacing: false,
+            anchor: true,
+        },
+        isActive: (blockAttributes, variationAttributes) => {
+            return [
+                blockAttributes.pattern === variationAttributes.pattern,
+                blockAttributes.color === variationAttributes.color,
+                blockAttributes.opacity === variationAttributes.opacity,
+                blockAttributes.align === variationAttributes.align,
+                blockAttributes.providerNameSlug === variationAttributes.providerNameSlug,
+                blockAttributes.className === variationAttributes.className
+            ];
+        },
+        scope: ['inserter', 'block'],
     });
 
     registerBlockVariation('core/post-author', {
@@ -2611,7 +3017,50 @@ domReady(function () {
         attributes: {
             providerNameSlug: 'hpu-blocks',
             className: 'hpu-block-post-author',
+            isLink: {
+                type: 'boolean',
+                default: false,
+            },
+            linkTarget: {
+                type: 'string',
+                default: '',
+            },
+            showAvatar: {
+                type: 'boolean',
+                default: false,
+            },
+            avatarSize: {
+                type: 'number',
+                default: 0,
+            },
+            showBio: {
+                type: 'boolean',
+                default: false,
+            },
+            textAlign: {
+                type: 'string',
+                default: 'left',
+            },
         },
+        supports: {
+            align: false,
+            html: false,
+            spacing: false,
+            anchor: true,
+        },
+        isActive: (blockAttributes, variationAttributes) => {
+            return [
+                blockAttributes.isLink === variationAttributes.isLink,
+                blockAttributes.linkTarget === variationAttributes.linkTarget,
+                blockAttributes.showAvatar === variationAttributes.showAvatar,
+                blockAttributes.avatarSize === variationAttributes.avatarSize,
+                blockAttributes.showBio === variationAttributes.showBio,
+                blockAttributes.textAlign === variationAttributes.textAlign,
+                blockAttributes.providerNameSlug === variationAttributes.providerNameSlug,
+                blockAttributes.className === variationAttributes.className
+            ];
+        },
+        scope: ['inserter', 'block'],
     });
 
     registerBlockVariation('core/post-author-biography', {
@@ -2622,7 +3071,85 @@ domReady(function () {
         attributes: {
             providerNameSlug: 'hpu-blocks',
             className: 'hpu-post-author-biography',
+            align: {
+                type: 'string',
+                default: 'none',
+            },
+            showAvatar: {
+                type: 'boolean',
+                default: false,
+            },
+            avatarSize: {
+                type: 'number',
+                default: 0,
+            },
+            showBio: {
+                type: 'boolean',
+                default: false,
+            },
+            textAlign: {
+                type: 'string',
+                default: 'left',
+            },
+            showName: {
+                type: 'boolean',
+                default: false,
+            },
+            showRole: {
+                type: 'boolean',
+                default: false,
+            },
+            showSocialIcons: {
+                type: 'boolean',
+                default: false,
+            },
+            showWebsite: {
+                type: 'boolean',
+                default: false,
+            },
+            showWebsiteText: {
+                type: 'string',
+                default: '',
+            },
+            showWebsiteTarget: {
+                type: 'string',
+                default: '',
+            },
+            showWebsiteRel: {
+                type: 'string',
+                default: '',
+            },
+            showWebsiteClassName: {
+                type: 'string',
+                default: '',
+            },
         },
+        supports: {
+            align: true,
+            html: false,
+            spacing: false,
+            anchor: true,
+        },
+        isActive: (blockAttributes, variationAttributes) => {
+            return [
+                blockAttributes.showAvatar === variationAttributes.showAvatar,
+                blockAttributes.avatarSize === variationAttributes.avatarSize,
+                blockAttributes.showBio === variationAttributes.showBio,
+                blockAttributes.textAlign === variationAttributes.textAlign,
+                blockAttributes.showName === variationAttributes.showName,
+                blockAttributes.showRole === variationAttributes.showRole,
+                blockAttributes.showSocialIcons === variationAttributes.showSocialIcons,
+                blockAttributes.showWebsite === variationAttributes.showWebsite,
+                blockAttributes.showWebsiteText === variationAttributes.showWebsiteText,
+                blockAttributes.showWebsiteTarget === variationAttributes.showWebsiteTarget,
+                blockAttributes.showWebsiteRel === variationAttributes.showWebsiteRel,
+                blockAttributes.showWebsiteClassName === variationAttributes.showWebsiteClassName,
+                blockAttributes.align === variationAttributes.align,
+                blockAttributes.providerNameSlug === variationAttributes.providerNameSlug,
+                blockAttributes.className === variationAttributes.className
+            ];
+        },
+        scope: ['block'],
     });
 
     registerBlockVariation('core/post-author-name', {
@@ -2633,7 +3160,40 @@ domReady(function () {
         attributes: {
             providerNameSlug: 'hpu-blocks',
             className: 'hpu-post-author-name',
+            isLink: {
+                type: 'boolean',
+                default: false,
+            },
+            linkTarget: {
+                type: 'string',
+                default: '',
+            },
+            showAvatar: {
+                type: 'boolean',
+                default: false,
+            },
+            avatarSize: {
+                type: 'number',
+                default: 0,
+            },
         },
+        supports: {
+            align: false,
+            html: false,
+            spacing: false,
+            anchor: true,
+        },
+        isActive: (blockAttributes, variationAttributes) => {
+            return [
+                blockAttributes.isLink === variationAttributes.isLink,
+                blockAttributes.linkTarget === variationAttributes.linkTarget,
+                blockAttributes.showAvatar === variationAttributes.showAvatar,
+                blockAttributes.avatarSize === variationAttributes.avatarSize,
+                blockAttributes.providerNameSlug === variationAttributes.providerNameSlug,
+                blockAttributes.className === variationAttributes.className
+            ];
+        },
+        scope: ['block'],
     });
 
     registerBlockVariation('core/post-comments-count', {
@@ -2644,7 +3204,50 @@ domReady(function () {
         attributes: {
             providerNameSlug: 'hpu-blocks',
             className: 'hpu-post-comments-count',
+            isLink: {
+                type: 'boolean',
+                default: false,
+            },
+            linkTarget: {
+                type: 'string',
+                default: '',
+            },
+            showAvatar: {
+                type: 'boolean',
+                default: false,
+            },
+            avatarSize: {
+                type: 'number',
+                default: 0,
+            },
+            showCount: {
+                type: 'boolean',
+                default: false,
+            },
+            showText: {
+                type: 'boolean',
+                default: false,
+            },
         },
+        supports: {
+            align: false,
+            html: false,
+            spacing: false,
+            anchor: true,
+        },
+        isActive: (blockAttributes, variationAttributes) => {
+            return [
+                blockAttributes.isLink === variationAttributes.isLink,
+                blockAttributes.linkTarget === variationAttributes.linkTarget,
+                blockAttributes.showAvatar === variationAttributes.showAvatar,
+                blockAttributes.avatarSize === variationAttributes.avatarSize,
+                blockAttributes.showCount === variationAttributes.showCount,
+                blockAttributes.showText === variationAttributes.showText,
+                blockAttributes.providerNameSlug === variationAttributes.providerNameSlug,
+                blockAttributes.className === variationAttributes.className
+            ];
+        },
+        scope: ['block'],
     });
 
     registerBlockVariation('core/post-comments-form', {
@@ -2655,7 +3258,60 @@ domReady(function () {
         attributes: {
             providerNameSlug: 'hpu-blocks',
             className: 'hpu-post-comments-form',
+            align: {
+                type: 'string',
+                default: 'none',
+            },
+            showAvatar: {
+                type: 'boolean',
+                default: false,
+            },
+            avatarSize: {
+                type: 'number',
+                default: 0,
+            },
+            showLabel: {
+                type: 'boolean',
+                default: false,
+            },
+            showPlaceholder: {
+                type: 'boolean',
+                default: false,
+            },
+            showRequired: {
+                type: 'boolean',
+                default: false,
+            },
+            showDescription: {
+                type: 'boolean',
+                default: false,
+            },
+            showCommentNotes: {
+                type: 'boolean',
+                default: false,
+            },
         },
+        supports: {
+            align: true,
+            html: false,
+            spacing: false,
+            anchor: true,
+        },
+        isActive: (blockAttributes, variationAttributes) => {
+            return [
+                blockAttributes.showAvatar === variationAttributes.showAvatar,
+                blockAttributes.avatarSize === variationAttributes.avatarSize,
+                blockAttributes.showLabel === variationAttributes.showLabel,
+                blockAttributes.showPlaceholder === variationAttributes.showPlaceholder,
+                blockAttributes.showRequired === variationAttributes.showRequired,
+                blockAttributes.showDescription === variationAttributes.showDescription,
+                blockAttributes.showCommentNotes === variationAttributes.showCommentNotes,
+                blockAttributes.align === variationAttributes.align,
+                blockAttributes.providerNameSlug === variationAttributes.providerNameSlug,
+                blockAttributes.className === variationAttributes.className
+            ];
+        },
+        scope: ['inserter', 'block'],
     });
 
     registerBlockVariation('core/post-comments-link', {
@@ -2666,7 +3322,50 @@ domReady(function () {
         attributes: {
             providerNameSlug: 'hpu-blocks',
             className: 'hpu-post-comments-link',
+            isLink: {
+                type: 'boolean',
+                default: false,
+            },
+            linkTarget: {
+                type: 'string',
+                default: '',
+            },
+            showAvatar: {
+                type: 'boolean',
+                default: false,
+            },
+            avatarSize: {
+                type: 'number',
+                default: 0,
+            },
+            showCount: {
+                type: 'boolean',
+                default: false,
+            },
+            showText: {
+                type: 'boolean',
+                default: false,
+            },
         },
+        supports: {
+            align: false,
+            html: false,
+            spacing: false,
+            anchor: true,
+        },
+        isActive: (blockAttributes, variationAttributes) => {
+            return [
+                blockAttributes.isLink === variationAttributes.isLink,
+                blockAttributes.linkTarget === variationAttributes.linkTarget,
+                blockAttributes.showAvatar === variationAttributes.showAvatar,
+                blockAttributes.avatarSize === variationAttributes.avatarSize,
+                blockAttributes.showCount === variationAttributes.showCount,
+                blockAttributes.showText === variationAttributes.showText,
+                blockAttributes.providerNameSlug === variationAttributes.providerNameSlug,
+                blockAttributes.className === variationAttributes.className
+            ];
+        },
+        scope: ['block'],
     });
 
     registerBlockVariation('core/post-content', {
@@ -2677,7 +3376,50 @@ domReady(function () {
         attributes: {
             providerNameSlug: 'hpu-blocks',
             className: 'hpu-blocks-post-content',
+            align: {
+                type: 'string',
+                default: 'none',
+            },
+            verticalAlignment: {
+                type: 'string',
+                default: 'none',
+            },
+            contentJustification: {
+                type: 'string',
+                default: 'left',
+            },
+            contentWidth: {
+                type: 'string',
+                default: 'full',
+            },
+            contentWidthCustom: {
+                type: 'number',
+                default: 0,
+            },
+            contentWidthUnit: {
+                type: 'string',
+                default: 'px',
+            },
         },
+        supports: {
+            align: true,
+            html: true,
+            spacing: false,
+            anchor: true,
+        },
+        isActive: (blockAttributes, variationAttributes) => {
+            return [
+                blockAttributes.align === variationAttributes.align,
+                blockAttributes.verticalAlignment === variationAttributes.verticalAlignment,
+                blockAttributes.contentJustification === variationAttributes.contentJustification,
+                blockAttributes.contentWidth === variationAttributes.contentWidth,
+                blockAttributes.contentWidthCustom === variationAttributes.contentWidthCustom,
+                blockAttributes.contentWidthUnit === variationAttributes.contentWidthUnit,
+                blockAttributes.providerNameSlug === variationAttributes.providerNameSlug,
+                blockAttributes.className === variationAttributes.className
+            ];
+        },
+        scope: ['inserter', 'block'],
     });
 
     registerBlockVariation('core/post-date', {
@@ -2688,7 +3430,40 @@ domReady(function () {
         attributes: {
             providerNameSlug: 'hpu-blocks',
             className: 'hpu-block-post-date',
+            isLink: {
+                type: 'boolean',
+                default: false,
+            },
+            linkTarget: {
+                type: 'string',
+                default: '',
+            },
+            showAvatar: {
+                type: 'boolean',
+                default: false,
+            },
+            avatarSize: {
+                type: 'number',
+                default: 0,
+            },
         },
+        supports: {
+            align: false,
+            html: false,
+            spacing: false,
+            anchor: true,
+        },
+        isActive: (blockAttributes, variationAttributes) => {
+            return [
+                blockAttributes.isLink === variationAttributes.isLink,
+                blockAttributes.linkTarget === variationAttributes.linkTarget,
+                blockAttributes.showAvatar === variationAttributes.showAvatar,
+                blockAttributes.avatarSize === variationAttributes.avatarSize,
+                blockAttributes.providerNameSlug === variationAttributes.providerNameSlug,
+                blockAttributes.className === variationAttributes.className
+            ];
+        },
+        scope: ['block'],
     });
 
     registerBlockVariation('core/post-excerpt', {
@@ -2699,7 +3474,30 @@ domReady(function () {
         attributes: {
             providerNameSlug: 'hpu-blocks',
             className: 'hpu-post-excerpt',
+            align: {
+                type: 'string',
+                default: 'none',
+            },
+            textJustification: {
+                type: 'string',
+                default: 'left',
+            },
         },
+        supports: {
+            align: true,
+            html: false,
+            spacing: false,
+            anchor: true,
+        },
+        isActive: (blockAttributes, variationAttributes) => {
+            return [
+                blockAttributes.textJustification === variationAttributes.textJustification,
+                blockAttributes.align === variationAttributes.align,
+                blockAttributes.providerNameSlug === variationAttributes.providerNameSlug,
+                blockAttributes.className === variationAttributes.className
+            ];
+        },
+        scope: ['inserter', 'block'],
     });
 
     registerBlockVariation('core/post-featured-image', {
@@ -2710,7 +3508,50 @@ domReady(function () {
         attributes: {
             providerNameSlug: 'hpu-blocks',
             className: 'hpu-block-post-featured-image',
+            align: {
+                type: 'string',
+                default: 'none',
+            },
+            verticalAlignment: {
+                type: 'string',
+                default: 'none',
+            },
+            contentJustification: {
+                type: 'string',
+                default: 'left',
+            },
+            contentWidth: {
+                type: 'string',
+                default: 'full',
+            },
+            contentWidthCustom: {
+                type: 'number',
+                default: 0,
+            },
+            contentWidthUnit: {
+                type: 'string',
+                default: 'px',
+            },
         },
+        supports: {
+            align: true,
+            html: true,
+            spacing: false,
+            anchor: true,
+        },
+        isActive: (blockAttributes, variationAttributes) => {
+            return [
+                blockAttributes.align === variationAttributes.align,
+                blockAttributes.verticalAlignment === variationAttributes.verticalAlignment,
+                blockAttributes.contentJustification === variationAttributes.contentJustification,
+                blockAttributes.contentWidth === variationAttributes.contentWidth,
+                blockAttributes.contentWidthCustom === variationAttributes.contentWidthCustom,
+                blockAttributes.contentWidthUnit === variationAttributes.contentWidthUnit,
+                blockAttributes.providerNameSlug === variationAttributes.providerNameSlug,
+                blockAttributes.className === variationAttributes.className
+            ];
+        },
+        scope: ['inserter', 'block'],
     });
 
     registerBlockVariation('core/post-navigation-link', {
@@ -2721,7 +3562,51 @@ domReady(function () {
         attributes: {
             providerNameSlug: 'hpu-blocks',
             className: 'hpu-post-navigation-link',
+            text: {
+                type: 'string',
+                default: '',
+            },
+            url: {
+                type: 'string',
+                default: '',
+            },
+            target: {
+                type: 'string',
+                default: '',
+            },
+            rel: {
+                type: 'string',
+                default: '',
+            },
+            size: {
+                type: 'string',
+                default: 'default',
+            },
+            align: {
+                type: 'string',
+                default: 'none',
+            },
         },
+        supports: {
+            align: false,
+            html: false,
+            spacing: false,
+            anchor: true,
+            inserter: false,
+        },
+        isActive: (blockAttributes, variationAttributes) => {
+            return [
+                blockAttributes.text === variationAttributes.text,
+                blockAttributes.url === variationAttributes.url,
+                blockAttributes.target === variationAttributes.target,
+                blockAttributes.rel === variationAttributes.rel,
+                blockAttributes.size === variationAttributes.size,
+                blockAttributes.align === variationAttributes.align,
+                blockAttributes.providerNameSlug === variationAttributes.providerNameSlug,
+                blockAttributes.className === variationAttributes.className
+            ];
+        },
+        scope: ['block'],
     });
 
     registerBlockVariation('core/post-tag', {
@@ -2733,7 +3618,50 @@ domReady(function () {
         attributes: {
             providerNameSlug: 'hpu-blocks',
             className: 'hpu-blocks-post-tag',
+            align: {
+                type: 'string',
+                default: 'none',
+            },
+            verticalAlignment: {
+                type: 'string',
+                default: 'none',
+            },
+            contentJustification: {
+                type: 'string',
+                default: 'left',
+            },
+            contentWidth: {
+                type: 'string',
+                default: 'full',
+            },
+            contentWidthCustom: {
+                type: 'number',
+                default: 0,
+            },
+            contentWidthUnit: {
+                type: 'string',
+                default: 'px',
+            },
         },
+        supports: {
+            align: true,
+            html: true,
+            spacing: false,
+            anchor: true,
+        },
+        isActive: (blockAttributes, variationAttributes) => {
+            return [
+                blockAttributes.align === variationAttributes.align,
+                blockAttributes.verticalAlignment === variationAttributes.verticalAlignment,
+                blockAttributes.contentJustification === variationAttributes.contentJustification,
+                blockAttributes.contentWidth === variationAttributes.contentWidth,
+                blockAttributes.contentWidthCustom === variationAttributes.contentWidthCustom,
+                blockAttributes.contentWidthUnit === variationAttributes.contentWidthUnit,
+                blockAttributes.providerNameSlug === variationAttributes.providerNameSlug,
+                blockAttributes.className === variationAttributes.className
+            ];
+        },
+        scope: ['inserter', 'block'],
     });
 
     registerBlockVariation('core/post-template', {
@@ -2744,7 +3672,66 @@ domReady(function () {
         attributes: {
             providerNameSlug: 'hpu-blocks',
             className: 'hpu-blocks-post-template',
+            align: {
+                type: 'string',
+                default: 'none',
+            },
+            showAuthor: {
+                type: 'boolean',
+                default: false,
+            },
+            showComments: {
+                type: 'boolean',
+                default: false,
+            },
+            showContent: {
+                type: 'boolean',
+                default: false,
+            },
+            showDate: {
+                type: 'boolean',
+                default: false,
+            },
+            showExcerpt: {
+                type: 'boolean',
+                default: false,
+            },
+            showFeaturedImage: {
+                type: 'boolean',
+                default: false,
+            },
+            showTitle: {
+                type: 'boolean',
+                default: false,
+            },
+            showLink: {
+                type: 'boolean',
+                default: false,
+            },
         },
+        supports: {
+            align: true,
+            html: true,
+            spacing: false,
+            anchor: true,
+            inserter: false,
+        },
+        isActive: (blockAttributes, variationAttributes) => {
+            return [
+                blockAttributes.showAuthor === variationAttributes.showAuthor,
+                blockAttributes.showComments === variationAttributes.showComments,
+                blockAttributes.showContent === variationAttributes.showContent,
+                blockAttributes.showDate === variationAttributes.showDate,
+                blockAttributes.showExcerpt === variationAttributes.showExcerpt,
+                blockAttributes.showFeaturedImage === variationAttributes.showFeaturedImage,
+                blockAttributes.showTitle === variationAttributes.showTitle,
+                blockAttributes.showLink === variationAttributes.showLink,
+                blockAttributes.align === variationAttributes.align,
+                blockAttributes.providerNameSlug === variationAttributes.providerNameSlug,
+                blockAttributes.className === variationAttributes.className
+            ];
+        },
+        scope: ['inserter', 'block'],
     });
 
     registerBlockVariation('core/post-terms', {
@@ -2755,7 +3742,26 @@ domReady(function () {
         attributes: {
             providerNameSlug: 'hpu-blocks',
             className: 'hpu-block-post-terms',
+            align: {
+                type: 'string',
+                default: 'none',
+            },
         },
+        supports: {
+            align: true,
+            html: true,
+            spacing: false,
+            anchor: true,
+            inserter: false,
+        },
+        isActive: (blockAttributes, variationAttributes) => {
+            return [
+                blockAttributes.align === variationAttributes.align,
+                blockAttributes.providerNameSlug === variationAttributes.providerNameSlug,
+                blockAttributes.className === variationAttributes.className
+            ];
+        },
+        scope: ['block'],
     });
 
     registerBlockVariation('core/post-time-to-read', {
@@ -2766,7 +3772,26 @@ domReady(function () {
         attributes: {
             providerNameSlug: 'hpu-blocks',
             className: 'hpu-post-time-to-read',
+            align: {
+                type: 'string',
+                default: 'none',
+            },
         },
+        supports: {
+            align: true,
+            html: false,
+            spacing: false,
+            anchor: true,
+            inserter: false,
+        },
+        isActive: (blockAttributes, variationAttributes) => {
+            return [
+                blockAttributes.align === variationAttributes.align,
+                blockAttributes.providerNameSlug === variationAttributes.providerNameSlug,
+                blockAttributes.className === variationAttributes.className
+            ];
+        },
+        scope: ['block'],
     });
 
     registerBlockVariation('core/post-title', {
@@ -2777,7 +3802,50 @@ domReady(function () {
         attributes: {
             providerNameSlug: 'hpu-blocks',
             className: 'hpu-blocks-post-title',
+            align: {
+                type: 'string',
+                default: 'none',
+            },
+            verticalAlignment: {
+                type: 'string',
+                default: 'none',
+            },
+            contentJustification: {
+                type: 'string',
+                default: 'left',
+            },
+            contentWidth: {
+                type: 'string',
+                default: 'full',
+            },
+            contentWidthCustom: {
+                type: 'number',
+                default: 0,
+            },
+            contentWidthUnit: {
+                type: 'string',
+                default: 'px',
+            },
         },
+        supports: {
+            align: true,
+            html: true,
+            spacing: false,
+            anchor: true,
+        },
+        isActive: (blockAttributes, variationAttributes) => {
+            return [
+                blockAttributes.align === variationAttributes.align,
+                blockAttributes.verticalAlignment === variationAttributes.verticalAlignment,
+                blockAttributes.contentJustification === variationAttributes.contentJustification,
+                blockAttributes.contentWidth === variationAttributes.contentWidth,
+                blockAttributes.contentWidthCustom === variationAttributes.contentWidthCustom,
+                blockAttributes.contentWidthUnit === variationAttributes.contentWidthUnit,
+                blockAttributes.providerNameSlug === variationAttributes.providerNameSlug,
+                blockAttributes.className === variationAttributes.className
+            ];
+        },
+        scope: ['inserter', 'block'],
     });
 
     registerBlockVariation('core/preformatted', {
@@ -2788,7 +3856,50 @@ domReady(function () {
         attributes: {
             providerNameSlug: 'hpu-blocks',
             className: 'hpu-blocks-preformatted',
+            align: {
+                type: 'string',
+                default: 'none',
+            },
+            verticalAlignment: {
+                type: 'string',
+                default: 'none',
+            },
+            contentJustification: {
+                type: 'string',
+                default: 'left',
+            },
+            contentWidth: {
+                type: 'string',
+                default: 'full',
+            },
+            contentWidthCustom: {
+                type: 'number',
+                default: 0,
+            },
+            contentWidthUnit: {
+                type: 'string',
+                default: 'px',
+            },
         },
+        supports: {
+            align: true,
+            html: true,
+            spacing: false,
+            anchor: true,
+        },
+        isActive: (blockAttributes, variationAttributes) => {
+            return [
+                blockAttributes.align === variationAttributes.align,
+                blockAttributes.verticalAlignment === variationAttributes.verticalAlignment,
+                blockAttributes.contentJustification === variationAttributes.contentJustification,
+                blockAttributes.contentWidth === variationAttributes.contentWidth,
+                blockAttributes.contentWidthCustom === variationAttributes.contentWidthCustom,
+                blockAttributes.contentWidthUnit === variationAttributes.contentWidthUnit,
+                blockAttributes.providerNameSlug === variationAttributes.providerNameSlug,
+                blockAttributes.className === variationAttributes.className
+            ];
+        },
+        scope: ['block'],
     });
 
     registerBlockVariation('core/pullquote', {
@@ -2799,7 +3910,51 @@ domReady(function () {
         attributes: {
             providerNameSlug: 'hpu-blocks',
             className: 'hpu-blocks-pullquote',
+            align: {
+                type: 'string',
+                default: 'none',
+            },
+            verticalAlignment: {
+                type: 'string',
+                default: 'none',
+            },
+            contentJustification: {
+                type: 'string',
+                default: 'left',
+            },
+            contentWidth: {
+                type: 'string',
+                default: 'full',
+            },
+            contentWidthCustom: {
+                type: 'number',
+                default: 0,
+            },
+            contentWidthUnit: {
+                type: 'string',
+                default: 'px',
+            },
         },
+        supports: {
+            align: true,
+            html: true,
+            spacing: false,
+            anchor: true,
+            inserter: true,
+        },
+        isActive: (blockAttributes, variationAttributes) => {
+            return [
+                blockAttributes.align === variationAttributes.align,
+                blockAttributes.verticalAlignment === variationAttributes.verticalAlignment,
+                blockAttributes.contentJustification === variationAttributes.contentJustification,
+                blockAttributes.contentWidth === variationAttributes.contentWidth,
+                blockAttributes.contentWidthCustom === variationAttributes.contentWidthCustom,
+                blockAttributes.contentWidthUnit === variationAttributes.contentWidthUnit,
+                blockAttributes.providerNameSlug === variationAttributes.providerNameSlug,
+                blockAttributes.className === variationAttributes.className
+            ];
+        },
+        scope: ['inserter'],
     });
 
     registerBlockVariation('core/query', {
@@ -2810,7 +3965,46 @@ domReady(function () {
         attributes: {
             providerNameSlug: 'hpu-blocks',
             className: 'hpu-blocks-query',
+            query: {
+                type: 'string',
+                default: '',
+            },
+            queryId: {
+                type: 'string',
+                default: '',
+            },
+            tagName: {
+                type: 'string',
+                default: '',
+            },
+            enhancedPagination: {
+                type: 'boolean',
+                default: false,
+            },
+            namespace: {
+                type: 'string',
+                default: '',
+            },
         },
+        supports: {
+            align: false,
+            html: false,
+            spacing: false,
+            anchor: true,
+            inserter: false,
+        },
+        isActive: (blockAttributes, variationAttributes) => {
+            return [
+                blockAttributes.query === variationAttributes.query,
+                blockAttributes.queryId === variationAttributes.queryId,
+                blockAttributes.tagName === variationAttributes.tagName,
+                blockAttributes.enhancedPagination === variationAttributes.enhancedPagination,
+                blockAttributes.namespace === variationAttributes.namespace,
+                blockAttributes.providerNameSlug === variationAttributes.providerNameSlug,
+                blockAttributes.className === variationAttributes.className
+            ];
+        },
+        scope: ['block'],
     });
 
     registerBlockVariation('core/query-no-results', {
@@ -2822,6 +4016,19 @@ domReady(function () {
             providerNameSlug: 'hpu-blocks',
             className: 'hpu-blocks-query-no-results',
         },
+        supports: {
+            align: false,
+            html: false,
+            spacing: false,
+            anchor: true,
+        },
+        isActive: (blockAttributes, variationAttributes) => {
+            return [
+                blockAttributes.providerNameSlug === variationAttributes.providerNameSlug,
+                blockAttributes.className === variationAttributes.className
+            ];
+        },
+        scope: ['block'],
     });
 
     registerBlockVariation('core/query-pagination', {
@@ -2832,7 +4039,30 @@ domReady(function () {
         attributes: {
             providerNameSlug: 'hpu-blocks',
             className: 'hpu-query-pagination',
+            paginationArrow: {
+                type: 'string',
+                default: 'default',
+            },
+            showLabel: {
+                type: 'boolean',
+                default: false,
+            },
         },
+        supports: {
+            align: false,
+            html: false,
+            spacing: false,
+            anchor: true,
+        },
+        isActive: (blockAttributes, variationAttributes) => {
+            return [
+                blockAttributes.paginationArrow === variationAttributes.paginationArrow,
+                blockAttributes.showLabel === variationAttributes.showLabel,
+                blockAttributes.providerNameSlug === variationAttributes.providerNameSlug,
+                blockAttributes.className === variationAttributes.className
+            ];
+        },
+        scope: ['inserter', 'block'],
     });
 
     registerBlockVariation('core/query-pagination-next', {
@@ -2843,7 +4073,25 @@ domReady(function () {
         attributes: {
             providerNameSlug: 'hpu-blocks',
             className: 'hpu-query-pagination-next',
+            label: {
+                type: 'string',
+                default: '',
+            },
         },
+        supports: {
+            align: false,
+            html: false,
+            spacing: false,
+            anchor: true,
+        },
+        isActive: (blockAttributes, variationAttributes) => {
+            return [
+                blockAttributes.label === variationAttributes.label,
+                blockAttributes.providerNameSlug === variationAttributes.providerNameSlug,
+                blockAttributes.className === variationAttributes.className
+            ];
+        },
+        scope: ['block'],
     });
 
     registerBlockVariation('core/query-pagination-numbers', {
@@ -2854,7 +4102,25 @@ domReady(function () {
         attributes: {
             providerNameSlug: 'hpu-blocks',
             className: 'hpu-query-pagination-numbers',
+            midSize: {
+                type: 'number',
+                default: 2,
+            },
         },
+        supports: {
+            align: false,
+            html: false,
+            spacing: false,
+            anchor: true,
+        },
+        isActive: (blockAttributes, variationAttributes) => {
+            return [
+                blockAttributes.midSize === variationAttributes.midSize,
+                blockAttributes.providerNameSlug === variationAttributes.providerNameSlug,
+                blockAttributes.className === variationAttributes.className
+            ];
+        },
+        scope: ['block'],
     });
 
     registerBlockVariation('core/query-pagination-previous', {
@@ -2865,7 +4131,25 @@ domReady(function () {
         attributes: {
             providerNameSlug: 'hpu-blocks',
             className: 'hpu-query-pagination-previous',
+            label: {
+                type: 'string',
+                default: '',
+            },
         },
+        supports: {
+            align: false,
+            html: false,
+            spacing: false,
+            anchor: true,
+        },
+        isActive: (blockAttributes, variationAttributes) => {
+            return [
+                blockAttributes.label === variationAttributes.label,
+                blockAttributes.providerNameSlug === variationAttributes.providerNameSlug,
+                blockAttributes.className === variationAttributes.className
+            ];
+        },
+        scope: ['block'],
     });
 
     registerBlockVariation('core/query-title', {
@@ -2876,7 +4160,46 @@ domReady(function () {
         attributes: {
             providerNameSlug: 'hpu-blocks',
             className: 'hpu-query-title',
+            level: {
+                type: 'number',
+                default: 2,
+            },
+            showPrefix: {
+                type: 'boolean',
+                default: false,
+            },
+            showSearchTerm: {
+                type: 'boolean',
+                default: false,
+            },
+            textAlign: {
+                type: 'string',
+                default: 'left',
+            },
+            type: {
+                type: 'string',
+                default: 'default',
+            },
         },
+        supports: {
+            align: false,
+            html: false,
+            spacing: false,
+            anchor: true,
+            inserter: false,
+        },
+        isActive: (blockAttributes, variationAttributes) => {
+            return [
+                blockAttributes.level === variationAttributes.level,
+                blockAttributes.showPrefix === variationAttributes.showPrefix,
+                blockAttributes.showSearchTerm === variationAttributes.showSearchTerm,
+                blockAttributes.textAlign === variationAttributes.textAlign,
+                blockAttributes.type === variationAttributes.type,
+                blockAttributes.providerNameSlug === variationAttributes.providerNameSlug,
+                blockAttributes.className === variationAttributes.className
+            ];
+        },
+        scope: ['inserter', 'block'],
     });
 
     registerBlockVariation('core/quote', {
@@ -2887,7 +4210,36 @@ domReady(function () {
         attributes: {
             providerNameSlug: 'hpu-blocks',
             className: 'hpu-blocks-quote',
+            align: {
+                type: 'string',
+                default: 'none',
+            },
+            citation: {
+                type: 'string',
+                default: '',
+            },
+            value: {
+                type: 'string',
+                default: '',
+            },
         },
+        supports: {
+            align: true,
+            html: true,
+            spacing: false,
+            anchor: true,
+            inserter: true,
+        },
+        isActive: (blockAttributes, variationAttributes) => {
+            return [
+                blockAttributes.citation === variationAttributes.citation,
+                blockAttributes.value === variationAttributes.value,
+                blockAttributes.align === variationAttributes.align,
+                blockAttributes.providerNameSlug === variationAttributes.providerNameSlug,
+                blockAttributes.className === variationAttributes.className
+            ];
+        },
+        scope: ['inserter'],
     });
 
     registerBlockVariation('core/read-more', {
@@ -2898,7 +4250,31 @@ domReady(function () {
         attributes: {
             providerNameSlug: 'hpu-blocks',
             className: 'hpu-read-more',
+            content: {
+                type: 'string',
+                default: '',
+            },
+            linkTarget: {
+                type: 'string',
+                default: '',
+            },
         },
+        supports: {
+            align: false,
+            html: false,
+            spacing: false,
+            anchor: true,
+            inserter: false,
+        },
+        isActive: (blockAttributes, variationAttributes) => {
+            return [
+                blockAttributes.content === variationAttributes.content,
+                blockAttributes.linkTarget === variationAttributes.linkTarget,
+                blockAttributes.providerNameSlug === variationAttributes.providerNameSlug,
+                blockAttributes.className === variationAttributes.className
+            ];
+        },
+        scope: ['inserter'],
     });
 
     registerBlockVariation('core/rss', {
@@ -2909,7 +4285,60 @@ domReady(function () {
         attributes: {
             providerNameSlug: 'hpu-blocks',
             className: 'hpu-blocks-rss',
+            blockLayout: {
+                type: 'string',
+                default: 'grid',
+            },
+            columns: {
+                type: 'number',
+                default: 3,
+            },
+            displayAuthor: {
+                type: 'boolean',
+                default: false,
+            },
+            displayDate: {
+                type: 'boolean',
+                default: false,
+            },
+            displayExcerpt: {
+                type: 'boolean',
+                default: false,
+            },
+            excerptLength: {
+                type: 'number',
+                default: 55,
+            },
+            feedURL: {
+                type: 'string',
+                default: '',
+            },
+            itemsToShow: {
+                type: 'number',
+                default: 10,
+            },
         },
+        supports: {
+            align: false,
+            html: false,
+            spacing: false,
+            anchor: true,
+        },
+        isActive: (blockAttributes, variationAttributes) => {
+            return [
+                blockAttributes.blockLayout === variationAttributes.blockLayout,
+                blockAttributes.columns === variationAttributes.columns,
+                blockAttributes.displayAuthor === variationAttributes.displayAuthor,
+                blockAttributes.displayDate === variationAttributes.displayDate,
+                blockAttributes.displayExcerpt === variationAttributes.displayExcerpt,
+                blockAttributes.excerptLength === variationAttributes.excerptLength,
+                blockAttributes.feedURL === variationAttributes.feedURL,
+                blockAttributes.itemsToShow === variationAttributes.itemsToShow,
+                blockAttributes.providerNameSlug === variationAttributes.providerNameSlug,
+                blockAttributes.className === variationAttributes.className
+            ];
+        },
+        scope: ['inserter'],
     });
 
     registerBlockVariation('core/search', {
@@ -2920,7 +4349,75 @@ domReady(function () {
         attributes: {
             providerNameSlug: 'hpu-blocks',
             className: 'hpu-blocks-search',
+            buttonBehavior: {
+                type: 'string',
+                default: 'default',
+            },
+            buttonPosition: {
+                type: 'string',
+                default: 'right',
+            },
+            buttonText: {
+                type: 'string',
+                default: '',
+            },
+            buttonUseIcon: {
+                type: 'boolean',
+                default: false,
+            },
+            isSearchFieldHidden: {
+                type: 'boolean',
+                default: false,
+            },
+            label: {
+                type: 'string',
+                default: '',
+            },
+            placeholder: {
+                type: 'string',
+                default: '',
+            },
+            query: {
+                type: 'string',
+                default: '',
+            },
+            showLabel: {
+                type: 'boolean',
+                default: false,
+            },
+            width: {
+                type: 'number',
+                default: 0,
+            },
+            widthUnit: {
+                type: 'string',
+                default: 'px',
+            },
         },
+        supports: {
+            align: false,
+            html: false,
+            spacing: false,
+            anchor: true,
+        },
+        isActive: (blockAttributes, variationAttributes) => {
+            return [
+                blockAttributes.buttonBehavior === variationAttributes.buttonBehavior,
+                blockAttributes.buttonPosition === variationAttributes.buttonPosition,
+                blockAttributes.buttonText === variationAttributes.buttonText,
+                blockAttributes.buttonUseIcon === variationAttributes.buttonUseIcon,
+                blockAttributes.isSearchFieldHidden === variationAttributes.isSearchFieldHidden,
+                blockAttributes.label === variationAttributes.label,
+                blockAttributes.placeholder === variationAttributes.placeholder,
+                blockAttributes.query === variationAttributes.query,
+                blockAttributes.showLabel === variationAttributes.showLabel,
+                blockAttributes.width === variationAttributes.width,
+                blockAttributes.widthUnit === variationAttributes.widthUnit,
+                blockAttributes.providerNameSlug === variationAttributes.providerNameSlug,
+                blockAttributes.className === variationAttributes.className
+            ];
+        },
+        scope: ['inserter'],
     });
 
     registerBlockVariation('core/separator', {
@@ -2931,7 +4428,26 @@ domReady(function () {
         attributes: {
             providerNameSlug: 'hpu-blocks',
             className: 'hpu-blocks-separator',
+            opacity: {
+                type: 'number',
+                default: 100,
+            },
         },
+        supports: {
+            align: false,
+            html: false,
+            spacing: false,
+            anchor: true,
+            inserter: true,
+        },
+        isActive: (blockAttributes, variationAttributes) => {
+            return [
+                blockAttributes.opacity === variationAttributes.opacity,
+                blockAttributes.providerNameSlug === variationAttributes.providerNameSlug,
+                blockAttributes.className === variationAttributes.className
+            ];
+        },
+        scope: ['inserter'],
     });
 
     registerBlockVariation('core/shortcode', {
@@ -2942,7 +4458,26 @@ domReady(function () {
         attributes: {
             providerNameSlug: 'hpu-blocks',
             className: 'hpu-blocks-shortcode',
+            text: {
+                type: 'string',
+                default: '',
+            },
         },
+        supports: {
+            align: false,
+            html: true,
+            spacing: false,
+            anchor: true,
+            inserter: true,
+        },
+        isActive: (blockAttributes, variationAttributes) => {
+            return [
+                blockAttributes.text === variationAttributes.text,
+                blockAttributes.providerNameSlug === variationAttributes.providerNameSlug,
+                blockAttributes.className === variationAttributes.className
+            ];
+        },
+        scope: ['inserter'],
     });
 
     registerBlockVariation('core/site-logo', {
@@ -2953,7 +4488,40 @@ domReady(function () {
         attributes: {
             providerNameSlug: 'hpu-blocks',
             className: 'hpu-blocks-site-logo',
+            isLink: {
+                type: 'boolean',
+                default: false,
+            },
+            linkTarget: {
+                type: 'string',
+                default: '',
+            },
+            shouldSyncIcon: {
+                type: 'boolean',
+                default: false,
+            },
+            width: {
+                type: 'number',
+                default: 0,
+            },
         },
+        supports: {
+            align: false,
+            html: false,
+            spacing: false,
+            anchor: true,
+        },
+        isActive: (blockAttributes, variationAttributes) => {
+            return [
+                blockAttributes.isLink === variationAttributes.isLink,
+                blockAttributes.linkTarget === variationAttributes.linkTarget,
+                blockAttributes.shouldSyncIcon === variationAttributes.shouldSyncIcon,
+                blockAttributes.width === variationAttributes.width,
+                blockAttributes.providerNameSlug === variationAttributes.providerNameSlug,
+                blockAttributes.className === variationAttributes.className
+            ];
+        },
+        scope: ['block'],
     });
 
     registerBlockVariation('core/site-tagline', {
@@ -2964,7 +4532,25 @@ domReady(function () {
         attributes: {
             providerNameSlug: 'hpu-blocks',
             className: 'hpu-site-tagline',
+            textAlign: {
+                type: 'string',
+                default: 'left',
+            },
         },
+        supports: {
+            align: false,
+            html: false,
+            spacing: false,
+            anchor: true,
+        },
+        isActive: (blockAttributes, variationAttributes) => {
+            return [
+                blockAttributes.textAlign === variationAttributes.textAlign,
+                blockAttributes.providerNameSlug === variationAttributes.providerNameSlug,
+                blockAttributes.className === variationAttributes.className
+            ];
+        },
+        scope: ['block'],
     });
 
     registerBlockVariation('core/site-title', {
@@ -2975,7 +4561,40 @@ domReady(function () {
         attributes: {
             providerNameSlug: 'hpu-blocks',
             className: 'hpu-site-title',
+            isLink: {
+                type: 'boolean',
+                default: false,
+            },
+            level: {
+                type: 'number',
+                default: 1,
+            },
+            linkTarget: {
+                type: 'string',
+                default: '',
+            },
+            textAlign: {
+                type: 'string',
+                default: 'left',
+            },
         },
+        supports: {
+            align: false,
+            html: false,
+            spacing: false,
+            anchor: true,
+        },
+        isActive: (blockAttributes, variationAttributes) => {
+            return [
+                blockAttributes.isLink === variationAttributes.isLink,
+                blockAttributes.level === variationAttributes.level,
+                blockAttributes.linkTarget === variationAttributes.linkTarget,
+                blockAttributes.textAlign === variationAttributes.textAlign,
+                blockAttributes.providerNameSlug === variationAttributes.providerNameSlug,
+                blockAttributes.className === variationAttributes.className
+            ];
+        },
+        scope: ['block'],
     });
 
     //social links are registered in socialLinks.js
@@ -2989,7 +4608,31 @@ domReady(function () {
         attributes: {
             providerNameSlug: 'hpu-blocks',
             className: 'hpu-blocks-spacer',
+            height: {
+                type: 'number',
+                default: 100,
+            },
+            width: {
+                type: 'number',
+                default: 0,
+            },
         },
+        supports: {
+            align: false,
+            html: false,
+            spacing: false,
+            anchor: true,
+            inserter: true,
+        },
+        isActive: (blockAttributes, variationAttributes) => {
+            return [
+                blockAttributes.height === variationAttributes.height,
+                blockAttributes.width === variationAttributes.width,
+                blockAttributes.providerNameSlug === variationAttributes.providerNameSlug,
+                blockAttributes.className === variationAttributes.className
+            ];
+        },
+        scope: ['inserter'],
     });
 
     registerBlockVariation('core/table', {
@@ -3000,7 +4643,46 @@ domReady(function () {
         attributes: {
             providerNameSlug: 'hpu-blocks',
             className: 'hpu-blocks-table',
+            body: {
+                type: 'string',
+                default: '',
+            },
+            caption: {
+                type: 'string',
+                default: '',
+            },
+            foot: {
+                type: 'string',
+                default: '',
+            },
+            hasFixedLayout: {
+                type: 'boolean',
+                default: false,
+            },
+            head: {
+                type: 'string',
+                default: '',
+            },
         },
+        supports: {
+            align: false,
+            html: true,
+            spacing: false,
+            anchor: true,
+            inserter: true,
+        },
+        isActive: (blockAttributes, variationAttributes) => {
+            return [
+                blockAttributes.body === variationAttributes.body,
+                blockAttributes.caption === variationAttributes.caption,
+                blockAttributes.foot === variationAttributes.foot,
+                blockAttributes.hasFixedLayout === variationAttributes.hasFixedLayout,
+                blockAttributes.head === variationAttributes.head,
+                blockAttributes.providerNameSlug === variationAttributes.providerNameSlug,
+                blockAttributes.className === variationAttributes.className
+            ];
+        },
+        scope: ['inserter'],
     });
 
     registerBlockVariation('core/table-of-contents', {
@@ -3011,7 +4693,30 @@ domReady(function () {
         attributes: {
             providerNameSlug: 'hpu-blocks',
             className: 'hpu-table-of-contents',
+            headings: {
+                type: 'array',
+                default: [],
+            },
+            onlyIncludeCurrentPage: {
+                type: 'boolean',
+                default: false,
+            },
         },
+        supports: {
+            align: false,
+            html: false,
+            spacing: false,
+            anchor: true,
+        },
+        isActive: (blockAttributes, variationAttributes) => {
+            return [
+                blockAttributes.headings === variationAttributes.headings,
+                blockAttributes.onlyIncludeCurrentPage === variationAttributes.onlyIncludeCurrentPage,
+                blockAttributes.providerNameSlug === variationAttributes.providerNameSlug,
+                blockAttributes.className === variationAttributes.className
+            ];
+        },
+        scope: ['inserter'],
     });
 
     registerBlockVariation('core/tag-cloud', {
@@ -3022,6 +4727,26 @@ domReady(function () {
         attributes: {
             providerNameSlug: 'hpu-blocks',
             className: 'hpu-blocks-tag-cloud',
+            largestFontSize: {
+                type: 'number',
+                default: 22,
+            },
+            numberOfTags: {
+                type: 'number',
+                default: 45,
+            },
+            showTagCounts: {
+                type: 'boolean',
+                default: false,
+            },
+            smallestFontSize: {
+                type: 'number',
+                default: 8,
+            },
+            taxonomy: {
+                type: 'string',
+                default: '',
+            },
         },
     });
 
@@ -3033,7 +4758,41 @@ domReady(function () {
         attributes: {
             providerNameSlug: 'hpu-blocks',
             className: 'hpu-template-part',
+            area: {
+                type: 'string',
+                default: '',
+            },
+            slug: {
+                type: 'string',
+                default: '',
+            },
+            tagName: {
+                type: 'string',
+                default: '',
+            },
+            theme: {
+                type: 'string',
+                default: '',
+            },
         },
+        supports: {
+            align: false,
+            html: true,
+            spacing: false,
+            anchor: true,
+            inserter: false,
+        },
+        isActive: (blockAttributes, variationAttributes) => {
+            return [
+                blockAttributes.area === variationAttributes.area,
+                blockAttributes.slug === variationAttributes.slug,
+                blockAttributes.tagName === variationAttributes.tagName,
+                blockAttributes.theme === variationAttributes.theme,
+                blockAttributes.providerNameSlug === variationAttributes.providerNameSlug,
+                blockAttributes.className === variationAttributes.className
+            ];
+        },
+        scope: ['block'],
     });
 
     registerBlockVariation('core/term-description', {
@@ -3044,7 +4803,25 @@ domReady(function () {
         attributes: {
             providerNameSlug: 'hpu-blocks',
             className: 'hpu-term-description',
+            textAlign: {
+                type: 'string',
+                default: 'left',
+            },
         },
+        supports: {
+            align: false,
+            html: false,
+            spacing: false,
+            anchor: true,
+        },
+        isActive: (blockAttributes, variationAttributes) => {
+            return [
+                blockAttributes.textAlign === variationAttributes.textAlign,
+                blockAttributes.providerNameSlug === variationAttributes.providerNameSlug,
+                blockAttributes.className === variationAttributes.className
+            ];
+        },
+        scope: ['block'],
     });
 
     registerBlockVariation('core/verse', {
@@ -3055,7 +4832,31 @@ domReady(function () {
         attributes: {
             providerNameSlug: 'hpu-blocks',
             className: 'hpu-blocks-verse',
+            content: {
+                type: 'string',
+                default: '',
+            },
+            textAlign: {
+                type: 'string',
+                default: 'left',
+            },
         },
+        supports: {
+            align: false,
+            html: true,
+            spacing: false,
+            anchor: true,
+            inserter: true,
+        },
+        isActive: (blockAttributes, variationAttributes) => {
+            return [
+                blockAttributes.content === variationAttributes.content,
+                blockAttributes.textAlign === variationAttributes.textAlign,
+                blockAttributes.providerNameSlug === variationAttributes.providerNameSlug,
+                blockAttributes.className === variationAttributes.className
+            ];
+        },
+        scope: ['inserter'],
     });
 
     registerBlockVariation('core/video', {
@@ -3066,7 +4867,75 @@ domReady(function () {
         attributes: {
             providerNameSlug: 'hpu-blocks',
             className: 'hpu-blocks-video',
+            autoplay: {
+                type: 'boolean',
+                default: false,
+            },
+            caption: {
+                type: 'string',
+                default: '',
+            },
+            controls: {
+                type: 'boolean',
+                default: true,
+            },
+            id: {
+                type: 'string',
+                default: '',
+            },
+            loop: {
+                type: 'boolean',
+                default: false,
+            },
+            muted: {
+                type: 'boolean',
+                default: false,
+            },
+            playsInline: {
+                type: 'boolean',
+                default: false,
+            },
+            poster: {
+                type: 'string',
+                default: '',
+            },
+            preload: {
+                type: 'string',
+                default: 'metadata',
+            },
+            src: {
+                type: 'string',
+                default: '',
+            },
+            tracks: {
+                type: 'array',
+                default: [],
+            },
         },
+        supports: {
+            align: true,
+            html: false,
+            spacing: false,
+            anchor: true,
+            inserter: true,
+        },
+        isActive: (blockAttributes, variationAttributes) => {
+            return [
+                blockAttributes.autoplay === variationAttributes.autoplay,
+                blockAttributes.caption === variationAttributes.caption,
+                blockAttributes.controls === variationAttributes.controls,
+                blockAttributes.id === variationAttributes.id,
+                blockAttributes.loop === variationAttributes.loop,
+                blockAttributes.muted === variationAttributes.muted,
+                blockAttributes.playsInline === variationAttributes.playsInline,
+                blockAttributes.poster === variationAttributes.poster,
+                blockAttributes.preload === variationAttributes.preload,
+                blockAttributes.src === variationAttributes.src,
+                blockAttributes.tracks === variationAttributes.tracks,
+                blockAttributes.providerNameSlug === variationAttributes.providerNameSlug,
+                blockAttributes.className === variationAttributes.className
+            ];
+        },
+        scope: ['inserter'],
     });
-
 });

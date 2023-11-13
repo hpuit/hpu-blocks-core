@@ -33,6 +33,10 @@ domReady(function () {
                 type: 'boolean',
                 default: false,
             },
+            type: {
+                type: 'string',
+                default: 'monthly',
+            },
         },
         supports: {
             align: false,
@@ -47,6 +51,7 @@ domReady(function () {
                 blockAttributes.showPostCounts === variationAttributes.showPostCounts,
                 blockAttributes.showLabel === variationAttributes.showLabel,
                 blockAttributes.className === variationAttributes.className,
+                blockAttributes.type === variationAttributes.type,
             ];
         },
         scope: ['block', 'inserter'],
@@ -1113,7 +1118,7 @@ domReady(function () {
         isDefault: true,
         attributes: {
             providerNameSlug: 'hpu-blocks',
-            className: 'hpu-details',
+            className: 'hpu-blocks-details',
             align: {
                 type: 'string',
                 default: 'none',
@@ -1240,7 +1245,7 @@ domReady(function () {
         isDefault: true,
         attributes: {
             providerNameSlug: 'hpu-blocks',
-            className: 'hpu-footnotes',
+            className: 'hpu-blocks-footnotes',
             align: {
                 type: 'string',
                 default: 'none',
@@ -1282,7 +1287,7 @@ domReady(function () {
         isDefault: true,
         attributes: {
             providerNameSlug: 'hpu-blocks',
-            className: 'hpu-form',
+            className: 'hpu-blocks-form',
             action: {
                 type: 'string',
                 default: '',
@@ -1361,7 +1366,7 @@ domReady(function () {
         isDefault: true,
         attributes: {
             providerNameSlug: 'hpu-blocks',
-            className: 'hpu-form-input',
+            className: 'hpu-blocks-form-input',
             name: {
                 type: 'string',
                 default: '',
@@ -1410,7 +1415,7 @@ domReady(function () {
         isDefault: true,
         attributes: {
             providerNameSlug: 'hpu-blocks',
-            className: 'hpu-form-submission-notification',
+            className: 'hpu-blocks-form-submission-notification',
             message: {
                 type: 'string',
                 default: '',
@@ -1494,7 +1499,7 @@ domReady(function () {
         isDefault: true,
         attributes: {
             providerNameSlug: 'hpu-blocks',
-            className: 'hpu-form-submit-button',
+            className: 'hpu-blocks-form-submit-button',
             backgroundColor: {
                 type: 'string',
                 default: '',
@@ -1568,12 +1573,12 @@ domReady(function () {
 
     registerBlockVariation('core/freeform', {
         name: 'hpu-blocks-freeform',
-        title: 'Freeform (New WYSIWYG Editor)',
+        title: 'Freeform (WYSIWYG Editor)',
         category: 'hpu-blocks',
         isDefault: true,
         attributes: {
             providerNameSlug: 'hpu-blocks',
-            className: 'hpu-freeform',
+            className: 'hpu-blocks-freeform',
             align: {
                 type: 'string',
                 default: 'none',
@@ -3016,7 +3021,7 @@ domReady(function () {
         isDefault: true,
         attributes: {
             providerNameSlug: 'hpu-blocks',
-            className: 'hpu-block-post-author',
+            className: 'hpu-blocks-post-author',
             isLink: {
                 type: 'boolean',
                 default: false,
@@ -3070,7 +3075,7 @@ domReady(function () {
         isDefault: true,
         attributes: {
             providerNameSlug: 'hpu-blocks',
-            className: 'hpu-post-author-biography',
+            className: 'hpu-blocks-post-author-biography',
             align: {
                 type: 'string',
                 default: 'none',
@@ -3159,7 +3164,7 @@ domReady(function () {
         isDefault: true,
         attributes: {
             providerNameSlug: 'hpu-blocks',
-            className: 'hpu-post-author-name',
+            className: 'hpu-blocks-post-author-name',
             isLink: {
                 type: 'boolean',
                 default: false,
@@ -3203,7 +3208,7 @@ domReady(function () {
         isDefault: true,
         attributes: {
             providerNameSlug: 'hpu-blocks',
-            className: 'hpu-post-comments-count',
+            className: 'hpu-blocks-post-comments-count',
             isLink: {
                 type: 'boolean',
                 default: false,
@@ -3257,7 +3262,7 @@ domReady(function () {
         isDefault: true,
         attributes: {
             providerNameSlug: 'hpu-blocks',
-            className: 'hpu-post-comments-form',
+            className: 'hpu-blocks-post-comments-form',
             align: {
                 type: 'string',
                 default: 'none',
@@ -3321,7 +3326,7 @@ domReady(function () {
         isDefault: true,
         attributes: {
             providerNameSlug: 'hpu-blocks',
-            className: 'hpu-post-comments-link',
+            className: 'hpu-blocks-post-comments-link',
             isLink: {
                 type: 'boolean',
                 default: false,
@@ -3429,7 +3434,7 @@ domReady(function () {
         isDefault: true,
         attributes: {
             providerNameSlug: 'hpu-blocks',
-            className: 'hpu-block-post-date',
+            className: 'hpu-blocks-post-date',
             isLink: {
                 type: 'boolean',
                 default: false,
@@ -3473,7 +3478,7 @@ domReady(function () {
         isDefault: true,
         attributes: {
             providerNameSlug: 'hpu-blocks',
-            className: 'hpu-post-excerpt',
+            className: 'hpu-blocks-post-excerpt',
             align: {
                 type: 'string',
                 default: 'none',
@@ -3507,7 +3512,7 @@ domReady(function () {
         isDefault: true,
         attributes: {
             providerNameSlug: 'hpu-blocks',
-            className: 'hpu-block-post-featured-image',
+            className: 'hpu-blocks-post-featured-image',
             align: {
                 type: 'string',
                 default: 'none',
@@ -3561,7 +3566,7 @@ domReady(function () {
         isDefault: true,
         attributes: {
             providerNameSlug: 'hpu-blocks',
-            className: 'hpu-post-navigation-link',
+            className: 'hpu-blocks-post-navigation-link',
             text: {
                 type: 'string',
                 default: '',
@@ -3741,7 +3746,7 @@ domReady(function () {
         isDefault: true,
         attributes: {
             providerNameSlug: 'hpu-blocks',
-            className: 'hpu-block-post-terms',
+            className: 'hpu-blocks-post-terms',
             align: {
                 type: 'string',
                 default: 'none',
@@ -3771,7 +3776,7 @@ domReady(function () {
         isDefault: true,
         attributes: {
             providerNameSlug: 'hpu-blocks',
-            className: 'hpu-post-time-to-read',
+            className: 'hpu-blocks-post-time-to-read',
             align: {
                 type: 'string',
                 default: 'none',
@@ -4531,7 +4536,7 @@ domReady(function () {
         isDefault: true,
         attributes: {
             providerNameSlug: 'hpu-blocks',
-            className: 'hpu-site-tagline',
+            className: 'hpu-blocks-site-tagline',
             textAlign: {
                 type: 'string',
                 default: 'left',
@@ -4560,7 +4565,7 @@ domReady(function () {
         isDefault: true,
         attributes: {
             providerNameSlug: 'hpu-blocks',
-            className: 'hpu-site-title',
+            className: 'hpu-blocks-site-title',
             isLink: {
                 type: 'boolean',
                 default: false,
@@ -4692,7 +4697,7 @@ domReady(function () {
         isDefault: true,
         attributes: {
             providerNameSlug: 'hpu-blocks',
-            className: 'hpu-table-of-contents',
+            className: 'hpu-blocks-table-of-contents',
             headings: {
                 type: 'array',
                 default: [],
@@ -4757,7 +4762,7 @@ domReady(function () {
         isDefault: true,
         attributes: {
             providerNameSlug: 'hpu-blocks',
-            className: 'hpu-template-part',
+            className: 'hpu-blocks-template-part',
             area: {
                 type: 'string',
                 default: '',
@@ -4802,7 +4807,7 @@ domReady(function () {
         isDefault: true,
         attributes: {
             providerNameSlug: 'hpu-blocks',
-            className: 'hpu-term-description',
+            className: 'hpu-blocks-term-description',
             textAlign: {
                 type: 'string',
                 default: 'left',

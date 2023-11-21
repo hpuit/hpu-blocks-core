@@ -21,7 +21,7 @@
 		"@wordpress/core-data": "^6.21.0",
 		"@wordpress/dependency-extraction-webpack-plugin": "^4.27.0",
 		"@wordpress/hooks": "^3.44.0",
-		"@wordpress/scripts": "^26.15.0"
+		"@wordpress/scripts": "^26.17.0"
 	},
 	"dependencies": {
 		"@wordpress/components": "^25.10.0",

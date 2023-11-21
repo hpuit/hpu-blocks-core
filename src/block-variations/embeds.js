@@ -1,6 +1,6 @@
 import { registerBlockVariation, unregisterBlockVariation } from "@wordpress/blocks";
 
-function hpuBlocksEmbeds() {
+export default function registerCoreEmbedBlockVariations() {
     const embedVariations = [
         //'youtube',
         //'vimeo',
@@ -56,4 +56,3 @@ function hpuBlocksEmbeds() {
 
 
 }
-export default hpuBlocksEmbeds;

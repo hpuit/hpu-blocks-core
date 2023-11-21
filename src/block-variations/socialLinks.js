@@ -1,8 +1,7 @@
 import { registerBlockVariation, unregisterBlockVariation } from '@wordpress/blocks';
 // import { SocialLink } from '@wordpress/block-library';
 
-function hpuBlocksSocialLinks() {
-    
+export default function registerCoreSocialLinksBlockVariations() {    
     // SocialLink.icon = () => {
     //     return null;
     // };
@@ -73,4 +72,3 @@ function hpuBlocksSocialLinks() {
         }
     });
 }
-export default hpuBlocksSocialLinks;

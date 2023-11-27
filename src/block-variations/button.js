@@ -12,32 +12,16 @@ registerBlockVariation('core/button', {
         backgroundColor: {
             type: 'string',
             default: '',
-        },
-        borderColor: {
+        }, 
+        gradient: {
             type: 'string',
             default: '',
         },
-        borderRadius: {
-            type: 'number',
-            default: 0,
-        },
-        borderWidth: {
-            type: 'number',
-            default: 0,
-        },
-        textColor: {
+        linkTarget: {
             type: 'string',
             default: '',
         },
-        url: {
-            type: 'string',
-            default: '',
-        },
-        text: {
-            type: 'string',
-            default: '',
-        },
-        target: {
+        placeholder: {
             type: 'string',
             default: '',
         },
@@ -45,13 +29,37 @@ registerBlockVariation('core/button', {
             type: 'string',
             default: '',
         },
-        size: {
+        tagName: {
             type: 'string',
-            default: 'default',
+            default: '',
         },
-        align: {
+        text: {
             type: 'string',
-            default: 'none',
+            default: '',
+        },
+        textAlign: {
+            type: 'string',
+            default: '',
+        },
+        textColor: {
+            type: 'string',
+            default: '',
+        },
+        title: {
+            type: 'string',
+            default: '',
+        },
+        type: {
+            type: 'string',
+            default: '',
+        },
+        url: {
+            type: 'string',
+            default: '',
+        },
+        width: {
+            type: 'string',
+            default: '',
         },
     },
     supports: {
@@ -63,18 +71,20 @@ registerBlockVariation('core/button', {
     isActive: (blockAttributes, variationAttributes) => {
         return [
             blockAttributes.providerNameSlug === variationAttributes.providerNameSlug,
-            blockAttributes.className === variationAttributes.className,
             blockAttributes.backgroundColor === variationAttributes.backgroundColor,
-            blockAttributes.borderColor === variationAttributes.borderColor,
-            blockAttributes.borderRadius === variationAttributes.borderRadius,
-            blockAttributes.borderWidth === variationAttributes.borderWidth,
+            blockAttributes.placeholder === variationAttributes.placeholder,
+            blockAttributes.linkTarget === variationAttributes.linkTarget,
+            blockAttributes.textAlign === variationAttributes.textAlign,
             blockAttributes.textColor === variationAttributes.textColor,
-            blockAttributes.url === variationAttributes.url,
+            blockAttributes.className === variationAttributes.className,
+            blockAttributes.gradient === variationAttributes.gradient,
+            blockAttributes.tagName === variationAttributes.tagName,
+            blockAttributes.title === variationAttributes.title,
+            blockAttributes.width === variationAttributes.width,
             blockAttributes.text === variationAttributes.text,
-            blockAttributes.target === variationAttributes.target,
+            blockAttributes.type === variationAttributes.type,
             blockAttributes.rel === variationAttributes.rel,
-            blockAttributes.size === variationAttributes.size,
-            blockAttributes.align === variationAttributes.align,
+            blockAttributes.url === variationAttributes.url,
         ];
     },
     scope: ['block'],

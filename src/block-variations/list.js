@@ -12,11 +12,27 @@ export default function registerCoreListBlockVariations() {
             ordered: {
                 type: 'boolean',
                 default: false,
+            }, 
+            placeholder: {
+                type: 'string',
+                default: 'List',
+            },
+            reversed: {
+                type: 'boolean',
+                default: false,
+            },
+            start: {
+                type: 'number',
+                default: 1,
+            },
+            type: {
+                type: 'string',
+                default: '1',
             },
             values: {
-                type: 'array',
-                default: [],
-            },
+                type: 'string',
+                default: '',
+            }
         },
         supports: {
             align: false,
@@ -27,10 +43,14 @@ export default function registerCoreListBlockVariations() {
         },
         isActive: (blockAttributes, variationAttributes) => {
             return [
-                blockAttributes.ordered === variationAttributes.ordered,
-                blockAttributes.values === variationAttributes.values,
                 blockAttributes.providerNameSlug === variationAttributes.providerNameSlug,
-                blockAttributes.className === variationAttributes.className
+                blockAttributes.className === variationAttributes.className,
+                blockAttributes.ordered === variationAttributes.ordered,
+                blockAttributes.placeholder === variationAttributes.placeholder,
+                blockAttributes.reversed === variationAttributes.reversed,
+                blockAttributes.start === variationAttributes.start,
+                blockAttributes.type === variationAttributes.type,
+                blockAttributes.values === variationAttributes.values,
             ];
         },
         scope: ['inserter'],

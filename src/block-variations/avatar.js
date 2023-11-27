@@ -9,41 +9,21 @@ export default function registerCoreAvatarBlockVariations() {
         attributes: {
             providerNameSlug: 'hpu-blocks',
             className: 'hpu-blocks-avatar',
-            align: {
+            isLink: {
+                type: 'boolean',
+                default: false,
+            }, 
+            linkTarget: {
                 type: 'string',
-                default: 'none',
+                default: '',
             },
             size: {
                 type: 'string',
                 default: 'medium',
-            },
+            }, 
             userId: {
                 type: 'number',
-                default: 0,
-            },
-            showName: {
-                type: 'boolean',
-                default: true,
-            },
-            showRole: {
-                type: 'boolean',
-                default: true,
-            },
-            showBio: {
-                type: 'boolean',
-                default: true,
-            },
-            showWebsite: {
-                type: 'boolean',
-                default: true,
-            },
-            showPosts: {
-                type: 'boolean',
-                default: true,
-            },
-            showComments: {
-                type: 'boolean',
-                default: true,
+                default: '',
             },
         },
         supports: {
@@ -56,15 +36,10 @@ export default function registerCoreAvatarBlockVariations() {
             return [
                 blockAttributes.providerNameSlug === variationAttributes.providerNameSlug,
                 blockAttributes.className === variationAttributes.className,
-                blockAttributes.align === variationAttributes.align,
+                blockAttributes.isLink === variationAttributes.isLink,
+                blockAttributes.linkTarget === variationAttributes.linkTarget,
                 blockAttributes.size === variationAttributes.size,
                 blockAttributes.userId === variationAttributes.userId,
-                blockAttributes.showName === variationAttributes.showName,
-                blockAttributes.showRole === variationAttributes.showRole,
-                blockAttributes.showBio === variationAttributes.showBio,
-                blockAttributes.showWebsite === variationAttributes.showWebsite,
-                blockAttributes.showPosts === variationAttributes.showPosts,
-                blockAttributes.showComments === variationAttributes.showComments,
             ];
         },
         scope: ['block'],

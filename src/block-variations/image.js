@@ -9,15 +9,11 @@ export default function registerCoreImageBlockVariations() {
         attributes: {
             providerNameSlug: 'hpu-blocks',
             className: 'hpu-blocks-image',
-            align: {
-                type: 'string',
-                default: 'none',
-            },
-            url: {
+            alt: {
                 type: 'string',
                 default: '',
             },
-            alt: {
+            aspectRatio: {
                 type: 'string',
                 default: '',
             },
@@ -25,13 +21,57 @@ export default function registerCoreImageBlockVariations() {
                 type: 'string',
                 default: '',
             },
-            captionFontSize: {
+            height: {
                 type: 'number',
                 default: 0,
             },
-            captionFontSizeUnit: {
+            href: {
                 type: 'string',
-                default: 'px',
+                default: '',
+            },
+            id: {
+                type: 'number',
+                default: 0,
+            },
+            lightbox: {
+                type: 'boolean',
+                default: false,
+            },
+            linkClass: {
+                type: 'string',
+                default: '',
+            },
+            linkDestination: {
+                type: 'string',
+                default: '',
+            },
+            linkTarget: {
+                type: 'string',
+                default: '',
+            },
+            rel: {
+                type: 'string',
+                default: '',
+            },
+            scale: {
+                type: 'number',
+                default: 100,
+            },
+            sizeSlug: {
+                type: 'string',
+                default: '',
+            },
+            title: {
+                type: 'string',
+                default: '',
+            },
+            url: {
+                type: 'string',
+                default: '',
+            },
+            width: {
+                type: 'number',
+                default: 0,
             },
         },
         supports: {
@@ -42,16 +82,26 @@ export default function registerCoreImageBlockVariations() {
         },
         isActive: (blockAttributes, variationAttributes) => {
             return [
-                blockAttributes.url === variationAttributes.url,
-                blockAttributes.alt === variationAttributes.alt,
-                blockAttributes.caption === variationAttributes.caption,
-                blockAttributes.captionFontSize === variationAttributes.captionFontSize,
-                blockAttributes.captionFontSizeUnit === variationAttributes.captionFontSizeUnit,
-                blockAttributes.align === variationAttributes.align,
                 blockAttributes.providerNameSlug === variationAttributes.providerNameSlug,
-                blockAttributes.className === variationAttributes.className
+                blockAttributes.className === variationAttributes.className,
+                blockAttributes.alt === variationAttributes.alt,
+                blockAttributes.aspectRatio === variationAttributes.aspectRatio,
+                blockAttributes.caption === variationAttributes.caption,
+                blockAttributes.height === variationAttributes.height,
+                blockAttributes.href === variationAttributes.href,
+                blockAttributes.id === variationAttributes.id,
+                blockAttributes.lightbox === variationAttributes.lightbox,
+                blockAttributes.linkClass === variationAttributes.linkClass,
+                blockAttributes.linkDestination === variationAttributes.linkDestination,
+                blockAttributes.linkTarget === variationAttributes.linkTarget,
+                blockAttributes.rel === variationAttributes.rel,
+                blockAttributes.scale === variationAttributes.scale,
+                blockAttributes.sizeSlug === variationAttributes.sizeSlug,
+                blockAttributes.title === variationAttributes.title,
+                blockAttributes.url === variationAttributes.url,
+                blockAttributes.width === variationAttributes.width,
             ];
         },
-        scope: ['inserter'],
+        scope: ['block', 'inserter'],
     });
 }

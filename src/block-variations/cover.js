@@ -9,87 +9,125 @@ export default function registerCoreCoverBlockVariations() {
         attributes: {
             providerNameSlug: 'hpu-blocks',
             className: 'hpu-blocks-cover',
-            allowedBlocks: {
+            allowedBlocks:  {
                 type: 'array',
-            },
-            backgroundColor: {
+                default: ['core/heading', 'core/paragraph', 'core/list', 'core/button'],
+            }, 
+            alt: {
                 type: 'string',
                 default: '',
             },
-            backgroundImage: {
+            backgroundType: {
+                type: 'string',
+                default: 'color',
+            },
+            contentPosition: {
+                type: 'string',
+                default: 'center center',
+            },
+            customGradient: {
                 type: 'string',
                 default: '',
             },
-            backgroundOpacity: {
-                type: 'number',
-                default: 0,
+            customOverlayColor: {
+                type: 'string',
+                default: '',
             },
             dimRatio: {
                 type: 'number',
-                default: 0,
+                default: 50,
             },
-            fixedBackground: {
+            focalPoint: {
+                type: 'object',
+                default: { x: 0.5, y: 0.5 },
+            },
+            gradient: {
+                type: 'string',
+                default: '',
+            },
+            hasParallax: {
                 type: 'boolean',
                 default: false,
             },
+            id: {
+                type: 'string',
+                default: '',
+            },
+            isDark: {
+                type: 'boolean',
+                default: false,
+            },
+            isRepeated: {
+                type: 'boolean',
+                default: false,
+            },
+            isUserOverlayColor: {
+                type: 'boolean',
+                default: false,
+            }, 
             minHeight: {
                 type: 'number',
                 default: 0,
+            },
+            minHeightUnit: {
+                type: 'string',
+                default: 'px',
             },
             overlayColor: {
                 type: 'string',
                 default: '',
             },
-            overlayOpacity: {
-                type: 'number',
-                default: 0,
-            },
-            verticalAlignment: {
+            tagName: {
                 type: 'string',
-                default: 'none',
+                default: 'div',
             },
-            contentJustification: {
+            templateLock: {
                 type: 'string',
-                default: 'left',
-            },
-            contentWidth: {
+                default: 'all',
+            }, 
+            url: {
                 type: 'string',
-                default: 'full',
+                default: '',
             },
-            contentWidthCustom: {
-                type: 'number',
-                default: 0,
-            },
-            contentWidthUnit: {
-                type: 'string',
-                default: 'px',
+            useFeaturedImage:{
+                type: 'boolean',
+                default: true,
             },
         },
         supports: {
             align: false,
+            color: false,
             html: false,
             spacing: false,
             anchor: true,
-            inserter: false,
+            typography: false,
+            layout: false,
         },
         isActive: (blockAttributes, variationAttributes) => {
             return [
-                blockAttributes.allowedBlocks === variationAttributes.allowedBlocks,
-                blockAttributes.backgroundColor === variationAttributes.backgroundColor,
-                blockAttributes.backgroundImage === variationAttributes.backgroundImage,
-                blockAttributes.backgroundOpacity === variationAttributes.backgroundOpacity,
-                blockAttributes.dimRatio === variationAttributes.dimRatio,
-                blockAttributes.fixedBackground === variationAttributes.fixedBackground,
-                blockAttributes.minHeight === variationAttributes.minHeight,
-                blockAttributes.overlayColor === variationAttributes.overlayColor,
-                blockAttributes.overlayOpacity === variationAttributes.overlayOpacity,
-                blockAttributes.verticalAlignment === variationAttributes.verticalAlignment,
-                blockAttributes.contentJustification === variationAttributes.contentJustification,
-                blockAttributes.contentWidth === variationAttributes.contentWidth,
-                blockAttributes.contentWidthCustom === variationAttributes.contentWidthCustom,
-                blockAttributes.contentWidthUnit === variationAttributes.contentWidthUnit,
                 blockAttributes.providerNameSlug === variationAttributes.providerNameSlug,
-                blockAttributes.className === variationAttributes.className
+                blockAttributes.className === variationAttributes.className,
+                blockAttributes.allowedBlocks === variationAttributes.allowedBlocks,
+                blockAttributes.alt === variationAttributes.alt,
+                blockAttributes.backgroundType === variationAttributes.backgroundType,
+                blockAttributes.contentPosition === variationAttributes.contentPosition,
+                blockAttributes.customGradient === variationAttributes.customGradient,
+                blockAttributes.customOverlayColor === variationAttributes.customOverlayColor,
+                blockAttributes.dimRatio === variationAttributes.dimRatio,
+                blockAttributes.focalPoint === variationAttributes.focalPoint,
+                blockAttributes.gradient === variationAttributes.gradient,
+                blockAttributes.hasParallax === variationAttributes.hasParallax,
+                blockAttributes.id === variationAttributes.id,
+                blockAttributes.isDark === variationAttributes.isDark,
+                blockAttributes.isRepeated === variationAttributes.isRepeated,
+                blockAttributes.isUserOverlayColor === variationAttributes.isUserOverlayColor,
+                blockAttributes.minHeight === variationAttributes.minHeight,
+                blockAttributes.minHeightUnit === variationAttributes.minHeightUnit,
+                blockAttributes.overlayColor === variationAttributes.overlayColor,
+                blockAttributes.tagName === variationAttributes.tagName,
+                blockAttributes.templateLock === variationAttributes.templateLock,
+                blockAttributes.url === variationAttributes.url,
+                blockAttributes.useFeaturedImage === variationAttributes.useFeaturedImage,
             ];
         },
         scope: ['block', 'inserter'],

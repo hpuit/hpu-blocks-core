@@ -1,19 +1,19 @@
 import { registerBlockVariation } from '@wordpress/blocks';
 
 export default function registerCoreCategoryListBlockVariations() {
-    registerBlockVariation('core/category-list', {
-        name: 'hpu-blocks-category-list',
-        title: 'Category List',
+    registerBlockVariation('core/categories', {
+        name: 'hpu-blocks-categories',
+        title: 'Categories',
         category: 'hpu-blocks',
         isDefault: true,
         attributes: {
             providerNameSlug: 'hpu-blocks',
-            className: 'hpu-blocks-category-list',
+            className: 'hpu-blocks-categories',
             displayAsDropdown: {
                 type: 'boolean',
                 default: false,
-            },
-            showPostCounts: {
+            }, 
+            showEmpty: {
                 type: 'boolean',
                 default: false,
             },
@@ -21,15 +21,11 @@ export default function registerCoreCategoryListBlockVariations() {
                 type: 'boolean',
                 default: false,
             },
-            showImages: {
+            showOnlyTopLevel: {
                 type: 'boolean',
                 default: false,
             },
-            showTitle: {
-                type: 'boolean',
-                default: false,
-            },
-            showCount: {
+            showPostCounts: {
                 type: 'boolean',
                 default: false,
             },
@@ -42,14 +38,13 @@ export default function registerCoreCategoryListBlockVariations() {
         },
         isActive: (blockAttributes, variationAttributes) => {
             return [
-                blockAttributes.displayAsDropdown === variationAttributes.displayAsDropdown,
                 blockAttributes.providerNameSlug === variationAttributes.providerNameSlug,
-                blockAttributes.showPostCounts === variationAttributes.showPostCounts,
-                blockAttributes.showHierarchy === variationAttributes.showHierarchy,
-                blockAttributes.showImages === variationAttributes.showImages,
-                blockAttributes.showTitle === variationAttributes.showTitle,
-                blockAttributes.showCount === variationAttributes.showCount,
                 blockAttributes.className === variationAttributes.className,
+                blockAttributes.displayAsDropdown === variationAttributes.displayAsDropdown,
+                blockAttributes.showEmpty === variationAttributes.showEmpty,
+                blockAttributes.showHierarchy === variationAttributes.showHierarchy,
+                blockAttributes.showOnlyTopLevel === variationAttributes.showOnlyTopLevel,
+                blockAttributes.showPostCounts === variationAttributes.showPostCounts,
             ];
         },
         scope: ['block', 'inserter'],

@@ -1,5 +1,7 @@
 import { registerBlockVariation } from '@wordpress/blocks';
 
+// Value attribute on the list block is deprecated since version 6.0 and will be removed in version 6.5. Please use inner blocks instead.
+
 export default function registerCoreListBlockVariations() {
     registerBlockVariation('core/list', {
         name: 'hpu-blocks-list',

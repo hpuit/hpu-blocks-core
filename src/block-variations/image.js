@@ -79,6 +79,9 @@ export default function registerCoreImageBlockVariations() {
             html: false,
             spacing: false,
             anchor: true,
+            color: false,
+            filter: false,
+            interactivity: false,
         },
         isActive: (blockAttributes, variationAttributes) => {
             return [

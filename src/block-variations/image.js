@@ -18,7 +18,7 @@ export default function registerCoreImageBlockVariations() {
                 default: '',
             },
             caption: {
-                type: 'string',
+                type: 'rich-text',
                 default: '',
             },
             height: {
@@ -34,8 +34,11 @@ export default function registerCoreImageBlockVariations() {
                 default: 0,
             },
             lightbox: {
-                type: 'boolean',
-                default: false,
+                type: 'object',
+                enabled:{
+                    type: 'boolean',
+                    default: false,
+                },
             },
             linkClass: {
                 type: 'string',

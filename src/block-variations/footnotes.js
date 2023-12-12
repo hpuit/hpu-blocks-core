@@ -40,6 +40,6 @@ export default function registerCoreFootnotesBlockVariations() {
             spacing: false,
             anchor: true,
         },
-        scope: ['block'],
+        scope: ['block', 'inserter'],
     });
 }

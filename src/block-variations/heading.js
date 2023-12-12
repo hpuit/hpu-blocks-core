@@ -9,44 +9,42 @@ export default function registerCoreHeadingBlockVariations() {
         attributes: {
             providerNameSlug: 'hpu-blocks',
             className: 'hpu-blocks-heading',
-            align: {
-                type: 'string',
-                default: 'none',
+            content: {
+                type: 'rich-text',
+                default: '',
             },
             level: {
                 type: 'number',
                 default: 2,
             },
-            text: {
+            placeholder: {
+                type: 'string',
+                default: 'Heading',
+            },
+            textAlign: {
                 type: 'string',
                 default: '',
-            },
-            fontSize: {
-                type: 'number',
-                default: 0,
-            },
-            fontSizeUnit: {
-                type: 'string',
-                default: 'px',
             },
         },
         supports: {
             align: true,
             html: false,
-            spacing: false,
             anchor: true,
+            className: false,
+            color: false,
+            spacing: false,
+            typography: false,
         },
         isActive: (blockAttributes, variationAttributes) => {
             return [
-                blockAttributes.level === variationAttributes.level,
-                blockAttributes.text === variationAttributes.text,
-                blockAttributes.fontSize === variationAttributes.fontSize,
-                blockAttributes.fontSizeUnit === variationAttributes.fontSizeUnit,
-                blockAttributes.align === variationAttributes.align,
                 blockAttributes.providerNameSlug === variationAttributes.providerNameSlug,
-                blockAttributes.className === variationAttributes.className
+                blockAttributes.className === variationAttributes.className,
+                blockAttributes.content === variationAttributes.content,
+                blockAttributes.level === variationAttributes.level,
+                blockAttributes.placeholder === variationAttributes.placeholder,
+                blockAttributes.textAlign === variationAttributes.textAlign,
             ];
         },
-        scope: ['inserter'],
+        scope: ['block', 'inserter'],
     });
 }

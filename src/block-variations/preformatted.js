@@ -52,6 +52,6 @@ export default function registerCorePreformattedBlockVariations() {
                 blockAttributes.className === variationAttributes.className
             ];
         },
-        scope: ['block'],
+        scope: ['inserter', 'block'],
     });
 }

@@ -1,0 +1,34 @@
+
+// BEGIN: Scaffold with media queries
+
+// Define breakpoints
+$breakpoint-small: 576px;
+$breakpoint-medium: 768px;
+$breakpoint-large: 992px;
+
+// Default styles
+.my-element {
+  color: red;
+  font-size: 16px;
+}
+
+// Media queries
+@media (min-width: $breakpoint-small) {
+  .my-element {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: $breakpoint-medium) {
+  .my-element {
+    font-size: 20px;
+  }
+}
+
+@media (min-width: $breakpoint-large) {
+  .my-element {
+    font-size: 22px;
+  }
+}
+
+// END: Scaffold with media queries

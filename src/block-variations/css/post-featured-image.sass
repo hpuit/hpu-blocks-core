@@ -1,0 +1,38 @@
+
+// BEGIN: Import dependencies
+@import "path/to/dependencies";
+
+// BEGIN: Define variables
+$primary-color: #ff0000;
+$breakpoint-small: 576px;
+$breakpoint-medium: 768px;
+$breakpoint-large: 992px;
+
+// BEGIN: Styles for all screen sizes
+body {
+  background-color: $primary-color;
+}
+
+// BEGIN: Styles for small screens
+@media (max-width: $breakpoint-small) {
+  // Add styles for small screens here
+}
+
+// BEGIN: Styles for medium screens
+@media (min-width: $breakpoint-small) and (max-width: $breakpoint-medium) {
+  // Add styles for medium screens here
+}
+
+// BEGIN: Styles for large screens
+@media (min-width: $breakpoint-medium) and (max-width: $breakpoint-large) {
+  // Add styles for large screens here
+}
+
+// BEGIN: Styles for extra large screens
+@media (min-width: $breakpoint-large) {
+  // Add styles for extra large screens here
+}
+
+// END: Styles for all screen sizes
+
+// END: Import dependencies

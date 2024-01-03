@@ -1,0 +1,29 @@
+
+// BEGIN: Scaffold with media queries
+$breakpoint-small: 576px;
+$breakpoint-medium: 768px;
+$breakpoint-large: 992px;
+
+@mixin media-query($breakpoint) {
+  @media (min-width: $breakpoint) {
+    @content;
+  }
+}
+
+// Usage example:
+.my-element {
+  color: red;
+
+  @include media-query($breakpoint-small) {
+    color: blue;
+  }
+
+  @include media-query($breakpoint-medium) {
+    color: green;
+  }
+
+  @include media-query($breakpoint-large) {
+    color: yellow;
+  }
+}
+// END: Scaffold with media queries

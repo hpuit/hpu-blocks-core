@@ -1,0 +1,35 @@
+
+// BEGIN: Scaffold with media queries
+
+// Define breakpoints
+$breakpoint-small: 576px;
+$breakpoint-medium: 768px;
+$breakpoint-large: 992px;
+
+// Default styles
+.home-link {
+  color: blue;
+}
+
+// Small screens
+@media (max-width: $breakpoint-small) {
+  .home-link {
+    font-size: 14px;
+  }
+}
+
+// Medium screens
+@media (min-width: $breakpoint-medium) {
+  .home-link {
+    font-size: 16px;
+  }
+}
+
+// Large screens
+@media (min-width: $breakpoint-large) {
+  .home-link {
+    font-size: 18px;
+  }
+}
+
+// END: Scaffold with media queries

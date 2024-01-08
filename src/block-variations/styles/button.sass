@@ -1,0 +1,78 @@
+
+// Define your base styles here
+.hpu-blocks[data-align="center"] > .hpu-blocks-button
+  text-align: center
+  margin-left: auto
+  margin-right: auto
+
+.hpu-blocks[data-align="right"] > .hpu-blocks-button
+  /*!rtl:ignore*/
+  text-align: right
+
+.hpu-blocks-button
+  position: relative
+  cursor: text
+
+	// Add outline to button on focus to indicate focus-state
+  &:focus
+    box-shadow: 0 0 0 1px $white, 0 0 0 3px var(--wp-admin-theme-color)
+
+		// Windows' High Contrast mode will show this outline, but not the box-shadow.
+    outline: 2px solid transparent
+    outline-offset: -2px
+
+	// Increase placeholder opacity to meet contrast ratios.
+  &[data-rich-text-placeholder]::after
+    opacity: 0.8
+
+// Display "table" is used because the button container should only wrap the content and not takes the full width.
+div[data-type="core/button"]
+  display: table
+
+  .editor-styles-wrapper &[style*="text-decoration"] &__link
+  	text-decoration: inherit
+
+  .editor-styles-wrapper & &__link
+	// The following styles ensure a default border is applied when the user selects only a border color or style in the editor,
+	// but no width. They override the `border-width: 0;` applied by core's theme.json via the Elements API button.
+  &:where(.has-border-color)
+    border-width: initial
+
+  &:where([style*="border-top-color"])
+    border-top-width: initial
+
+  &:where([style*="border-right-color"])
+    border-right-width: initial
+
+  &:where([style*="border-bottom-color"])
+    border-bottom-width: initial
+
+  &:where([style*="border-left-color"])
+    border-left-width: initial
+
+  &:where([style*="border-style"])
+    border-width: initial
+
+  &:where([style*="border-top-style"])
+    border-top-width: initial
+
+  &:where([style*="border-right-style"])
+    border-right-width: initial
+
+  &:where([style*="border-bottom-style"])
+    border-bottom-width: initial
+
+  &:where([style*="border-left-style"])
+    border-left-width: initial
+
+// BEGIN: Media Queries
+@media screen and (max-width: 768px)
+  // Styles for screens smaller than 768px
+
+@media screen and (min-width: 769px) and (max-width: 1024px)
+  // Styles for screens between 769px and 1024px
+
+@media screen and (min-width: 1025px)
+  // Styles for screens larger than 1024px
+
+// END: Media Queries

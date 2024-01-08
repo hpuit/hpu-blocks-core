@@ -1,0 +1,60 @@
+
+// BEGIN: Scaffold with media queries
+
+// Define breakpoints
+$breakpoint-small: 576px
+$breakpoint-medium: 768px
+$breakpoint-large: 992px
+
+// Default styles
+.hpu-blocks-site-logo
+	// This block has customizable padding, border-box makes that more predictable.
+  box-sizing: border-box
+  line-height: 0
+
+  a
+    display: inline-block
+    line-height: 0
+
+	// Provide a sane starting point for the size.
+  &.is-default-size img
+    width: 120px
+    height: auto
+
+	// Constrain the image to its container.
+  img
+    height: auto
+    max-width: 100%
+
+	// Inherit border radius from style variations.
+  a,
+  img
+    border-radius: inherit
+
+  &.aligncenter
+    margin-left: auto
+    margin-right: auto
+    text-align: center
+
+	// Style variations
+  &.is-style-rounded
+		// We use an absolute pixel to prevent the oval shape that a value of 50% would give
+		// to rectangular images. A pill-shape is better than otherwise.
+    border-radius: 9999px
+
+// Small screens
+@media (max-width: $breakpoint-small)
+  .site-logo
+    // Small screen logo styles here
+
+// Medium screens
+@media (min-width: $breakpoint-medium)
+  .site-logo
+    // Medium screen logo styles here
+
+// Large screens
+@media (min-width: $breakpoint-large)
+  .site-logo
+    // Large screen logo styles here
+
+// END: Scaffold with media queries

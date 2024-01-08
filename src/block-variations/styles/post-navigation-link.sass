@@ -1,0 +1,47 @@
+
+// BEGIN: Scaffold with media queries
+
+// Define breakpoints
+$breakpoint-small: 576px
+$breakpoint-medium: 768px
+$breakpoint-large: 992px
+
+// Default styles
+.hpu-blocks-post-navigation-link
+
+  &__arrow-previous
+    display: inline-block
+    margin-right: 1ch
+		// chevron(`»`) symbol doesn't need the mirroring by us.
+    &:not(.is-arrow-chevron)
+			// Flip for RTL.
+      transform: scaleX(1) #{"/*rtl:scaleX(-1);*/"} // This points the arrow right for LTR and left for RTL.
+
+    &__arrow-next
+  		display: inline-block
+  		margin-left: 1ch
+		// chevron(`»`) symbol doesn't need the mirroring by us.
+    &:not(.is-arrow-chevron)
+			// Flip for RTL.
+      transform: scaleX(1) #{"/*rtl:scaleX(-1);*/"} // This points the arrow right for LTR and left for RTL.
+
+  &.has-text-align-right[style*="writing-mode: vertical-rl"],
+  &.has-text-align-left[style*="writing-mode: vertical-lr"]
+    rotate: 180deg
+
+// Small breakpoint styles
+@media (min-width: $breakpoint-small)
+  .post-navigation-link
+    font-size: 18px
+
+// Medium breakpoint styles
+@media (min-width: $breakpoint-medium)
+  .post-navigation-link
+    font-size: 20px
+
+// Large breakpoint styles
+@media (min-width: $breakpoint-large)
+  .post-navigation-link
+    font-size: 22px
+
+// END: Scaffold with media queries

@@ -1,0 +1,51 @@
+
+// Import any necessary dependencies or variables here
+
+// Define your base styles here
+.hpu-blocks-calendar
+  text-align: center
+
+  th,
+  td
+    padding: 0.25em
+    border: 1px solid
+
+  th
+    font-weight: 400
+
+  caption
+    background-color: inherit
+
+  table
+    width: 100%
+    border-collapse: collapse
+
+    &:where(:not(.has-text-color))
+      color: #40464d
+
+			// Keep the hard-coded border color for backward compatibility.
+      th,
+      td
+        border-color: $gray-300
+
+    &.has-background th
+      background-color: inherit
+
+    &.has-text-color th
+      color: inherit
+
+// Keep the hard-coded header background color for backward compatibility.
+  :where(& table:not(.has-background) th)
+  	background: $gray-300
+
+// BEGIN: Media Queries
+@media screen and (max-width: 768px)
+  // Styles for screens smaller than 768px
+
+@media screen and (min-width: 769px) and (max-width: 1024px)
+  // Styles for screens between 769px and 1024px
+
+@media screen and (min-width: 1025px)
+  // Styles for screens larger than 1024px
+
+// END: Media Queries

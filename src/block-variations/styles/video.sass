@@ -1,0 +1,32 @@
+
+// Define your variables here
+
+// Define your styles here
+.hpu-blocks-video
+	// This block has customizable padding, border-box makes that more predictable.
+    box-sizing: border-box
+    video
+        width: 100%
+        vertical-align: middle
+
+    @supports (position: sticky)
+        [poster]
+            object-fit: cover
+
+    &.aligncenter
+        text-align: center
+
+	// Supply caption styles to videos, even if the theme hasn't opted in.
+	// Reason being: the new markup, <figcaptions>, are not likely to be styled in the majority of existing themes,
+	// so we supply the styles so as to not appear broken or unstyled in those themes.
+    figcaption
+        @include caption-style()
+
+// Media queries
+@media screen and (max-width: 768px)
+    // Styles for screens smaller than 768px
+
+@media screen and (max-width: 480px)
+    // Styles for screens smaller than 480px
+
+// More media queries if needed

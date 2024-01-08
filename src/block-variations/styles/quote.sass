@@ -1,0 +1,34 @@
+
+// Define your variables here
+
+// Define your styles here
+.hpu-blocks-quote
+  box-sizing: border-box
+  overflow-wrap: break-word // Break long strings of text without spaces so they don't overflow the block.
+	// .is-style-large and .is-large are kept for backwards compatibility. The :not pseudo-class is used to enable switching styles. See PR #37580.
+  &.is-style-large:where(:not(.is-style-plain)),
+  &.is-large:where(:not(.is-style-plain))
+    margin-bottom: 1em
+    padding: 0 1em
+
+    p
+      font-size: 1.5em
+      font-style: italic
+      line-height: 1.6
+
+    cite,
+    footer
+      font-size: 1.125em
+      text-align: right
+
+  > cite
+    display: block
+
+// Media queries
+@media screen and (max-width: 768px)
+  // Styles for screens smaller than 768px
+
+@media screen and (max-width: 480px)
+  // Styles for screens smaller than 480px
+
+// More media queries if needed

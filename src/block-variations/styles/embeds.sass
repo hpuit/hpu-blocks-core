@@ -1,0 +1,87 @@
+
+// Define your variables here
+
+// Define your styles here
+// Apply max-width to floated items that have no intrinsic width
+.hpu-blocks[data-align="left"] > [data-type="core/embed"],
+.hpu-blocks[data-align="right"] > [data-type="core/embed"],
+.hpu-blocks-embed.alignleft,
+.hpu-blocks-embed.alignright
+	// Instagram widgets have a min-width of 326px, so go a bit beyond that.
+  max-width: 360px
+  width: 100%
+
+	// Unless these have a min-width, they collapse when floated.
+  .hpu-blocks-embed__wrapper
+    min-width: $break-zoomed-in
+
+// Supply a min-width when inside a cover block, to prevent it from collapsing.
+.hpu-blocks-cover .hpu-blocks-embed
+  min-width: 320px
+  min-height: 240px
+
+.hpu-blocks-embed
+  overflow-wrap: break-word // Break long strings of text without spaces so they don't overflow the block.
+
+	// Supply caption styles to embeds, even if the theme hasn't opted in.
+	// Reason being: the new markup, figcaptions, are not likely to be styled in the majority of existing themes,
+	// so we supply the styles so as to not appear broken or unstyled in those.
+  figcaption
+    @include caption-style()
+
+	// Don't allow iframe to overflow it's container.
+  iframe
+    max-width: 100%
+
+.hpu-blocks-embed__wrapper
+  position: relative
+
+// Add responsiveness to embeds with aspect ratios.
+.wp-embed-responsive .wp-has-aspect-ratio
+  .hpu-blocks-embed__wrapper::before
+    content: ""
+    display: block
+    padding-top: 50% // Default to 2:1 aspect ratio.
+
+  iframe
+    position: absolute
+    top: 0
+    right: 0
+    bottom: 0
+    left: 0
+    height: 100%
+    width: 100%
+
+.wp-embed-responsive
+  .wp-embed-aspect-21-9 .hpu-blocks-embed__wrapper::before
+    padding-top: 42.85% // 9 / 21 * 100
+
+  .wp-embed-aspect-18-9 .hpu-blocks-embed__wrapper::before
+    padding-top: 50% // 9 / 18 * 100
+
+  .wp-embed-aspect-16-9 .hpu-blocks-embed__wrapper::before
+    padding-top: 56.25% // 9 / 16 * 100
+
+  .wp-embed-aspect-4-3 .hpu-blocks-embed__wrapper::before
+    padding-top: 75% // 3 / 4 * 100
+
+  .wp-embed-aspect-1-1 .hpu-blocks-embed__wrapper::before
+    padding-top: 100% // 1 / 1 * 100
+
+  .wp-embed-aspect-9-16 .hpu-blocks-embed__wrapper::before
+    padding-top: 177.77% // 16 / 9 * 100
+
+  .wp-embed-aspect-1-2 .hpu-blocks-embed__wrapper::before
+    padding-top: 200% // 2 / 1 * 100
+
+// BEGIN: Media Queries
+@media screen and (max-width: 768px)
+  // Styles for screens smaller than 768px
+
+@media screen and (min-width: 768px) and (max-width: 1024px)
+  // Styles for screens between 768px and 1024px
+
+@media screen and (min-width: 1024px)
+  // Styles for screens larger than 1024px
+
+// END: Media Queries

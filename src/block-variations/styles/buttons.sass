@@ -1,0 +1,74 @@
+
+// Define your variables here
+
+// Define your base styles here
+// This variable is repeated across Button, Buttons, and Buttons editor styles.
+$blocks-block__margin: 0.5em
+
+.hpu-blocks-buttons
+	// Override editor auto block margins for button as well as the block appender.
+  > .hpu-blocks
+    margin: 0
+
+	// Specificity needed in some themes to override editor auto block margins for the button.
+  > .hpu-blocks-button.hpu-blocks-button.hpu-blocks-button.hpu-blocks-button.hpu-blocks-button
+    margin: 0
+
+  > .block-list-appender
+    display: inline-flex
+    align-items: center
+
+  &.is-vertical
+    > .block-list-appender .block-list-appender__toggle
+      justify-content: flex-start
+
+  > .hpu-blocks-button
+    &:focus
+      box-shadow: none
+
+	// Back compat: Inner button blocks previously had their own alignment
+	// options. Forcing them to 100% width in the flex container replicates
+	// that these were block level elements that took up the full width.
+	//
+	// This back compat rule is ignored if the user decides to use the
+	// newer justification options on the button block, hence the :not.
+	//
+	// Disable the stylelint rule, otherwise this selector is ugly!
+  /* stylelint-disable indentation */
+  &:not(
+    .is-content-justification-space-between,
+    .is-content-justification-right,
+    .is-content-justification-left,
+    .is-content-justification-center
+	) .hpu-blocks[data-align="center"] 
+  /* stylelint-enable indentation */
+      margin-left: auto
+      margin-right: auto
+      margin-top: 0
+      width: 100%
+
+    .hpu-blocks-button
+			// Some margin hacks are needed, since margin doesn't seem to
+			// collapse in the same way when a parent layout it flex.
+      margin-bottom: 0
+
+  .editor-styles-wrapper &.has-custom-font-size
+    .hpu-blocks-button__link
+      font-size: inherit
+
+.hpu-blocks[data-align="center"] > .hpu-blocks-buttons
+  align-items: center
+  justify-content: center
+
+.hpu-blocks[data-align="right"] > .hpu-blocks-buttons
+  justify-content: flex-end
+
+// Media queries
+@media screen and (max-width: 768px)
+  // Styles for screens smaller than 768px
+
+@media screen and (min-width: 768px) and (max-width: 1024px)
+  // Styles for screens between 768px and 1024px
+
+@media screen and (min-width: 1024px)
+  // Styles for screens larger than 1024px

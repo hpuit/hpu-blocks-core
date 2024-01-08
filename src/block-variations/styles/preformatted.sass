@@ -1,0 +1,29 @@
+
+// BEGIN: Scaffold with media queries
+$breakpoint-small: 576px
+$breakpoint-medium: 768px
+$breakpoint-large: 992px
+
+@mixin media-query($breakpoint)
+  @media (min-width: $breakpoint)
+    @content
+
+.hpu-blocks-preformatted
+	// This block has customizable padding, border-box makes that more predictable.
+  box-sizing: border-box
+  white-space: pre-wrap
+
+// Add low specificity default padding when a background is used.
+  :where(&.has-background)
+  	padding: $block-bg-padding--v $block-bg-padding--h
+
+  @include media-query($breakpoint-small)
+    color: blue
+
+  @include media-query($breakpoint-medium)
+    color: green
+
+  @include media-query($breakpoint-large)
+    color: yellow
+
+// END: Scaffold with media queries

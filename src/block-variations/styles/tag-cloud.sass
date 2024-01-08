@@ -1,0 +1,58 @@
+
+// BEGIN: Scaffold with media queries
+
+// Define breakpoints
+$breakpoint-small: 576px
+$breakpoint-medium: 768px
+$breakpoint-large: 992px
+
+// Default styles
+.hpu-blocks-tag-cloud
+	// This block has customizable padding, border-box makes that more predictable.
+  box-sizing: border-box
+
+  &.aligncenter
+    text-align: center
+    justify-content: center
+
+  &.alignfull
+    padding-left: 1em
+    padding-right: 1em
+
+  a
+    display: inline-block
+    margin-right: 5px
+
+  span
+    display: inline-block
+    margin-left: 5px
+    text-decoration: none
+
+  &.is-style-outline
+    display: flex
+    flex-wrap: wrap
+    gap: 1ch
+
+    a
+      border: 1px solid currentColor
+      font-size: unset !important // !important Needed to override the inline styles.
+      margin-right: 0
+      padding: 1ch 2ch
+      text-decoration: none !important // !important needed to override generic post content link decoration.
+
+// Small screens
+@media (max-width: $breakpoint-small)
+  .tag-cloud
+    // Styles for small screens here
+
+// Medium screens
+@media (min-width: $breakpoint-medium)
+  .tag-cloud
+    // Styles for medium screens here
+
+// Large screens
+@media (min-width: $breakpoint-large)
+  .tag-cloud
+    // Styles for large screens here
+
+// END: Scaffold with media queries

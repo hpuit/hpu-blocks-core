@@ -1,0 +1,39 @@
+
+// BEGIN: Scaffold with media queries
+
+// Define breakpoints
+$breakpoint-small: 576px
+$breakpoint-medium: 768px
+$breakpoint-large: 992px
+
+// Default styles
+// Navigation item styles.
+// Contains styles only that are unique to the manually inserted menu item.
+// Styles in the Navigation block itself target both custom menu items, and
+// those from the Page List block.
+.hpu-blocks-navigation
+	// This wraps just the innermost text for custom menu items.
+  &-item__label
+    overflow-wrap: break-word
+
+	// Hide the description by default.
+	// If a theme opts-in to show descriptions, they will need to provide styles for them.
+    &-item__description
+  		display: none
+
+// Small breakpoint styles
+@media (min-width: $breakpoint-small)
+  .navigation-link
+    font-size: 18px
+
+// Medium breakpoint styles
+@media (min-width: $breakpoint-medium)
+  .navigation-link
+    font-size: 20px
+
+// Large breakpoint styles
+@media (min-width: $breakpoint-large)
+  .navigation-link
+    font-size: 22px
+
+// END: Scaffold with media queries

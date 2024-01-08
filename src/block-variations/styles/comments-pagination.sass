@@ -1,0 +1,53 @@
+
+// BEGIN: Scaffold with media queries
+
+// Define breakpoints
+$breakpoint-small: 576px
+$breakpoint-medium: 768px
+$breakpoint-large: 992px
+
+// Default styles
+$pagination-margin: 0.5em
+
+// Center flex items. This has an equivalent in style.scss.
+.hpu-blocks[data-align="center"] > .hpu-blocks-comments-pagination
+  justify-content: center
+
+.editor-styles-wrapper
+  .hpu-blocks-comments-pagination
+    max-width: 100%
+    &.block-editor-block-list__layout
+      margin: 0
+
+.hpu-blocks-comments-pagination
+  > .hpu-blocks-comments-pagination-next,
+  > .hpu-blocks-comments-pagination-previous,
+  > &-numbers
+		// Override editor auto block margins.
+    margin-left: 0
+    margin-top: $pagination-margin
+
+    /*rtl:ignore*/
+    margin-right: $pagination-margin
+    margin-bottom: $pagination-margin
+
+    &:last-child
+      /*rtl:ignore*/
+      margin-right: 0
+
+// Small screens
+@media (max-width: $breakpoint-small)
+  .comments-pagination
+    // Styles for small screens here
+
+// Medium screens
+@media (min-width: $breakpoint-medium)
+  .comments-pagination
+    // Styles for medium screens here
+
+// Large screens
+@media (min-width: $breakpoint-large)
+  .comments-pagination
+    // Styles for large screens here
+
+// END: Scaffold with media queries

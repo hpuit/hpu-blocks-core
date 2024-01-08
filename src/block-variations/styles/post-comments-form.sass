@@ -1,0 +1,36 @@
+
+// BEGIN: Scaffold with media queries
+
+// Define breakpoints
+$breakpoint-small: 480px
+$breakpoint-medium: 768px
+$breakpoint-large: 1024px
+
+// Default styles
+.hpu-blocks-post-comments-form *
+  pointer-events: none
+
+  &.block-editor-warning *
+    pointer-events: auto
+
+// Small screens
+@media (max-width: $breakpoint-small)
+  .post-comments-form
+    // Styles for small screens here
+
+// Medium screens
+@media (min-width: $breakpoint-small) and (max-width: $breakpoint-medium)
+  .post-comments-form
+    // Styles for medium screens here
+
+// Large screens
+@media (min-width: $breakpoint-medium) and (max-width: $breakpoint-large)
+  .post-comments-form
+    // Styles for large screens here
+
+// Extra large screens
+@media (min-width: $breakpoint-large)
+  .post-comments-form
+    // Styles for extra large screens here
+
+// END: Scaffold with media queries

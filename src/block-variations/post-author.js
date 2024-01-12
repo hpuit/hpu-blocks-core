@@ -1,4 +1,5 @@
 import { registerBlockVariation } from '@wordpress/blocks';
+import './styles/post-author.sass';
 
 export default function registerCorePostAuthorBlockVariations() {
     registerBlockVariation('core/post-author', {

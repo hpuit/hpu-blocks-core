@@ -9,42 +9,34 @@ $breakpoint-large: 992px
 // Default styles
 $pagination-margin: 0.5em
 .hpu-blocks-query-pagination
-	// Increased specificity to override blocks default margin.
-  > .hpu-blocks-query-pagination-next,
-  > .hpu-blocks-query-pagination-previous,
-  > &-numbers
+  &:last-child
     /*rtl:ignore*/
-    margin-right: $pagination-margin
-    margin-bottom: $pagination-margin
+    margin-right: 0
 
-    &:last-child
-      /*rtl:ignore*/
-      margin-right: 0
-
-	// This moves the next link to the right side of the container,
-	// which is important when it's the only block displayed
-	// and the block has a "space-between" justification.
+  // This moves the next link to the right side of the container,
+  // which is important when it's the only block displayed
+  // and the block has a "space-between" justification.
   &.is-content-justification-space-between
     > &-next:last-of-type
       margin-inline-start: auto
 
       > &-previous:first-child
-  			margin-inline-end: auto
+        margin-inline-end: auto
 
     &-previous-arrow
-  		margin-right: 1ch
-  		display: inline-block // Needed so that the transform works.
-		// chevron(`»`) symbol doesn't need the mirroring by us.
+      margin-right: 1ch
+      display: inline-block // Needed so that the transform works.
+    // chevron(`»`) symbol doesn't need the mirroring by us.
     &:not(.is-arrow-chevron)
-			// Flip for RTL.
+      // Flip for RTL.
       transform: scaleX(1) #{"/*rtl:scaleX(-1);*/"} // This points the arrow right for LTR and left for RTL.
 
     &-next-arrow
-  		margin-left: 1ch
-  		display: inline-block // Needed so that the transform works.
-		// chevron(`»`) symbol doesn't need the mirroring by us.
+      margin-left: 1ch
+      display: inline-block // Needed so that the transform works.
+    // chevron(`»`) symbol doesn't need the mirroring by us.
     &:not(.is-arrow-chevron)
-			// Flip for RTL.
+      // Flip for RTL.
       transform: scaleX(1) #{"/*rtl:scaleX(-1);*/"} // This points the arrow right for LTR and left for RTL.
 
   &.aligncenter

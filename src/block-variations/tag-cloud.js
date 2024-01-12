@@ -1,4 +1,5 @@
 import { registerBlockVariation } from '@wordpress/blocks';
+import './styles/tag-cloud.sass';
 
 export default function registerCoreTagCloudBlockVariations() {
     registerBlockVariation('core/tag-cloud', {

@@ -1,4 +1,5 @@
 import { registerBlockVariation } from '@wordpress/blocks';
+import './styles/navigation-submenu.sass';
 
 export default function registerCoreNavigationSubmenuBlockVariations() {
     registerBlockVariation('core/navigation-submenu', {

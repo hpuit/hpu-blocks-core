@@ -1,4 +1,5 @@
 import { registerBlockVariation, unregisterBlockVariation } from "@wordpress/blocks";
+import "./styles/embeds.sass";
 
 export default function registerCoreEmbedBlockVariations() {
     const embedVariations = [

@@ -3,17 +3,11 @@
 
 // Define your styles here
 // Apply max-width to floated items that have no intrinsic width
-.hpu-blocks[data-align="left"] > [data-type="core/embed"],
-.hpu-blocks[data-align="right"] > [data-type="core/embed"],
 .hpu-blocks-embed.alignleft,
 .hpu-blocks-embed.alignright
-	// Instagram widgets have a min-width of 326px, so go a bit beyond that.
+  // Instagram widgets have a min-width of 326px, so go a bit beyond that.
   max-width: 360px
   width: 100%
-
-	// Unless these have a min-width, they collapse when floated.
-  .hpu-blocks-embed__wrapper
-    min-width: $break-zoomed-in
 
 // Supply a min-width when inside a cover block, to prevent it from collapsing.
 .hpu-blocks-cover .hpu-blocks-embed
@@ -23,13 +17,7 @@
 .hpu-blocks-embed
   overflow-wrap: break-word // Break long strings of text without spaces so they don't overflow the block.
 
-	// Supply caption styles to embeds, even if the theme hasn't opted in.
-	// Reason being: the new markup, figcaptions, are not likely to be styled in the majority of existing themes,
-	// so we supply the styles so as to not appear broken or unstyled in those.
-  figcaption
-    @include caption-style()
-
-	// Don't allow iframe to overflow it's container.
+  // Don't allow iframe to overflow it's container.
   iframe
     max-width: 100%
 

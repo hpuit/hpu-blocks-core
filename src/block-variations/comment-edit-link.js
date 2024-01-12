@@ -1,4 +1,5 @@
 import { registerBlockVariation } from '@wordpress/blocks';
+import './styles/comment-edit-link.sass';
 
 export default function registerCoreCommentEditLinkBlockVariations() {
     registerBlockVariation('core/comment-edit-link', {

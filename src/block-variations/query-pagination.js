@@ -1,4 +1,5 @@
 import { registerBlockVariation } from '@wordpress/blocks';
+import './styles/query-pagination.sass';
 
 export default function registerCoreQueryPaginationBlockVariations() {
     registerBlockVariation('core/query-pagination', {

@@ -1,4 +1,5 @@
 import { registerBlockVariation } from '@wordpress/blocks';
+import './styles/list-item.sass';
 
 export default function registerCoreListItemBlockVariations() {
     registerBlockVariation('core/list-item', {

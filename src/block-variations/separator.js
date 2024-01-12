@@ -1,4 +1,5 @@
 import { registerBlockVariation } from '@wordpress/blocks';
+import './styles/separator.sass';
 
 export default function registerCoreSeparatorBlockVariations() {
     registerBlockVariation('core/separator', {

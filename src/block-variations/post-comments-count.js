@@ -1,4 +1,5 @@
 import { registerBlockVariation } from '@wordpress/blocks';
+import './styles/post-comments-count.sass';
 
 export default function registerCorePostCommentsCountBlockVariations() {
     registerBlockVariation('core/post-comments-count', {

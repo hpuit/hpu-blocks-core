@@ -3,7 +3,7 @@
 
 // Define your styles here
 .hpu-blocks-file
-	// This block has customizable padding, border-box makes that more predictable.
+  // This block has customizable padding, border-box makes that more predictable.
   box-sizing: border-box
 
   &:not(.wp-element-button)
@@ -17,20 +17,20 @@
     text-align: right
 
     * + &__button
-  		margin-left: 0.75em
+      margin-left: 0.75em
 
 // Lowest specificity to avoid overriding layout styles.
   :where(&)
-  	margin-bottom: 1.5em
+    margin-bottom: 1.5em
 
   &__embed
-  	margin-bottom: 1em
+    margin-bottom: 1em
 
 //This needs a low specificity so it won't override the rules from the button element if defined in theme.json.
   :where(&__button)
-  	border-radius: 2em
-  	padding: 0.5em 1em
-  	display: inline-block
+    border-radius: 2em
+    padding: 0.5em 1em
+    display: inline-block
 
   &:is(a)
     &:hover,

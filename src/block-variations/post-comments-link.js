@@ -1,4 +1,5 @@
 import { registerBlockVariation } from '@wordpress/blocks';
+import './styles/post-comments-link.sass';
 
 export default function registerCorePostCommentsLinkBlockVariations() {
     registerBlockVariation('core/post-comments-link', {

@@ -1,4 +1,5 @@
 import { registerBlockVariation } from '@wordpress/blocks';
+import './styles/home-link.sass';
 
 export default function registerCoreHomeLinkBlockVariations() {
     registerBlockVariation('core/home-link', {

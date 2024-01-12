@@ -15,10 +15,9 @@ figure.hpu-blocks-gallery.has-nested-images
 
 // Styles for current version of gallery block.
 .hpu-blocks-gallery.has-nested-images
-	// Need bogus :not(#individual-image) to override long :not()
-	// specificity chain on default image block on front end.
+  // Need bogus :not(#individual-image) to override long :not()
+  // specificity chain on default image block on front end.
   figure.hpu-blocks-image:not(#individual-image)
-    width: calc(50% - (var(--wp--style--unstable-gallery-gap, #{$grid-unit-20}) / 2))
     margin: 0
 
   figure.hpu-blocks-image
@@ -28,9 +27,9 @@ figure.hpu-blocks-gallery.has-nested-images
     position: relative
     flex-direction: column
     max-width: 100%
-		// Prevents theme.json and global styles borders that apply to the outer
-		// wrapper from incorrectly enlarging gallery images to a point they
-		// result in a single column gallery.
+    // Prevents theme.json and global styles borders that apply to the outer
+    // wrapper from incorrectly enlarging gallery images to a point they
+    // result in a single column gallery.
     box-sizing: border-box
 
     > div,
@@ -42,16 +41,13 @@ figure.hpu-blocks-gallery.has-nested-images
     img
       display: block
       height: auto
-			// Ensure max-width is not overridden on the img when the parent gallery has
-			// wide or full alignment.
+      // Ensure max-width is not overridden on the img when the parent gallery has
+      // wide or full alignment.
       max-width: 100% !important
       width: auto
 
     figcaption
-      background: linear-gradient(0deg, rgba($color: $black, $alpha: 0.7) 0, rgba($color: $black, $alpha: 0.3) 70%, transparent)
       bottom: 0
-      color: $white
-      font-size: $default-font-size
       left: 0
       margin-bottom: 0
       max-height: 60%
@@ -61,7 +57,6 @@ figure.hpu-blocks-gallery.has-nested-images
       text-align: center
       width: 100%
       box-sizing: border-box
-      @include custom-scrollbars-on-hover(transparent, rgba($white, 0.8))
 
       img
         display: inline
@@ -91,13 +86,13 @@ figure.hpu-blocks-gallery.has-nested-images
     flex-basis: 100%
     text-align: center
 
-	// Non cropped images.
+  // Non cropped images.
   &:not(.is-cropped)
     figure.hpu-blocks-image:not(#individual-image)
       margin-top: 0
       margin-bottom: auto
 
-	// Cropped Images.
+  // Cropped Images.
   &.is-cropped figure.hpu-blocks-image:not(#individual-image)
     align-self: inherit
     > div:not(.components-drop-zone),
@@ -114,34 +109,16 @@ figure.hpu-blocks-gallery.has-nested-images
   &.columns-1 figure.hpu-blocks-image:not(#individual-image)
     width: 100%
 
-	// Beyond mobile viewports, we allow up to 8 columns.
-  @include break-small
-    @for $i from 3 through 8
-      &.columns-#{ $i } figure.hpu-blocks-image:not(#individual-image)
-        width: calc(#{math.div(100%, $i)} - (var(--wp--style--unstable-gallery-gap, #{$grid-unit-20}) * #{math.div($i - 1, $i)}))
+    // For a single image set to 100%.
+    figure.hpu-blocks-image:not(#individual-image):first-child:nth-last-child(1)
+      width: 100%
 
-		// If number of columns not explicitly set default to 3 columns if 3 or more images.
-    &.columns-default
-      figure.hpu-blocks-image:not(#individual-image)
-
-        width: calc(33.33% - (var(--wp--style--unstable-gallery-gap, 16px) * #{math.div(2, 3)}))
-
-			// If only 2 child images use 2 columns.
-      figure.hpu-blocks-image:not(#individual-image):first-child:nth-last-child(2),
-			figure.hpu-blocks-image:not(#individual-image):first-child:nth-last-child(2) ~ figure.hpu-blocks-image:not(#individual-image) {
-        width: calc(50% - (var(--wp--style--unstable-gallery-gap, 16px) * 0.5))
-
-			// For a single image set to 100%.
-      figure.hpu-blocks-image:not(#individual-image):first-child:nth-last-child(1)
-        width: 100%
-
-	// Apply max-width to floated items that have no intrinsic width.
+  // Apply max-width to floated items that have no intrinsic width.
   &.alignleft,
   &.alignright
-    max-width: $content-width * 0.5
     width: 100%
 
-	// If the gallery is centered, center the content inside as well.
+  // If the gallery is centered, center the content inside as well.
   &.aligncenter
     justify-content: center
 

@@ -1,4 +1,5 @@
 import { registerBlockVariation } from '@wordpress/blocks';
+import './styles/post-title.sass';
 
 export default function registerCorePostTitleBlockVariations() {
     registerBlockVariation('core/post-title', {

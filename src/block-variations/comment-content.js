@@ -1,4 +1,5 @@
 import { registerBlockVariation } from '@wordpress/blocks';
+import './styles/comment-content.sass';
 
 export default function registerCoreCommentContentBlockVariations() {
     registerBlockVariation('core/comment-content', {

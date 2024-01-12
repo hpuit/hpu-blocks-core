@@ -1,4 +1,5 @@
 import { registerBlockVariation } from '@wordpress/blocks';
+import './styles/heading.sass';
 
 export default function registerCoreHeadingBlockVariations() {
     registerBlockVariation('core/heading', {

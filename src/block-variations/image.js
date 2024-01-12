@@ -1,4 +1,5 @@
 import { registerBlockVariation } from '@wordpress/blocks';
+import './styles/image.sass';
 
 export default function registerCoreImageBlockVariations() {
     registerBlockVariation('core/image', {

@@ -1,4 +1,5 @@
 import { registerBlockVariation } from '@wordpress/blocks';
+import './styles/query-title.sass';
 
 export default function registerCoreQueryTitleBlockVariations() {
     registerBlockVariation('core/query-title', {

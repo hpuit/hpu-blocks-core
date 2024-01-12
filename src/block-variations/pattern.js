@@ -1,4 +1,5 @@
 import { registerBlockVariation } from '@wordpress/blocks';
+import './styles/pattern.sass';
 
 export default function registerCorePatternBlockVariations() {
     registerBlockVariation('core/pattern', {

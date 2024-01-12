@@ -1,4 +1,5 @@
 import { registerBlockVariation } from '@wordpress/blocks';
+import "./styles/audio.sass";
 
 export default function registerCoreAudioBlockVariations() {
     registerBlockVariation('core/audio', {

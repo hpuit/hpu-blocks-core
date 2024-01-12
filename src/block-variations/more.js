@@ -1,4 +1,5 @@
 import { registerBlockVariation } from '@wordpress/blocks';
+import './styles/more.sass';
 
 export default function registerCoreMoreBlockVariations() {
     registerBlockVariation('core/more', {

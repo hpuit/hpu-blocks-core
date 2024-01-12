@@ -11,42 +11,26 @@
   justify-content: center
   align-items: center
   padding: 1em
-	// Prevent the `hpu-blocks-cover__background` span from overflowing the container when border-radius is applied.
-	// `overflow: hidden` is provided as a fallback for browsers that don't support `overflow: clip`.
+  // Prevent the `hpu-blocks-cover__background` span from overflowing the container when border-radius is applied.
+  // `overflow: hidden` is provided as a fallback for browsers that don't support `overflow: clip`.
   overflow: hidden
-	// Use clip instead of overflow: hidden so that sticky position works on child elements.
+  // Use clip instead of overflow: hidden so that sticky position works on child elements.
   overflow: clip
-	// This block has customizable padding, border-box makes that more predictable.
+  // This block has customizable padding, border-box makes that more predictable.
   box-sizing: border-box
-	// Keep the flex layout direction to the physical direction (LTR) in RTL languages.
+  // Keep the flex layout direction to the physical direction (LTR) in RTL languages.
   /*rtl:raw: direction: ltr; */
-
-  /**
-	 * Set a default background color for has-background-dim _unless_ it includes another
-	 * background-color class (e.g. has-green-background-color). The presence of another
-	 * background-color class implies that another style will provide the background color
-	 * for the overlay.
-	 *
-	 * See:
-	 *   - Issue with background color specificity: https://github.com/WordPress/gutenberg/issues/26545
-	 *   - Issue with alternative fix: https://github.com/WordPress/gutenberg/issues/26545
-	 */
-
-	// the first selector is required for old Cover markup
-  &.has-background-dim:not([class*="-background-color"]),
-  .has-background-dim:not([class*="-background-color"])
-    background-color: $black
 
   .has-background-dim.has-background-gradient
     background-color: transparent
 
-	// the first selector is required for old Cover markup
+  // the first selector is required for old Cover markup
   &.has-background-dim::before
     content: ""
     background-color: inherit
 
-	// The first selector is required for old Cover markup/
-	// Keep .hpu-blocks-cover__gradient-background for v8 deprecation.
+  // The first selector is required for old Cover markup/
+  // Keep .hpu-blocks-cover__gradient-background for v8 deprecation.
   &.has-background-dim:not(.has-background-gradient)::before,
   .hpu-blocks-cover__background,
   .hpu-blocks-cover__gradient-background
@@ -58,42 +42,23 @@
     z-index: z-index(".hpu-blocks-cover.has-background-dim::before")
     opacity: 0.5
 
-	// The following styles are needed to support legacy blocks added prior to the update
-	// that moved opacity to a nested span.
-	// https://github.com/WordPress/gutenberg/pull/35065
-	// https://github.com/WordPress/gutenberg/pull/38362
-  @for $i from 1 through 10
-    &.has-background-dim.has-background-dim-#{ $i * 10 }
-      &:not(.has-background-gradient)::before,
-      .hpu-blocks-cover__background,
-      .hpu-blocks-cover__gradient-background
-        opacity: $i * 0.1
-
-  @for $i from 0 through 10
-		// Keep .hpu-blocks-cover__gradient-background for v8 deprecation
-    .hpu-blocks-cover__gradient-background.has-background-dim.has-background-dim-#{ $i * 10 },
-    .hpu-blocks-cover__background.has-background-dim.has-background-dim-#{ $i * 10 }
-      opacity: $i * 0.1
-
-	// Apply max-width to floated items that have no intrinsic width
+  // Apply max-width to floated items that have no intrinsic width
   &.alignleft,
   &.alignright
-    max-width: $content-width * 0.5
     width: 100%
 
-	// Using flexbox without an assigned height property breaks vertical center alignment in IE11.
-	// Appending an empty ::after element tricks IE11 into giving the cover image an implicit height, which sidesteps this issue.
+  // Using flexbox without an assigned height property breaks vertical center alignment in IE11.
+  // Appending an empty ::after element tricks IE11 into giving the cover image an implicit height, which sidesteps this issue.
   &::after
     display: block
     content: ""
     font-size: 0
     min-height: inherit
 
-		// IE doesn't support flex so omit that.
-    @supports (position: sticky)
-      content: none
+    // IE doesn't support flex so omit that.
+    content: none
 
-	// Aligned cover blocks should not use our global alignment rules
+  // Aligned cover blocks should not use our global alignment rules
   &.aligncenter,
   &.alignleft,
   &.alignright
@@ -103,7 +68,7 @@
     width: 100%
     z-index: z-index(".hpu-blocks-cover__inner-container")
     color: inherit
-		// Reset the fixed LTR direction at the root of the block in RTL languages.
+    // Reset the fixed LTR direction at the root of the block in RTL languages.
     /*rtl:raw: direction: rtl; */
 
   p,
@@ -116,7 +81,7 @@
     &:where(:not(.has-text-color))
       color: inherit
 
-	// Position: Top
+  // Position: Top
   &.is-position-top-left
     align-items: flex-start
     justify-content: flex-start
@@ -129,7 +94,7 @@
     align-items: flex-start
     justify-content: flex-end
 
-	// Position: Center
+  // Position: Center
   &.is-position-center-left
     align-items: center
     justify-content: flex-start
@@ -142,7 +107,7 @@
     align-items: center
     justify-content: flex-end
 
-	// Position: Bottom
+  // Position: Bottom
   &.is-position-bottom-left
     align-items: flex-end
     justify-content: flex-start
@@ -169,7 +134,7 @@
         margin: 0
         width: auto
 
-	// Extra specificity for in edit mode where other styles would override it otherwise.
+  // Extra specificity for in edit mode where other styles would override it otherwise.
   .hpu-blocks-cover__image-background,
   video.hpu-blocks-cover__video-background
     position: absolute
@@ -197,13 +162,13 @@ video.hpu-blocks-cover__video-background
     background-size: cover
     background-repeat: no-repeat
 
-		// Mobile Safari does not support fixed background attachment properly.
-		// See also https://stackoverflow.com/questions/24154666/background-size-cover-not-working-on-ios
-		// Chrome on Android does not appear to support the attachment at all: https://issuetracker.google.com/issues/36908439
+    // Mobile Safari does not support fixed background attachment properly.
+    // See also https://stackoverflow.com/questions/24154666/background-size-cover-not-working-on-ios
+    // Chrome on Android does not appear to support the attachment at all: https://issuetracker.google.com/issues/36908439
     @supports (-webkit-touch-callout: inherit)
       background-attachment: scroll
 
-		// Remove the appearance of scrolling based on OS-level animation preferences.
+    // Remove the appearance of scrolling based on OS-level animation preferences.
     @media (prefers-reduced-motion: reduce)
       background-attachment: scroll
 
@@ -212,24 +177,14 @@ video.hpu-blocks-cover__video-background
     background-size: auto
 
 .hpu-blocks-cover__video-background
-    z-index: z-index("&")
+  z-index: z-index("&")
 
 .hpu-blocks-cover__image-background
-    z-index: z-index("&")
+  z-index: z-index("&")
 
 // Styles below only exist to support older versions of the block.
 // Versions that not had inner blocks and used an h2 heading had a section (and not a div) with a class hpu-blocks-cover-image (and not a hpu-blocks-cover).
 // We are using the previous referred differences to target old versions.
-
-section.hpu-blocks-cover-image h2,
-.hpu-blocks-cover-image-text,
-.hpu-blocks-cover-text
-  color: $white
-  a,
-  a:hover,
-  a:focus,
-  a:active
-    color: $white
 
 .hpu-blocks-cover-image
 .hpu-blocks-cover
@@ -258,22 +213,8 @@ section.hpu-blocks-cover-image > h2,
   line-height: 1.25
   z-index: 1
   margin-bottom: 0
-  max-width: $content-width
   padding: 0.44em
   text-align: center
-
-// If Cover block's text color has not been set adjust default color
-// based on if overlay is light or not. The following styles leverage
-// `:where` to allow for generic global styles that have a low specificity to
-// still take precedence.
-
-:where(.hpu-blocks-cover:not(.has-text-color)),
-:where(.hpu-blocks-cover-image:not(.has-text-color))
-  color: $white
-
-:where(.hpu-blocks-cover.is-light:not(.has-text-color)),
-:where(.hpu-blocks-cover-image.is-light:not(.has-text-color))
-  color: $black
 
 // Media queries
 @media screen and (max-width: 768px)

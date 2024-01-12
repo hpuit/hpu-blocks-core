@@ -1,4 +1,5 @@
 import { registerBlockVariation } from '@wordpress/blocks';
+import './styles/term-description.sass';
 
 export default function registerCoreTermDescriptionBlockVariations() {
     registerBlockVariation('core/term-description', {

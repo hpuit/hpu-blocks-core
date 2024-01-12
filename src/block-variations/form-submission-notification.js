@@ -1,4 +1,5 @@
 import { registerBlockVariation } from '@wordpress/blocks';
+import './styles/form-submission-notification.sass';
 
 export default function registerCoreFormSubmissionNotificationBlockVariations() {
     registerBlockVariation('core/form-submission-notification', {

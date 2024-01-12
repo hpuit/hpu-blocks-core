@@ -10,5 +10,10 @@
     "exclude": [
         "node_modules",
         "**/node_modules/*"
-    ]
+    ],
+    "sass": {
+        "includePaths": [
+            "./src/block-variations/styles"
+        ]
+    }
 }

@@ -1,4 +1,5 @@
 import { registerBlockVariation } from '@wordpress/blocks';
+import './styles/details.sass';
 
 export default function registerCoreDetailsBlockVariations() {
     registerBlockVariation('core/details', {

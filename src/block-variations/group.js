@@ -1,4 +1,5 @@
 import { registerBlockVariation } from '@wordpress/blocks';
+import './styles/gallery.sass';
 
 export default function registerCoreGroupBlockVariations() {
     registerBlockVariation('core/group', {

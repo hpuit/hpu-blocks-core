@@ -1,4 +1,5 @@
 import { registerBlockVariation } from '@wordpress/blocks';
+import './styles/search.sass';
 
 export default function registerCoreSearchBlockVariations() {
     registerBlockVariation('core/search', {

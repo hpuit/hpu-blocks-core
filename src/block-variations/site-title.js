@@ -1,4 +1,5 @@
 import { registerBlockVariation } from '@wordpress/blocks';
+import './styles/site-title.sass';
 
 export default function registerCoreSiteTitleBlockVariations() {
     registerBlockVariation('core/site-title', {

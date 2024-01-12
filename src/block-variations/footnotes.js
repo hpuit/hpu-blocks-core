@@ -1,4 +1,5 @@
 import { registerBlockVariation } from '@wordpress/blocks';
+import './styles/footnotes.sass';
 
 export default function registerCoreFootnotesBlockVariations() {
     registerBlockVariation('core/footnotes', {

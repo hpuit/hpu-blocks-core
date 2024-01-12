@@ -1,4 +1,5 @@
 import { registerBlockVariation } from '@wordpress/blocks';
+import './styles/post-content.sass';
 
 export default function registerCorePostDateBlockVariations() {
     registerBlockVariation('core/post-date', {

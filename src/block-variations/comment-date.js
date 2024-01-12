@@ -1,4 +1,5 @@
 import { registerBlockVariation } from '@wordpress/blocks';
+import './styles/comment-date.sass';
 
 export default function registerCoreCommentDateBlockVariations() {
     registerBlockVariation('core/comment-date', {

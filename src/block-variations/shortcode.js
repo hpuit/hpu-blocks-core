@@ -1,4 +1,5 @@
 import { registerBlockVariation } from '@wordpress/blocks';
+import './styles/shortcode.sass';
 
 export default function registerCoreShortcodeBlockVariations() {
     registerBlockVariation('core/shortcode', {

@@ -1,4 +1,5 @@
 import { registerBlockVariation } from '@wordpress/blocks';
+import './styles/column.sass';
 
 export default function registerCoreColumnBlockVariations() {
     registerBlockVariation('core/column', {

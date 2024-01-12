@@ -1,4 +1,5 @@
 import { registerBlockVariation } from '@wordpress/blocks';
+import './styles/quote.sass';
 
 export default function registerCoreQuoteBlockVariations() {
     registerBlockVariation('core/quote', {

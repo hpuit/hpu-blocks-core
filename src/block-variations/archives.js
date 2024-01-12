@@ -1,4 +1,5 @@
 import { registerBlockVariation } from "@wordpress/blocks";
+import "./styles/archives.sass";
 
 export default function registerCoreArchivesBlockVariations() {
     registerBlockVariation("core/archives", {
@@ -65,7 +66,7 @@ export default function registerCoreArchivesBlockVariations() {
 
         return (
             <div className={className}>
-                <div className="wp-block-archives">
+                <div className="hpu-blocks-archives">
                     <button onClick={() => setAttributes({ displayAsDropdown: !displayAsDropdown })}>
                         {displayAsDropdown ? "Display as List" : "Display as Dropdown"}
                     </button>
@@ -76,7 +77,7 @@ export default function registerCoreArchivesBlockVariations() {
                         {showPostCounts ? "Hide Post Counts" : "Show Post Counts"}
                     </button>
                     <select
-                        className="wp-block-archives__dropdown"
+                        className="hpu-blocks-archives__dropdown"
                         value={type}
                         onChange={(event) =>
                             setAttributes({ type: event.target.value })
@@ -88,7 +89,7 @@ export default function registerCoreArchivesBlockVariations() {
                         <option value="weekly">Weekly</option>
                     </select>
                     {showLabel && (
-                        <label className="wp-block-archives__label">
+                        <label className="hpu-blocks-archives__label">
                             {type === "monthly" && "Monthly Archives"}
                             {type === "yearly" && "Yearly Archives"}
                             {type === "daily" && "Daily Archives"}

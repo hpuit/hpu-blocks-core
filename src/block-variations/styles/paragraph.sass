@@ -35,9 +35,6 @@ body.rtl .has-drop-cap:not(:focus)::first-letter
 p.has-drop-cap.has-background
   overflow: hidden
 
-p.has-background
-  padding: $block-bg-padding--v $block-bg-padding--h
-
 // Use :where to contain the specificity of this rule
 // so it's easily overrideable by any theme that targets
 // links using the a element.
@@ -46,7 +43,7 @@ p.has-background
   color: inherit
 
 p.has-text-align-right[style*="writing-mode:vertical-rl"],
-p.has-text-align-left[style*="writing-mode:vertical-lr"] {
+p.has-text-align-left[style*="writing-mode:vertical-lr"]
   rotate: 180deg
 
 // Media queries

@@ -1,4 +1,5 @@
 import { registerBlockVariation } from '@wordpress/blocks';
+import './styles/paragraph.sass';
 
 export default function registerCoreParagraphBlockVariations() {
     registerBlockVariation('core/paragraph', {

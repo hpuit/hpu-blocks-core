@@ -1,4 +1,5 @@
 import { registerBlockVariation } from '@wordpress/blocks';
+import './styles/comments-title.sass';
 
 export default function registerCoreCommentsTitleBlockVariations() {
     registerBlockVariation('core/comments-title', {

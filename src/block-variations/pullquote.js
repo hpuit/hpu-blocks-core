@@ -1,4 +1,5 @@
 import { registerBlockVariation } from '@wordpress/blocks';
+import './styles/pullquote.sass';
 
 export default function registerCorePullquoteBlockVariations() {
     registerBlockVariation('core/pullquote', {

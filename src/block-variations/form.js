@@ -1,4 +1,5 @@
 import { registerBlockVariation } from '@wordpress/blocks';
+import './styles/form.sass';
 
 export default function registerCoreFormBlockVariations() {
     registerBlockVariation('core/form', {

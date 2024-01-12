@@ -1,5 +1,5 @@
 import { registerBlockVariation, unregisterBlockVariation } from '@wordpress/blocks';
-// import { SocialLink } from '@wordpress/block-library';
+import './styles/socialLinks.sass';
 
 export default function registerCoreSocialLinksBlockVariations() {    
     // SocialLink.icon = () => {

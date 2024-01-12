@@ -1,14 +1,14 @@
 
 // Define your base styles here
 .hpu-blocks-media-text
-	// This block's direction should not be manipulated by rtl, as the mediaPosition control does.
+  // This block's direction should not be manipulated by rtl, as the mediaPosition control does.
   /*!rtl:begin:ignore*/
   direction: ltr
   /*!rtl:end:ignore*/
   display: grid
   grid-template-columns: 50% 1fr
   grid-template-rows: auto
-	// This block has customizable padding, border-box makes that more predictable.
+  // This block has customizable padding, border-box makes that more predictable.
   box-sizing: border-box
 
   &.has-media-on-the-right
@@ -71,37 +71,19 @@
   background-size: cover
 
   & > a
-  	display: block
-  	height: 100%
+    display: block
+    height: 100%
 
   & img
-	// The image is visually hidden but accessible to assistive technologies.
-  	position: absolute
-  	width: 1px
-  	height: 1px
-  	padding: 0
-  	margin: -1px
-  	overflow: hidden
-  	clip: rect(0, 0, 0, 0)
-  	border: 0
-
-/*
-* Here we here not able to use a mobile first CSS approach.
-* Custom widths are set using inline styles, and on mobile,
-* we need 100% width, so we use important to overwrite the inline style.
-* If the style were set on mobile first, on desktop styles,
-* we would have no way of setting the style again to the inline style.
-*/
-@media (max-width: #{ ($break-small) })
-  .hpu-blocks-media-text.is-stacked-on-mobile
-    grid-template-columns: 100% !important
-    .hpu-blocks-media-text__media
-      grid-column: 1
-      grid-row: 1
-
-    .hpu-blocks-media-text__content
-      grid-column: 1
-      grid-row: 2
+  // The image is visually hidden but accessible to assistive technologies.
+    position: absolute
+    width: 1px
+    height: 1px
+    padding: 0
+    margin: -1px
+    overflow: hidden
+    clip: rect(0, 0, 0, 0)
+    border: 0
 
 // BEGIN: Media Queries
 @media screen and (max-width: 768px)

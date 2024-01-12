@@ -1,4 +1,5 @@
 import { registerBlockVariation } from '@wordpress/blocks';
+import './styles/query-no-results.sass';
 
 export default function registerCoreQueryNoResultsBlockVariations() {
     registerBlockVariation('core/query-no-results', {

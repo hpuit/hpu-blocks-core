@@ -1,4 +1,5 @@
 import { registerBlockVariation } from '@wordpress/blocks';
+import './styles/post-terms.sass';
 
 export default function registerCorePostTermsBlockVariations() {
     registerBlockVariation('core/post-terms', {

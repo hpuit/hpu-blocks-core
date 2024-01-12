@@ -1,4 +1,5 @@
 import { registerBlockVariation } from "@wordpress/blocks";
+import "./styles/comment-author-name.sass";
 
 export default function registerCoreCommentAuthorNameBlockVariation() {
     registerBlockVariation("core/comment-author-name", {

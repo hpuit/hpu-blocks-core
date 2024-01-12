@@ -1,4 +1,5 @@
 import { registerBlockVariation } from '@wordpress/blocks';
+import './styles/freeform.sass';
 
 export default function registerCoreFreeformBlockVariations() {
     registerBlockVariation('core/freeform', {

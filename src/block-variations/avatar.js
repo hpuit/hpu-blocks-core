@@ -1,4 +1,5 @@
 import { registerBlockVariation } from '@wordpress/blocks';
+import "./styles/avatar.sass";
 
 export default function registerCoreAvatarBlockVariations() {
     registerBlockVariation('core/avatar', {

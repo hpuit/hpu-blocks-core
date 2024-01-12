@@ -1,4 +1,5 @@
 import { registerBlockVariation } from '@wordpress/blocks';
+import './styles/form-submit-button.sass';
 
 export default function registerCoreFormSubmitButtonBlockVariations() {
     registerBlockVariation('core/form-submit-button', {

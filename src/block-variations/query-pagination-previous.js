@@ -1,4 +1,5 @@
 import { registerBlockVariation } from '@wordpress/blocks';
+import './styles/query-pagination-previous.sass';
 
 export default function registerCoreQueryPaginationPreviousBlockVariations() {
     registerBlockVariation('core/query-pagination-previous', {

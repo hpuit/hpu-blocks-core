@@ -1,4 +1,5 @@
 import { registerBlockVariation } from '@wordpress/blocks';
+import './styles/post-tag.sass';
 
 export default function registerCorePostTagBlockVariations() {
     registerBlockVariation('core/post-tag', {

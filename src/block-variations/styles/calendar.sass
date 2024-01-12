@@ -23,20 +23,16 @@
     &:where(:not(.has-text-color))
       color: #40464d
 
-			// Keep the hard-coded border color for backward compatibility.
+      // Keep the hard-coded border color for backward compatibility.
       th,
       td
-        border-color: $gray-300
+        border-color: #d3d6db
 
     &.has-background th
       background-color: inherit
 
     &.has-text-color th
       color: inherit
-
-// Keep the hard-coded header background color for backward compatibility.
-  :where(& table:not(.has-background) th)
-  	background: $gray-300
 
 // BEGIN: Media Queries
 @media screen and (max-width: 768px)

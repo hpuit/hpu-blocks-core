@@ -1,5 +1,5 @@
 import { registerBlockVariation } from '@wordpress/blocks';
-
+import './styles/loginout.sass';
 export default function registerCoreLoginoutBlockVariations() {
     registerBlockVariation('core/loginout', {
         name: 'hpu-blocks-loginout',

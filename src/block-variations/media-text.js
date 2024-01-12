@@ -1,5 +1,5 @@
 import { registerBlockVariation } from '@wordpress/blocks';
-
+import './styles/media-text.sass';
 export default function registerCoreMediaTextBlockVariations() {
     registerBlockVariation('core/media-text', {
         name: 'hpu-blocks-media-text',

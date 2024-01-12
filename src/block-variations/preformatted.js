@@ -1,4 +1,5 @@
 import { registerBlockVariation } from '@wordpress/blocks';
+import './styles/preformatted.sass';
 
 export default function registerCorePreformattedBlockVariations() {
     registerBlockVariation('core/preformatted', {

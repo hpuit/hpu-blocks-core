@@ -2,10 +2,6 @@
 // Define your variables here
 
 // Define your styles here
-// Lowest specificity on wrapper margins to avoid overriding layout styles.
-:where(.hpu-blocks-post-excerpt)
-  margin-top: var(--wp--style--block-gap)
-  margin-bottom: var(--wp--style--block-gap)
 
 // Zero out the margin on the excerpt paragraph, to match the body paragraphs.
 .hpu-blocks-post-excerpt__excerpt
@@ -14,7 +10,6 @@
 
 // Matches block gap.
 .hpu-blocks-post-excerpt__more-text
-  margin-top: var(--wp--style--block-gap)
   margin-bottom: 0
 
 .hpu-blocks-post-excerpt__more-link

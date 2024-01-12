@@ -1,4 +1,5 @@
 import { registerBlockVariation } from '@wordpress/blocks';
+import './styles/table-of-contents.sass';
 
 export default function registerCoreTableOfContentsBlockVariations() {
     registerBlockVariation('core/table-of-contents', {

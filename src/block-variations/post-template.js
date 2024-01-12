@@ -1,4 +1,5 @@
 import { registerBlockVariation } from '@wordpress/blocks';
+import './styles/post-template.sass';
 
 export default function registerCorePostTemplateBlockVariations() {
     registerBlockVariation('core/post-template', {

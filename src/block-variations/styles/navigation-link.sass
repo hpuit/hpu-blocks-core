@@ -12,14 +12,14 @@ $breakpoint-large: 992px
 // Styles in the Navigation block itself target both custom menu items, and
 // those from the Page List block.
 .hpu-blocks-navigation
-	// This wraps just the innermost text for custom menu items.
+  // This wraps just the innermost text for custom menu items.
   &-item__label
     overflow-wrap: break-word
 
-	// Hide the description by default.
-	// If a theme opts-in to show descriptions, they will need to provide styles for them.
+  // Hide the description by default.
+  // If a theme opts-in to show descriptions, they will need to provide styles for them.
     &-item__description
-  		display: none
+      display: none
 
 // Small breakpoint styles
 @media (min-width: $breakpoint-small)

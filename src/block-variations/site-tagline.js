@@ -1,4 +1,5 @@
 import { registerBlockVariation } from '@wordpress/blocks';
+import './styles/site-tagline.sass';
 
 export default function registerCoreSiteTaglineBlockVariations() {
     registerBlockVariation('core/site-tagline', {

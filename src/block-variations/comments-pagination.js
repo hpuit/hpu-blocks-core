@@ -1,4 +1,5 @@
 import { registerBlockVariation } from '@wordpress/blocks';
+import './styles/comments-pagination.sass';
 
 export default function registerCoreCommentsPaginationBlockVariations() {
     registerBlockVariation('core/comments-pagination', {

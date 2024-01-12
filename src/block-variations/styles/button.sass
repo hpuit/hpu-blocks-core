@@ -13,28 +13,16 @@
   position: relative
   cursor: text
 
-	// Add outline to button on focus to indicate focus-state
-  &:focus
-    box-shadow: 0 0 0 1px $white, 0 0 0 3px var(--wp-admin-theme-color)
+  // Windows' High Contrast mode will show this outline, but not the box-shadow.
+  outline: 2px solid transparent
+  outline-offset: -2px
 
-		// Windows' High Contrast mode will show this outline, but not the box-shadow.
-    outline: 2px solid transparent
-    outline-offset: -2px
-
-	// Increase placeholder opacity to meet contrast ratios.
+  // Increase placeholder opacity to meet contrast ratios.
   &[data-rich-text-placeholder]::after
     opacity: 0.8
 
-// Display "table" is used because the button container should only wrap the content and not takes the full width.
-div[data-type="core/button"]
-  display: table
-
-  .editor-styles-wrapper &[style*="text-decoration"] &__link
-  	text-decoration: inherit
-
-  .editor-styles-wrapper & &__link
-	// The following styles ensure a default border is applied when the user selects only a border color or style in the editor,
-	// but no width. They override the `border-width: 0;` applied by core's theme.json via the Elements API button.
+  // The following styles ensure a default border is applied when the user selects only a border color or style in the editor,
+  // but no width. They override the `border-width: 0;` applied by core's theme.json via the Elements API button.
   &:where(.has-border-color)
     border-width: initial
 

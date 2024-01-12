@@ -1,4 +1,5 @@
 import { registerBlockVariation } from '@wordpress/blocks';
+import './styles/read-more.sass';
 
 export default function registerCoreReadMoreBlockVariations() {
     registerBlockVariation('core/read-more', {

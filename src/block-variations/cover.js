@@ -1,4 +1,5 @@
 import { registerBlockVariation } from '@wordpress/blocks';
+import './styles/cover.sass';
 
 export default function registerCoreCoverBlockVariations() {
     registerBlockVariation('core/cover', {

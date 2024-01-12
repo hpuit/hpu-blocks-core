@@ -1,4 +1,5 @@
 import { registerBlockVariation } from '@wordpress/blocks';
+import './styles/site-logo.sass';
 
 export default function registerCoreSiteLogoBlockVariations() {
     registerBlockVariation('core/site-logo', {

@@ -1,4 +1,5 @@
 import { registerBlockVariation } from '@wordpress/blocks';
+import './styles/calendar.sass';
 
 export default function registerCoreCalendarBlockVariations() {
     registerBlockVariation('core/calendar', {

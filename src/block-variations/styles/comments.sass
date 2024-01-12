@@ -4,17 +4,14 @@
 // Define your styles here
 /* Styles for backwards compatibility with the legacy `post-comments` block */
 .hpu-blocks-post-comments
-	// This block has customizable padding, border-box makes that more predictable.
+  // This block has customizable padding, border-box makes that more predictable.
   box-sizing: border-box
 
-  /* utility classes */
   .alignleft
     float: left
 
   .alignright
     float: right
-
-  /* end utility classes */
 
   .navigation
     &::after
@@ -99,7 +96,6 @@
     margin-bottom: 0
 
     :where(small)
-      font-size: var(--wp--preset--font-size--medium, smaller)
       margin-left: 0.5em
 
   .reply
@@ -108,7 +104,6 @@
 
   textarea,
   input:not([type="submit"])
-    border: 1px solid $gray-600
     font-size: 1em
     font-family: inherit
 

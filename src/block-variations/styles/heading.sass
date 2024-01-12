@@ -1,39 +1,11 @@
 
 // BEGIN: Scaffold with media queries
 
+// Define breakpoints
 $breakpoint-small: 576px
 $breakpoint-medium: 768px
 $breakpoint-large: 992px
 
-@mixin media-query($breakpoint)
-  @media (min-width: $breakpoint)
-    @content
-
-// Your styles here
-h1,
-h2,
-h3,
-h4,
-h5,
-h6
-  &.has-background
-    padding: $block-bg-padding--v $block-bg-padding--h
-
-  &.has-text-align-right[style*="writing-mode"]:where([style*="vertical-rl"]),
-  &.has-text-align-left[style*="writing-mode"]:where([style*="vertical-lr"])
-    rotate: 180deg
-
-// Usage example:
-.my-element
-  color: red
-
-  @include media-query($breakpoint-small)
-    color: blue
-
-  @include media-query($breakpoint-medium)
-    color: green
-
-  @include media-query($breakpoint-large)
-    color: yellow
+// Default styles
 
 // END: Scaffold with media queries

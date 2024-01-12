@@ -1,4 +1,5 @@
 import { registerBlockVariation } from '@wordpress/blocks';
+import './styles/comment-reply-link.sass';
 
 export default function registerCoreCommentReplyLinkBlockVariations() {
     registerBlockVariation('core/comment-reply-link', {

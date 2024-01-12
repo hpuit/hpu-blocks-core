@@ -1,4 +1,5 @@
 import { registerBlockVariation } from '@wordpress/blocks';
+import './styles/query-pagination-numbers.sass';
 
 export default function registerCoreQueryPaginationNumbersBlockVariations() {
     registerBlockVariation('core/query-pagination-numbers', {

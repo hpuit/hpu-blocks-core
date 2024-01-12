@@ -1,7 +1,7 @@
 
 // Your custom block styles
 .hpu-blocks-audio
-	// Remove the left and right margin the figure is born with.
+  // Remove the left and right margin the figure is born with.
   margin-left: 0
   margin-right: 0
   position: relative
@@ -9,7 +9,7 @@
   &.is-transient audio
     opacity: 0.3
 
-	// Shown while audio is being uploaded
+  // Shown while audio is being uploaded
   .components-spinner
     position: absolute
     top: 50%
@@ -18,19 +18,19 @@
     margin-left: -9px
 
     // This block has customizable padding, border-box makes that more predictable.
-  	box-sizing: border-box
-	// Supply caption styles to audio blocks, even if the theme hasn't opted in.
-	// Reason being: the new markup, <figcaptions>, are not likely to be styled in the majority of existing themes,
-	// so we supply the styles so as to not appear broken or unstyled in those themes.
+    box-sizing: border-box
+  // Supply caption styles to audio blocks, even if the theme hasn't opted in.
+  // Reason being: the new markup, <figcaptions>, are not likely to be styled in the majority of existing themes,
+  // so we supply the styles so as to not appear broken or unstyled in those themes.
   figcaption
-    @include caption-style()
+    //@include caption-style()
 
-	// Show full-width when not aligned.
+  // Show full-width when not aligned.
   audio
     width: 100%
 
-		// The browser natively applies a 300px width to the audio block.
-		// We restore this as a min-width instead, for alignments.
+    // The browser natively applies a 300px width to the audio block.
+    // We restore this as a min-width instead, for alignments.
     min-width: 300px
 
   // BEGIN: Media Queries

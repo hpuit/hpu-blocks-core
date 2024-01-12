@@ -1,4 +1,5 @@
 import { registerBlockVariation } from '@wordpress/blocks';
+import './styles/spacer.sass';
 
 export default function registerCoreSpacerBlockVariations() {
     registerBlockVariation('core/spacer', {

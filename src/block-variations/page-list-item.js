@@ -1,4 +1,5 @@
 import { registerBlockVariation } from '@wordpress/blocks';
+import './styles/page-list-item.sass';
 
 export default function registerCorePageListItemBlockVariations() {
     registerBlockVariation('core/page-list-item', {

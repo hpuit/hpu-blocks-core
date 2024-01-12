@@ -1,4 +1,5 @@
 import { registerBlockVariation } from '@wordpress/blocks';
+import './styles/rss.sass';
 
 export default function registerCoreRssBlockVariations() {
     registerBlockVariation('core/rss', {

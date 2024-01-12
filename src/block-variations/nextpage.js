@@ -1,4 +1,5 @@
 import { registerBlockVariation } from '@wordpress/blocks';
+import './styles/nextpage.sass';
 
 export default function registerCoreNextPageBlockVariations() {
     registerBlockVariation('core/nextpage', {

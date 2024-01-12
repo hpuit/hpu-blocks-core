@@ -1,4 +1,5 @@
 import { registerBlockVariation } from '@wordpress/blocks';
+import './styles/post-featured-image.sass';
 
 export default function registerCorePostFeaturedImageBlockVariations() {
     registerBlockVariation('core/post-featured-image', {

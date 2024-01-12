@@ -1,4 +1,5 @@
 import { registerBlockVariation } from '@wordpress/blocks';
+import './styles/buttons.sass';
 
 export default function registerCoreButtonsBlockVariations() {
 registerBlockVariation('core/buttons', {

@@ -2,55 +2,40 @@
 // BEGIN: Scaffold with media queries
 
 // Define breakpoints
-$breakpoint-small: 576px;
-$breakpoint-medium: 768px;
-$breakpoint-large: 992px;
-$breakpoint-xlarge: 1200px;
+$breakpoint-small: 576px
+$breakpoint-medium: 768px
+$breakpoint-large: 992px
+$breakpoint-xlarge: 1200px
 
 // Media queries
-@mixin media-query-small {
-  @media (max-width: $breakpoint-small) {
-    @content;
-  }
-}
+@mixin media-query-small
+  @media (max-width: $breakpoint-small)
+    @content
 
-@mixin media-query-medium {
-  @media (min-width: $breakpoint-small) and (max-width: $breakpoint-medium) {
-    @content;
-  }
-}
+@mixin media-query-medium
+  @media (min-width: $breakpoint-small) and (max-width: $breakpoint-medium)
+    @content
 
-@mixin media-query-large {
-  @media (min-width: $breakpoint-medium) and (max-width: $breakpoint-large) {
-    @content;
-  }
-}
+@mixin media-query-large
+  @media (min-width: $breakpoint-medium) and (max-width: $breakpoint-large)
+    @content
 
-@mixin media-query-xlarge {
-  @media (min-width: $breakpoint-large) and (max-width: $breakpoint-xlarge) {
-    @content;
-  }
-}
+@mixin media-query-xlarge
+  @media (min-width: $breakpoint-large) and (max-width: $breakpoint-xlarge)
+    @content
 
 // Usage example
-.my-element {
-  color: red;
 
-  @include media-query-small {
-    color: blue;
-  }
+  @include media-query-small
+    color: blue
 
-  @include media-query-medium {
-    color: green;
-  }
+  @include media-query-medium
+    color: green
 
-  @include media-query-large {
-    color: yellow;
-  }
+  @include media-query-large
+    color: yellow
 
-  @include media-query-xlarge {
-    color: orange;
-  }
-}
+  @include media-query-xlarge
+    color: orange
 
 // END: Scaffold with media queries

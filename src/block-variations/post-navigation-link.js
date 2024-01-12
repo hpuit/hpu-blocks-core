@@ -1,4 +1,5 @@
 import { registerBlockVariation } from '@wordpress/blocks';
+import './styles/post-navigation-link.sass';
 
 export default function registerCorePostNavigationLinkBlockVariations() {
     registerBlockVariation('core/post-navigation-link', {

@@ -1,4 +1,5 @@
 import { registerBlockVariation } from '@wordpress/blocks';
+import './styles/query.sass';
 
 export default function registerCoreQueryBlockVariations() {
     registerBlockVariation('core/query', {

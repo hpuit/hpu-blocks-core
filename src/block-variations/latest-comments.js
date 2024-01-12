@@ -1,4 +1,5 @@
 import { registerBlockVariation } from '@wordpress/blocks';
+import './styles/latest-comments.sass';
 
 export default function registerCoreLatestCommentsBlockVariations() {
     registerBlockVariation('core/latest-comments', {

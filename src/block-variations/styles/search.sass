@@ -1,26 +1,24 @@
 
 // BEGIN: Scaffold with media queries
-$button-spacing-x: $grid-unit-10 + math.div($grid-unit-05, 2) // 10px
-$button-spacing-y: math.div($grid-unit-15, 2) // 6px
+$button-spacing-x: 10px
+$button-spacing-y: 6px
 
 .hpu-blocks-search__button
-  margin-left: $button-spacing-x
   word-break: normal
 
   &.has-icon
     line-height: 0
 
   svg
-    min-width: $grid-unit-30
-    min-height: $grid-unit-30
+    min-width: 10px
+    min-height: 10px
     fill: currentColor
     vertical-align: text-bottom
 
 // These rules are set to zero specificity to keep the default styles for search buttons.
 // They are needed for backwards compatibility.
   :where(&)
-  	border: 1px solid $gray-400
-  	padding: $button-spacing-y $button-spacing-x
+    border: 1px solid 10px
 
 .hpu-blocks-search__inside-wrapper
   display: flex
@@ -32,27 +30,27 @@ $button-spacing-y: math.div($grid-unit-15, 2) // 6px
   width: 100%
 
 .hpu-blocks-search__input
-  padding: $grid-unit-10
+  padding: 10px
   flex-grow: 1
   margin-left: 0
   margin-right: 0
   min-width: 3rem
-  border: 1px solid $gray-600
-	// !important used to forcibly prevent undesired application of
-	// text-decoration styles on the input field.
+  border: 1px solid
+  // !important used to forcibly prevent undesired application of
+  // text-decoration styles on the input field.
   text-decoration: unset !important
 
-	// Hides a redundant extra search icon on Mobile Safari.
+  // Hides a redundant extra search icon on Mobile Safari.
   appearance: initial
 
 .hpu-blocks-search.hpu-blocks-search__button-only
   .hpu-blocks-search__button
     margin-left: 0
-		// Prevent unintended text wrapping.
+    // Prevent unintended text wrapping.
     flex-shrink: 0
     max-width: 100%
 
-	// Ensure minimum input field width in small viewports.
+  // Ensure minimum input field width in small viewports.
   &[aria-expanded="true"]
     max-width: calc(100% - 100px)
 
@@ -64,7 +62,7 @@ $button-spacing-y: math.div($grid-unit-15, 2) // 6px
     transition-duration: 300ms
     flex-basis: 100%
 
-	// !important here to override inline styles on button only deselected view.
+  // !important here to override inline styles on button only deselected view.
   &.hpu-blocks-search__searchfield-hidden
     overflow: hidden
 
@@ -84,21 +82,21 @@ $button-spacing-y: math.div($grid-unit-15, 2) // 6px
 
 // We are lowering the specificity so that the button element can override the rule for the button inside the search block.
 :where(.hpu-blocks-search__button-inside .hpu-blocks-search__inside-wrapper)
-  padding: $grid-unit-05
-  border: 1px solid $gray-600
+  padding: 10px
+  border: 1px solid 10px
   box-sizing: border-box
 
   .hpu-blocks-search__input
     border-radius: 0
     border: none
-    padding: 0 $grid-unit-05
+    padding: 0 10px
 
     &:focus
       outline: none
 
-	// For lower specificity.
+  // For lower specificity.
   :where(.hpu-blocks-search__button)
-    padding: $grid-unit-05 $grid-unit-10
+    padding: 10px 10px
 
 .hpu-blocks-search.aligncenter .hpu-blocks-search__inside-wrapper
   margin: auto

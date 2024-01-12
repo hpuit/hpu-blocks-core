@@ -1,4 +1,5 @@
 import { registerBlockVariation } from '@wordpress/blocks';
+import './styles/post-comments-form.sass';
 
 export default function registerCorePostCommentsFormBlockVariations() {
     registerBlockVariation('core/post-comments-form', {

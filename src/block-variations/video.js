@@ -1,4 +1,5 @@
 import { registerBlockVariation } from '@wordpress/blocks';
+import './styles/video.sass';
 
 export default function registerCoreVideoBlockVariations() {
     registerBlockVariation('core/video', {

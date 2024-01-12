@@ -1,4 +1,5 @@
 import { registerBlockVariation } from '@wordpress/blocks';
+import './styles/verse.sass';
 
 export default function registerCoreVerseBlockVariations() {
     registerBlockVariation('core/verse', {

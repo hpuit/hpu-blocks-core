@@ -1,4 +1,5 @@
 import { registerBlockVariation } from '@wordpress/blocks';
+import './styles/post-time-to-read.sass';
 
 export default function registerCorePostTimeToReadBlockVariations() {
     registerBlockVariation('core/post-time-to-read', {

@@ -1,4 +1,5 @@
 import { registerBlockVariation } from '@wordpress/blocks';
+import './styles/categories.sass';
 
 export default function registerCoreCategoryListBlockVariations() {
     registerBlockVariation('core/categories', {

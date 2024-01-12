@@ -1,4 +1,5 @@
 import { registerBlockVariation } from '@wordpress/blocks';
+import './styles/latest-posts.sass';
 
 export default function registerCoreLatestPostsBlockVariations() {
     registerBlockVariation('core/latest-posts', {

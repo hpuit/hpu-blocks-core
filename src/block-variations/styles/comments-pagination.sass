@@ -1,13 +1,7 @@
+//import main style variables
+@import "src/style"
 
-// BEGIN: Scaffold with media queries
-
-// Define breakpoints
-$breakpoint-small: 576px
-$breakpoint-medium: 768px
-$breakpoint-large: 992px
-
-// Default styles
-$pagination-margin: 0.5em
+//define your variables here
 
 // Center flex items. This has an equivalent in style.scss.
 .hpu-blocks[data-align="center"] > .hpu-blocks-comments-pagination
@@ -19,30 +13,19 @@ $pagination-margin: 0.5em
     &.block-editor-block-list__layout
       margin: 0
 
-.hpu-blocks-comments-pagination
-  > .hpu-blocks-comments-pagination-next,
-  > .hpu-blocks-comments-pagination-previous,
-  > &-numbers
-    // Override editor auto block margins.
-    margin-left: 0
-
-    &:last-child
-      /*rtl:ignore*/
-      margin-right: 0
-
 // Small screens
 @media (max-width: $breakpoint-small)
-  .comments-pagination
+  .hpu-blocks-comments-pagination
     // Styles for small screens here
 
 // Medium screens
 @media (min-width: $breakpoint-medium)
-  .comments-pagination
+  .hpu-blocks-comments-pagination
     // Styles for medium screens here
 
 // Large screens
 @media (min-width: $breakpoint-large)
-  .comments-pagination
+  .hpu-blocks-comments-pagination
     // Styles for large screens here
 
 // END: Scaffold with media queries

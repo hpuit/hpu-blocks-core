@@ -1,13 +1,10 @@
+//import main style variables
+@import "src/style"
 
-// BEGIN: Scaffold with media queries
-
-// Define breakpoints
-$breakpoint-small: 576px
-$breakpoint-medium: 768px
-$breakpoint-large: 992px
+//define your variables here
+$pagination-margin: 0.5em
 
 // Default styles
-$pagination-margin: 0.5em
 .hpu-blocks-query-pagination
   &:last-child
     /*rtl:ignore*/
@@ -17,11 +14,7 @@ $pagination-margin: 0.5em
   // which is important when it's the only block displayed
   // and the block has a "space-between" justification.
   &.is-content-justification-space-between
-    > &-next:last-of-type
-      margin-inline-start: auto
-
-      > &-previous:first-child
-        margin-inline-end: auto
+    margin-inline-start: auto
 
     &-previous-arrow
       margin-right: 1ch

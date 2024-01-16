@@ -1,5 +1,22 @@
-.wp-block-hpu-blocks-variations {
-    background-color: #f3f3f3;
-    padding: 20px;
-    border: 1px solid #ccc;
-}
+//By importing this stylesheet into the other stylesheets, we can use the variables declared here in all the stylesheets.
+//This is a good practice to keep the variables in one place and use them in all the stylesheets.
+
+//Declaration of variables
+$primary-color: #330072;
+$secondary-color: #9678d3;
+$muted-color: #818183;
+$alert-color: #e87d0d;
+$emphasis-color: #41b6e6;
+$dark-color: #231f20;
+$light-color: #ffffff;
+
+$font-family: "Roboto", sans-serif;
+$font-size-small: 12px;
+$font-size-medium: 16px;
+$font-size-large: 20px;
+$font-size-xlarge: 24px;
+
+$breakpoint-small: 480px;
+$breakpoint-medium: 768px;
+$breakpoint-large: 1024px;
+$breakpoint-xlarge: 1200px;

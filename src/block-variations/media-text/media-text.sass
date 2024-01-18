@@ -16,7 +16,6 @@
   &.has-media-on-the-right
     grid-template-columns: 1fr 50%
 
-  &.is-vertically-aligned-top
   .hpu-blocks-media-text__content,
   .hpu-blocks-media-text__media
     align-self: start
@@ -32,42 +31,45 @@
   .hpu-blocks-media-text__media
     align-self: end
 
-.hpu-blocks-media-text .hpu-blocks-media-text__media
-  /*!rtl:begin:ignore*/
-  grid-column: 1
-  grid-row: 1
-  /*!rtl:end:ignore*/
-  margin: 0
+.hpu-blocks-media-text
+  .hpu-blocks-media-text__media
+    /*!rtl:begin:ignore*/
+    grid-column: 1
+    grid-row: 1
+    /*!rtl:end:ignore*/
+    margin: 0
 
-.hpu-blocks-media-text .hpu-blocks-media-text__content
-  direction: ltr
-  /*!rtl:begin:ignore*/
-  grid-column: 2
-  grid-row: 1
-  /*!rtl:end:ignore*/
-  padding: 0 8% 0 8%
-  word-break: break-word
+.hpu-blocks-media-text
+  .hpu-blocks-media-text__content
+    direction: ltr
+    /*!rtl:begin:ignore*/
+    grid-column: 2
+    grid-row: 1
+    /*!rtl:end:ignore*/
+    padding: 0 8% 0 8%
+    word-break: break-word
 
-.hpu-blocks-media-text.has-media-on-the-right .hpu-blocks-media-text__media
-  /*!rtl:begin:ignore*/
-  grid-column: 2
-  grid-row: 1
-  /*!rtl:end:ignore*/
+.hpu-blocks-media-text.has-media-on-the-right
+  .hpu-blocks-media-text__media
+    /*!rtl:begin:ignore*/
+    grid-column: 2
+    grid-row: 1
+    /*!rtl:end:ignore*/
 
-.hpu-blocks-media-text.has-media-on-the-right .hpu-blocks-media-text__content
-  /*!rtl:begin:ignore*/
-  grid-column: 1
-  grid-row: 1
-  /*!rtl:end:ignore*/
+.hpu-blocks-media-text.has-media-on-the-right
+  .hpu-blocks-media-text__content
+    /*!rtl:begin:ignore*/
+    grid-column: 1
+    grid-row: 1
+    /*!rtl:end:ignore*/
 
-.hpu-blocks-media-text__media img,
-.hpu-blocks-media-text__media video
+.hpu-blocks-media-text__media
   height: auto
   max-width: unset
   width: 100%
   vertical-align: middle
 
-.hpu-blocks-media-text.is-image-fill .hpu-blocks-media-text__media
+.hpu-blocks-media-text.is-image-fill
   height: 100%
   min-height: 250px
   background-size: cover
@@ -77,7 +79,7 @@
     height: 100%
 
   & img
-  // The image is visually hidden but accessible to assistive technologies.
+    // The image is visually hidden but accessible to assistive technologies.
     position: absolute
     width: 1px
     height: 1px

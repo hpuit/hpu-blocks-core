@@ -61,11 +61,12 @@ function hpu_blocks_core_register_block_category($categories)
 	// Get the current post type
 	global $post;
 
+
 	// If the post type is not post or page, return the default categories
 	if ($post->post_type !== 'post' && $post->post_type !== 'page') {
 		return $categories;
 	} else { // Otherwise, add the custom category
-		return array_merge(
+		$categories = array_merge(
 			array(
 				array(
 					'slug'  => 'hpu-blocks',
@@ -75,19 +76,20 @@ function hpu_blocks_core_register_block_category($categories)
 			$categories,
 		);
 
-		// Remove default categories
-		return array_filter(
-			$categories,
-			function ($category) {
-				// List of default WordPress block category slugs
-				$default_categories = [
-					'text', 'media', 'design', 'widgets', 'theme', 'embed'
-				];
+		// // Remove default categories
+		// $categories = array_filter(
+		// 	$categories,
+		// 	function ($category) {
+		// 		// List of default WordPress block category slugs
+		// 		$default_categories = [
+		// 			'text', 'media', 'design', 'widgets', 'theme', 'embed'
+		// 		];
 
-				// Return true if the category is not in the default list
-				return !in_array($category['slug'], $default_categories);
-			}
-		);
+		// 		// Return true if the category is not in the default list
+		// 		return !in_array($category['slug'], $default_categories);
+		// 	},
+		// );
+		return array_values($categories);
 	}
 }
 

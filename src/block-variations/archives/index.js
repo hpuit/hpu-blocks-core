@@ -3,7 +3,7 @@ import { registerBlockVariation } from "@wordpress/blocks";
 //import styles
 import "./archives.sass";
 //import edit function
-import "./edit.js";
+import {editArchive} from "./edit.js";
 
 export default function registerCoreArchivesBlockVariations() {
     registerBlockVariation("core/archives", {

@@ -1,5 +1,6 @@
 import { registerBlockVariation } from '@wordpress/blocks';
 import './image.sass';
+import save from './save';
 
 export default function registerCoreImageBlockVariations() {
     registerBlockVariation('core/image', {
@@ -81,7 +82,6 @@ export default function registerCoreImageBlockVariations() {
         supports: {
             align: true,
             html: false,
-            spacing: false,
             anchor: true,
             color: false,
             filter: false,
@@ -110,5 +110,8 @@ export default function registerCoreImageBlockVariations() {
             ];
         },
         scope: ['block', 'inserter'],
-    });
+    },
+    save,
+    );
+    
 }

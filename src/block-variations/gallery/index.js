@@ -96,3 +96,16 @@ export default function registerCoreGalleryBlockVariations() {
         scope: ['inserter'],
     });
 }
+
+//width settings move to side bar and put on rails  large resolution images wide width works best
+//landscape vs portrait??
+//lightbox/modal carousel don't forget pagination if needed
+//caption settings
+
+//must be >3 & <7 images ??auto convert to plain image blocks if >3 ?? 
+//check image sizes for mobile responsiveness
+
+//padding settings lock down to 0-3px
+//margin settings lock down to 0-3px
+//remove bg color
+//toggle crop on by default

@@ -1,36 +1,27 @@
 import './style.scss';
 
-//loop through each directory in src/block-variations and run the default function
-//this will register each block variation
-const req = require.context('./block-variations/', true, /index\.js$/);
-req.keys().forEach((key) => {
-    // console.log(key);
-    req(key).default();
-});
+// Dynamically import block variations
+const importBlockVariations = () => {
+    // 'require.context' parameters: directory to search, include subdirectories, file pattern to match
+    const context = require.context('./block-variations/', true, /index\.js$/);
 
-//insert the block variations into the block editor
-document.addEventListener('DOMContentLoaded', () => {
-    const blockVariations = document.querySelectorAll('.wp-block-variations');
-    if (blockVariations.length) {
-        blockVariations.forEach((blockVariation) => {
-            const blockVariationName = blockVariation.dataset.blockVariationName;
-            const blockVariationScope = blockVariation.dataset.blockVariationScope;
-            const blockVariationCategory = blockVariation.dataset.blockVariationCategory;
-            const blockVariationIsDefault = blockVariation.dataset.blockVariationIsDefault;
-            const blockVariationAttributes = JSON.parse(blockVariation.dataset.blockVariationAttributes);
-            const blockVariationSupports = JSON.parse(blockVariation.dataset.blockVariationSupports);
-            const blockVariationIsActive = JSON.parse(blockVariation.dataset.blockVariationIsActive);
+    // Loop through each matched file
+    context.keys().forEach((key) => {
+        // Import the block variation and execute its default export
+        // which should be the function that adds the filter for the block
+        const blockVariation = context(key);
 
-            wp.blocks.registerBlockVariation(`core/${blockVariationName}`, {
-                name: blockVariationName,
-                title: blockVariationName,
-                category: blockVariationCategory,
-                isDefault: blockVariationIsDefault,
-                attributes: blockVariationAttributes,
-                supports: blockVariationSupports,
-                isActive: blockVariationIsActive,
-                scope: blockVariationScope,
-            });
-        });
-    }
+        // Execute the default export function if it exists
+        if (blockVariation && blockVariation.default) {
+            blockVariation.default();
+        }
+    });
+};
+
+// Ensure this runs after the WordPress editor is initialized
+// This can be done by using the '@wordpress/dom-ready' package
+import domReady from '@wordpress/dom-ready';
+
+domReady(() => {
+    importBlockVariations();
 });

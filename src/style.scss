@@ -22,3 +22,19 @@ $breakpoint-large: 1024px;
 $breakpoint-xlarge: 1200px;
 
 //body text century gothic
+
+.hpu-blocks-primary {
+  color: $primary-color;
+}
+
+.hpu-blocks-secondary {
+  color: $secondary-color;
+}
+
+.hpu-blocks-muted {
+  color: $muted-color;
+}
+
+.hpu-blocks-warning {
+  color: $alert-color;
+}

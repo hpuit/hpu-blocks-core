@@ -48,3 +48,11 @@ export default function registerCoreColumnBlockVariations() {
         scope: ['block'],
     });
 }
+
+//add an add/remove column button on side
+//lock down lock functions to supa admins
+//layout section on rails (get Mary's input)
+//lockdown color and dimensions to super admins
+//control alt delete XXL topography
+//stack on defualt by defualt and lock to super admins
+//try to do stuff and ask why you can't then figure out how to do it and then do it

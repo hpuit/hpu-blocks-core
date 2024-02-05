@@ -115,6 +115,7 @@ function hpu_blocks_core_register_block_scripts()
 {
 	$assets = include(HPU_BLOCKS_CORE_PLUGIN_DIR . 'build/index.asset.php');
 
+	//delayed script loading added in 6.3 use strategy key in $args parameter
 	wp_enqueue_script(
 		'hpu-blocks-core-editor-scripts',
 		HPU_BLOCKS_CORE_PLUGIN_URL . 'build/index.js',

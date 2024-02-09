@@ -1,29 +1,21 @@
-import { registerBlockVariation } from '@wordpress/blocks';
-import './comments-pagination-numbers.sass';
+import { createHigherOrderComponent } from '@wordpress/compose';
+import { addFilter } from '@wordpress/hooks';
+import { default as editCommentsPaginationNumbers } from './edit';
 
-export default function registerCoreCommentsPaginationNumbersBlockVariations() {
-    registerBlockVariation('core/comments-pagination-numbers', {
-        name: 'hpu-blocks-comments-pagination-numbers',
-        title: 'Comments Pagination Numbers',
-        category: 'hpu-blocks',
-        isDefault: true,
-        attributes: {
-            providerNameSlug: 'hpu-blocks',
-            className: 'hpu-blocks-comments-pagination-numbers',
-        },
-        supports: {
-            align: false,
-            html: false,
-            spacing: false,
-            anchor: true,
-            inserter: false,
-        },
-        isActive: (blockAttributes, variationAttributes) => {
-            return [
-                blockAttributes.providerNameSlug === variationAttributes.providerNameSlug,
-                blockAttributes.className === variationAttributes.className
-            ];
-        },
-        scope: ['block'],
+export default function HPUCommentsPaginationNumbers() {
+    const withCustomEditCommentsPaginationNumbers = createHigherOrderComponent((BlockEdit) => {
+        return (props) => {
+            if (props.name === 'core/comments-pagination-numbers') {
+                return editCommentsPaginationNumbers(props);
+            }
+            return <BlockEdit {...props} />;
+        };
+
     });
+
+    addFilter(
+        'editor.BlockEdit',
+        'hpu-blocks/HPU-comments-pagination-numbers',
+        withCustomEditCommentsPaginationNumbers
+    );
 }

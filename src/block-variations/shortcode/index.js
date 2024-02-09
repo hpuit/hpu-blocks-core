@@ -1,34 +1,21 @@
-import { registerBlockVariation } from '@wordpress/blocks';
-import './shortcode.sass';
+import { createHigherOrderComponent } from '@wordpress/compose';
+import { addFilter } from '@wordpress/hooks';
+import { default as editShortcode } from './edit';
 
-export default function registerCoreShortcodeBlockVariations() {
-    registerBlockVariation('core/shortcode', {
-        name: 'hpu-blocks-shortcode',
-        title: 'Shortcode',
-        category: 'hpu-blocks',
-        isDefault: true,
-        attributes: {
-            providerNameSlug: 'hpu-blocks',
-            className: 'hpu-blocks-shortcode',
-            text: {
-                type: 'string',
-                default: '',
-            },
-        },
-        supports: {
-            align: false,
-            html: true,
-            spacing: false,
-            anchor: true,
-            inserter: true,
-        },
-        isActive: (blockAttributes, variationAttributes) => {
-            return [
-                blockAttributes.text === variationAttributes.text,
-                blockAttributes.providerNameSlug === variationAttributes.providerNameSlug,
-                blockAttributes.className === variationAttributes.className
-            ];
-        },
-        scope: ['inserter'],
+export default function HPUShortcode() {
+    const withCustomEditShortcode = createHigherOrderComponent((BlockEdit) => {
+        return (props) => {
+            if (props.name === 'core/shortcode') {
+                return editShortcode(props);
+            }
+            return <BlockEdit {...props} />;
+        };
+
     });
+
+    addFilter(
+        'editor.BlockEdit',
+        'hpu-blocks/HPU-shortcode',
+        withCustomEditShortcode
+    );
 }

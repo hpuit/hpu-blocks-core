@@ -14,7 +14,7 @@ import ServerSideRender from '@wordpress/server-side-render';
 import StyleSelector from '../../style-selector.js';
 
 
-export function editArchive(props) {
+export default function editArchive(props) {
     const {
         attributes: {
             className, displayAsDropdown, showLabel, showPostCounts, type,

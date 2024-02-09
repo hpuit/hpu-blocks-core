@@ -1,33 +1,21 @@
-import { registerBlockVariation } from '@wordpress/blocks';
-import './query-pagination-numbers.sass';
+import { createHigherOrderComponent } from '@wordpress/compose';
+import { addFilter } from '@wordpress/hooks';
+import { default as editQueryPaginationNumbers } from './edit';
 
-export default function registerCoreQueryPaginationNumbersBlockVariations() {
-    registerBlockVariation('core/query-pagination-numbers', {
-        name: 'hpu-blocks-query-pagination-numbers',
-        title: 'Query Loop Pagination Numbers',
-        category: 'hpu-blocks',
-        isDefault: true,
-        attributes: {
-            providerNameSlug: 'hpu-blocks',
-            className: 'hpu-query-pagination-numbers',
-            midSize: {
-                type: 'number',
-                default: 2,
-            },
-        },
-        supports: {
-            align: false,
-            html: false,
-            spacing: false,
-            anchor: true,
-        },
-        isActive: (blockAttributes, variationAttributes) => {
-            return [
-                blockAttributes.midSize === variationAttributes.midSize,
-                blockAttributes.providerNameSlug === variationAttributes.providerNameSlug,
-                blockAttributes.className === variationAttributes.className
-            ];
-        },
-        scope: ['block'],
+export default function HPUQueryPaginationNumbers() {
+    const withCustomEditQueryPaginationNumbers = createHigherOrderComponent((BlockEdit) => {
+        return (props) => {
+            if (props.name === 'core/query-pagination-numbers') {
+                return editQueryPaginationNumbers(props);
+            }
+            return <BlockEdit {...props} />;
+        };
+
     });
+
+    addFilter(
+        'editor.BlockEdit',
+        'hpu-blocks/HPU-query-pagination-numbers',
+        withCustomEditQueryPaginationNumbers
+    );
 }

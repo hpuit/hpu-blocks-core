@@ -1,39 +1,21 @@
-import { registerBlockVariation } from '@wordpress/blocks';
-import './read-more.sass';
+import { createHigherOrderComponent } from '@wordpress/compose';
+import { addFilter } from '@wordpress/hooks';
+import { default as editReadMore } from './edit';
 
-export default function registerCoreReadMoreBlockVariations() {
-    registerBlockVariation('core/read-more', {
-        name: 'hpu-blocks-read-more',
-        title: 'Read More',
-        category: 'hpu-blocks',
-        isDefault: true,
-        attributes: {
-            providerNameSlug: 'hpu-blocks',
-            className: 'hpu-read-more',
-            content: {
-                type: 'string',
-                default: '',
-            },
-            linkTarget: {
-                type: 'string',
-                default: '',
-            },
-        },
-        supports: {
-            align: false,
-            html: false,
-            spacing: false,
-            anchor: true,
-            inserter: false,
-        },
-        isActive: (blockAttributes, variationAttributes) => {
-            return [
-                blockAttributes.content === variationAttributes.content,
-                blockAttributes.linkTarget === variationAttributes.linkTarget,
-                blockAttributes.providerNameSlug === variationAttributes.providerNameSlug,
-                blockAttributes.className === variationAttributes.className
-            ];
-        },
-        scope: ['inserter'],
+export default function HPUReadMore() {
+    const withCustomEditReadMore = createHigherOrderComponent((BlockEdit) => {
+        return (props) => {
+            if (props.name === 'core/read-more') {
+                return editReadMore(props);
+            }
+            return <BlockEdit {...props} />;
+        };
+
     });
+
+    addFilter(
+        'editor.BlockEdit',
+        'hpu-blocks/HPU-read-more',
+        withCustomEditReadMore
+    );
 }

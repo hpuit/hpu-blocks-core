@@ -1,29 +1,21 @@
-import { registerBlockVariation } from '@wordpress/blocks';
-import './comment-template.sass';
+import { createHigherOrderComponent } from '@wordpress/compose';
+import { addFilter } from '@wordpress/hooks';
+import { default as editCommentTemplate } from './edit';
 
-export default function registerCoreCommentTemplateBlockVariations() {
-    registerBlockVariation('core/comment-template', {
-        name: 'hpu-blocks-comment-template',
-        title: 'Comment Template',
-        category: 'hpu-blocks',
-        isDefault: true,
-        attributes: {
-            providerNameSlug: 'hpu-blocks',
-            className: 'hpu-blocks-comment-template',
-        },
-        supports: {
-            align: false,
-            html: false,
-            spacing: false,
-            anchor: true,
-            inserter: false,
-        },
-        isActive: (blockAttributes, variationAttributes) => {
-            return [
-                blockAttributes.providerNameSlug === variationAttributes.providerNameSlug,
-                blockAttributes.className === variationAttributes.className
-            ];
-        },
-        scope: ['block'],
+export default function HPUCommentTemplate() {
+    const withCustomEditCommentTemplate = createHigherOrderComponent((BlockEdit) => {
+        return (props) => {
+            if (props.name === 'core/comment-template') {
+                return editCommentTemplate(props);
+            }
+            return <BlockEdit {...props} />;
+        };
+
     });
+
+    addFilter(
+        'editor.BlockEdit',
+        'hpu-blocks/HPU-comment-template',
+        withCustomEditCommentTemplate
+    );
 }

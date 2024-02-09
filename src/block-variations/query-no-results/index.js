@@ -1,28 +1,21 @@
-import { registerBlockVariation } from '@wordpress/blocks';
-import './query-no-results.sass';
+import { createHigherOrderComponent } from '@wordpress/compose';
+import { addFilter } from '@wordpress/hooks';
+import { default as editQueryNoResults } from './edit';
 
-export default function registerCoreQueryNoResultsBlockVariations() {
-    registerBlockVariation('core/query-no-results', {
-        name: 'hpu-blocks-query-no-results',
-        title: 'Query Loop No Results',
-        category: 'hpu-blocks',
-        isDefault: true,
-        attributes: {
-            providerNameSlug: 'hpu-blocks',
-            className: 'hpu-blocks-query-no-results',
-        },
-        supports: {
-            align: false,
-            html: false,
-            spacing: false,
-            anchor: true,
-        },
-        isActive: (blockAttributes, variationAttributes) => {
-            return [
-                blockAttributes.providerNameSlug === variationAttributes.providerNameSlug,
-                blockAttributes.className === variationAttributes.className
-            ];
-        },
-        scope: ['block'],
+export default function HPUQueryNoResults() {
+    const withCustomEditQueryNoResults = createHigherOrderComponent((BlockEdit) => {
+        return (props) => {
+            if (props.name === 'core/query-no-results') {
+                return editQueryNoResults(props);
+            }
+            return <BlockEdit {...props} />;
+        };
+
     });
+
+    addFilter(
+        'editor.BlockEdit',
+        'hpu-blocks/HPU-query-no-results',
+        withCustomEditQueryNoResults
+    );
 }

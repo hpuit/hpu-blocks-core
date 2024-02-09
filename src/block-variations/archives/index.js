@@ -1,6 +1,6 @@
 import { addFilter } from '@wordpress/hooks';
 import { createHigherOrderComponent } from '@wordpress/compose';
-import { editArchive } from './edit';
+import { default as editArchive } from './edit';
 
 export default function hpuArchives() {
 

@@ -1,33 +1,21 @@
-import { registerBlockVariation } from '@wordpress/blocks';
-import './site-tagline.sass';
+import { createHigherOrderComponent } from '@wordpress/compose';
+import { addFilter } from '@wordpress/hooks';
+import { default as editSiteTagline } from './edit';
 
-export default function registerCoreSiteTaglineBlockVariations() {
-    registerBlockVariation('core/site-tagline', {
-        name: 'hpu-blocks-site-tagline',
-        title: 'Site Tagline',
-        category: 'hpu-blocks',
-        isDefault: true,
-        attributes: {
-            providerNameSlug: 'hpu-blocks',
-            className: 'hpu-blocks-site-tagline',
-            textAlign: {
-                type: 'string',
-                default: 'left',
-            },
-        },
-        supports: {
-            align: false,
-            html: false,
-            spacing: false,
-            anchor: true,
-        },
-        isActive: (blockAttributes, variationAttributes) => {
-            return [
-                blockAttributes.textAlign === variationAttributes.textAlign,
-                blockAttributes.providerNameSlug === variationAttributes.providerNameSlug,
-                blockAttributes.className === variationAttributes.className
-            ];
-        },
-        scope: ['block'],
+export default function HPUSiteTagline() {
+    const withCustomEditSiteTagline = createHigherOrderComponent((BlockEdit) => {
+        return (props) => {
+            if (props.name === 'core/site-tagline') {
+                return editSiteTagline(props);
+            }
+            return <BlockEdit {...props} />;
+        };
+
     });
+
+    addFilter(
+        'editor.BlockEdit',
+        'hpu-blocks/HPU-site-tagline',
+        withCustomEditSiteTagline
+    );
 }

@@ -1,38 +1,21 @@
-import { registerBlockVariation } from '@wordpress/blocks';
-import './post-excerpt.sass';
+import { createHigherOrderComponent } from '@wordpress/compose';
+import { addFilter } from '@wordpress/hooks';
+import { default as editPostExcerpt } from './edit';
 
-export default function registerCorePostExcerptBlockVariations() {
-    registerBlockVariation('core/post-excerpt', {
-        name: 'hpu-blocks-post-excerpt',
-        title: 'Post Excerpt',
-        category: 'hpu-blocks',
-        isDefault: true,
-        attributes: {
-            providerNameSlug: 'hpu-blocks',
-            className: 'hpu-blocks-post-excerpt',
-            align: {
-                type: 'string',
-                default: 'none',
-            },
-            textJustification: {
-                type: 'string',
-                default: 'left',
-            },
-        },
-        supports: {
-            align: true,
-            html: false,
-            spacing: false,
-            anchor: true,
-        },
-        isActive: (blockAttributes, variationAttributes) => {
-            return [
-                blockAttributes.textJustification === variationAttributes.textJustification,
-                blockAttributes.align === variationAttributes.align,
-                blockAttributes.providerNameSlug === variationAttributes.providerNameSlug,
-                blockAttributes.className === variationAttributes.className
-            ];
-        },
-        scope: ['inserter', 'block'],
+export default function HPUPostExcerpt() {
+    const withCustomEditPostExcerpt = createHigherOrderComponent((BlockEdit) => {
+        return (props) => {
+            if (props.name === 'core/post-excerpt') {
+                return editPostExcerpt(props);
+            }
+            return <BlockEdit {...props} />;
+        };
+
     });
+
+    addFilter(
+        'editor.BlockEdit',
+        'hpu-blocks/HPU-post-excerpt',
+        withCustomEditPostExcerpt
+    );
 }

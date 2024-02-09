@@ -1,83 +1,21 @@
-import { registerBlockVariation } from '@wordpress/blocks';
-import './form.sass';
+import { createHigherOrderComponent } from '@wordpress/compose';
+import { addFilter } from '@wordpress/hooks';
+import { default as editForm } from './edit';
 
-export default function registerCoreFormBlockVariations() {
-    registerBlockVariation('core/form', {
-        name: 'hpu-blocks-form',
-        title: 'Form',
-        category: 'hpu-blocks',
-        isDefault: true,
-        attributes: {
-            providerNameSlug: 'hpu-blocks',
-            className: 'hpu-blocks-form',
-            action: {
-                type: 'string',
-                default: '',
-            },
-            method: {
-                type: 'string',
-                default: '',
-            },
-            encType: {
-                type: 'string',
-                default: '',
-            },
-            target: {
-                type: 'string',
-                default: '',
-            },
-            submitButtonText: {
-                type: 'string',
-                default: '',
-            },
-            submitButtonBackgroundColor: {
-                type: 'string',
-                default: '',
-            },
-            submitButtonBorderColor: {
-                type: 'string',
-                default: '',
-            },
-            submitButtonBorderRadius: {
-                type: 'number',
-                default: 0,
-            },
-            submitButtonBorderWidth: {
-                type: 'number',
-                default: 0,
-            },
-            submitButtonTextColor: {
-                type: 'string',
-                default: '',
-            },
-            submitButtonUrl: {
-                type: 'string',
-                default: '',
-            },
-        },
-        supports: {
-            align: false,
-            html: false,
-            spacing: false,
-            anchor: true,
-        },
-        isActive: (blockAttributes, variationAttributes) => {
-            return [
-                blockAttributes.action === variationAttributes.action,
-                blockAttributes.method === variationAttributes.method,
-                blockAttributes.encType === variationAttributes.encType,
-                blockAttributes.target === variationAttributes.target,
-                blockAttributes.submitButtonText === variationAttributes.submitButtonText,
-                blockAttributes.submitButtonBackgroundColor === variationAttributes.submitButtonBackgroundColor,
-                blockAttributes.submitButtonBorderColor === variationAttributes.submitButtonBorderColor,
-                blockAttributes.submitButtonBorderRadius === variationAttributes.submitButtonBorderRadius,
-                blockAttributes.submitButtonBorderWidth === variationAttributes.submitButtonBorderWidth,
-                blockAttributes.submitButtonTextColor === variationAttributes.submitButtonTextColor,
-                blockAttributes.submitButtonUrl === variationAttributes.submitButtonUrl,
-                blockAttributes.providerNameSlug === variationAttributes.providerNameSlug,
-                blockAttributes.className === variationAttributes.className
-            ];
-        },
-        scope: ['block', 'inserter'],
+export default function HPUForm() {
+    const withCustomEditForm = createHigherOrderComponent((BlockEdit) => {
+        return (props) => {
+            if (props.name === 'core/form') {
+                return editForm(props);
+            }
+            return <BlockEdit {...props} />;
+        };
+
     });
+
+    addFilter(
+        'editor.BlockEdit',
+        'hpu-blocks/HPU-form',
+        withCustomEditForm
+    );
 }

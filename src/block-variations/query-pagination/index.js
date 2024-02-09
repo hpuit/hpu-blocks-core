@@ -1,38 +1,21 @@
-import { registerBlockVariation } from '@wordpress/blocks';
-import './query-pagination.sass';
+import { createHigherOrderComponent } from '@wordpress/compose';
+import { addFilter } from '@wordpress/hooks';
+import { default as editQueryPagination } from './edit';
 
-export default function registerCoreQueryPaginationBlockVariations() {
-    registerBlockVariation('core/query-pagination', {
-        name: 'hpu-blocks-query-pagination',
-        title: 'Query Loop Pagination',
-        category: 'hpu-blocks',
-        isDefault: true,
-        attributes: {
-            providerNameSlug: 'hpu-blocks',
-            className: 'hpu-query-pagination',
-            paginationArrow: {
-                type: 'string',
-                default: 'default',
-            },
-            showLabel: {
-                type: 'boolean',
-                default: false,
-            },
-        },
-        supports: {
-            align: false,
-            html: false,
-            spacing: false,
-            anchor: true,
-        },
-        isActive: (blockAttributes, variationAttributes) => {
-            return [
-                blockAttributes.paginationArrow === variationAttributes.paginationArrow,
-                blockAttributes.showLabel === variationAttributes.showLabel,
-                blockAttributes.providerNameSlug === variationAttributes.providerNameSlug,
-                blockAttributes.className === variationAttributes.className
-            ];
-        },
-        scope: ['inserter', 'block'],
+export default function HPUQueryPagination() {
+    const withCustomEditQueryPagination = createHigherOrderComponent((BlockEdit) => {
+        return (props) => {
+            if (props.name === 'core/query-pagination') {
+                return editQueryPagination(props);
+            }
+            return <BlockEdit {...props} />;
+        };
+
     });
+
+    addFilter(
+        'editor.BlockEdit',
+        'hpu-blocks/HPU-query-pagination',
+        withCustomEditQueryPagination
+    );
 }

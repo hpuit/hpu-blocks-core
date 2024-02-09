@@ -1,59 +1,21 @@
-import { registerBlockVariation, unregisterBlockVariation } from "@wordpress/blocks";
-import "./embeds.sass";
+import { createHigherOrderComponent } from '@wordpress/compose';
+import { addFilter } from '@wordpress/hooks';
+import { default as editEmbeds } from './edit';
 
-export default function registerCoreEmbedBlockVariations() {
-    const embedVariations = [
-        //'youtube',
-        //'vimeo',
-        //'twitter',
-        //'facebook',
-        //'instagram',
-        'wordpress',
-        'soundcloud',
-        'spotify',
-        'flickr',
-        'imgur',
-        'tumblr',
-        'animoto',
-        'cloudup',
-        'collegehumor',
-        'crowdsignal',
-        'dailymotion',
-        'funnyordie',
-        'hulu',
-        'kickstarter',
-        'meetup-com',
-        'mixcloud',
-        'photobucket',
-        'polldaddy',
-        'reddit',
-        'reverbnation',
-        'screencast',
-        'scribd',
-        'slideshare',
-        'smugmug',
-        'speaker-deck',
-        'ted',
-        //'tiktok',
-        'videopress',
-        'wordpress-tv',
-    ];
+export default function HPUEmbeds() {
+    const withCustomEditEmbeds = createHigherOrderComponent((BlockEdit) => {
+        return (props) => {
+            if (props.name === 'core/embed') {
+                return editEmbeds(props);
+            }
+            return <BlockEdit {...props} />;
+        };
 
-    embedVariations.forEach((embed) => {
-        unregisterBlockVariation('core/embed', embed);
     });
 
-    registerBlockVariation(
-        'core/embed',
-        {
-            name: 'hpu-blocks-embed',
-            title: 'Embed',
-            isDefault: true,
-            attributes: {
-                className: 'hpu-blocks-embed',
-            },
-        }
+    addFilter(
+        'editor.BlockEdit',
+        'hpu-blocks/HPU-embeds',
+        withCustomEditEmbeds
     );
-
-
 }

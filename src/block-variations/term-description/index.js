@@ -1,33 +1,21 @@
-import { registerBlockVariation } from '@wordpress/blocks';
-import './term-description.sass';
+import { createHigherOrderComponent } from '@wordpress/compose';
+import { addFilter } from '@wordpress/hooks';
+import { default as editTermDescription } from './edit';
 
-export default function registerCoreTermDescriptionBlockVariations() {
-    registerBlockVariation('core/term-description', {
-        name: 'hpu-blocks-term-description',
-        title: 'Term Description',
-        category: 'hpu-blocks',
-        isDefault: true,
-        attributes: {
-            providerNameSlug: 'hpu-blocks',
-            className: 'hpu-blocks-term-description',
-            textAlign: {
-                type: 'string',
-                default: 'left',
-            },
-        },
-        supports: {
-            align: false,
-            html: false,
-            spacing: false,
-            anchor: true,
-        },
-        isActive: (blockAttributes, variationAttributes) => {
-            return [
-                blockAttributes.textAlign === variationAttributes.textAlign,
-                blockAttributes.providerNameSlug === variationAttributes.providerNameSlug,
-                blockAttributes.className === variationAttributes.className
-            ];
-        },
-        scope: ['block'],
+export default function HPUTermDescription() {
+    const withCustomEditTermDescription = createHigherOrderComponent((BlockEdit) => {
+        return (props) => {
+            if (props.name === 'core/term-description') {
+                return editTermDescription(props);
+            }
+            return <BlockEdit {...props} />;
+        };
+
     });
+
+    addFilter(
+        'editor.BlockEdit',
+        'hpu-blocks/HPU-term-description',
+        withCustomEditTermDescription
+    );
 }

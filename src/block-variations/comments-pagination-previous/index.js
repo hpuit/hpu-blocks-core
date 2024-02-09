@@ -1,34 +1,21 @@
-import { registerBlockVariation } from '@wordpress/blocks';
-import './comments-pagination-previous.sass';
+import { createHigherOrderComponent } from '@wordpress/compose';
+import { addFilter } from '@wordpress/hooks';
+import { default as editCommentsPaginationPrevious } from './edit';
 
-export default function registerCoreCommentsPaginationNextBlockVariations() {
-    registerBlockVariation('core/comments-pagination-previous', {
-        name: 'hpu-blocks-comments-pagination-previous',
-        title: 'Comments Pagination Previous',
-        category: 'hpu-blocks',
-        isDefault: true,
-        attributes: {
-            providerNameSlug: 'hpu-blocks',
-            className: 'hpu-blocks-comments-pagination-previous',
-            label: {
-                type: 'string',
-                default: '',
+export default function HPUCommentsPaginationPrevious() {
+    const withCustomEditCommentsPaginationPrevious = createHigherOrderComponent((BlockEdit) => {
+        return (props) => {
+            if (props.name === 'core/comments-pagination-previous') {
+                return editCommentsPaginationPrevious(props);
             }
-        },
-        supports: {
-            align: false,
-            html: false,
-            spacing: false,
-            anchor: true,
-            inserter: false,
-        },
-        isActive: (blockAttributes, variationAttributes) => {
-            return [
-                blockAttributes.label === variationAttributes.label,
-                blockAttributes.providerNameSlug === variationAttributes.providerNameSlug,
-                blockAttributes.className === variationAttributes.className
-            ];
-        },
-        scope: ['block'],
+            return <BlockEdit {...props} />;
+        };
+
     });
+
+    addFilter(
+        'editor.BlockEdit',
+        'hpu-blocks/HPU-comments-pagination-previous',
+        withCustomEditCommentsPaginationPrevious
+    );
 }

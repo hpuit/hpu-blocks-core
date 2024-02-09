@@ -1,34 +1,21 @@
-import { registerBlockVariation } from '@wordpress/blocks';
-import './comments-pagination.sass';
+import { createHigherOrderComponent } from '@wordpress/compose';
+import { addFilter } from '@wordpress/hooks';
+import { default as editCommentsPagination } from './edit';
 
-export default function registerCoreCommentsPaginationBlockVariations() {
-    registerBlockVariation('core/comments-pagination', {
-        name: 'hpu-blocks-comments-pagination',
-        title: 'Comments Pagination',
-        category: 'hpu-blocks',
-        isDefault: true,
-        attributes: {
-            providerNameSlug: 'hpu-blocks',
-            className: 'hpu-blocks-comments-pagination',
-            paginationArrow: {
-                type: 'string',
-                default: 'default',
+export default function HPUCommentsPagination() {
+    const withCustomEditCommentsPagination = createHigherOrderComponent((BlockEdit) => {
+        return (props) => {
+            if (props.name === 'core/comments-pagination') {
+                return editCommentsPagination(props);
             }
-        },
-        supports: {
-            align: false,
-            html: false,
-            spacing: false,
-            anchor: true,
-            inserter: false,
-        },
-        isActive: (blockAttributes, variationAttributes) => {
-            return [
-                blockAttributes.paginationArrow === variationAttributes.paginationArrow,
-                blockAttributes.providerNameSlug === variationAttributes.providerNameSlug,
-                blockAttributes.className === variationAttributes.className
-            ];
-        },
-        scope: ['block'],
+            return <BlockEdit {...props} />;
+        };
+
     });
+
+    addFilter(
+        'editor.BlockEdit',
+        'hpu-blocks/HPU-comments-pagination',
+        withCustomEditCommentsPagination
+    );
 }

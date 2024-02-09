@@ -1,33 +1,21 @@
-import { registerBlockVariation } from '@wordpress/blocks';
-import './block.sass';
+import { createHigherOrderComponent } from '@wordpress/compose';
+import { addFilter } from '@wordpress/hooks';
+import { default as editBlock } from './edit';
 
-export default function registerCoreBlockBlockVariations() {
-    registerBlockVariation('core/block', {
-        name: 'hpu-blocks-block',
-        title: 'Classic WYSIWYG Editor',
-        category: 'hpu-blocks',
-        isDefault: true,
-        attributes: {
-            providerNameSlug: 'hpu-blocks',
-            className: 'hpu-blocks-block',
-            ref: {
-                type: 'string',
-                default: '',
-            },
-        },
-        supports: {
-            align: false,
-            html: false,
-            spacing: false,
-            anchor: true,
-        },
-        isActive: (blockAttributes, variationAttributes) => {
-            return [
-                blockAttributes.providerNameSlug === variationAttributes.providerNameSlug,
-                blockAttributes.className === variationAttributes.className,
-                blockAttributes.ref === variationAttributes.ref,
-            ];
-        },
-        scope: ['block', 'inserter'],
+export default function HPUBlock() {
+    const withCustomEditBlock = createHigherOrderComponent((BlockEdit) => {
+        return (props) => {
+            if (props.name === 'core/block') {
+                return editBlock(props);
+            }
+            return <BlockEdit {...props} />;
+        };
+
     });
+
+    addFilter(
+        'editor.BlockEdit',
+        'hpu-blocks/HPU-block',
+        withCustomEditBlock
+    );
 }

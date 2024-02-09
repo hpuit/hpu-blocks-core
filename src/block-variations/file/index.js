@@ -1,38 +1,21 @@
-import { registerBlockVariation } from '@wordpress/blocks';
-import './file.sass';
+import { createHigherOrderComponent } from '@wordpress/compose';
+import { addFilter } from '@wordpress/hooks';
+import { default as editFile } from './edit';
 
-export default function registerCoreFileBlockVariations() {
-    registerBlockVariation('core/file', {
-        name: 'hpu-blocks-file',
-        title: 'File',
-        category: 'hpu-blocks',
-        isDefault: true,
-        attributes: {
-            providerNameSlug: 'hpu-blocks',
-            className: 'hpu-blocks-file',
-            url: {
-                type: 'string',
-                default: '',
-            },
-            text: {
-                type: 'string',
-                default: '',
-            },
-            target: {
-                type: 'string',
-                default: '',
-            },
-            rel: {
-                type: 'string',
-                default: '',
-            },
-        },
-        supports: {
-            align: false,
-            html: false,
-            spacing: false,
-            anchor: true,
-        },
-        scope: ['block'],
+export default function HPUFile() {
+    const withCustomEditFile = createHigherOrderComponent((BlockEdit) => {
+        return (props) => {
+            if (props.name === 'core/file') {
+                return editFile(props);
+            }
+            return <BlockEdit {...props} />;
+        };
+
     });
+
+    addFilter(
+        'editor.BlockEdit',
+        'hpu-blocks/HPU-file',
+        withCustomEditFile
+    );
 }

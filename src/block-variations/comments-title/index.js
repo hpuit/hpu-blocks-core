@@ -1,49 +1,21 @@
-import { registerBlockVariation } from '@wordpress/blocks';
-import './comments-title.sass';
+import { createHigherOrderComponent } from '@wordpress/compose';
+import { addFilter } from '@wordpress/hooks';
+import { default as editComments } from './edit';
 
-export default function registerCoreCommentsTitleBlockVariations() {
-    registerBlockVariation('core/comments-title', {
-        name: 'hpu-blocks-comments-title',
-        title: 'Comments Title',
-        category: 'hpu-blocks',
-        isDefault: true,
-        attributes: {
-            providerNameSlug: 'hpu-blocks',
-            className: 'hpu-blocks-comments-title',
-            level: {
-                type: 'number',
-                default: 2,
-            },
-            textAlign: {
-                type: 'string',
-                default: 'none',
-            },
-            showPostTitle: {
-                type: 'boolean',
-                default: false,
-            },
-            showCommentsCount: {
-                type: 'boolean',
-                default: false,
+export default function HPUComments() {
+    const withCustomEditComments = createHigherOrderComponent((BlockEdit) => {
+        return (props) => {
+            if (props.name === 'core/comments') {
+                return editComments(props);
             }
-        },
-        supports: {
-            align: false,
-            html: false,
-            spacing: false,
-            anchor: true,
-            inserter: false,
-        },
-        isActive: (blockAttributes, variationAttributes) => {
-            return [
-                blockAttributes.level === variationAttributes.level,
-                blockAttributes.textAlign === variationAttributes.textAlign,
-                blockAttributes.showPostTitle === variationAttributes.showPostTitle,
-                blockAttributes.showCommentsCount === variationAttributes.showCommentsCount,
-                blockAttributes.providerNameSlug === variationAttributes.providerNameSlug,
-                blockAttributes.className === variationAttributes.className
-            ];
-        },
-        scope: ['block'],
+            return <BlockEdit {...props} />;
+        };
+
     });
+
+    addFilter(
+        'editor.BlockEdit',
+        'hpu-blocks/HPU-comments',
+        withCustomEditComments
+    );
 }

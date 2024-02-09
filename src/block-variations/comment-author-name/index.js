@@ -1,29 +1,21 @@
-import { registerBlockVariation } from "@wordpress/blocks";
-import "./comment-author-name.sass";
+import { createHigherOrderComponent } from '@wordpress/compose';
+import { addFilter } from '@wordpress/hooks';
+import { default as editCommentAuthorName } from './edit';
 
-export default function registerCoreCommentAuthorNameBlockVariation() {
-    registerBlockVariation("core/comment-author-name", {
-        name: "hpu-blocks-comment-author-name",
-        title: "Comment Author Name",
-        category: "hpu-blocks",
-        isDefault: true,
-        attributes: {
-            providerNameSlug: "hpu-blocks",
-            className: "hpu-blocks-comment-author-name",
-            textAlign: {
-                type: "string",
-                default: "none"
+export default function HPUCommentAuthorName() {
+    const withCustomEditCommentAuthorName = createHigherOrderComponent((BlockEdit) => {
+        return (props) => {
+            if (props.name === 'core/comment-author-name') {
+                return editCommentAuthorName(props);
             }
-        },
-        supports: {
-            align: false,
-            html: false,
-            spacing: false,
-            anchor: true
-        },
-        isActive: (blockAttributes, variationAttributes) => {
-            return [blockAttributes.textAlign === variationAttributes.textAlign, blockAttributes.providerNameSlug === variationAttributes.providerNameSlug, blockAttributes.className === variationAttributes.className];
-        },
-        scope: ["block"]
+            return <BlockEdit {...props} />;
+        };
+
     });
+
+    addFilter(
+        'editor.BlockEdit',
+        'hpu-blocks/HPU-comment-author-name',
+        withCustomEditCommentAuthorName
+    );
 }

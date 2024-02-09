@@ -1,33 +1,21 @@
-import { registerBlockVariation } from '@wordpress/blocks';
-import './query-pagination-next.sass';
+import { createHigherOrderComponent } from '@wordpress/compose';
+import { addFilter } from '@wordpress/hooks';
+import { default as editQueryPaginationNext } from './edit';
 
-export default function registerCoreQueryPaginationNextBlockVariations() {
-    registerBlockVariation('core/query-pagination-next', {
-        name: 'hpu-blocks-query-pagination-next',
-        title: 'Query Loop Pagination Next',
-        category: 'hpu-blocks',
-        isDefault: true,
-        attributes: {
-            providerNameSlug: 'hpu-blocks',
-            className: 'hpu-query-pagination-next',
-            label: {
-                type: 'string',
-                default: '',
-            },
-        },
-        supports: {
-            align: false,
-            html: false,
-            spacing: false,
-            anchor: true,
-        },
-        isActive: (blockAttributes, variationAttributes) => {
-            return [
-                blockAttributes.label === variationAttributes.label,
-                blockAttributes.providerNameSlug === variationAttributes.providerNameSlug,
-                blockAttributes.className === variationAttributes.className
-            ];
-        },
-        scope: ['block'],
+export default function HPUQueryPaginationNext() {
+    const withCustomEditQueryPaginationNext = createHigherOrderComponent((BlockEdit) => {
+        return (props) => {
+            if (props.name === 'core/query-pagination-next') {
+                return editQueryPaginationNext(props);
+            }
+            return <BlockEdit {...props} />;
+        };
+
     });
+
+    addFilter(
+        'editor.BlockEdit',
+        'hpu-blocks/HPU-query-pagination-next',
+        withCustomEditQueryPaginationNext
+    );
 }

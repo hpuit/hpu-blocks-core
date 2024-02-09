@@ -1,59 +1,21 @@
-import { registerBlockVariation } from '@wordpress/blocks';
-import './post-navigation-link.sass';
+import { createHigherOrderComponent } from '@wordpress/compose';
+import { addFilter } from '@wordpress/hooks';
+import { default as editPostNavigationLink } from './edit';
 
-export default function registerCorePostNavigationLinkBlockVariations() {
-    registerBlockVariation('core/post-navigation-link', {
-        name: 'hpu-blocks-post-navigation-link',
-        title: 'Post Navigation Link',
-        category: 'hpu-blocks',
-        isDefault: true,
-        attributes: {
-            providerNameSlug: 'hpu-blocks',
-            className: 'hpu-blocks-post-navigation-link',
-            text: {
-                type: 'string',
-                default: '',
-            },
-            url: {
-                type: 'string',
-                default: '',
-            },
-            target: {
-                type: 'string',
-                default: '',
-            },
-            rel: {
-                type: 'string',
-                default: '',
-            },
-            size: {
-                type: 'string',
-                default: 'default',
-            },
-            align: {
-                type: 'string',
-                default: 'none',
-            },
-        },
-        supports: {
-            align: false,
-            html: false,
-            spacing: false,
-            anchor: true,
-            inserter: false,
-        },
-        isActive: (blockAttributes, variationAttributes) => {
-            return [
-                blockAttributes.text === variationAttributes.text,
-                blockAttributes.url === variationAttributes.url,
-                blockAttributes.target === variationAttributes.target,
-                blockAttributes.rel === variationAttributes.rel,
-                blockAttributes.size === variationAttributes.size,
-                blockAttributes.align === variationAttributes.align,
-                blockAttributes.providerNameSlug === variationAttributes.providerNameSlug,
-                blockAttributes.className === variationAttributes.className
-            ];
-        },
-        scope: ['block'],
+export default function HPUPostNavigationLink() {
+    const withCustomEditPostNavigationLink = createHigherOrderComponent((BlockEdit) => {
+        return (props) => {
+            if (props.name === 'core/post-navigation-link') {
+                return editPostNavigationLink(props);
+            }
+            return <BlockEdit {...props} />;
+        };
+
     });
+
+    addFilter(
+        'editor.BlockEdit',
+        'hpu-blocks/HPU-post-navigation-link',
+        withCustomEditPostNavigationLink
+    );
 }

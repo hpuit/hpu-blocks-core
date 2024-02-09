@@ -1,35 +1,21 @@
-import { registerBlockVariation } from '@wordpress/blocks';
-import './details.sass';
+import { createHigherOrderComponent } from '@wordpress/compose';
+import { addFilter } from '@wordpress/hooks';
+import { default as editDetails } from './edit';
 
-export default function registerCoreDetailsBlockVariations() {
-    registerBlockVariation('core/details', {
-        name: 'hpu-blocks-details',
-        title: 'Details',
-        category: 'hpu-blocks',
-        textDomain: 'hpu-blocks',
-        isDefault: true,
-        attributes: {
-            providerNameSlug: 'hpu-blocks',
-            className: 'hpu-blocks-details',
-            showContent: true,
-            summary: '',
-        },
-        supports: {
-            align: true,
-            html: false,
-            color: false,
-            typography: false,
-            spacing: false,
-            anchor: true,
-        },
-        isActive: (blockAttributes, variationAttributes) => {
-            return [
-                blockAttributes.providerNameSlug === variationAttributes.providerNameSlug,
-                blockAttributes.className === variationAttributes.className,
-                blockAttributes.showContent === variationAttributes.showContent,
-                blockAttributes.summary === variationAttributes.summary,
-            ];
-        },
-        scope: ['block', 'inserter'],
+export default function HPUDetails() {
+    const withCustomEditDetails = createHigherOrderComponent((BlockEdit) => {
+        return (props) => {
+            if (props.name === 'core/details') {
+                return editDetails(props);
+            }
+            return <BlockEdit {...props} />;
+        };
+
     });
+
+    addFilter(
+        'editor.BlockEdit',
+        'hpu-blocks/HPU-details',
+        withCustomEditDetails
+    );
 }

@@ -1,33 +1,21 @@
-import { registerBlockVariation } from '@wordpress/blocks';
-import './query-pagination-previous.sass';
+import { createHigherOrderComponent } from '@wordpress/compose';
+import { addFilter } from '@wordpress/hooks';
+import { default as editQueryPaginationPrevious } from './edit';
 
-export default function registerCoreQueryPaginationPreviousBlockVariations() {
-    registerBlockVariation('core/query-pagination-previous', {
-        name: 'hpu-blocks-query-pagination-previous',
-        title: 'Query Loop Pagination Previous',
-        category: 'hpu-blocks',
-        isDefault: true,
-        attributes: {
-            providerNameSlug: 'hpu-blocks',
-            className: 'hpu-query-pagination-previous',
-            label: {
-                type: 'string',
-                default: '',
-            },
-        },
-        supports: {
-            align: false,
-            html: false,
-            spacing: false,
-            anchor: true,
-        },
-        isActive: (blockAttributes, variationAttributes) => {
-            return [
-                blockAttributes.label === variationAttributes.label,
-                blockAttributes.providerNameSlug === variationAttributes.providerNameSlug,
-                blockAttributes.className === variationAttributes.className
-            ];
-        },
-        scope: ['block'],
+export default function HPUQueryPaginationPrevious() {
+    const withCustomEditQueryPaginationPrevious = createHigherOrderComponent((BlockEdit) => {
+        return (props) => {
+            if (props.name === 'core/query-pagination-previous') {
+                return editQueryPaginationPrevious(props);
+            }
+            return <BlockEdit {...props} />;
+        };
+
     });
+
+    addFilter(
+        'editor.BlockEdit',
+        'hpu-blocks/HPU-query-pagination-previous',
+        withCustomEditQueryPaginationPrevious
+    );
 }

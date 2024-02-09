@@ -1,48 +1,21 @@
-import { registerBlockVariation } from '@wordpress/blocks';
-import './site-title.sass';
+import { createHigherOrderComponent } from '@wordpress/compose';
+import { addFilter } from '@wordpress/hooks';
+import { default as editSiteTitle } from './edit';
 
-export default function registerCoreSiteTitleBlockVariations() {
-    registerBlockVariation('core/site-title', {
-        name: 'hpu-blocks-site-title',
-        title: 'Site Title',
-        category: 'hpu-blocks',
-        isDefault: true,
-        attributes: {
-            providerNameSlug: 'hpu-blocks',
-            className: 'hpu-blocks-site-title',
-            isLink: {
-                type: 'boolean',
-                default: false,
-            },
-            level: {
-                type: 'number',
-                default: 1,
-            },
-            linkTarget: {
-                type: 'string',
-                default: '',
-            },
-            textAlign: {
-                type: 'string',
-                default: 'left',
-            },
-        },
-        supports: {
-            align: false,
-            html: false,
-            spacing: false,
-            anchor: true,
-        },
-        isActive: (blockAttributes, variationAttributes) => {
-            return [
-                blockAttributes.isLink === variationAttributes.isLink,
-                blockAttributes.level === variationAttributes.level,
-                blockAttributes.linkTarget === variationAttributes.linkTarget,
-                blockAttributes.textAlign === variationAttributes.textAlign,
-                blockAttributes.providerNameSlug === variationAttributes.providerNameSlug,
-                blockAttributes.className === variationAttributes.className
-            ];
-        },
-        scope: ['block'],
+export default function HPUSiteTitle() {
+    const withCustomEditSiteTitle = createHigherOrderComponent((BlockEdit) => {
+        return (props) => {
+            if (props.name === 'core/site-title') {
+                return editSiteTitle(props);
+            }
+            return <BlockEdit {...props} />;
+        };
+
     });
+
+    addFilter(
+        'editor.BlockEdit',
+        'hpu-blocks/HPU-site-title',
+        withCustomEditSiteTitle
+    );
 }

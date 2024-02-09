@@ -1,6 +1,6 @@
 
 //Custom edit function
-const editAudio = (props) => {
+export default function editAudio(props) {
     const {
         attributes: {
             className,

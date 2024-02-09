@@ -1,35 +1,21 @@
-import { registerBlockVariation } from '@wordpress/blocks';
-import './tag-cloud.sass';
+import { createHigherOrderComponent } from '@wordpress/compose';
+import { addFilter } from '@wordpress/hooks';
+import { default as editTagCloud } from './edit';
 
-export default function registerCoreTagCloudBlockVariations() {
-    registerBlockVariation('core/tag-cloud', {
-        name: 'hpu-blocks-tag-cloud',
-        title: 'Tag Cloud',
-        category: 'hpu-blocks',
-        isDefault: true,
-        attributes: {
-            providerNameSlug: 'hpu-blocks',
-            className: 'hpu-blocks-tag-cloud',
-            largestFontSize: {
-                type: 'number',
-                default: 22,
-            },
-            numberOfTags: {
-                type: 'number',
-                default: 45,
-            },
-            showTagCounts: {
-                type: 'boolean',
-                default: false,
-            },
-            smallestFontSize: {
-                type: 'number',
-                default: 8,
-            },
-            taxonomy: {
-                type: 'string',
-                default: '',
-            },
-        },
+export default function HPUTagCloud() {
+    const withCustomEditTagCloud = createHigherOrderComponent((BlockEdit) => {
+        return (props) => {
+            if (props.name === 'core/tag-cloud') {
+                return editTagCloud(props);
+            }
+            return <BlockEdit {...props} />;
+        };
+
     });
+
+    addFilter(
+        'editor.BlockEdit',
+        'hpu-blocks/HPU-tag-cloud',
+        withCustomEditTagCloud
+    );
 }

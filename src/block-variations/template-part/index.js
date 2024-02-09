@@ -1,49 +1,21 @@
-import { registerBlockVariation } from '@wordpress/blocks';
-import './template-part.sass';
+import { createHigherOrderComponent } from '@wordpress/compose';
+import { addFilter } from '@wordpress/hooks';
+import { default as editTemplatePart } from './edit';
 
-export default function registerCoreTemplatePartBlockVariations() {
-    registerBlockVariation('core/template-part', {
-        name: 'hpu-blocks-template-part',
-        title: 'Template Part',
-        category: 'hpu-blocks',
-        isDefault: true,
-        attributes: {
-            providerNameSlug: 'hpu-blocks',
-            className: 'hpu-blocks-template-part',
-            area: {
-                type: 'string',
-                default: '',
-            },
-            slug: {
-                type: 'string',
-                default: '',
-            },
-            tagName: {
-                type: 'string',
-                default: '',
-            },
-            theme: {
-                type: 'string',
-                default: '',
-            },
-        },
-        supports: {
-            align: false,
-            html: true,
-            spacing: false,
-            anchor: true,
-            inserter: false,
-        },
-        isActive: (blockAttributes, variationAttributes) => {
-            return [
-                blockAttributes.area === variationAttributes.area,
-                blockAttributes.slug === variationAttributes.slug,
-                blockAttributes.tagName === variationAttributes.tagName,
-                blockAttributes.theme === variationAttributes.theme,
-                blockAttributes.providerNameSlug === variationAttributes.providerNameSlug,
-                blockAttributes.className === variationAttributes.className
-            ];
-        },
-        scope: ['block'],
+export default function HPUTemplatePart() {
+    const withCustomEditTemplatePart = createHigherOrderComponent((BlockEdit) => {
+        return (props) => {
+            if (props.name === 'core/template-part') {
+                return editTemplatePart(props);
+            }
+            return <BlockEdit {...props} />;
+        };
+
     });
+
+    addFilter(
+        'editor.BlockEdit',
+        'hpu-blocks/HPU-template-part',
+        withCustomEditTemplatePart
+    );
 }

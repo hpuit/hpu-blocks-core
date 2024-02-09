@@ -1,33 +1,21 @@
-import { registerBlockVariation } from '@wordpress/blocks';
-import './comment-reply-link.sass';
+import { createHigherOrderComponent } from '@wordpress/compose';
+import { addFilter } from '@wordpress/hooks';
+import { default as editCommentReplyLink } from './edit';
 
-export default function registerCoreCommentReplyLinkBlockVariations() {
-    registerBlockVariation('core/comment-reply-link', {
-        name: 'hpu-blocks-comment-reply-link',
-        title: 'Comment Reply Link',
-        category: 'hpu-blocks',
-        isDefault: true,
-        attributes: {
-            providerNameSlug: 'hpu-blocks',
-            className: 'hpu-blocks-comment-reply-link',
-            textAlign: {
-                type: 'string',
-                default: 'none',
+export default function HPUCommentReplyLink() {
+    const withCustomEditCommentReplyLink = createHigherOrderComponent((BlockEdit) => {
+        return (props) => {
+            if (props.name === 'core/comment-reply-link') {
+                return editCommentReplyLink(props);
             }
-        },
-        supports: {
-            align: false,
-            html: false,
-            spacing: false,
-            anchor: true,
-        },
-        isActive: (blockAttributes, variationAttributes) => {
-            return [
-                blockAttributes.textAlign === variationAttributes.textAlign,
-                blockAttributes.providerNameSlug === variationAttributes.providerNameSlug,
-                blockAttributes.className === variationAttributes.className
-            ];
-        },
-        scope: ['block'],
+            return <BlockEdit {...props} />;
+        };
+
     });
+
+    addFilter(
+        'editor.BlockEdit',
+        'hpu-blocks/HPU-comment-reply-link',
+        withCustomEditCommentReplyLink
+    );
 }

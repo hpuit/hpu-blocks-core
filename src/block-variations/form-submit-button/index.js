@@ -1,20 +1,17 @@
-import { createHgherOrderComponent } from '@wordpress/compose';
-import { addFilter } from '@wordpress/hooks';
-import { default as editFormSubmitButton } from './edit';
+import { createHigherOrderComponent } from "@wordpress/compose";
+import { addFilter } from "@wordpress/hooks";
+import { default as HPUEditFormSubmitButton } from "./edit";
 
 export default function HPUFormSubmitButton() {
-    const withCustomEditFormSubmitButton = createHigherOrderComponent((BlockEdit) => {
-        return (props) => {
-            if (props.name === 'core/form-submit-button') {
-                return editFormSubmitButton(props);
-            }
-            return <BlockEdit {...props} />;
-        };
-    });
+  const withCustomEditFormSubmitButton = createHigherOrderComponent((BlockEdit) => {
+    return props => {
+      if (props.name === "core/form-submit-button") {
+        return HPUEditFormSubmitButton(props);
+      }
 
-    addFilter(
-        'editor.BlockEdit',
-        'hpu-blocks/HPU-form-submit-button',
-        withCustomEditFormSubmitButton
-    );
+      return <BlockEdit {...props} />;
+    };
+  });
+
+  addFilter("editor.BlockEdit", "hpu-blocks/HPU-form-submit-button", withCustomEditFormSubmitButton);
 }

@@ -1,12 +1,12 @@
 import { createHigherOrderComponent } from '@wordpress/compose';
 import { addFilter } from '@wordpress/hooks';
-import { default as editColumns } from './edit';
+import { default as HPUEditColumns } from './edit';
 
 export default function HPUColumns() {
     const withCustomEditColumns = createHigherOrderComponent((BlockEdit) => {
         return (props) => {
             if (props.name === 'core/columns') {
-                return editColumns(props);
+                return HPUEditColumns(props);
             }
             return <BlockEdit {...props} />;
         };

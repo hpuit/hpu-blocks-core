@@ -1,7 +1,19 @@
-export default function editParagraph(props) {
-    if (props.name === 'core/paragraph') {
-        return <ParagraphEdit {...props} />;
-    }
+import { useBlockProps, BlockEdit, InspectorControls } from '@wordpress/block-editor';
+import { PanelBody } from '@wordpress/components';
+import StyleSelector from '../../style-selector';
 
-    return <BlockEdit {...props} />;
+export default function HPUEditParagraph(props) {
+    const blockProps = useBlockProps();
+    if (props.name === 'core/paragraph') {
+        return (
+            <div {...blockProps}>
+                <InspectorControls>
+                    <PanelBody title="HPU Paragraph Settings">
+                        <StyleSelector {...props} />
+                    </PanelBody>
+                </InspectorControls>
+                <BlockEdit {...props} />
+            </div>
+        );
+    }
 }

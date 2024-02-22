@@ -39,7 +39,6 @@ register_activation_hook(__FILE__, 'hpu_blocks_core_activate');
 
 function hpu_blocks_core_activate()
 {
-
 	// check for wp ver 6.1 or greater
 	if (version_compare(get_bloginfo('version'), '6.1', '<')) {
 		wp_die('You must update WordPress to use this plugin.');

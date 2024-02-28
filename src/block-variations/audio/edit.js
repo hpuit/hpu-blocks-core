@@ -1,31 +1,27 @@
+import { Component } from '@wordpress/element';
+import { InspectorControls } from '@wordpress/block-editor';
+import { Panel } from '@wordpress/components';
+import StyleSelector from '../../style-selector';
 
-//Custom edit function
-export default function editAudio(props) {
-    const {
-        attributes: {
-            className,
-            autoplay,
-            caption,
-            loop,
-            id,
-            src,
-            preload,
-        },
-        setAttributes,
-    } = props;
+export default class HPUBlocksAudioEdit extends Component {
+    render() {
+        const { attributes, setAttributes } = this.props;
+        console.log(attributes)
 
-    return (
-        <div className={className}>
+        return <div>
+            <InspectorControls>
+                <Panel header="HPU Blocks Audio Settings" className='hpu-blocks-emphasis-style'>
+                    <StyleSelector
+                        value={attributes.styleClass}
+                        onChange={(newValue) => setAttributes({ styleClass: newValue })}
+                    />
+                </Panel>
+            </InspectorControls>
             <audio
-                controls
-                autoPlay={autoplay}
-                loop={loop}
-                id={id}
-                src={src}
-                preload={preload}
-            >
-                {caption}
-            </audio>
-        </div>
-    );
-};
+                src={attributes.audioURL}
+                controls={true}
+                style={{ width: '100%' }}
+            />
+        </div>;
+    }
+}

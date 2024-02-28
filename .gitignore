@@ -31,3 +31,7 @@ node_modules/
 
 # .vs code files
 .vs/
+.vscode/
+
+# build files
+build/

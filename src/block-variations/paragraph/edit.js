@@ -1,19 +1,42 @@
-import { useBlockProps, BlockEdit, InspectorControls } from '@wordpress/block-editor';
-import { PanelBody } from '@wordpress/components';
+import { InspectorControls, RichText } from '@wordpress/block-editor';
+import { Panel, PanelBody, ButtonGroup, Button, ToggleControl } from '@wordpress/components';
+import { Component } from '@wordpress/element';
 import StyleSelector from '../../style-selector';
+import { __experimentalHeading as Heading } from '@wordpress/components';
 
-export default function HPUEditParagraph(props) {
-    const blockProps = useBlockProps();
-    if (props.name === 'core/paragraph') {
-        return (
-            <div {...blockProps}>
-                <InspectorControls>
-                    <PanelBody title="HPU Paragraph Settings">
-                        <StyleSelector {...props} />
+export default class HPUEditParagraph extends Component {
+    render() {
+        const { attributes, setAttributes } = this.props;
+        console.log(attributes)
+
+        return <div>
+            <InspectorControls>
+                <Panel header="HPU Blocks Paragraph Settings" className='hpu-blocks-emphasis-style'>
+                    <StyleSelector
+                        value={attributes.styleClass}
+                        onChange={(newValue) => setAttributes({ styleClass: newValue })}
+                    />
+                    <PanelBody title="Text Settings">
+                        <ToggleControl
+                            label="Drop Cap"
+                            checked={attributes.dropCap}
+                            onChange={(newValue) => setAttributes({ dropCap: newValue })}
+                        />
+                        <Heading>Alignment</Heading>
+                        <ButtonGroup>
+                            <Button isPrimary={attributes.align === 'left'} onClick={() => setAttributes({ align: 'left' })}>Left</Button>
+                            <Button isPrimary={attributes.align === 'center'} onClick={() => setAttributes({ align: 'center' })}>Center</Button>
+                            <Button isPrimary={attributes.align === 'right'} onClick={() => setAttributes({ align: 'right' })}>Right</Button>
+                            <Button isPrimary={attributes.align === 'justify'} onClick={() => setAttributes({ align: 'justify' })}>Justify</Button>
+                        </ButtonGroup>
                     </PanelBody>
-                </InspectorControls>
-                <BlockEdit {...props} />
-            </div>
-        );
+                </Panel>
+            </InspectorControls>
+            <RichText
+                tagName="p"
+                value={attributes.content}
+                onChange={(content) => setAttributes({ content })}
+            />
+        </div>;
     }
 }

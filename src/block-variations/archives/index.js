@@ -1,6 +1,6 @@
 import { addFilter } from '@wordpress/hooks';
 import { createHigherOrderComponent } from '@wordpress/compose';
-import { default as editArchive } from './edit';
+import HPUBlockArchivesEdit from './edit';
 
 export default function hpuArchives() {
 
@@ -10,7 +10,7 @@ export default function hpuArchives() {
             // Check if the current block is the one we want to modify
             if (props.name === 'core/archives') {
                 // You can now use your custom edit function or wrap the existing one
-                return editArchive(props);
+                return <HPUBlockArchivesEdit {...props} />;
             }
 
             // For all other blocks, return the default edit component
@@ -18,6 +18,24 @@ export default function hpuArchives() {
         };
     }, 'withCustomEditArchive');
 
+    addFilter(
+        'blocks.registerBlockType',
+        'hpu-blocks/archives',
+        (settings, name) => {
+            if (name === 'core/archives') {
+                settings.attributes = {
+                    ...settings.attributes,
+                    styleClass: {
+                        type: 'string',
+                        default: 'hpu-blocks-primary-style',
+                    },
+                };
+            }
+
+            return settings;
+        }
+    );
+    
     // Adding the filter
     addFilter(
         'editor.BlockEdit',

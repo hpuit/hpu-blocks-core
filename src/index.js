@@ -83,7 +83,7 @@ const gostedBlocks = [
     './read-more/index.js',
     './rss/index.js',
     './search/index.js',
-    './separator/index.js',
+    // './separator/index.js',
     './shortcode/index.js',
     './site-logo/index.js',
     './site-tagline/index.js',
@@ -103,7 +103,6 @@ const gostedBlocks = [
 const importBlockVariations = () => {
     // 'require.context' parameters: directory to search, include subdirectories, file pattern to match
     const context = require.context('./block-variations/', true, /index\.js$/);
-    console.log(context);
 
     // Loop through each matched file
     context.keys().forEach((key) => {
@@ -114,9 +113,9 @@ const importBlockVariations = () => {
             console.log('Gosted Block: ' + key);
             return;
         }
-    
+
         const blockVariation = context(key);
-    
+
         console.log(blockVariation);
         // Execute the default export function if it exists
         if (blockVariation && blockVariation.default) {
@@ -130,6 +129,5 @@ const importBlockVariations = () => {
 import domReady from '@wordpress/dom-ready';
 
 domReady(() => {
-    console.log('Dom is ready!');
     importBlockVariations();
 });

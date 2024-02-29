@@ -34,6 +34,7 @@ export default class HPUEditParagraph extends Component {
             </InspectorControls>
             <RichText
                 tagName="p"
+                className={[attributes.styleClass, (attributes.dropCap ? 'has-drop-cap' : '')]}
                 value={attributes.content}
                 onChange={(content) => setAttributes({ content })}
             />

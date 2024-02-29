@@ -1,52 +1,37 @@
-/**
- * External dependencies
- */
-import classnames from 'classnames';
+import StyleSelector from "../../style-selector";
+import { Component, Fragment } from "@wordpress/element";
+import { InspectorControls } from "@wordpress/block-editor";
+import { HorizontalRule, Panel } from "@wordpress/components";
+import { __ } from "@wordpress/i18n";
 
-/**
- * WordPress dependencies
- */
-import { HorizontalRule } from '@wordpress/components';
-import {
-	useBlockProps,
-	getColorClassName,
-	__experimentalUseColorProps as useColorProps,
-} from '@wordpress/block-editor';
+export default class HPUBlocksSeparatorEdit extends Component {
+    componentDidMount() {
+        // Get the separator element
+        const separatorElement = document.querySelector('.your-separator-class');
 
+        // Check if the element exists before calling getBoundingClientRect
+        if (separatorElement !== null) {
+            const rect = separatorElement.getBoundingClientRect();
+            console.log(rect);
+        }
+    }
 
-export default function SeparatorEdit( { attributes } ) {
-	const { backgroundColor, opacity, style } = attributes;
-	const colorProps = useColorProps( attributes );
-	const currentColor = colorProps?.style?.backgroundColor;
-	const hasCustomColor = !! style?.color?.background;
-
-	// The dots styles uses text for the dots, to change those dots color is
-	// using color, not backgroundColor.
-	const colorClass = getColorClassName( 'color', backgroundColor );
-
-	const className = classnames(
-		{
-			'has-text-color': backgroundColor || currentColor,
-			[ colorClass ]: colorClass,
-			'has-css-opacity': opacity === 'css',
-			'has-alpha-channel-opacity': opacity === 'alpha-channel',
-		},
-		colorProps.className
-	);
-
-	const styles = {
-		color: currentColor,
-		backgroundColor: currentColor,
-	};
-
-	return (
-		<>
-			<HorizontalRule
-				{ ...useBlockProps( {
-					className,
-					style: hasCustomColor ? styles : undefined,
-				} ) }
-			/>
-		</>
-	);
+	render() {
+		return (
+			<Fragment>
+				<InspectorControls>
+					<Panel title={__('Separator Settings', 'hpu-blocks')}>
+						<StyleSelector
+							label={__('Separator Style', 'hpu-blocks')}
+							value={this.props.attributes.styleClass}
+							onChange={(styleClass) => this.props.setAttributes({ styleClass })}
+						/>
+					</Panel>
+				</InspectorControls>
+				<HorizontalRule
+					className={this.props.attributes.styleClass}
+				/>
+			</Fragment>
+		);
+	}
 }

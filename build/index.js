@@ -3679,6 +3679,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _style_selector__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../style-selector */ "./src/style-selector.js");
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../style.scss */ "./src/style.scss");
+
 
 
 
@@ -3750,6 +3752,7 @@ class HPUEditHeading extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Com
       })
     }, "Justify"))))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
       tagName: `h${attributes.level}`,
+      className: [attributes.styleClass, attributes.textAlign ? `align-${attributes.textAlign}` : ''].join(' '),
       value: attributes.content,
       allowedFormats: ['core/bold', 'core/italic'],
       onChange: content => setAttributes({
@@ -4011,10 +4014,10 @@ function HPUImage() {
 
 /***/ }),
 
-/***/ "./src/block-variations/lastest-comments/edit.js":
-/*!*******************************************************!*\
-  !*** ./src/block-variations/lastest-comments/edit.js ***!
-  \*******************************************************/
+/***/ "./src/block-variations/latest-comments/edit.js":
+/*!******************************************************!*\
+  !*** ./src/block-variations/latest-comments/edit.js ***!
+  \******************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -4038,10 +4041,10 @@ function editLastestComments(props) {
 
 /***/ }),
 
-/***/ "./src/block-variations/lastest-comments/index.js":
-/*!********************************************************!*\
-  !*** ./src/block-variations/lastest-comments/index.js ***!
-  \********************************************************/
+/***/ "./src/block-variations/latest-comments/index.js":
+/*!*******************************************************!*\
+  !*** ./src/block-variations/latest-comments/index.js ***!
+  \*******************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -4055,7 +4058,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_compose__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_compose__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _wordpress_hooks__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/hooks */ "@wordpress/hooks");
 /* harmony import */ var _wordpress_hooks__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_hooks__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./edit */ "./src/block-variations/lastest-comments/edit.js");
+/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./edit */ "./src/block-variations/latest-comments/edit.js");
 
 
 
@@ -4853,6 +4856,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _style_selector__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../style-selector */ "./src/style-selector.js");
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../style.scss */ "./src/style.scss");
+
 
 
 
@@ -4904,7 +4909,7 @@ class HPUEditParagraph extends _wordpress_element__WEBPACK_IMPORTED_MODULE_3__.C
       })
     }, "Justify"))))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
       tagName: "p",
-      className: [attributes.styleClass, attributes.dropCap ? 'has-drop-cap' : ''],
+      className: [attributes.styleClass, attributes.dropCap ? 'has-drop-cap' : '', attributes.align ? `align-${attributes.align}` : ''].join(' '),
       value: attributes.content,
       onChange: content => setAttributes({
         content
@@ -9286,6 +9291,10 @@ class HPUBlocksSeparatorEdit extends _wordpress_element__WEBPACK_IMPORTED_MODULE
       console.log(rect);
     }
   }
+
+  /* Uses BlockStyles to display the block styles variants but there's no 
+  documentation on how to implement the component in the editor. */
+
   render() {
     return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.Panel, {
       title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__.__)('Separator Settings', 'hpu-blocks')
@@ -9296,7 +9305,7 @@ class HPUBlocksSeparatorEdit extends _wordpress_element__WEBPACK_IMPORTED_MODULE
         styleClass
       })
     }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.HorizontalRule, {
-      className: this.props.attributes.styleClass
+      className: [this.props.attributes.styleClass, this.props.attributes.styles].join(' ')
     }));
   }
 }
@@ -12272,9 +12281,38 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/dom-ready */ "@wordpress/dom-ready");
 /* harmony import */ var _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_1__);
 
-const gostedBlocks = ['./archives/index.js', './audio/index.js', './avatar/index.js', './block/index.js', './button/index.js', './buttons/index.js', './calendar/index.js', './categories/index.js', './code/index.js', './column/index.js', './columns/index.js', './comment-author-name/index.js', './comment-content/index.js', './comment-date/index.js', './comment-edit-link/index.js', './comment-reply-link/index.js', './comment-template/index.js', './comments/index.js', './comments-pagination/index.js', './comments-pagination-next/index.js', './comments-pagination-numbers/index.js', './comments-pagination-previous/index.js', './comments-title/index.js', './cover/index.js', './details/index.js', './embeds/index.js', './file/index.js', './footnotes/index.js', './form/index.js', './form-input/index.js', './form-submission-notification/index.js', './form-submit-button/index.js', './freeform/index.js', './gallery/index.js', './group/index.js',
+const gostedBlocks = ['./archives/index.js',
+//3/4
+'./audio/index.js', './avatar/index.js', './block/index.js',
+//3/4
+'./button/index.js',
+//3/11
+'./buttons/index.js',
+//3/11
+'./calendar/index.js', './categories/index.js', './code/index.js', './column/index.js',
+//3/11
+'./columns/index.js',
+//3/11
+'./comment-author-name/index.js', './comment-content/index.js', './comment-date/index.js', './comment-edit-link/index.js', './comment-reply-link/index.js', './comment-template/index.js', './comments/index.js', './comments-pagination/index.js', './comments-pagination-next/index.js', './comments-pagination-numbers/index.js', './comments-pagination-previous/index.js', './comments-title/index.js', './cover/index.js',
+//3/4
+'./details/index.js', './embeds/index.js', './file/index.js', './footnotes/index.js', './form/index.js', './form-input/index.js', './form-submission-notification/index.js', './form-submit-button/index.js', './freeform/index.js',
+//3/4 WYSIWYG Block
+'./gallery/index.js',
+//3/18
+'./group/index.js',
+//3/11
 // './heading/index.js',
-'./html/index.js', './home-link/index.js', './image/index.js', './latest-comments/index.js', './latest-posts/index.js', './list/index.js', './list-item/index.js', './loginout/index.js', './media-text/index.js', './more/index.js', './navigation-link/index.js', './navigation-submenu/index.js', './navigation/index.js', './nextpage/index.js', './page-list/index.js', './page-list-item/index.js',
+'./html/index.js', './home-link/index.js', './image/index.js',
+//3/4
+'./latest-comments/index.js', './latest-posts/index.js',
+//3/4
+'./list/index.js',
+//3/11
+'./list-item/index.js',
+//3/11
+'./loginout/index.js', './media-text/index.js',
+//3/18
+'./more/index.js', './navigation-link/index.js', './navigation-submenu/index.js', './navigation/index.js', './nextpage/index.js', './page-list/index.js', './page-list-item/index.js',
 // './paragraph/index.js',
 './pattern/index.js', './post-author/index.js', './post-author-biography/index.js', './post-author-name/index.js', './post-comments-count/index.js', './post-comments-form/index.js', './post-comments-link/index.js', './post-content/index.js', './post-date/index.js', './post-excerpt/index.js', './post-featured-image/index.js', './post-navigation-link/index.js', './post-tag/index.js', './post-terms/index.js', './post-title/index.js', './post-time-to-read/index.js', './preformatted/index.js', './pullquote/index.js', './query/index.js', './query-no-results/index.js', './query-pagination/index.js', './query-pagination-next/index.js', './query-pagination-numbers/index.js', './query-pagination-previous/index.js', './query-title/index.js', './quote/index.js', './read-more/index.js', './rss/index.js', './search/index.js',
 // './separator/index.js',
@@ -12424,7 +12462,7 @@ var map = {
 	"./home-link/index.js": "./src/block-variations/home-link/index.js",
 	"./html/index.js": "./src/block-variations/html/index.js",
 	"./image/index.js": "./src/block-variations/image/index.js",
-	"./lastest-comments/index.js": "./src/block-variations/lastest-comments/index.js",
+	"./latest-comments/index.js": "./src/block-variations/latest-comments/index.js",
 	"./latest-posts/index.js": "./src/block-variations/latest-posts/index.js",
 	"./list-item/index.js": "./src/block-variations/list-item/index.js",
 	"./list/index.js": "./src/block-variations/list/index.js",

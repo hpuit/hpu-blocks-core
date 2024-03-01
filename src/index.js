@@ -1,17 +1,17 @@
 import './style.scss';
 
 const gostedBlocks = [
-    './archives/index.js',
+    './archives/index.js',                      //3/4
     './audio/index.js',
     './avatar/index.js',
-    './block/index.js',
-    './button/index.js',
-    './buttons/index.js',
+    './block/index.js',                         //3/4
+    './button/index.js',                        //3/11
+    './buttons/index.js',                       //3/11
     './calendar/index.js',
     './categories/index.js',
     './code/index.js',
-    './column/index.js',
-    './columns/index.js',
+    './column/index.js',                        //3/11
+    './columns/index.js',                       //3/11
     './comment-author-name/index.js',
     './comment-content/index.js',
     './comment-date/index.js',
@@ -24,7 +24,7 @@ const gostedBlocks = [
     './comments-pagination-numbers/index.js',
     './comments-pagination-previous/index.js',
     './comments-title/index.js',
-    './cover/index.js',
+    './cover/index.js',                         //3/4
     './details/index.js',
     './embeds/index.js',
     './file/index.js',
@@ -33,19 +33,19 @@ const gostedBlocks = [
     './form-input/index.js',
     './form-submission-notification/index.js',
     './form-submit-button/index.js',
-    './freeform/index.js',
-    './gallery/index.js',
-    './group/index.js',
+    './freeform/index.js',                      //3/4 WYSIWYG Block
+    './gallery/index.js',                       //3/18
+    './group/index.js',                         //3/11
     // './heading/index.js',
     './html/index.js',
     './home-link/index.js',
-    './image/index.js',
+    './image/index.js',                         //3/4
     './latest-comments/index.js',
-    './latest-posts/index.js',
-    './list/index.js',
-    './list-item/index.js',
+    './latest-posts/index.js',                  //3/4
+    './list/index.js',                          //3/11
+    './list-item/index.js',                     //3/11
     './loginout/index.js',
-    './media-text/index.js',
+    './media-text/index.js',                    //3/18
     './more/index.js',
     './navigation-link/index.js',
     './navigation-submenu/index.js',

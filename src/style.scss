@@ -23,18 +23,37 @@ $breakpoint-xlarge: 1200px;
 
 //body text century gothic
 
-.hpu-blocks-primary-style {
-  color: $primary-color;
+hpu-blocks-primary-style {
+  p{
+    color: $primary-color;
+    font-family: $font-family;
+  }
 }
 
-.hpu-blocks-secondary-style {
+hpu-blocks-secondary-style {
   color: $secondary-color;
 }
 
-.hpu-blocks-muted-style {
+hpu-blocks-muted-style {
   color: $muted-color;
 }
 
-.hpu-blocks-emphasis-style {
+hpu-blocks-emphasis-style {
   color: $alert-color;
+}
+
+align-left {
+  text-align: left;
+}
+
+align-center {
+  text-align: center;
+}
+
+align-right {
+  text-align: right;
+}
+
+align-justify {
+  text-align: justify;
 }

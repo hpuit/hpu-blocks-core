@@ -3,6 +3,7 @@ import { Panel, PanelBody, ButtonGroup, Button, ToggleControl } from '@wordpress
 import { Component } from '@wordpress/element';
 import StyleSelector from '../../style-selector';
 import { __experimentalHeading as Heading } from '@wordpress/components';
+import '../../style.scss';
 
 export default class HPUEditParagraph extends Component {
     render() {
@@ -34,7 +35,7 @@ export default class HPUEditParagraph extends Component {
             </InspectorControls>
             <RichText
                 tagName="p"
-                className={[attributes.styleClass, (attributes.dropCap ? 'has-drop-cap' : '')]}
+                className={[attributes.styleClass, (attributes.dropCap ? 'has-drop-cap' : ''), (attributes.align ? `align-${attributes.align}` : '')].join(' ')}
                 value={attributes.content}
                 onChange={(content) => setAttributes({ content })}
             />

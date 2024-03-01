@@ -3,6 +3,7 @@ import { InspectorControls, RichText } from '@wordpress/block-editor';
 import { Button, ButtonGroup, Panel, PanelBody, SelectControl } from '@wordpress/components';
 import StyleSelector from '../../style-selector';
 import { __experimentalHeading as Heading } from '@wordpress/components';
+import '../../style.scss';
 
 export default class HPUEditHeading extends Component {
     render() {
@@ -46,6 +47,7 @@ export default class HPUEditHeading extends Component {
             </InspectorControls>
             <RichText
                 tagName={`h${attributes.level}`}
+                className={[attributes.styleClass, (attributes.textAlign ? `align-${attributes.textAlign}` : '')].join(' ')}
                 value={attributes.content}
                 allowedFormats={['core/bold', 'core/italic']}
                 onChange={(content) => setAttributes({ content })}

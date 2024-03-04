@@ -2,11 +2,25 @@ import { Component } from '@wordpress/element';
 import { InspectorControls } from '@wordpress/block-editor';
 import { Panel } from '@wordpress/components';
 import StyleSelector from '../../style-selector';
+import ServerSideRender from '@wordpress/server-side-render';
+import { __experimentalSanitizeBlockAttributes } from '@wordpress/blocks';
 
 export default class HPUBlockArchivesEdit extends Component {
+    componentDidMount() {
+        // Get the archives element
+        const archivesElement = document.querySelector('.hpu-blocks-archives .wp-block-archives__wrapper');
+
+        // Check if the element exists before calling getBoundingClientRect
+        if (archivesElement !== null) {
+            const rect = archivesElement.getBoundingClientRect();
+            console.log(rect);
+        }
+    }
+
     render() {
-        const { attributes, setAttributes } = this.props;
+        const { block, attributes, setAttributes } = this.props;
         console.log(attributes)
+
 
         return <div>
             <InspectorControls>
@@ -17,7 +31,9 @@ export default class HPUBlockArchivesEdit extends Component {
                     />
                 </Panel>
             </InspectorControls>
-            <h1>Archives Block</h1>
+            <ServerSideRender
+                block="core/archives"
+            />
         </div>;
     }
 }

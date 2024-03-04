@@ -1,17 +1,34 @@
 import { createHigherOrderComponent } from '@wordpress/compose';
 import { addFilter } from '@wordpress/hooks';
-import { default as editCover } from './edit';
+import HPUCoverEdit from './edit';
 
 export default function HPUCover() {
-    const withCustomEditCover = createHigherOrderComponent((BlockEdit) => {
+    const withCustomEditCover = createHigherOrderComponent((OriginalBlockEdit) => {
         return (props) => {
             if (props.name === 'core/cover') {
-                return editCover(props);
+                return <HPUCoverEdit {...props} block={props} />;
             }
-            return <BlockEdit {...props} />;
+            return <OriginalBlockEdit {...props} />;
         };
 
     });
+
+    addFilter(
+        'blocks.registerBlockType',
+        'hpu-blocks/cover',
+        (settings, name) => {
+            if (name === 'core/cover') {
+                settings.attributes = {
+                    ...settings.attributes,
+                    styleClass: {
+                        type: 'string',
+                        default: 'hpu-blocks-primary-style',
+                    },
+                };
+            }
+            return settings;
+        }
+    );
 
     addFilter(
         'editor.BlockEdit',

@@ -1,34 +1,34 @@
 import './style.scss';
 
 const gostedBlocks = [
-    './archives/index.js',                      //3/4
+    // './archives/index.js',                   //3/4
     './audio/index.js',
-    './avatar/index.js',
+    './avatar/index.js',                        //Probably not needed
     './block/index.js',                         //3/4
     './button/index.js',                        //3/11
     './buttons/index.js',                       //3/11
-    './calendar/index.js',
+    './calendar/index.js',                      //Probably not needed
     './categories/index.js',
     './code/index.js',
     './column/index.js',                        //3/11
     './columns/index.js',                       //3/11
-    './comment-author-name/index.js',
-    './comment-content/index.js',
-    './comment-date/index.js',
-    './comment-edit-link/index.js',
-    './comment-reply-link/index.js',
-    './comment-template/index.js',
-    './comments/index.js',
-    './comments-pagination/index.js',
-    './comments-pagination-next/index.js',
-    './comments-pagination-numbers/index.js',
-    './comments-pagination-previous/index.js',
-    './comments-title/index.js',
-    './cover/index.js',                         //3/4
+    './comment-author-name/index.js',           //Probably not needed
+    './comment-content/index.js',               //Probably not needed
+    './comment-date/index.js',                  //Probably not needed
+    './comment-edit-link/index.js',             //Probably not needed
+    './comment-reply-link/index.js',            //Probably not needed
+    './comment-template/index.js',              //Probably not needed
+    './comments/index.js',                      //Probably not needed
+    './comments-pagination/index.js',           //Probably not needed
+    './comments-pagination-next/index.js',      //Probably not needed
+    './comments-pagination-numbers/index.js',   //Probably not needed
+    './comments-pagination-previous/index.js',  //Probably not needed
+    './comments-title/index.js',                //Probably not needed
+    // './cover/index.js',                      //3/4
     './details/index.js',
     './embeds/index.js',
     './file/index.js',
-    './footnotes/index.js',
+    './footnotes/index.js',                     //Probably not needed
     './form/index.js',
     './form-input/index.js',
     './form-submission-notification/index.js',
@@ -37,10 +37,10 @@ const gostedBlocks = [
     './gallery/index.js',                       //3/18
     './group/index.js',                         //3/11
     // './heading/index.js',
-    './html/index.js',
+    './html/index.js',                          //Super Admin Only  
     './home-link/index.js',
     './image/index.js',                         //3/4
-    './latest-comments/index.js',
+    './latest-comments/index.js',               //Probably not needed
     './latest-posts/index.js',                  //3/4
     './list/index.js',                          //3/11
     './list-item/index.js',                     //3/11
@@ -91,12 +91,12 @@ const gostedBlocks = [
     './social-links/index.js',
     './spacer/index.js',
     './table/index.js',
-    './table-of-contents/index.js',
-    './tag-cloud/index.js',
+    './table-of-contents/index.js',             //Probably not needed
+    './tag-cloud/index.js',                     //Probably not needed
     './template-part/index.js',
-    './term-description/index.js',
-    './verse/index.js',
-    './video/index.js',
+    './term-description/index.js',              //Probably not needed
+    './verse/index.js',                         //Probably not needed
+    './video/index.js',                         //3/4
 ];
 
 // Dynamically import block variations

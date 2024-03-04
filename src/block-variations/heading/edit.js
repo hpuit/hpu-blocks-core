@@ -5,6 +5,8 @@ import StyleSelector from '../../style-selector';
 import { __experimentalHeading as Heading } from '@wordpress/components';
 import '../../style.scss';
 
+//add italics setting buttons
+
 export default class HPUEditHeading extends Component {
     render() {
         const { attributes, setAttributes } = this.props;

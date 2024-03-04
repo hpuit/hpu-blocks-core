@@ -5,6 +5,8 @@ import StyleSelector from '../../style-selector';
 import { __experimentalHeading as Heading } from '@wordpress/components';
 import '../../style.scss';
 
+//add bold and italic to allowed formats and buttons
+
 export default class HPUEditParagraph extends Component {
     render() {
         const { attributes, setAttributes } = this.props;
@@ -18,11 +20,11 @@ export default class HPUEditParagraph extends Component {
                         onChange={(newValue) => setAttributes({ styleClass: newValue })}
                     />
                     <PanelBody title="Text Settings">
-                        <ToggleControl
+                        {/* <ToggleControl
                             label="Drop Cap"
                             checked={attributes.dropCap}
                             onChange={(newValue) => setAttributes({ dropCap: newValue })}
-                        />
+                        /> */}
                         <Heading>Alignment</Heading>
                         <ButtonGroup>
                             <Button isPrimary={attributes.align === 'left'} onClick={() => setAttributes({ align: 'left' })}>Left</Button>

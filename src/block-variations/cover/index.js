@@ -2,7 +2,7 @@ import { createHigherOrderComponent } from '@wordpress/compose';
 import { addFilter } from '@wordpress/hooks';
 import HPUCoverEdit from './edit';
 
-export default function HPUCover() {
+export default function HPUCover() {   
     const withCustomEditCover = createHigherOrderComponent((OriginalBlockEdit) => {
         return (props) => {
             if (props.name === 'core/cover') {

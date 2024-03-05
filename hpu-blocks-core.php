@@ -34,9 +34,6 @@ define('HPU_BLOCKS_CORE_PLUGIN_URL', plugin_dir_url(__FILE__));
 //include admin files
 require_once HPU_BLOCKS_CORE_PLUGIN_DIR . 'admin/admin.php';
 
-// runs when the plugin is activated
-register_activation_hook(__FILE__, 'hpu_blocks_core_activate');
-
 function hpu_blocks_core_activate()
 {
 	// check for wp ver 6.1 or greater
@@ -44,22 +41,19 @@ function hpu_blocks_core_activate()
 		wp_die('You must update WordPress to use this plugin.');
 	}
 }
-
-// runs on plugin deactivation
-register_deactivation_hook(__FILE__, 'hpu_blocks_core_deactivate');
+// runs when the plugin is activated
+register_activation_hook(__FILE__, 'hpu_blocks_core_activate');
 
 function hpu_blocks_core_deactivate()
 {
 }
-
-// Register block categories.
-add_filter('block_categories_all', 'hpu_blocks_core_register_block_category', 10, 2);
+// runs on plugin deactivation
+register_deactivation_hook(__FILE__, 'hpu_blocks_core_deactivate');
 
 function hpu_blocks_core_register_block_category($categories)
 {
 	// Get the current post type
 	global $post;
-
 
 	// If the post type is not post or page, return the default categories
 	if ($post->post_type !== 'post' && $post->post_type !== 'page') {
@@ -74,26 +68,11 @@ function hpu_blocks_core_register_block_category($categories)
 			),
 			$categories,
 		);
-
-		// // Remove default categories
-		// $categories = array_filter(
-		// 	$categories,
-		// 	function ($category) {
-		// 		// List of default WordPress block category slugs
-		// 		$default_categories = [
-		// 			'text', 'media', 'design', 'widgets', 'theme', 'embed'
-		// 		];
-
-		// 		// Return true if the category is not in the default list
-		// 		return !in_array($category['slug'], $default_categories);
-		// 	},
-		// );
 		return array_values($categories);
 	}
 }
-
-// Register block styles.
-add_action('enqueue_block_assets', 'hpu_blocks_core_register_block_styles');
+// Register block categories.
+add_filter('block_categories_all', 'hpu_blocks_core_register_block_category', 10, 2);
 
 function hpu_blocks_core_register_block_styles()
 {
@@ -106,26 +85,32 @@ function hpu_blocks_core_register_block_styles()
 		HPU_BLOCKS_CORE_VERSION
 	);
 }
+// Register block styles.
+add_action('enqueue_block_assets', 'hpu_blocks_core_register_block_styles');
 
-// Register block scripts.
-add_action('enqueue_block_editor_assets', 'hpu_blocks_core_register_block_scripts');
 
 function hpu_blocks_core_register_block_scripts()
 {
 	$assets = include(HPU_BLOCKS_CORE_PLUGIN_DIR . 'build/index.asset.php');
 
-	//delayed script loading added in 6.3 use strategy key in $args parameter
-	wp_enqueue_script(
-		'hpu-blocks-core-editor-scripts',
-		HPU_BLOCKS_CORE_PLUGIN_URL . 'build/index.js',
-		$assets['dependencies'],
-		HPU_BLOCKS_CORE_VERSION
-	);
+	if (!is_array($assets) || !isset($assets['dependencies'])) {
+		error_log('Failed to load index.asset.php');
+	} else {
+		wp_enqueue_script(
+			'hpu-blocks-core-editor-scripts',
+			HPU_BLOCKS_CORE_PLUGIN_URL . 'build/index.js',
+			$assets['dependencies'],
+			HPU_BLOCKS_CORE_VERSION,
+			// array('strategy' => 'async') // Load the script asynchronously
+			error_log('loading hpu-blocks-core-editor-scripts')
+		);
+	}
 }
-
-// Register init
-add_action('init', 'hpu_blocks_core_register_init');
+// Register block scripts.
+add_action('enqueue_block_editor_assets', 'hpu_blocks_core_register_block_scripts');
 
 function hpu_blocks_core_register_init()
 {
 }
+// Register init
+add_action('init', 'hpu_blocks_core_register_init');

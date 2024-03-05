@@ -3,12 +3,12 @@ import { addFilter } from '@wordpress/hooks';
 import HPUBlocksSeparatorEdit from './edit';
 
 export default function HPUSeparator() {
-    const withCustomEditSeparator = createHigherOrderComponent((BlockEdit) => {
+    const withCustomEditSeparator = createHigherOrderComponent((OriginalBlockEdit) => {
         return (props) => {
             if (props.name === 'core/separator') {
                 return <HPUBlocksSeparatorEdit {...props} />;
             }
-            return <BlockEdit {...props} />;
+            return <OriginalBlockEdit {...props} />;
         };
 
     });

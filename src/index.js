@@ -1,4 +1,7 @@
+import domReady from '@wordpress/dom-ready';
 import './style.scss';
+
+console.log('hello from index.js');
 
 const gostedBlocks = [
     // './archives/index.js',                   //3/4
@@ -58,9 +61,9 @@ const gostedBlocks = [
     './post-author/index.js',
     './post-author-biography/index.js',
     './post-author-name/index.js',
-    './post-comments-count/index.js',
-    './post-comments-form/index.js',
-    './post-comments-link/index.js',
+    './post-comments-count/index.js',           //Probably not needed
+    './post-comments-form/index.js',            //Probably not needed
+    './post-comments-link/index.js',            //Probably not needed
     './post-content/index.js',
     './post-date/index.js',
     './post-excerpt/index.js',
@@ -100,7 +103,7 @@ const gostedBlocks = [
 ];
 
 // Dynamically import block variations
-const importBlockVariations = () => {
+function importBlockVariations() {
     // 'require.context' parameters: directory to search, include subdirectories, file pattern to match
     const context = require.context('./block-variations/', true, /index\.js$/);
 
@@ -122,12 +125,11 @@ const importBlockVariations = () => {
             blockVariation.default();
         };
     });
-};
+}
 
 // Ensure this runs after the WordPress editor is initialized
 // This can be done by using the '@wordpress/dom-ready' package
-import domReady from '@wordpress/dom-ready';
-
 domReady(() => {
+    console.log('domReady: ' + domReady);
     importBlockVariations();
 });

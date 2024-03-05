@@ -5,9 +5,10 @@ import StyleSelector from "../../style-selector";
 
 
 export default class HPUCoverEdit extends Component {
+
     componentDidMount() {
         // Get the cover element
-        const coverElement = document.querySelector('.hpu-blocks-cover .wp-block-cover__inner-container');
+        const coverElement = document.querySelector('.hpu-blocks-cover .wp-block-cover');
 
         // Check if the element exists before calling getBoundingClientRect
         if (coverElement !== null) {
@@ -17,6 +18,8 @@ export default class HPUCoverEdit extends Component {
     }
 
     render() {
+        const { attributes, setAttributes } = this.props;
+
         return (
             <div>
                 <InspectorControls>

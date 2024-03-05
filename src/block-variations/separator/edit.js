@@ -20,6 +20,14 @@ export default class HPUBlocksSeparatorEdit extends Component {
 	documentation on how to implement the component in the editor. */
 
 	render() {
+		const {
+			attributes: {
+				styleClass,
+				style,
+			},
+			setAttributes
+		} = this.props;
+
 		return (
 			<Fragment>
 				<InspectorControls>
@@ -32,7 +40,7 @@ export default class HPUBlocksSeparatorEdit extends Component {
 						<StyleSelector
 							label={__('Separator Style', 'hpu-blocks')}
 							value={this.props.attributes.styleClass}
-							onChange={(styleClass) => this.props.setAttributes({ styleClass })}
+							onChange={(newStyle) => this.props.setAttributes({ styleClass: newStyle })}
 						/>
 					</Panel>
 				</InspectorControls>

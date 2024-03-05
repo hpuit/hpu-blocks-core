@@ -2570,7 +2570,7 @@ __webpack_require__.r(__webpack_exports__);
 class HPUCoverEdit extends _wordpress_element__WEBPACK_IMPORTED_MODULE_2__.Component {
   componentDidMount() {
     // Get the cover element
-    const coverElement = document.querySelector('.hpu-blocks-cover .wp-block-cover__inner-container');
+    const coverElement = document.querySelector('.hpu-blocks-cover .wp-block-cover');
 
     // Check if the element exists before calling getBoundingClientRect
     if (coverElement !== null) {
@@ -2579,6 +2579,10 @@ class HPUCoverEdit extends _wordpress_element__WEBPACK_IMPORTED_MODULE_2__.Compo
     }
   }
   render() {
+    const {
+      attributes,
+      setAttributes
+    } = this.props;
     return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor___WEBPACK_IMPORTED_MODULE_1__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Panel, {
       header: "HPU Blocks Cover Settings",
       className: "hpu-blocks-emphasis-style"
@@ -9369,6 +9373,13 @@ class HPUBlocksSeparatorEdit extends _wordpress_element__WEBPACK_IMPORTED_MODULE
   documentation on how to implement the component in the editor. */
 
   render() {
+    const {
+      attributes: {
+        styleClass,
+        style
+      },
+      setAttributes
+    } = this.props;
     return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.BlockStyles, {
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__.__)('Separator Style', 'hpu-blocks'),
       clientId: this.props.clientId,
@@ -9380,8 +9391,8 @@ class HPUBlocksSeparatorEdit extends _wordpress_element__WEBPACK_IMPORTED_MODULE
     }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_style_selector__WEBPACK_IMPORTED_MODULE_1__["default"], {
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__.__)('Separator Style', 'hpu-blocks'),
       value: this.props.attributes.styleClass,
-      onChange: styleClass => this.props.setAttributes({
-        styleClass
+      onChange: newStyle => this.props.setAttributes({
+        styleClass: newStyle
       })
     }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.HorizontalRule, {
       className: [this.props.attributes.styleClass, this.props.attributes.styles].join(' ')
@@ -9414,14 +9425,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function HPUSeparator() {
-  const withCustomEditSeparator = (0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_1__.createHigherOrderComponent)(BlockEdit => {
+  const withCustomEditSeparator = (0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_1__.createHigherOrderComponent)(OriginalBlockEdit => {
     return props => {
       if (props.name === 'core/separator') {
         return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_edit__WEBPACK_IMPORTED_MODULE_3__["default"], {
           ...props
         });
       }
-      return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(BlockEdit, {
+      return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(OriginalBlockEdit, {
         ...props
       });
     };
@@ -12356,10 +12367,12 @@ function HPUVideo() {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.scss */ "./src/style.scss");
-/* harmony import */ var _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/dom-ready */ "@wordpress/dom-ready");
-/* harmony import */ var _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/dom-ready */ "@wordpress/dom-ready");
+/* harmony import */ var _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style.scss */ "./src/style.scss");
 
+
+console.log('hello from index.js');
 const gostedBlocks = [
 // './archives/index.js',                   //3/4
 './audio/index.js', './avatar/index.js',
@@ -12426,7 +12439,13 @@ const gostedBlocks = [
 //3/18
 './more/index.js', './navigation-link/index.js', './navigation-submenu/index.js', './navigation/index.js', './nextpage/index.js', './page-list/index.js', './page-list-item/index.js',
 // './paragraph/index.js',
-'./pattern/index.js', './post-author/index.js', './post-author-biography/index.js', './post-author-name/index.js', './post-comments-count/index.js', './post-comments-form/index.js', './post-comments-link/index.js', './post-content/index.js', './post-date/index.js', './post-excerpt/index.js', './post-featured-image/index.js', './post-navigation-link/index.js', './post-tag/index.js', './post-terms/index.js', './post-title/index.js', './post-time-to-read/index.js', './preformatted/index.js', './pullquote/index.js', './query/index.js', './query-no-results/index.js', './query-pagination/index.js', './query-pagination-next/index.js', './query-pagination-numbers/index.js', './query-pagination-previous/index.js', './query-title/index.js', './quote/index.js', './read-more/index.js', './rss/index.js', './search/index.js',
+'./pattern/index.js', './post-author/index.js', './post-author-biography/index.js', './post-author-name/index.js', './post-comments-count/index.js',
+//Probably not needed
+'./post-comments-form/index.js',
+//Probably not needed
+'./post-comments-link/index.js',
+//Probably not needed
+'./post-content/index.js', './post-date/index.js', './post-excerpt/index.js', './post-featured-image/index.js', './post-navigation-link/index.js', './post-tag/index.js', './post-terms/index.js', './post-title/index.js', './post-time-to-read/index.js', './preformatted/index.js', './pullquote/index.js', './query/index.js', './query-no-results/index.js', './query-pagination/index.js', './query-pagination-next/index.js', './query-pagination-numbers/index.js', './query-pagination-previous/index.js', './query-title/index.js', './quote/index.js', './read-more/index.js', './rss/index.js', './search/index.js',
 // './separator/index.js',
 './shortcode/index.js', './site-logo/index.js', './site-tagline/index.js', './site-title/index.js', './social-links/index.js', './spacer/index.js', './table/index.js', './table-of-contents/index.js',
 //Probably not needed
@@ -12440,7 +12459,7 @@ const gostedBlocks = [
 ];
 
 // Dynamically import block variations
-const importBlockVariations = () => {
+function importBlockVariations() {
   // 'require.context' parameters: directory to search, include subdirectories, file pattern to match
   const context = __webpack_require__("./src/block-variations sync recursive index\\.js$");
 
@@ -12461,12 +12480,12 @@ const importBlockVariations = () => {
     }
     ;
   });
-};
+}
 
 // Ensure this runs after the WordPress editor is initialized
 // This can be done by using the '@wordpress/dom-ready' package
-
-_wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_1___default()(() => {
+_wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_0___default()(() => {
+  console.log('domReady: ' + (_wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_0___default()));
   importBlockVariations();
 });
 

@@ -75,7 +75,7 @@ function hpu_blocks_core_register_block_category($categories)
 }
 
 // Register block scripts.
-add_action('enqueue_block_assets', 'hpu_blocks_core_register_block_scripts');
+add_action('admin_enqueue_scripts', 'hpu_blocks_core_register_block_scripts');
 function hpu_blocks_core_register_block_scripts()
 {
 	$assets = include(HPU_BLOCKS_CORE_PLUGIN_DIR . 'build/index.asset.php');
@@ -83,7 +83,6 @@ function hpu_blocks_core_register_block_scripts()
 	wp_enqueue_style(
 		'hpu-blocks-core-editor-styles',
 		HPU_BLOCKS_CORE_PLUGIN_URL . 'build/style-index.css',
-		$assets['dependencies'],
 		HPU_BLOCKS_CORE_VERSION,
 		// error_log('Loaded hpu-blocks-core-editor-styles')
 	);

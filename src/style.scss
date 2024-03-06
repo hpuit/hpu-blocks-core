@@ -1,6 +1,11 @@
+.wp-block-hpu-blocks {
+  clear: both;
+}
+
+
+
 //By importing this stylesheet into the other stylesheets, we can use the variables declared here in all the stylesheets.
 //This is a good practice to keep the variables in one place and use them in all the stylesheets.
-
 //Declaration of variables
 $primary-color: #330072;
 $secondary-color: #9678d3;
@@ -10,7 +15,8 @@ $emphasis-color: #41b6e6;
 $dark-color: #231f20;
 $light-color: #ffffff;
 
-$font-family: "bitter", sans-serif;
+$font-family: "bitter",
+sans-serif;
 $font-size-small: 12px;
 $font-size-medium: 16px;
 $font-size-large: 20px;
@@ -23,37 +29,37 @@ $breakpoint-xlarge: 1200px;
 
 //body text century gothic
 
-hpu-blocks-primary-style {
-  p{
+.hpu-blocks-primary-style {
+  p {
     color: $primary-color;
     font-family: $font-family;
   }
 }
 
-hpu-blocks-secondary-style {
+.hpu-blocks-secondary-style {
   color: $secondary-color;
 }
 
-hpu-blocks-muted-style {
+.hpu-blocks-muted-style {
   color: $muted-color;
 }
 
-hpu-blocks-emphasis-style {
+.hpu-blocks-emphasis-style {
   color: $alert-color;
 }
 
-align-left {
+.align-left {
   text-align: left;
 }
 
-align-center {
+.align-center {
   text-align: center;
 }
 
-align-right {
+.align-right {
   text-align: right;
 }
 
-align-justify {
+.align-justify {
   text-align: justify;
 }

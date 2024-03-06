@@ -761,7 +761,7 @@ __webpack_require__.r(__webpack_exports__);
 class HPUBlockArchivesEdit extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Component {
   componentDidMount() {
     // Get the archives element
-    const archivesElement = document.querySelector('.hpu-blocks-archives .wp-block-archives__wrapper');
+    const archivesElement = window.document.querySelector('.hpu-blocks-archives .wp-block-archives__wrapper');
 
     // Check if the element exists before calling getBoundingClientRect
     if (archivesElement !== null) {
@@ -771,7 +771,6 @@ class HPUBlockArchivesEdit extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1
   }
   render() {
     const {
-      block,
       attributes,
       setAttributes
     } = this.props;
@@ -810,28 +809,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_compose__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/compose */ "@wordpress/compose");
 /* harmony import */ var _wordpress_compose__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_compose__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./edit */ "./src/block-variations/archives/edit.js");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! lodash */ "lodash");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_4__);
-
 
 
 
 
 function hpuArchives() {
   // A higher-order component for modifying the edit function of the core/archives block
-  const withCustomEditArchive = (0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_2__.createHigherOrderComponent)(BlockEdit => {
+  const withCustomEditArchive = (0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_2__.createHigherOrderComponent)(OriginalBlockEdit => {
     return props => {
       // Check if the current block is the one we want to modify
       if (props.name === 'core/archives') {
         // You can now use your custom edit function or wrap the existing one
         return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_edit__WEBPACK_IMPORTED_MODULE_3__["default"], {
-          ...props,
-          block: props
+          ...props
         });
       }
 
       // For all other blocks, return the default edit component
-      return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(BlockEdit, {
+      return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(OriginalBlockEdit, {
         ...props
       });
     };
@@ -849,13 +844,6 @@ function hpuArchives() {
           default: '#ffffff'
         }
       };
-      console.log(settings);
-      return lodash__WEBPACK_IMPORTED_MODULE_4___default().assign({}, settings, {
-        edit: props => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_edit__WEBPACK_IMPORTED_MODULE_3__["default"], {
-          ...props,
-          block: settings
-        })
-      });
     }
     return settings;
   });
@@ -2555,8 +2543,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_block_editor___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/block-editor/ */ "@wordpress/block-editor/");
-/* harmony import */ var _wordpress_block_editor___WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor___WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
@@ -2570,7 +2558,7 @@ __webpack_require__.r(__webpack_exports__);
 class HPUCoverEdit extends _wordpress_element__WEBPACK_IMPORTED_MODULE_2__.Component {
   componentDidMount() {
     // Get the cover element
-    const coverElement = document.querySelector('.hpu-blocks-cover .wp-block-cover');
+    const coverElement = window.document.querySelector('.hpu-blocks-cover .wp-block-cover');
 
     // Check if the element exists before calling getBoundingClientRect
     if (coverElement !== null) {
@@ -2583,7 +2571,7 @@ class HPUCoverEdit extends _wordpress_element__WEBPACK_IMPORTED_MODULE_2__.Compo
       attributes,
       setAttributes
     } = this.props;
-    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor___WEBPACK_IMPORTED_MODULE_1__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Panel, {
+    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Panel, {
       header: "HPU Blocks Cover Settings",
       className: "hpu-blocks-emphasis-style"
     }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_style_selector__WEBPACK_IMPORTED_MODULE_4__["default"], {
@@ -2624,8 +2612,7 @@ function HPUCover() {
     return props => {
       if (props.name === 'core/cover') {
         return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_edit__WEBPACK_IMPORTED_MODULE_3__["default"], {
-          ...props,
-          block: props
+          ...props
         });
       }
       return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(OriginalBlockEdit, {
@@ -12372,9 +12359,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style.scss */ "./src/style.scss");
 
 
-console.log('hello from index.js');
-const gostedBlocks = [
-// './archives/index.js',                   //3/4
+const gostedBlocks = ['./archives/index.js',
+//3/4
 './audio/index.js', './avatar/index.js',
 //Probably not needed
 './block/index.js',
@@ -12413,7 +12399,8 @@ const gostedBlocks = [
 //Probably not needed
 './comments-title/index.js',
 //Probably not needed
-// './cover/index.js',                      //3/4
+'./cover/index.js',
+//3/4
 './details/index.js', './embeds/index.js', './file/index.js', './footnotes/index.js',
 //Probably not needed
 './form/index.js', './form-input/index.js', './form-submission-notification/index.js', './form-submit-button/index.js', './freeform/index.js',
@@ -12462,6 +12449,7 @@ const gostedBlocks = [
 function importBlockVariations() {
   // 'require.context' parameters: directory to search, include subdirectories, file pattern to match
   const context = __webpack_require__("./src/block-variations sync recursive index\\.js$");
+  console.log(context);
 
   // Loop through each matched file
   context.keys().forEach(key => {
@@ -12485,7 +12473,7 @@ function importBlockVariations() {
 // Ensure this runs after the WordPress editor is initialized
 // This can be done by using the '@wordpress/dom-ready' package
 _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_0___default()(() => {
-  console.log('domReady: ' + (_wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_0___default()));
+  console.log('domReady: ');
   importBlockVariations();
 });
 
@@ -12695,17 +12683,6 @@ module.exports = window["React"];
 
 /***/ }),
 
-/***/ "lodash":
-/*!*************************!*\
-  !*** external "lodash" ***!
-  \*************************/
-/***/ ((module) => {
-
-"use strict";
-module.exports = window["lodash"];
-
-/***/ }),
-
 /***/ "@wordpress/blob":
 /*!******************************!*\
   !*** external ["wp","blob"] ***!
@@ -12725,17 +12702,6 @@ module.exports = window["wp"]["blob"];
 
 "use strict";
 module.exports = window["wp"]["blockEditor"];
-
-/***/ }),
-
-/***/ "@wordpress/block-editor/":
-/*!**************************************!*\
-  !*** external ["wp","blockEditor/"] ***!
-  \**************************************/
-/***/ ((module) => {
-
-"use strict";
-module.exports = window["wp"]["blockEditor/"];
 
 /***/ }),
 

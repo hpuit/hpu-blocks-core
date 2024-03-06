@@ -8,7 +8,7 @@ import { __experimentalSanitizeBlockAttributes } from '@wordpress/blocks';
 export default class HPUBlockArchivesEdit extends Component {
     componentDidMount() {
         // Get the archives element
-        const archivesElement = document.querySelector('.hpu-blocks-archives .wp-block-archives__wrapper');
+        const archivesElement = window.document.querySelector('.hpu-blocks-archives .wp-block-archives__wrapper');
 
         // Check if the element exists before calling getBoundingClientRect
         if (archivesElement !== null) {
@@ -18,7 +18,7 @@ export default class HPUBlockArchivesEdit extends Component {
     }
 
     render() {
-        const { block, attributes, setAttributes } = this.props;
+        const { attributes, setAttributes } = this.props;
         console.log(attributes)
 
 

@@ -1,10 +1,9 @@
 import domReady from '@wordpress/dom-ready';
 import './style.scss';
 
-console.log('hello from index.js');
 
 const gostedBlocks = [
-    // './archives/index.js',                   //3/4
+    './archives/index.js',                   //3/4
     './audio/index.js',
     './avatar/index.js',                        //Probably not needed
     './block/index.js',                         //3/4
@@ -27,7 +26,7 @@ const gostedBlocks = [
     './comments-pagination-numbers/index.js',   //Probably not needed
     './comments-pagination-previous/index.js',  //Probably not needed
     './comments-title/index.js',                //Probably not needed
-    // './cover/index.js',                      //3/4
+    './cover/index.js',                      //3/4
     './details/index.js',
     './embeds/index.js',
     './file/index.js',
@@ -106,6 +105,7 @@ const gostedBlocks = [
 function importBlockVariations() {
     // 'require.context' parameters: directory to search, include subdirectories, file pattern to match
     const context = require.context('./block-variations/', true, /index\.js$/);
+    console.log(context);
 
     // Loop through each matched file
     context.keys().forEach((key) => {
@@ -130,6 +130,6 @@ function importBlockVariations() {
 // Ensure this runs after the WordPress editor is initialized
 // This can be done by using the '@wordpress/dom-ready' package
 domReady(() => {
-    console.log('domReady: ' + domReady);
+    console.log('domReady: ');
     importBlockVariations();
 });

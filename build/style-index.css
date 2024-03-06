@@ -1,36 +1,40 @@
 /*!***************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/style.scss ***!
   \***************************************************************************************************************************************************************************************************************************************/
-hpu-blocks-primary-style p {
+.wp-block-hpu-blocks {
+  clear: both;
+}
+
+.hpu-blocks-primary-style p {
   color: #330072;
   font-family: "bitter", sans-serif;
 }
 
-hpu-blocks-secondary-style {
+.hpu-blocks-secondary-style {
   color: #9678d3;
 }
 
-hpu-blocks-muted-style {
+.hpu-blocks-muted-style {
   color: #818183;
 }
 
-hpu-blocks-emphasis-style {
+.hpu-blocks-emphasis-style {
   color: #e87d0d;
 }
 
-align-left {
+.align-left {
   text-align: left;
 }
 
-align-center {
+.align-center {
   text-align: center;
 }
 
-align-right {
+.align-right {
   text-align: right;
 }
 
-align-justify {
+.align-justify {
   text-align: justify;
 }
 

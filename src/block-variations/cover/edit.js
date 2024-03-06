@@ -1,4 +1,4 @@
-import { InspectorControls } from "@wordpress/block-editor/";
+import { InspectorControls } from "@wordpress/block-editor";
 import { Component } from "@wordpress/element";
 import { Panel } from "@wordpress/components";
 import StyleSelector from "../../style-selector";
@@ -8,7 +8,7 @@ export default class HPUCoverEdit extends Component {
 
     componentDidMount() {
         // Get the cover element
-        const coverElement = document.querySelector('.hpu-blocks-cover .wp-block-cover');
+        const coverElement = window.document.querySelector('.hpu-blocks-cover .wp-block-cover');
 
         // Check if the element exists before calling getBoundingClientRect
         if (coverElement !== null) {

@@ -6,7 +6,7 @@ export default function HPUCover() {
     const withCustomEditCover = createHigherOrderComponent((OriginalBlockEdit) => {
         return (props) => {
             if (props.name === 'core/cover') {
-                return <HPUCoverEdit {...props} block={props} />;
+                return <HPUCoverEdit {...props} />;
             }
             return <OriginalBlockEdit {...props} />;
         };

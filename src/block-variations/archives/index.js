@@ -1,21 +1,20 @@
 import { addFilter } from '@wordpress/hooks';
 import { createHigherOrderComponent } from '@wordpress/compose';
 import HPUBlockArchivesEdit from './edit';
-import lodash from 'lodash';
 
 export default function hpuArchives() {
 
     // A higher-order component for modifying the edit function of the core/archives block
-    const withCustomEditArchive = createHigherOrderComponent((BlockEdit) => {
+    const withCustomEditArchive = createHigherOrderComponent((OriginalBlockEdit) => {
         return (props) => {
             // Check if the current block is the one we want to modify
             if (props.name === 'core/archives') {
                 // You can now use your custom edit function or wrap the existing one
-                return <HPUBlockArchivesEdit {...props} block={props} />;
+                return <HPUBlockArchivesEdit {...props} />;
             }
-    
+
             // For all other blocks, return the default edit component
-            return <BlockEdit {...props} />;
+            return <OriginalBlockEdit {...props} />;
         };
     }, 'withCustomEditArchive');
 
@@ -35,17 +34,12 @@ export default function hpuArchives() {
                         default: '#ffffff',
                     },
                 };
-
-                console.log(settings);
-                return lodash.assign({}, settings, {
-                    edit: (props) => <HPUBlockArchivesEdit {...props} block={settings} />,
-                });
             }
 
             return settings;
         }
     );
-    
+
     // Adding the filter
     addFilter(
         'editor.BlockEdit',

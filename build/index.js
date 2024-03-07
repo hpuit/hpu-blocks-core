@@ -784,6 +784,7 @@ class HPUBlockArchivesEdit extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1
         styleClass: newValue
       })
     }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)((_wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_5___default()), {
+      className: attributes.styleClass,
       block: "core/archives"
     }));
   }
@@ -2579,7 +2580,17 @@ class HPUCoverEdit extends _wordpress_element__WEBPACK_IMPORTED_MODULE_2__.Compo
       onChange: newValue => setAttributes({
         styleClass: newValue
       })
-    }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "HPUCoverEdit"));
+    }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaUploadCheck, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaUpload, {
+      onSelect: media => setAttributes({
+        mediaURL: media.url
+      }),
+      type: "image",
+      render: ({
+        open
+      }) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+        onClick: open
+      }, "Open Media Library")
+    })));
   }
 }
 
@@ -12359,8 +12370,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style.scss */ "./src/style.scss");
 
 
-const gostedBlocks = ['./archives/index.js',
-//3/4
+const gostedBlocks = [
+// './archives/index.js',                   //3/4
 './audio/index.js', './avatar/index.js',
 //Probably not needed
 './block/index.js',
@@ -12399,8 +12410,7 @@ const gostedBlocks = ['./archives/index.js',
 //Probably not needed
 './comments-title/index.js',
 //Probably not needed
-'./cover/index.js',
-//3/4
+// './cover/index.js',                      //3/4
 './details/index.js', './embeds/index.js', './file/index.js', './footnotes/index.js',
 //Probably not needed
 './form/index.js', './form-input/index.js', './form-submission-notification/index.js', './form-submit-button/index.js', './freeform/index.js',

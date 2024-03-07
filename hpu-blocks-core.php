@@ -74,18 +74,23 @@ function hpu_blocks_core_register_block_category($categories)
 	}
 }
 
+// Register block styles.
+add_action('enqueue_block_assets', 'enqueue_hpu_blocks_core_editor_styles');
+function enqueue_hpu_blocks_core_editor_styles()
+{
+	wp_enqueue_style(
+		'hpu-blocks-core-editor-styles',
+		HPU_BLOCKS_CORE_PLUGIN_URL . 'build/style-index.css',
+		HPU_BLOCKS_CORE_VERSION
+	);
+}
+
 // Register block scripts.
 add_action('admin_enqueue_scripts', 'hpu_blocks_core_register_block_scripts');
 function hpu_blocks_core_register_block_scripts()
 {
 	$assets = include(HPU_BLOCKS_CORE_PLUGIN_DIR . 'build/index.asset.php');
 
-	wp_enqueue_style(
-		'hpu-blocks-core-editor-styles',
-		HPU_BLOCKS_CORE_PLUGIN_URL . 'build/style-index.css',
-		HPU_BLOCKS_CORE_VERSION,
-		// error_log('Loaded hpu-blocks-core-editor-styles')
-	);
 
 	if (!is_array($assets) || !isset($assets['dependencies'])) {
 		error_log('Failed to load index.asset.php');

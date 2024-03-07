@@ -3,7 +3,7 @@ import './style.scss';
 
 
 const gostedBlocks = [
-    './archives/index.js',                   //3/4
+    // './archives/index.js',                   //3/4
     './audio/index.js',
     './avatar/index.js',                        //Probably not needed
     './block/index.js',                         //3/4
@@ -26,7 +26,7 @@ const gostedBlocks = [
     './comments-pagination-numbers/index.js',   //Probably not needed
     './comments-pagination-previous/index.js',  //Probably not needed
     './comments-title/index.js',                //Probably not needed
-    './cover/index.js',                      //3/4
+    // './cover/index.js',                      //3/4
     './details/index.js',
     './embeds/index.js',
     './file/index.js',

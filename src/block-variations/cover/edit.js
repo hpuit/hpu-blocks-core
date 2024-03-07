@@ -1,4 +1,4 @@
-import { InspectorControls } from "@wordpress/block-editor";
+import { InspectorControls, MediaUpload, MediaUploadCheck } from "@wordpress/block-editor";
 import { Component } from "@wordpress/element";
 import { Panel } from "@wordpress/components";
 import StyleSelector from "../../style-selector";
@@ -30,7 +30,15 @@ export default class HPUCoverEdit extends Component {
                         />
                     </Panel>
                 </InspectorControls>
-                <p>HPUCoverEdit</p>
+                <MediaUploadCheck>
+                    <MediaUpload
+                        onSelect={(media) => setAttributes({ mediaURL: media.url })}
+                        type="image"
+                        render={({ open }) => (
+                            <button onClick={open}>Open Media Library</button>
+                        )}
+                    />
+                </MediaUploadCheck>
             </div>
         );
     }

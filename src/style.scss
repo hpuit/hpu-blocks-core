@@ -1,8 +1,7 @@
+// Without a .wp-block- prefix somewhere in this file, the styles will not be applied to the block editor.
 .wp-block-hpu-blocks {
   clear: both;
 }
-
-
 
 //By importing this stylesheet into the other stylesheets, we can use the variables declared here in all the stylesheets.
 //This is a good practice to keep the variables in one place and use them in all the stylesheets.
@@ -27,25 +26,35 @@ $breakpoint-medium: 768px;
 $breakpoint-large: 1024px;
 $breakpoint-xlarge: 1200px;
 
-//body text century gothic
-
-.hpu-blocks-primary-style {
-  p {
-    color: $primary-color;
-    font-family: $font-family;
-  }
+body {
+  font-family: $font-family;
 }
 
-.hpu-blocks-secondary-style {
-  color: $secondary-color;
+p.hpu-blocks-primary-style {
+  color: $dark-color;
 }
 
-.hpu-blocks-muted-style {
+p.hpu-blocks-secondary-style {
+  color: $primary-color;
+  background-color: $muted-color;
+  padding-left: 5px;
+}
+
+p.hpu-blocks-muted-style {
   color: $muted-color;
+  font-style: italic;
+  font-size: $font-size-small;
 }
 
-.hpu-blocks-emphasis-style {
-  color: $alert-color;
+p.hpu-blocks-emphasis-style {
+  color: $dark-color;
+  background-color: $muted-color;
+  font-weight: bold;
+  font-size: $font-size-large;
+  border-color: $alert-color;
+  border-width: 2px;
+  border-radius: 5px;
+  padding-left: 5px;
 }
 
 .align-left {
@@ -62,4 +71,21 @@ $breakpoint-xlarge: 1200px;
 
 .align-justify {
   text-align: justify;
+}
+
+.hpu-blocks-primary-style {
+  ul.wp-block-archives {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+
+    a {
+      color: $primary-color;
+      text-decoration: none;
+
+      :hover {
+        color: $emphasis-color;
+      }
+    }
+  }
 }

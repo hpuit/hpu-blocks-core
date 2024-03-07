@@ -32,6 +32,7 @@ export default class HPUBlockArchivesEdit extends Component {
                 </Panel>
             </InspectorControls>
             <ServerSideRender
+                className={attributes.styleClass}
                 block="core/archives"
             />
         </div>;

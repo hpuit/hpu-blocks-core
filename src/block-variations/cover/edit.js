@@ -1,4 +1,4 @@
-import { InspectorControls, MediaUpload, MediaUploadCheck } from "@wordpress/block-editor";
+import { InspectorControls, MediaUpload, MediaUploadCheck, InnerBlocks } from "@wordpress/block-editor";
 import { Component } from "@wordpress/element";
 import { Panel } from "@wordpress/components";
 import StyleSelector from "../../style-selector";
@@ -32,13 +32,22 @@ export default class HPUCoverEdit extends Component {
                 </InspectorControls>
                 <MediaUploadCheck>
                     <MediaUpload
-                        onSelect={(media) => setAttributes({ mediaURL: media.url })}
+                        onSelect={(media) => setAttributes({ url: media })}
                         type="image"
                         render={({ open }) => (
                             <button onClick={open}>Open Media Library</button>
                         )}
                     />
                 </MediaUploadCheck>
+                <div className={[attributes.styleClass, 'hpu-block-cover']} style={{ backgroundImage: `url(${attributes.url})` }}>
+                    <InnerBlocks
+                        allowedBlocks={['core/paragraph', 'core/heading']}
+                        template={[
+                            ['core/heading', { placeholder: 'Your title here' }],
+                            ['core/paragraph', { placeholder: 'Your text here' }],
+                        ]}
+                    />
+                </div>
             </div>
         );
     }

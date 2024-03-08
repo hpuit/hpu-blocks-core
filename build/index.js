@@ -2582,7 +2582,7 @@ class HPUCoverEdit extends _wordpress_element__WEBPACK_IMPORTED_MODULE_2__.Compo
       })
     }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaUploadCheck, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaUpload, {
       onSelect: media => setAttributes({
-        mediaURL: media.url
+        url: media
       }),
       type: "image",
       render: ({
@@ -2590,6 +2590,18 @@ class HPUCoverEdit extends _wordpress_element__WEBPACK_IMPORTED_MODULE_2__.Compo
       }) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
         onClick: open
       }, "Open Media Library")
+    })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: [attributes.styleClass, 'hpu-block-cover'],
+      style: {
+        backgroundImage: `url(${attributes.url})`
+      }
+    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InnerBlocks, {
+      allowedBlocks: ['core/paragraph', 'core/heading'],
+      template: [['core/heading', {
+        placeholder: 'Your title here'
+      }], ['core/paragraph', {
+        placeholder: 'Your text here'
+      }]]
     })));
   }
 }

@@ -1,21 +1,46 @@
-import {createHigherOrderComponent} from '@wordpress/compose';
-import {addFilter} from '@wordpress/hooks';
-import {default as editListItem} from './edit';
+import { addFilter } from "@wordpress/hooks";
+import StyleSelector from "../../style-selector";
 
-export default function HPULI() {
-    const withCustomEditListItem = createHigherOrderComponent((BlockEdit) => {
-        return (props) => {
-            if (props.name === 'core/list-item') {
-                return editListItem(props);
+export default function HPUListItem() {
+
+    addFilter(
+        'blocks.registerBlockType',
+        'hpu-blocks/HPU-list-item',
+        (settings, name) => {
+            if (name === 'core/list-item') {
+
+                return {
+                    ...settings,
+                    attributes: {
+                        ...settings.attributes,
+                        styleClass: {
+                            type: 'string',
+                            default: 'hpu-blocks-primary-style',
+                        },
+                    },
+                };
             }
-            return <BlockEdit {...props} />;
-        };
-
-    });
+            return settings;
+        }
+    );
 
     addFilter(
         'editor.BlockEdit',
         'hpu-blocks/HPU-list-item',
-        withCustomEditListItem
+        (BlockEdit) => (props) => {
+            if (props.name === 'core/list-item') {
+                return (
+                    <div>
+                        <StyleSelector
+                            value={props.attributes.styleClass}
+                            onChange={(styleClass) => props.setAttributes({ styleClass })}
+                        />
+                        <BlockEdit {...props} />
+                    </div>
+                );
+            }
+            return <BlockEdit {...props} />;
+        },
     );
+
 }

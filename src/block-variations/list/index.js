@@ -1,21 +1,51 @@
-import { createHigherOrderComponent } from '@wordpress/compose';
-import { addFilter } from '@wordpress/hooks';
-import { default as editList } from './edit';
+import { addFilter } from "@wordpress/hooks";
+import StyleSelector from "../../style-selector";
 
-export default function HPUBlockVariationsList() {
-    const withCustomEditList = createHigherOrderComponent((BlockEdit) => {
-        return (props) => {
-            if (props.name === 'core/list') {
-                return editList(props);
+export default function HPUList() {
+
+
+    //where the bullet points at? on top, move em to the side bar
+    //remove colors option
+    //reduce typography options to S, M, L
+    //additional unorderd list options '>'
+    addFilter(
+        'blocks.registerBlockType',
+        'hpu-blocks/HPU-list',
+        (settings, name) => {
+            if (name === 'core/list') {
+
+                return {
+                    ...settings,
+                    attributes: {
+                        ...settings.attributes,
+                        styleClass: {
+                            type: 'string',
+                            default: 'hpu-blocks-primary-style',
+                        },
+                    },
+                };
             }
-            return <BlockEdit {...props} />;
-        };
-
-    });
+            return settings;
+        }
+    );
 
     addFilter(
         'editor.BlockEdit',
         'hpu-blocks/HPU-list',
-        withCustomEditList
+        (BlockEdit) => (props) => {
+            if (props.name === 'core/list') {
+                return (
+                    <div>
+                        <StyleSelector
+                            value={props.attributes.styleClass}
+                            onChange={(styleClass) => props.setAttributes({ styleClass })}
+                        />
+                        <BlockEdit {...props} />
+                    </div>
+                );
+            }
+            return <BlockEdit {...props} />;
+        },
     );
+
 }

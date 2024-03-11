@@ -1,21 +1,46 @@
-import { createHigherOrderComponent } from '@wordpress/compose';
-import { addFilter } from '@wordpress/hooks';
-import { default as HPUEditColumns } from './edit';
+import { addFilter } from "@wordpress/hooks";
+import StyleSelector from "../../style-selector";
 
 export default function HPUColumns() {
-    const withCustomEditColumns = createHigherOrderComponent((BlockEdit) => {
-        return (props) => {
-            if (props.name === 'core/columns') {
-                return HPUEditColumns(props);
-            }
-            return <BlockEdit {...props} />;
-        };
 
-    });
+    addFilter(
+        'blocks.registerBlockType',
+        'hpu-blocks/HPU-columns',
+        (settings, name) => {
+            if (name === 'core/columns') {
+
+                return {
+                    ...settings,
+                    attributes: {
+                        ...settings.attributes,
+                        styleClass: {
+                            type: 'string',
+                            default: 'hpu-blocks-primary-style',
+                        },
+                    },
+                };
+            }
+            return settings;
+        }
+    );
 
     addFilter(
         'editor.BlockEdit',
         'hpu-blocks/HPU-columns',
-        withCustomEditColumns
+        (BlockEdit) => (props) => {
+            if (props.name === 'core/columns') {
+                return (
+                    <div>
+                        <StyleSelector
+                            value={props.attributes.styleClass}
+                            onChange={(styleClass) => props.setAttributes({ styleClass })}
+                        />
+                        <BlockEdit {...props} />
+                    </div>
+                );
+            }
+            return <BlockEdit {...props} />;
+        },
     );
+
 }

@@ -1,35 +1,46 @@
-import { createHigherOrderComponent } from '@wordpress/compose';
-import { addFilter } from '@wordpress/hooks';
-import HPUBlocksAudioEdit from './edit';
+import { addFilter } from "@wordpress/hooks";
+import StyleSelector from "../../style-selector";
 
 export default function HPUAudio() {
-    const withCustomEditAudio = createHigherOrderComponent((BlockEdit) => {
-        return (props) => {
-            if (props.name === 'core/audio') {
-                return <HPUBlocksAudioEdit {...props} />;
+
+    addFilter(
+        'blocks.registerBlockType',
+        'hpu-blocks/HPU-audio',
+        (settings, name) => {
+            if (name === 'core/audio') {
+
+                return {
+                    ...settings,
+                    attributes: {
+                        ...settings.attributes,
+                        styleClass: {
+                            type: 'string',
+                            default: 'hpu-blocks-primary-style',
+                        },
+                    },
+                };
             }
-            return <BlockEdit {...props} />;
-        };
-
-    });
-
-    addFilter('blocks.registerBlockType', 'hpu-blocks/audio', (settings, name) => {
-        if (name === 'core/audio') {
-            settings.attributes = {
-                ...settings.attributes,
-                styleClass: {
-                    type: 'string',
-                    default: 'hpu-blocks-primary-style',
-                },
-            };
+            return settings;
         }
-
-        return settings;
-    });
+    );
 
     addFilter(
         'editor.BlockEdit',
         'hpu-blocks/HPU-audio',
-        withCustomEditAudio
+        (BlockEdit) => (props) => {
+            if (props.name === 'core/audio') {
+                return (
+                    <div>
+                        <StyleSelector 
+                            value={props.attributes.styleClass}
+                            onChange={(styleClass) => props.setAttributes({ styleClass })}
+                        />
+                        <BlockEdit {...props} />
+                    </div>
+                );
+            }
+            return <BlockEdit {...props} />;
+        },
     );
+
 }

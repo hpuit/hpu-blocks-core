@@ -1,3 +1,4 @@
+import { InspectorControls } from '@wordpress/block-editor';
 import { Button, ButtonGroup, PanelBody } from '@wordpress/components';
 import { Component } from '@wordpress/element';
 
@@ -18,20 +19,22 @@ class StyleSelector extends Component {
         };
 
         return (
-            <PanelBody title="Select Style" initialOpen={true}>
-                <ButtonGroup>
-                    {Object.entries(styles).map(([key, styleClass]) => (
-                        <Button
-                            isSecondary
-                            key={key}
-                            className={value === styleClass ? 'is-active' : ''}
-                            onClick={() => applyStyle(styleClass)}
-                        >
-                            {key.charAt(0).toUpperCase() + key.slice(1)}
-                        </Button>
-                    ))}
-                </ButtonGroup>
-            </PanelBody>
+            <InspectorControls>
+                <PanelBody title="Select Style" initialOpen={true}>
+                    <ButtonGroup>
+                        {Object.entries(styles).map(([key, styleClass]) => (
+                            <Button
+                                isSecondary
+                                key={key}
+                                className={value === styleClass ? 'is-active' : ''}
+                                onClick={() => applyStyle(styleClass)}
+                            >
+                                {key.charAt(0).toUpperCase() + key.slice(1)}
+                            </Button>
+                        ))}
+                    </ButtonGroup>
+                </PanelBody>
+            </InspectorControls>
         );
     }
 }

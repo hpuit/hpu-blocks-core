@@ -1,21 +1,46 @@
-import { createHigherOrderComponent } from '@wordpress/compose';
-import { addFilter } from '@wordpress/hooks';
-import { default as editButton } from './edit';
+import { addFilter } from "@wordpress/hooks";
+import StyleSelector from "../../style-selector";
 
 export default function HPUButton() {
-    const withCustomEditButton = createHigherOrderComponent((BlockEdit) => {
-        return (props) => {
-            if (props.name === 'core/button') {
-                return editButton(props);
-            }
-            return <BlockEdit {...props} />;
-        };
 
-    });
+    addFilter(
+        'blocks.registerBlockType',
+        'hpu-blocks/HPU-button',
+        (settings, name) => {
+            if (name === 'core/button') {
+
+                return {
+                    ...settings,
+                    attributes: {
+                        ...settings.attributes,
+                        styleClass: {
+                            type: 'string',
+                            default: 'hpu-blocks-primary-style',
+                        },
+                    },
+                };
+            }
+            return settings;
+        }
+    );
 
     addFilter(
         'editor.BlockEdit',
         'hpu-blocks/HPU-button',
-        withCustomEditButton
+        (BlockEdit) => (props) => {
+            if (props.name === 'core/button') {
+                return (
+                    <div>
+                        <StyleSelector
+                            value={props.attributes.styleClass}
+                            onChange={(styleClass) => props.setAttributes({ styleClass })}
+                        />
+                        <BlockEdit {...props} />
+                    </div>
+                );
+            }
+            return <BlockEdit {...props} />;
+        },
     );
+
 }

@@ -88,4 +88,196 @@ p.hpu-blocks-emphasis-style {
       }
     }
   }
+
+  div.wp-block-button {
+
+    color: $light-color;
+    background-color: $primary-color;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: $font-size-medium;
+
+    :hover {
+      background-color: $emphasis-color;
+
+    }
+
+    .wp-block-button__link {
+      color: $light-color;
+      text-decoration: none;
+      background-color: $primary-color;
+    }
+
+  }
+
+  h2 {
+    color: $primary-color;
+    text-transform: uppercase;
+
+  }
+
+  li{
+    color: $dark-color;
+    list-style: circle;
+  }
+}
+
+.hpu-blocks-secondary-style {
+  ul.wp-block-archives {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+
+    a {
+      color: $secondary-color;
+      text-decoration: none;
+
+      :hover {
+        color: $emphasis-color;
+      }
+    }
+  }
+
+  div.wp-block-button {
+
+    color: $light-color;
+    background-color: $secondary-color;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: $font-size-medium;
+
+    :hover {
+      background-color: $emphasis-color;
+
+    }
+
+    .wp-block-button__link {
+      color: $light-color;
+      text-decoration: none;
+      background-color: $secondary-color;
+    }
+
+  }
+
+  h2 {
+    color: $secondary-color;
+    text-shadow: 2px 2px 2px $dark-color;
+    text-transform: lowercase;
+  }
+
+  li {
+    color: $dark-color;
+    list-style-type: none; // Remove default list style
+
+    &::before {
+      content: "\f105"; // Unicode for the Dashicon you want to use
+      font-family: "dashicons";
+      display: inside;
+      margin-right: 8px; // Space between the icon and the list item text
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+  }
+}
+
+.hpu-blocks-muted-style {
+  ul.wp-block-archives {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+
+    a {
+      color: $muted-color;
+      text-decoration: none;
+
+      :hover {
+        color: $emphasis-color;
+      }
+    }
+  }
+
+  div.wp-block-button {
+
+    color: $light-color;
+    background-color: $muted-color;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: $font-size-medium;
+
+    :hover {
+      background-color: $emphasis-color;
+
+    }
+
+    .wp-block-button__link {
+      color: $light-color;
+      text-decoration: none;
+      background-color: $muted-color;
+    }
+
+  }
+
+  h2 {
+    color: $muted-color;
+    text-transform: lowercase;
+
+  }
+
+  li{
+    color: $dark-color;
+    list-style: square;
+  }
+}
+
+.hpu-blocks-emphasis-style {
+  ul.wp-block-archives {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+
+    a {
+      color: $dark-color;
+      text-decoration: none;
+
+      :hover {
+        color: $emphasis-color;
+      }
+    }
+  }
+
+  div.wp-block-button {
+
+    color: $light-color;
+    background-color: $dark-color;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: $font-size-medium;
+
+    :hover {
+      background-color: $emphasis-color;
+
+    }
+
+    .wp-block-button__link {
+      color: $light-color;
+      text-decoration: none;
+      background-color: $dark-color;
+    }
+
+  }
+
+  h2 {
+    color: $dark-color;
+    text-transform: uppercase;
+    font-weight: bolder;
+  }
+
+  li{
+    color: $dark-color;
+    list-style: none;
+  }
 }

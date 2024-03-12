@@ -30,7 +30,7 @@ export default function HPUButton() {
         (BlockEdit) => (props) => {
             if (props.name === 'core/button') {
                 return (
-                    <div>
+                    <div className={props.attributes.styleClass}>
                         <StyleSelector
                             value={props.attributes.styleClass}
                             onChange={(styleClass) => props.setAttributes({ styleClass })}

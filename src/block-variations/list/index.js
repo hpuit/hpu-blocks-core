@@ -35,7 +35,7 @@ export default function HPUList() {
         (BlockEdit) => (props) => {
             if (props.name === 'core/list') {
                 return (
-                    <div>
+                    <div className={props.attributes.styleClass}>
                         <StyleSelector
                             value={props.attributes.styleClass}
                             onChange={(styleClass) => props.setAttributes({ styleClass })}

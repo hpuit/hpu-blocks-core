@@ -29,8 +29,8 @@ export default function HPUHeading() {
         (BlockEdit) => (props) => {
             if (props.name === 'core/heading') {
                 return (
-                    <div>
-                        <StyleSelector 
+                    <div className={props.attributes.styleClass}>
+                        <StyleSelector
                             value={props.attributes.styleClass}
                             onChange={(styleClass) => props.setAttributes({ styleClass })}
                         />

@@ -1,5 +1,7 @@
 import { addFilter } from "@wordpress/hooks";
+import { select } from "@wordpress/data";
 import StyleSelector from "../../style-selector";
+import { Fragment } from "@wordpress/element";
 
 export default function HPUButtons() {
 
@@ -8,6 +10,14 @@ export default function HPUButtons() {
         'hpu-blocks/HPU-buttons',
         (settings, name) => {
             if (name === 'core/buttons') {
+                const isAdmin = select('core').canUser('activate_plugins');
+
+                if (!isAdmin) {
+                    settings.supports = {
+                        ...settings.supports,
+                        color: false, // Disable color settings
+                    };
+                }
 
                 return {
                     ...settings,
@@ -29,18 +39,21 @@ export default function HPUButtons() {
         'hpu-blocks/HPU-buttons',
         (BlockEdit) => (props) => {
             if (props.name === 'core/buttons') {
-                return (
-                    <div className={props.attributes.styleClass}>
-                        <StyleSelector
-                            value={props.attributes.styleClass}
-                            onChange={(styleClass) => props.setAttributes({ styleClass })}
-                        />
-                        <BlockEdit {...props} />
-                    </div>
-                );
+                console.log(props);
+                return <BlockEdit {...props} />;
             }
             return <BlockEdit {...props} />;
         },
     );
 
+    addFilter(
+        'blocks.getSaveElement',
+        'hpu-blocks/HPU-buttons',
+        (element, blockType) => {
+            if (blockType.name === 'core/buttons') {
+                return element;
+            }
+            return element;
+        },
+    );
 }

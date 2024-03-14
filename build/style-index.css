@@ -64,14 +64,6 @@ p.hpu-blocks-emphasis-style {
 .hpu-blocks-primary-style ul.wp-block-archives a :hover {
   color: #41b6e6;
 }
-.hpu-blocks-primary-style div.wp-block-button {
-  color: #ffffff;
-  background-color: #330072;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  font-size: 16px;
-}
 .hpu-blocks-primary-style div.wp-block-button :hover {
   background-color: #41b6e6;
 }
@@ -100,14 +92,6 @@ p.hpu-blocks-emphasis-style {
 }
 .hpu-blocks-secondary-style ul.wp-block-archives a :hover {
   color: #41b6e6;
-}
-.hpu-blocks-secondary-style div.wp-block-button {
-  color: #ffffff;
-  background-color: #9678d3;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  font-size: 16px;
 }
 .hpu-blocks-secondary-style div.wp-block-button :hover {
   background-color: #41b6e6;
@@ -147,14 +131,6 @@ p.hpu-blocks-emphasis-style {
 .hpu-blocks-muted-style ul.wp-block-archives a :hover {
   color: #41b6e6;
 }
-.hpu-blocks-muted-style div.wp-block-button {
-  color: #ffffff;
-  background-color: #818183;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  font-size: 16px;
-}
 .hpu-blocks-muted-style div.wp-block-button :hover {
   background-color: #41b6e6;
 }
@@ -183,14 +159,6 @@ p.hpu-blocks-emphasis-style {
 }
 .hpu-blocks-emphasis-style ul.wp-block-archives a :hover {
   color: #41b6e6;
-}
-.hpu-blocks-emphasis-style div.wp-block-button {
-  color: #ffffff;
-  background-color: #231f20;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  font-size: 16px;
 }
 .hpu-blocks-emphasis-style div.wp-block-button :hover {
   background-color: #41b6e6;

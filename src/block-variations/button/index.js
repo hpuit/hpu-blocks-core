@@ -1,28 +1,55 @@
 import { addFilter } from "@wordpress/hooks";
+import { select } from "@wordpress/data";
+import { Fragment } from "@wordpress/element";
+import { getBlockType, unregisterBlockType, registerBlockType } from "@wordpress/blocks";
 import StyleSelector from "../../style-selector";
 
 export default function HPUButton() {
 
-    addFilter(
-        'blocks.registerBlockType',
-        'hpu-blocks/HPU-button',
-        (settings, name) => {
-            if (name === 'core/button') {
+    function HPURegisterButton(settings, name) {
+        if (name === 'core/button') {
+            // Check if the user is an admin
+            const isAdmin = select('core').canUser('activate_plugins');
 
-                return {
-                    ...settings,
-                    attributes: {
-                        ...settings.attributes,
-                        styleClass: {
-                            type: 'string',
-                            default: 'hpu-blocks-primary-style',
-                        },
-                    },
+            // If the user is not an admin, disable some editor options
+            if (!isAdmin) {
+                settings.supports = {
+                    ...settings.supports,
+                    color: false, // Disable color settings
                 };
             }
-            return settings;
+
+            return {
+                ...settings,
+                attributes: {
+                    ...settings.attributes,
+                    styleClass: {
+                        type: 'string',
+                        default: 'hpu-blocks-primary-style',
+                    },
+                },
+            };
         }
-    );
+        return settings;
+    }
+    addFilter('blocks.registerBlockType', 'hpu-blocks/HPU-button', HPURegisterButton);
+
+    const coreButtonSettings = getBlockType('core/button');
+
+    if (coreButtonSettings && typeof coreButtonSettings.save === 'function') {
+        const oldSave = coreButtonSettings.save;
+
+        coreButtonSettings.save = (props) => {
+            const newProps = {
+                ...props,
+                className: `${props.className} ${props.attributes.styleClass}`,
+            };
+            return oldSave(newProps);
+        };
+
+        unregisterBlockType('core/button');
+        registerBlockType('core/button', coreButtonSettings);
+    }
 
     addFilter(
         'editor.BlockEdit',
@@ -30,13 +57,13 @@ export default function HPUButton() {
         (BlockEdit) => (props) => {
             if (props.name === 'core/button') {
                 return (
-                    <div className={props.attributes.styleClass}>
+                    <Fragment>
                         <StyleSelector
                             value={props.attributes.styleClass}
                             onChange={(styleClass) => props.setAttributes({ styleClass })}
                         />
-                        <BlockEdit {...props} />
-                    </div>
+                        <BlockEdit {...props} className={`${props.attributes.className} ${props.attributes.styleClass}`} />
+                    </Fragment>
                 );
             }
             return <BlockEdit {...props} />;

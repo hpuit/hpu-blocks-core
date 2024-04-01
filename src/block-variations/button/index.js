@@ -1,7 +1,6 @@
 import { addFilter } from "@wordpress/hooks";
 import { select } from "@wordpress/data";
 import { Fragment } from "@wordpress/element";
-import { getBlockType, unregisterBlockType, registerBlockType } from "@wordpress/blocks";
 import StyleSelector from "../../style-selector";
 
 export default function HPUButton() {
@@ -34,23 +33,6 @@ export default function HPUButton() {
     }
     addFilter('blocks.registerBlockType', 'hpu-blocks/HPU-button', HPURegisterButton);
 
-    const coreButtonSettings = getBlockType('core/button');
-
-    if (coreButtonSettings && typeof coreButtonSettings.save === 'function') {
-        const oldSave = coreButtonSettings.save;
-
-        coreButtonSettings.save = (props) => {
-            const newProps = {
-                ...props,
-                className: `${props.className} ${props.attributes.styleClass}`,
-            };
-            return oldSave(newProps);
-        };
-
-        unregisterBlockType('core/button');
-        registerBlockType('core/button', coreButtonSettings);
-    }
-
     addFilter(
         'editor.BlockEdit',
         'hpu-blocks/HPU-button',
@@ -67,6 +49,25 @@ export default function HPUButton() {
                 );
             }
             return <BlockEdit {...props} />;
+        },
+    );
+
+    addFilter(
+        'blocks.getSaveElement',
+        'hpu-blocks/HPU-button',
+        (element, blockTypeOrName, attributes) => {
+            if (blockTypeOrName.name === 'core/button') {
+                const newProps = {
+                    ...attributes,
+                    className: `${attributes.className} ${attributes.styleClass}`,
+                };
+                
+                return {
+                    ...element,
+                    props: newProps,
+                };
+            }
+            return element;
         },
     );
 

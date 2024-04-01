@@ -1,7 +1,5 @@
 import { addFilter } from "@wordpress/hooks";
 import { select } from "@wordpress/data";
-import StyleSelector from "../../style-selector";
-import { Fragment } from "@wordpress/element";
 
 export default function HPUButtons() {
 
@@ -34,26 +32,4 @@ export default function HPUButtons() {
         }
     );
 
-    addFilter(
-        'editor.BlockEdit',
-        'hpu-blocks/HPU-buttons',
-        (BlockEdit) => (props) => {
-            if (props.name === 'core/buttons') {
-                console.log(props);
-                return <BlockEdit {...props} />;
-            }
-            return <BlockEdit {...props} />;
-        },
-    );
-
-    addFilter(
-        'blocks.getSaveElement',
-        'hpu-blocks/HPU-buttons',
-        (element, blockType) => {
-            if (blockType.name === 'core/buttons') {
-                return element;
-            }
-            return element;
-        },
-    );
 }

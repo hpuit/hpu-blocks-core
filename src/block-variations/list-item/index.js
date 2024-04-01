@@ -43,7 +43,7 @@ export default function HPUListItem() {
                             value={props.attributes.styleClass}
                             onChange={(styleClass) => props.setAttributes({ styleClass })}
                         />
-                        <BlockEdit {...props} />
+                        <BlockEdit {...props} className={`${props.attributes.className} ${props.attributes.styleClass}`} />
                     </div>
                 );
             }
@@ -56,11 +56,15 @@ export default function HPUListItem() {
         'hpu-blocks/HPU-list-item',
         (element, blockTypeOrName, attributes) => {
             if (blockTypeOrName.name === 'core/list-item') {
-                return (
-                    <span className={attributes.styleClass}>
-                        {element}
-                    </span>
-                );
+                const newProps = {
+                    ...attributes,
+                    className: `${attributes.className} ${attributes.styleClass}`,
+                };
+                
+                return {
+                    ...element,
+                    props: newProps,
+                };
             }
             return element;
         }

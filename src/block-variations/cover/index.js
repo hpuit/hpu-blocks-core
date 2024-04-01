@@ -30,13 +30,33 @@ export default function HPUCover() {
                 return (
                     <div>
                         <StyleSelector 
-                            
+                            value={props.attributes.styleClass}
+                            onChange={(styleClass) => props.setAttributes({ styleClass })}
                         />
-                        <BlockEdit {...props} />
+                        <BlockEdit {...props} className={`${props.attributes.className} ${props.attributes.styleClass}`} />
                     </div>
                 );
             }
             return <BlockEdit {...props} />;
+        },
+    );
+
+    addFilter(
+        'blocks.getSaveElement',
+        'hpu-blocks/HPU-cover',
+        (element, blockTypeOrName, attributes) => {
+            if (blockTypeOrName.name === 'core/cover') {
+                const newProps = {
+                    ...attributes,
+                    className: `${attributes.className} ${attributes.styleClass}`,
+                };
+                
+                return {
+                    ...element,
+                    props: newProps,
+                };
+            }
+            return element;
         },
     );
 

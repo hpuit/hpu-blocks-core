@@ -7587,59 +7587,42 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function HPUSeparator() {
-  (0,_wordpress_hooks__WEBPACK_IMPORTED_MODULE_1__.addFilter)('blocks.registerBlockType', 'hpu-blocks/HPU-separator', hpuBlocksRegisterSeparator());
-  (0,_wordpress_hooks__WEBPACK_IMPORTED_MODULE_1__.addFilter)('blocks.cloneBlock', 'hpu-blocks/HPU-separator', (cloneBlock, block) => {
-    if (block.name === 'core/separator') {
+  (0,_wordpress_hooks__WEBPACK_IMPORTED_MODULE_1__.addFilter)('blocks.registerBlockType', 'hpu-blocks/HPU-separator', hpuBlocksRegisterSeparator);
+  (0,_wordpress_hooks__WEBPACK_IMPORTED_MODULE_1__.addFilter)('blocks.cloneBlock', 'hpu-blocks/HPU-separator', (block, originalBlock) => {
+    if (originalBlock.name === 'core/separator') {
       console.log('clone block: HPU-separator');
-      return cloneBlock(block, {
-        attributes: {
-          ...block.attributes,
-          styleClass: 'hpu-blocks-primary-style'
-        }
+      return createBlock(block.name, {
+        ...originalBlock.attributes,
+        styleClass: 'hpu-blocks-primary-style',
+        className: `${originalBlock.attributes.styleClass}`
       });
     }
-    return cloneBlock;
+    return block;
   });
-  (0,_wordpress_hooks__WEBPACK_IMPORTED_MODULE_1__.addFilter)('blocks.getBlockAttributes', 'hpu-blocks/HPU-separator', (attributes, blockType) => {
+  (0,_wordpress_hooks__WEBPACK_IMPORTED_MODULE_1__.addFilter)('editor.BlockEdit', 'hpu-blocks/HPU-separator', hpuBlocksEditSeparator);
+  (0,_wordpress_hooks__WEBPACK_IMPORTED_MODULE_1__.addFilter)('blocks.getSaveElement', 'hpu-blocks/HPU-separator', (element, blockType, attributes) => {
     if (blockType.name === 'core/separator') {
-      console.log('Get block attributes: HPU-separator');
-      return {
-        ...attributes,
-        className: `${attributes.styleClass}`
+      console.log('save element: HPU-separator');
+      const newProps = {
+        ...element.props,
+        className: `${element.props.className} ${attributes.styleClass}`
       };
+      return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.cloneElement)(element, newProps);
     }
-    return attributes;
+    return element;
   });
-  (0,_wordpress_hooks__WEBPACK_IMPORTED_MODULE_1__.addFilter)('editor.BlockEdit', 'hpu-blocks/HPU-separator', hpuBlocksEditSeparator());
-
-  // addFilter(
-  //     'blocks.getSaveElement',
-  //     'hpu-blocks/HPU-separator',
-  //     (element, blockType, attributes) => {
-  //         if (blockType.name === 'core/separator') {
-  //             console.log('save element: HPU-separator');
-  //             const newProps = {
-  //                 ...element.props,
-  //                 className: `${element.props.className}`,
-  //             };
-  //             return cloneElement(element, newProps);
-  //         }
-  //         return element;
-  //     });
 }
 function hpuBlocksRegisterSeparator() {
   return (settings, name) => {
     if (name === 'core/separator') {
       console.log('hpuBlocksRegisterSeparator');
-      // const isAdmin = select('core').canUser('activate_plugins');
-
-      // if (!isAdmin) {
-      //     settings.supports = {
-      //         ...settings.supports,
-      //         color: false, // Disable color settings
-      //     };
-      // }
-
+      const isAdmin = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_2__.useSelect)(select => select('core').canUser('create', 'users'));
+      if (!isAdmin) {
+        settings.supports = {
+          ...settings.supports,
+          color: false // Disable color settings
+        };
+      }
       return {
         ...settings,
         attributes: {
@@ -7663,7 +7646,8 @@ function hpuBlocksEditSeparator() {
       if (props.name === 'core/separator') {
         console.log(props.attributes);
         return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.cloneElement)((0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(BlockEdit, {
-          ...props
+          ...props,
+          className: `${props.attributes.styleClass}`
         }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_style_selector__WEBPACK_IMPORTED_MODULE_3__["default"], {
           value: props.attributes.styleClass,
           onChange: styleClass => props.setAttributes({

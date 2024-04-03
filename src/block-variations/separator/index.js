@@ -1,5 +1,5 @@
 import { addFilter } from "@wordpress/hooks";
-import { select } from "@wordpress/data";
+import { useSelect } from "@wordpress/data";
 import StyleSelector from "../../style-selector";
 import { Fragment, cloneElement } from "@wordpress/element";
 import { createHigherOrderComponent } from "@wordpress/compose";
@@ -8,77 +8,60 @@ export default function HPUSeparator() {
     addFilter(
         'blocks.registerBlockType',
         'hpu-blocks/HPU-separator',
-        hpuBlocksRegisterSeparator()
+        hpuBlocksRegisterSeparator
     );
 
     addFilter(
         'blocks.cloneBlock',
         'hpu-blocks/HPU-separator',
-        (cloneBlock, block) => {
-            if (block.name === 'core/separator') {
+        (block, originalBlock) => {
+            if (originalBlock.name === 'core/separator') {
                 console.log('clone block: HPU-separator');
-                return cloneBlock(block, {
-                    attributes: {
-                        ...block.attributes,
-                        styleClass: 'hpu-blocks-primary-style',
-                    },
+                return createBlock(block.name, {
+                    ...originalBlock.attributes,
+                    styleClass: 'hpu-blocks-primary-style',
+                    className: `${originalBlock.attributes.styleClass}`,
                 });
             }
-            return cloneBlock;
-        }
-    );
-
-
-
-    addFilter(
-        'blocks.getBlockAttributes',
-        'hpu-blocks/HPU-separator',
-        (attributes, blockType) => {
-            if (blockType.name === 'core/separator') {
-                console.log('Get block attributes: HPU-separator');
-                return {
-                    ...attributes,
-                    className: `${attributes.styleClass}`,
-                };
-            }
-            return attributes;
+            return block;
         }
     );
 
     addFilter(
         'editor.BlockEdit',
         'hpu-blocks/HPU-separator',
-        hpuBlocksEditSeparator()
+        hpuBlocksEditSeparator
     );
 
-    // addFilter(
-    //     'blocks.getSaveElement',
-    //     'hpu-blocks/HPU-separator',
-    //     (element, blockType, attributes) => {
-    //         if (blockType.name === 'core/separator') {
-    //             console.log('save element: HPU-separator');
-    //             const newProps = {
-    //                 ...element.props,
-    //                 className: `${element.props.className}`,
-    //             };
-    //             return cloneElement(element, newProps);
-    //         }
-    //         return element;
-    //     });
+    addFilter(
+        'blocks.getSaveElement',
+        'hpu-blocks/HPU-separator',
+        (element, blockType, attributes) => {
+            if (blockType.name === 'core/separator') {
+                console.log('save element: HPU-separator');
+                const newProps = {
+                    ...element.props,
+                    className: `${element.props.className} ${attributes.styleClass}`,
+                };
+                return cloneElement(element, newProps);
+            }
+            return element;
+        }
+    );
 }
 
 function hpuBlocksRegisterSeparator() {
     return (settings, name) => {
         if (name === 'core/separator') {
             console.log('hpuBlocksRegisterSeparator');
-            // const isAdmin = select('core').canUser('activate_plugins');
+            const isAdmin = useSelect((select) => select('core').canUser('create', 'users'));
 
-            // if (!isAdmin) {
-            //     settings.supports = {
-            //         ...settings.supports,
-            //         color: false, // Disable color settings
-            //     };
-            // }
+            if (!isAdmin) {
+                settings.supports = {
+                    ...settings.supports,
+                    color: false, // Disable color settings
+                };
+            }
 
             return {
                 ...settings,
@@ -105,7 +88,7 @@ function hpuBlocksEditSeparator() {
                 console.log(props.attributes);
                 return cloneElement(
                     <Fragment>
-                        <BlockEdit {...props} />
+                        <BlockEdit {...props} className={`${props.attributes.styleClass}`} />
                         <StyleSelector
                             value={props.attributes.styleClass}
                             onChange={(styleClass) => props.setAttributes({ styleClass })} />

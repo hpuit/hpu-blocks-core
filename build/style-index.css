@@ -178,4 +178,8 @@ p.hpu-blocks-emphasis-style {
   list-style: none;
 }
 
+.block-editor-block-inspector {
+  display: none !important;
+}
+
 /*# sourceMappingURL=style-index.css.map*/

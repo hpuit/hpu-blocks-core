@@ -1,8 +1,11 @@
 import { addFilter } from "@wordpress/hooks";
-import { useSelect } from "@wordpress/data";
 import StyleSelector from "../../style-selector";
 import { Fragment, cloneElement } from "@wordpress/element";
 import { createHigherOrderComponent } from "@wordpress/compose";
+import { createBlock } from "@wordpress/blocks";
+import { useState } from 'react';
+
+let selectedStyleClass = 'hpu-blocks-primary-style';
 
 export default function HPUSeparator() {
     addFilter(
@@ -19,7 +22,7 @@ export default function HPUSeparator() {
                 console.log('clone block: HPU-separator');
                 return createBlock(block.name, {
                     ...originalBlock.attributes,
-                    styleClass: 'hpu-blocks-primary-style',
+                    styleClass: `${selectedStyleClass}`,
                     className: `${originalBlock.attributes.styleClass}`,
                 });
             }
@@ -53,16 +56,6 @@ export default function HPUSeparator() {
 function hpuBlocksRegisterSeparator() {
     return (settings, name) => {
         if (name === 'core/separator') {
-            console.log('hpuBlocksRegisterSeparator');
-            const isAdmin = useSelect((select) => select('core').canUser('create', 'users'));
-
-            if (!isAdmin) {
-                settings.supports = {
-                    ...settings.supports,
-                    color: false, // Disable color settings
-                };
-            }
-
             return {
                 ...settings,
                 attributes: {
@@ -84,18 +77,24 @@ function hpuBlocksRegisterSeparator() {
 function hpuBlocksEditSeparator() {
     return createHigherOrderComponent((BlockEdit) => {
         return (props) => {
+            const [styleClass, setStyleClass] = useState(null); // Initialize state using useState hook
+
             if (props.name === 'core/separator') {
-                console.log(props.attributes);
-                return cloneElement(
+                console.log(`${props.attributes.styleClass}`);
+                return (
                     <Fragment>
                         <BlockEdit {...props} className={`${props.attributes.styleClass}`} />
                         <StyleSelector
-                            value={props.attributes.styleClass}
-                            onChange={(styleClass) => props.setAttributes({ styleClass })} />
+                            value={styleClass} // Use styleClass state variable
+                            onChange={(newStyleClass) => {
+                                setStyleClass(newStyleClass) // Use setStyleClass to update state
+                                selectedStyleClass = { newStyleClass };
+                            }}
+                        />
                     </Fragment>
                 );
             }
             return <BlockEdit {...props} />;
         };
-    }, 'hpu-blocks/HPU-separator');
+    });
 }

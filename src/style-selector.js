@@ -17,7 +17,7 @@ class StyleSelector extends Component {
         const applyStyle = (styleClass) => {
             onChange(styleClass);
         };
-
+        
         return (
             <InspectorControls>
                 <PanelBody title="Select Style" initialOpen={true}>

@@ -1,4 +1,3 @@
-import domReady from '@wordpress/dom-ready';
 import './style.scss';
 
 
@@ -66,7 +65,7 @@ const gostedBlocks = [
     './read-more/index.js',
     './rss/index.js',
     './search/index.js',
-    // './separator/index.js',
+    './separator/index.js',
     './shortcode/index.js',
     './site-logo/index.js',
     './site-tagline/index.js',
@@ -104,9 +103,62 @@ function importBlockVariations() {
     });
 }
 
+
+//***FEATURE ON HOLD****//
+//due to styleSelector issues core block replacements are on hold
 // Ensure this runs after the WordPress editor is initialized
 // This can be done by using the '@wordpress/dom-ready' package
-domReady(() => {
-    // console.log('domReady: ');
-    importBlockVariations();
+// domReady(() => {
+//     // console.log('domReady: ');
+//     importBlockVariations();
+// });
+
+
+
+let hasRun = false;
+
+wp.data.subscribe(() => {
+    // Only run once
+    if (hasRun) {
+        return;
+    }
+
+    // Get the block types
+    const blockTypes = wp.blocks.getBlockTypes();
+
+    // If no blocks are registered yet, return
+    if (!blockTypes.length) {
+        return;
+    }
+
+    console.log('Editor initialized');
+
+    // Set the flag to prevent running again
+    hasRun = true;
+
+    blockTypes.forEach((blockType) => {
+        // Get the block settings
+        const settings = wp.blocks.getBlockType(blockType.name);
+        console.log(settings);
+
+        // Ensure that the supports object is defined
+        if (!settings.supports) {
+            settings.supports = {};
+        }
+
+        // Modify the settings
+        settings.supports = {
+            ...settings.supports,
+            color: false, // Disable color options
+            fontSize: false, // Disable font size options
+            typography: false, // Disable spacing options
+        };
+        console.log(settings.supports);
+
+        // Unregister the block
+        wp.blocks.unregisterBlockType(blockType.name);
+
+        // Register the block with the new settings
+        wp.blocks.registerBlockType(blockType.name, settings);
+    });
 });

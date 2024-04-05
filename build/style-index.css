@@ -178,7 +178,11 @@ p.hpu-blocks-emphasis-style {
   list-style: none;
 }
 
-.block-editor-block-inspector {
+.color-block-support-panel {
+  display: none !important;
+}
+
+.typography-block-support-panel {
   display: none !important;
 }
 

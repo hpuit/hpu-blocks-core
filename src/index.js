@@ -4,15 +4,15 @@ import './style.scss';
 
 const gostedBlocks = [
     './archives/index.js',                     // 3/4
-    // './audio/index.js',
+    //'./audio/index.js',
     './block/index.js',                        // 3/4
-    // './button/index.js',                    // 3/11
-    // './buttons/index.js',                   // 3/11
+    //'./button/index.js',                     // 3/11
+    //'./buttons/index.js',                    // 3/11
     './categories/index.js',
     './code/index.js',
-    // './column/index.js',                    // 3/11
-    // './columns/index.js',                   // 3/11
-    // './cover/index.js',                     // 3/4
+    //'./column/index.js',                     // 3/11
+    //'./columns/index.js',                    // 3/11
+    //'./cover/index.js',                      // 3/4
     './details/index.js',
     './embeds/index.js',
     './file/index.js',
@@ -23,13 +23,13 @@ const gostedBlocks = [
     './freeform/index.js',                     // 3/4 WYSIWYG Block
     './gallery/index.js',                      // 3/18
     './group/index.js',                        // 3/11
-    // './heading/index.js',
+    //'./heading/index.js',
     './html/index.js',                         // Super Admin Only
     './home-link/index.js',
     './image/index.js',                        // 3/4
     './latest-posts/index.js',                 // 3/4
-    // './list/index.js',                      // 3/11
-    // './list-item/index.js',                 // 3/11
+    //'./list/index.js',                       // 3/11
+    //'./list-item/index.js',                  // 3/11
     './loginout/index.js',
     './media-text/index.js',                   // 3/18
     './more/index.js',
@@ -39,7 +39,7 @@ const gostedBlocks = [
     './nextpage/index.js',
     './page-list/index.js',
     './page-list-item/index.js',
-    // './paragraph/index.js',
+    //'./paragraph/index.js',
     './pattern/index.js',
     './post-author/index.js',
     './post-author-biography/index.js',
@@ -66,7 +66,7 @@ const gostedBlocks = [
     './read-more/index.js',
     './rss/index.js',
     './search/index.js',
-    // './separator/index.js',
+    //'./separator/index.js',
     './shortcode/index.js',
     './site-logo/index.js',
     './site-tagline/index.js',

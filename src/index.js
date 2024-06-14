@@ -3,16 +3,16 @@ import './style.scss';
 
 
 const gostedBlocks = [
-    './archives/index.js',                   //3/4
+    './archives/index.js',                     // 3/4
     // './audio/index.js',
-    './block/index.js',                         //3/4
-    // './button/index.js',                        //3/11
-    // './buttons/index.js',                       //3/11
+    './block/index.js',                        // 3/4
+    // './button/index.js',                    // 3/11
+    // './buttons/index.js',                   // 3/11
     './categories/index.js',
     './code/index.js',
-    // './column/index.js',                        //3/11
-    // './columns/index.js',                       //3/11
-    // './cover/index.js',                      //3/4
+    // './column/index.js',                    // 3/11
+    // './columns/index.js',                   // 3/11
+    // './cover/index.js',                     // 3/4
     './details/index.js',
     './embeds/index.js',
     './file/index.js',
@@ -20,18 +20,18 @@ const gostedBlocks = [
     './form-input/index.js',
     './form-submission-notification/index.js',
     './form-submit-button/index.js',
-    './freeform/index.js',                      //3/4 WYSIWYG Block
-    './gallery/index.js',                       //3/18
-    './group/index.js',                         //3/11
+    './freeform/index.js',                     // 3/4 WYSIWYG Block
+    './gallery/index.js',                      // 3/18
+    './group/index.js',                        // 3/11
     // './heading/index.js',
-    './html/index.js',                          //Super Admin Only  
+    './html/index.js',                         // Super Admin Only
     './home-link/index.js',
-    './image/index.js',                         //3/4
-    './latest-posts/index.js',                  //3/4
-    // './list/index.js',                          //3/11
-    // './list-item/index.js',                     //3/11
+    './image/index.js',                        // 3/4
+    './latest-posts/index.js',                 // 3/4
+    // './list/index.js',                      // 3/11
+    // './list-item/index.js',                 // 3/11
     './loginout/index.js',
-    './media-text/index.js',                    //3/18
+    './media-text/index.js',                   // 3/18
     './more/index.js',
     './navigation-link/index.js',
     './navigation-submenu/index.js',
@@ -75,7 +75,7 @@ const gostedBlocks = [
     './spacer/index.js',
     './table/index.js',
     './template-part/index.js',
-    './video/index.js',                         //3/4
+    './video/index.js',                        //3/4
 ];
 
 // Dynamically import block variations

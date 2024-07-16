@@ -3,112 +3,48 @@ import './style.scss';
 
 
 const gostedBlocks = [
-    // --> core/archives                         // completed 
     './archives/index.js',                     // 3/4
-    // --> core/avatar                          // missing
-    // --> core/audio
-    //'./audio/index.js',                       // completed
-    // --> core/block                           // completed
+    //'./audio/index.js',
     './block/index.js',                        // 3/4
-    // --> core/button                          // completed
     //'./button/index.js',                     // 3/11
-    // --> core/buttons                         // completed
     //'./buttons/index.js',                    // 3/11
-    // --> core/calendar                        // missing
-    // --> core/categories                      // completed
-    './categories/index.js',                    // no date
-    // --> core/code                            // completed
-    './code/index.js',                          // no date
-    // --> core/column                          // completed
+    './categories/index.js',
+    './code/index.js',
     //'./column/index.js',                     // 3/11
-    // --> core/columns                         // completed
     //'./columns/index.js',                    // 3/11
-    // --> core/comments                       // missing 
-    // --> core/commentAuthorAvatar            // missing
-    // --> core/commentAuthorName              // missing
-    // --> core/commentContent                 // missing
-    // --> core/commentDate                    // missing
-    // --> core/commentEditLink                // missing
-    // --> core/commentReplyLink               // missing
-    // --> core/commentTemplate                // missing 
-    // --> core/commentsPaginationPrevious     // missing
-    // --> core/commentsPagination             // missing
-    // --> core/commentsPaginationNext         // missing
-    // --> core/commentsPaginationNumbers      // missing
-    // --> core/commentsTitle                  // missing
-    // --> core/cover                          // completed
     //'./cover/index.js',                      // 3/4
-    // --> core/details                          // completed
-    './details/index.js',                      // no date
-    // --> core/embed                           // completed
-    './embeds/index.js',                        // no date
-    // --> core/file                            // completed
-    './file/index.js',                          // no date
-    // --> core/form                            // completed
-    './form/index.js',                          // no date
-    // --> core/formInput                       // completed
-    './form-input/index.js',                    // no date
-    // --> core/formSubmitButton                // completed
-    './form-submit-button/index.js',            // no date
-    // --> core/formSubmissionNotification       // completed
-    './form-submission-notification/index.js',  // no date
-    // --> CUSTOM                               // completed
+    './details/index.js',
+    './embeds/index.js',
+    './file/index.js',
+    './form/index.js',
+    './form-input/index.js',
+    './form-submission-notification/index.js',
+    './form-submit-button/index.js',
     './freeform/index.js',                     // 3/4 WYSIWYG Block
-    // --> core/gallery                         // completed
     './gallery/index.js',                      // 3/18
-    // --> core/group                           // completed
     './group/index.js',                        // 3/11
-    // --> core/heading                         // completed, not operational
-    //'./heading/index.js',                     // no date
-    // --> core/html                           // completed
-    './html/index.js',                         // Super Admin Only - no date
-    // --> core/homeLink                       // completed
-    './home-link/index.js',                     // no date
-    // --> core/image                          // completed
+    //'./heading/index.js',
+    './html/index.js',                         // Super Admin Only
+    './home-link/index.js',
     './image/index.js',                        // 3/4
-    // --> core/latestComments                 // missing
-    // --> core/latestPosts                    // completed
     './latest-posts/index.js',                 // 3/4
-    // --> core/list                              // completed, not operational
     //'./list/index.js',                       // 3/11
-    // --> core/listItem                          // completed, not operational
     //'./list-item/index.js',                  // 3/11
-    // --> core/logInOut                         // completed
-    './loginout/index.js',                      // no date
-    // --> core/mediaText                        // completed
+    './loginout/index.js',
     './media-text/index.js',                   // 3/18
-    // --> core/missing                         // missing
-    // --> core/more                            // completed    
-    './more/index.js',                          // no date
-    // --> core/navigation                      // completed
-    './navigation/index.js',                    // no date
-    // --> core/navigationLink                  // completed
-    './navigation-link/index.js',               // no date
-    // --> core/navigationSubmenu               // completed
-    './navigation-submenu/index.js',            // no date
-    // --> core/nextpage                        // completed
-    './nextpage/index.js',                      // no date
-    // --> core/pattern                         // completed
-    './pattern/index.js',                       // no date
-    // --> core/pageList                        // completed
-    './page-list/index.js',                     // no date
-    // --> core/pageListItem                    // completed
-    './page-list-item/index.js',                // no date
-    // --> core/paragraph                       // completed not operational
-    //'./paragraph/index.js',                   // no date
-    // --> core/postAuthor                      // completed
-    './post-author/index.js',                   // no date
-    // -->core/postAuthorBiography              // completed
-    './post-author-biography/index.js',         // no date
-    // --> core/postAuthorName                  // completed
-    './post-author-name/index.js',              // no date
-    // --> core/postComment                     // missing 
-0   // --> core/postCommentsCount               // missing
-    // --> core/postCommentsForm                // missing
-    // --> core/postCommentsLink                // missing
-    // --> core/postContent,                     // completed
-    './post-content/index.js',                  // no date
-
+    './more/index.js',
+    './navigation-link/index.js',
+    './navigation-submenu/index.js',
+    './navigation/index.js',
+    './nextpage/index.js',
+    './page-list/index.js',
+    './page-list-item/index.js',
+    //'./paragraph/index.js',
+    './pattern/index.js',
+    './post-author/index.js',
+    './post-author-biography/index.js',
+    './post-author-name/index.js',
+    './post-content/index.js',
     './post-date/index.js',
     './post-excerpt/index.js',
     './post-featured-image/index.js',

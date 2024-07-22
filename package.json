@@ -25,6 +25,7 @@
 		"@wordpress/scripts": "^27.3.0"
 	},
 	"dependencies": {
+		"@10up/block-components": "^1.19.1",
 		"@wordpress/components": "^27.0.0",
 		"@wordpress/data": "^9.22.0",
 		"@wordpress/dom-ready": "^3.52.0",

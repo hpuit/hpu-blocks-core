@@ -86,7 +86,7 @@ function enqueue_hpu_blocks_core_editor_styles()
 }
 
 // Register block scripts.
-add_action('admin_enqueue_scripts', 'hpu_blocks_core_register_block_scripts');
+add_action('enqueue_block_editor_assets', 'hpu_blocks_core_register_block_scripts');
 function hpu_blocks_core_register_block_scripts()
 {
 	$assets = include(HPU_BLOCKS_CORE_PLUGIN_DIR . 'build/index.asset.php');
@@ -105,7 +105,27 @@ function hpu_blocks_core_register_block_scripts()
 		);
 	}
 }
-
+function hpu_eneueue_block_assets() {
+	$blocks = WP_Block_Type_Registry::get_instance()->get_all_registered();
+	$block_names = array_map(function($block) {
+		return $block->name;
+	}, $blocks);
+	//$block_names = json_encode($block_names);
+	foreach($blocks as $block) {
+		$src = plugin_dir_url(__FILE__) . '/build/style-index.css';
+		if ( is_admin() ) {
+			$src = plugin_dir_url(__FILE__) . '/build/index.css';
+		}
+		wp_enqueue_block_style(
+			$block,
+			array(
+				'handle' => 'hpu-blocks-core-editor-styles',
+				'src' => $src,
+			),
+		);
+	}
+}
+add_action('after_setup_theme', 'hpu_eneueue_block_assets');
 // Register init
 add_action('init', 'hpu_blocks_core_register_init');
 function hpu_blocks_core_register_init()

@@ -123,7 +123,7 @@ function hpu_eneueue_block_assets() {
 			$block,
 			array(
 				'handle' => 'hpu-blocks-core-editor-styles',
-				'src' => $src,
+				'src'    => $src,
 			),
 		);
 	}

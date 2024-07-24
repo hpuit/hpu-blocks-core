@@ -1,6 +1,6 @@
 import domReady from '@wordpress/dom-ready';
 import './style.scss';
-
+import './selector';
 
 const ghostedBlocks = [
     // --> core/archives                        // completed 

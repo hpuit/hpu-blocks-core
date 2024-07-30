@@ -1,7 +1,7 @@
 import { InspectorControls, RichText } from '@wordpress/block-editor';
 import { Panel, PanelBody, ButtonGroup, Button, ToggleControl } from '@wordpress/components';
 import { Component } from '@wordpress/element';
-import StyleSelector from '../../style-selector';
+// import StyleSelector from '../../style-selector';
 import { __experimentalHeading as Heading } from '@wordpress/components';
 import '../../style.scss';
 
@@ -15,10 +15,10 @@ export default class HPUEditParagraph extends Component {
         return <div>
             <InspectorControls>
                 <Panel header="HPU Blocks Paragraph Settings" className='hpu-blocks-emphasis-style'>
-                    <StyleSelector
+                    {/* <StyleSelector
                         value={attributes.styleClass}
                         onChange={(newValue) => setAttributes({ styleClass: newValue })}
-                    />
+                    /> */}
                     <PanelBody title="Text Settings">
                         {/* <ToggleControl
                             label="Drop Cap"

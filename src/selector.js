@@ -1,6 +1,32 @@
 import { InspectorControls } from '@wordpress/block-editor';
 import { registerBlockExtension } from '@10up/block-components';
-import { SelectControl, Panel } from '@wordpress/components';
+import { SelectControl, Panel, __experimentalToolsPanel as ToolsPanel } from '@wordpress/components';
+import { addFilter } from '@wordpress/hooks';
+import { unregisterBlockStyle } from '@wordpress/blocks';
+
+unregisterBlockStyle( 'core/paragraph', 'layout' );
+
+// Function to remove the styles panel from the paragraph block settings
+const removeParagraphStylesPanel = ( settings, name ) => {
+
+
+	if ( name !== 'core/paragraph' ) {
+		return settings;
+	}
+	settings.supports = {
+		...settings.supports,
+		color: false,
+		typography: false,
+	};
+	return settings;
+};
+
+// Add the filter to remove the styles panel
+addFilter(
+	'blocks.registerBlockType',
+	'hpu-blocks-core/remove-paragraph-styles-panel',
+	removeParagraphStylesPanel
+);
 
 const additionalAttributes = {
 	hpuStyleClass: {
@@ -45,6 +71,7 @@ const BlockEdit = ( props ) => {
 					] }
 					onChange={ setStyleAttribute }
 				/>
+				<ToolsPanel></ToolsPanel>
 			</Panel>
 		</InspectorControls>
 	);

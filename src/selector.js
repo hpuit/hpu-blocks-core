@@ -1,6 +1,6 @@
 import { InspectorControls } from '@wordpress/block-editor';
 import { registerBlockExtension } from '@10up/block-components';
-import { SelectControl, Panel, __experimentalToolsPanel as ToolsPanel } from '@wordpress/components';
+import { SelectControl, Panel } from '@wordpress/components';
 import { addFilter } from '@wordpress/hooks';
 import { unregisterBlockStyle } from '@wordpress/blocks';
 
@@ -71,7 +71,6 @@ const BlockEdit = ( props ) => {
 					] }
 					onChange={ setStyleAttribute }
 				/>
-				<ToolsPanel></ToolsPanel>
 			</Panel>
 		</InspectorControls>
 	);

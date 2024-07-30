@@ -15,16 +15,7 @@ export default class HPUEditParagraph extends Component {
         return <div>
             <InspectorControls>
                 <Panel header="HPU Blocks Paragraph Settings" className='hpu-blocks-emphasis-style'>
-                    {/* <StyleSelector
-                        value={attributes.styleClass}
-                        onChange={(newValue) => setAttributes({ styleClass: newValue })}
-                    /> */}
                     <PanelBody title="Text Settings">
-                        {/* <ToggleControl
-                            label="Drop Cap"
-                            checked={attributes.dropCap}
-                            onChange={(newValue) => setAttributes({ dropCap: newValue })}
-                        /> */}
                         <Heading>Alignment</Heading>
                         <ButtonGroup>
                             <Button isPrimary={attributes.align === 'left'} onClick={() => setAttributes({ align: 'left' })}>Left</Button>

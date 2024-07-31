@@ -110,7 +110,7 @@ function hpu_blocks_core_register_block_scripts()
  *
  * @param array $editor_settings Array of editor settings.
  */
-function disable_drop_cap_editor_settings( array $editor_settings ): array {
+function hpu_disable_drop_cap_editor_settings( array $editor_settings ): array {
 	$editor_settings['__experimentalFeatures']['typography']['dropCap']       = false;
 	$editor_settings['__experimentalFeatures']['typography']['fontWeight']    = false;
 	$editor_settings['__experimentalFeatures']['typography']['letterSpacing'] = false;
@@ -119,7 +119,7 @@ function disable_drop_cap_editor_settings( array $editor_settings ): array {
 
 	return $editor_settings;
 }
-add_filter( 'block_editor_settings_all', 'disable_drop_cap_editor_settings' );
+add_filter( 'block_editor_settings_all', 'hpu_disable_drop_cap_editor_settings' );
 /**
  * Enqueue block assets
  */

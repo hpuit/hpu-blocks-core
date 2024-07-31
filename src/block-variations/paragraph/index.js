@@ -13,10 +13,4 @@ export default function HPUBlocksParagraph() {
 		},
 		'withCustomEditParagraph'
 	);
-
-	// addFilter(
-	// 	'editor.BlockEdit',
-	// 	'hpu-blocks/HPU-paragraph',
-	// 	withCustomEditParagraph
-	// );
 }

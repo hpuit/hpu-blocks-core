@@ -62,7 +62,7 @@ export default class HPUEditParagraph extends Component {
 				</InspectorControls>
 				<RichText
 					tagName="p"
-					className={[
+					className={ [
 						attributes.styleClass,
 						attributes.dropCap ? 'has-drop-cap' : '',
 						attributes.align ? `align-${ attributes.align }` : '',

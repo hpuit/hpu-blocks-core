@@ -209,7 +209,7 @@ function importBlockVariations() {
 
 // Ensure this runs after the WordPress editor is initialized
 // This can be done by using the '@wordpress/dom-ready' package
-domReady(() => {
+domReady( () => {
     // console.log('domReady: ');
     importBlockVariations();
 });

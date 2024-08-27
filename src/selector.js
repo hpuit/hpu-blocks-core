@@ -82,7 +82,7 @@ const generateClassName = ( attributes ) => {
 	}
 	return string;
 };
-registerBlockExtension( 'core/paragraph', {
+registerBlockExtension( [ 'core/group', 'core/columns' ], {
 	extensionName: 'hpu-blocks-core-selector',
 	attributes: additionalAttributes,
 	classNameGenerator: generateClassName,

@@ -22,7 +22,7 @@ const ghostedBlocks = [
     // --> core/column                          // completed
     //'./column/index.js',                      // 3/11
     // --> core/columns                         // completed
-    //'./columns/index.js',                     // 3/11
+    //'./columns/index.js',                     // 3/11 - added global style selector
     // --> core/comments                        // missing 
     // --> core/commentAuthorAvatar             // missing
     // --> core/commentAuthorName               // missing
@@ -57,7 +57,7 @@ const ghostedBlocks = [
     // --> core/gallery                         // completed
     './gallery/index.js',                       // 3/18
     // --> core/group                           // completed
-    './group/index.js',                         // 3/11
+    //'./group/index.js',                       // 3/11 - added global style selector
     // --> core/heading                         // completed, not operational
     //'./heading/index.js',                     // no date
     // --> core/html                            // completed

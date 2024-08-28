@@ -4,29 +4,29 @@ import { SelectControl, Panel } from '@wordpress/components';
 import { addFilter } from '@wordpress/hooks';
 import { unregisterBlockStyle } from '@wordpress/blocks';
 
-unregisterBlockStyle( 'core/paragraph', 'layout' );
+// unregisterBlockStyle( 'core/paragraph', 'layout' );
 
-// Function to remove the styles panel from the paragraph block settings
-const removeParagraphStylesPanel = ( settings, name ) => {
+// // Function to remove the styles panel from the paragraph block settings
+// const removeParagraphStylesPanel = ( settings, name ) => {
 
 
-	if ( name !== 'core/paragraph' ) {
-		return settings;
-	}
-	settings.supports = {
-		...settings.supports,
-		color: false,
-		typography: false,
-	};
-	return settings;
-};
+// 	if ( name !== 'core/paragraph' ) {
+// 		return settings;
+// 	}
+// 	settings.supports = {
+// 		...settings.supports,
+// 		color: false,
+// 		typography: false,
+// 	};
+// 	return settings;
+// };
 
-// Add the filter to remove the styles panel
-addFilter(
-	'blocks.registerBlockType',
-	'hpu-blocks-core/remove-paragraph-styles-panel',
-	removeParagraphStylesPanel
-);
+// // Add the filter to remove the styles panel
+// addFilter(
+// 	'blocks.registerBlockType',
+// 	'hpu-blocks-core/remove-paragraph-styles-panel',
+// 	removeParagraphStylesPanel
+// );
 
 const additionalAttributes = {
 	hpuStyleClass: {

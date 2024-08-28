@@ -119,17 +119,17 @@ function hpu_disable_drop_cap_editor_settings( array $editor_settings ): array {
 
 	return $editor_settings;
 }
-add_filter( 'block_editor_settings_all', 'hpu_disable_drop_cap_editor_settings' );
+// add_filter( 'block_editor_settings_all', 'hpu_disable_drop_cap_editor_settings' );
 /**
  * Enqueue block assets
  */
 function hpu_eneueue_block_assets() {
-	add_theme_support( 'disable-custom-font-sizes' );
-	add_theme_support( 'editor-font-sizes', array() );
-	add_theme_support( 'disable-custom-colors' );
-	add_theme_support( 'editor-color-palette', array() );
-	add_theme_support( 'disable-custom-gradients' );
-	add_theme_support( 'editor-gradient-presets', array() );
+	// add_theme_support( 'disable-custom-font-sizes' );
+	// add_theme_support( 'editor-font-sizes', array() );
+	// add_theme_support( 'disable-custom-colors' );
+	// add_theme_support( 'editor-color-palette', array() );
+	// add_theme_support( 'disable-custom-gradients' );
+	// add_theme_support( 'editor-gradient-presets', array() );
 
 	$blocks      = WP_Block_Type_Registry::get_instance()->get_all_registered();
 	$block_names = array_map(

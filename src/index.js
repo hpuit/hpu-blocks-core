@@ -211,5 +211,5 @@ function importBlockVariations() {
 // This can be done by using the '@wordpress/dom-ready' package
 domReady( () => {
     // console.log('domReady: ');
-    importBlockVariations();
+    //importBlockVariations();
 });

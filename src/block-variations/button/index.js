@@ -1,46 +1,64 @@
-import { addFilter } from "@wordpress/hooks";
-import StyleSelector from "../../style-selector";
+import { InspectorControls } from '@wordpress/block-editor';
+import { registerBlockExtension } from '@10up/block-components';
+import { SelectControl, Panel } from '@wordpress/components';
 
-export default function HPUButton() {
 
-    addFilter(
-        'blocks.registerBlockType',
-        'hpu-blocks/HPU-button',
-        (settings, name) => {
-            if (name === 'core/button') {
-
-                return {
-                    ...settings,
-                    attributes: {
-                        ...settings.attributes,
-                        styleClass: {
-                            type: 'string',
-                            default: 'hpu-blocks-primary-style',
+const additionalButtonAttributes = {
+    hpuButtonStyleClass: {
+        type: 'string',
+        default: '',
+    },
+};
+const BlockEdit = ( props ) => {
+    const setStyleAttribute = ( value ) => {
+        props.setAttributes( { hpuButtonStyleClass: value } );
+    };
+    return (
+        <InspectorControls>
+            <Panel
+                header="HPU Blocks Button Setting"
+            >
+                <SelectControl
+                    label="Select Button Style"
+                    value={ props.attributes.hpuButtonStyleClass }
+                    options={ [
+                        {
+                            label: 'Default',
+                            value: 'hpu-blocks-default-button-style',
                         },
-                    },
-                };
-            }
-            return settings;
-        }
+                        {
+                            label: 'Primary',
+                            value: 'hpu-blocks-primary-button-style',
+                        },
+                        {
+                            label: 'Secondary',
+                            value: 'hpu-blocks-secondary-button-style',
+                        },
+                        {
+                            label: 'Muted',
+                            value: 'hpu-blocks-muted-button-style',
+                        },
+                        {
+                            label: 'Emphasis',
+                            value: 'hpu-blocks-emphasis-button-style',
+                        },
+                    ] }
+                    onChange={ setStyleAttribute }
+                />
+            </Panel>
+        </InspectorControls>
     );
-
-    addFilter(
-        'editor.BlockEdit',
-        'hpu-blocks/HPU-button',
-        (BlockEdit) => (props) => {
-            if (props.name === 'core/button') {
-                return (
-                    <div className={props.attributes.styleClass}>
-                        <StyleSelector
-                            value={props.attributes.styleClass}
-                            onChange={(styleClass) => props.setAttributes({ styleClass })}
-                        />
-                        <BlockEdit {...props} />
-                    </div>
-                );
-            }
-            return <BlockEdit {...props} />;
-        },
-    );
-
-}
+};
+const generateButtonClassName = ( attributes ) => {
+    let string = '';
+    if ( attributes.hpuButtonStyleClass ) {
+        string += `${ attributes.hpuButtonStyleClass } `;
+    }
+    return string;
+};
+registerBlockExtension( 'core/button', {
+    extensionName: 'hpu-blocks-core-button-selector',
+    attributes: additionalButtonAttributes,
+    classNameGenerator: generateButtonClassName,
+    Edit: BlockEdit,
+} );

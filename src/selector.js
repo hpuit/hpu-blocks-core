@@ -49,8 +49,8 @@ const BlockEdit = ( props ) => {
 					value={ props.attributes.hpuStyleClass }
 					options={ [
 						{
-							label: 'None Selected',
-							value: '',
+							label: 'Default',
+							value: 'hpu-blocks-default-style',
 						},
 						{
 							label: 'Primary',

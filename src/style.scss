@@ -26,6 +26,13 @@ $breakpoint-medium: 768px;
 $breakpoint-large: 1024px;
 $breakpoint-xlarge: 1200px;
 
+%reset-buttons {
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+}
+
 body {
   font-family: $font-family;
 }
@@ -72,7 +79,14 @@ p.hpu-blocks-emphasis-style {
 .align-justify {
   text-align: justify;
 }
-
+.hpu-blocks-default-style {
+    .wp-block-buttons {
+        .wp-block-button__link {
+            @extend %reset-buttons;
+            color: $primary-color;
+        }
+    }
+}
 .hpu-blocks-primary-style {
   ul.wp-block-archives {
     list-style-type: none;

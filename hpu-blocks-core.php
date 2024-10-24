@@ -184,3 +184,32 @@ function get_all_blogs() {
 
     return $blogs;
 }
+add_action('rest_api_init', function () {
+    register_rest_route('custom/v1', '/blogs/(?P<id>\d+)/categories', array(
+        'methods' => 'GET',
+        'callback' => 'get_blog_categories',
+        'permission_callback' => '__return_true', // Make the endpoint public
+    ));
+});
+
+function get_blog_categories($data) {
+    $blog_id = $data['id'];
+
+    if (!is_multisite()) {
+        return new WP_Error('not_multisite', 'This is not a multisite installation', array('status' => 400));
+    }
+    
+    switch_to_blog($blog_id);
+    $categories = get_categories(array('hide_empty' => false));
+    restore_current_blog();
+    
+    $result = array();
+    foreach ($categories as $category) {
+        $result[] = array(
+            'id' => $category->term_id,
+            'name' => $category->name,
+        );
+    }
+    
+    return $result;
+}

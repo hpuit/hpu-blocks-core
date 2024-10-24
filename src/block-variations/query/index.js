@@ -8,7 +8,7 @@ const additionalQueryAttributes = {
         type: 'number',
         default: '',
     },
-    hpuTaxonomySelector: {
+    hpuCategorySelector: {
         type: 'number',
         default: '',
     },
@@ -32,6 +32,7 @@ const additionalQueryAttributes = {
 };
 const BlockEdit = ( props ) => {
     const [blogs, setBlogs] = useState([]);
+    const [categories, setCategories] = useState([]);
 
     useEffect(() => {
         fetch('/wp-json/custom/v1/blogs')
@@ -42,14 +43,42 @@ const BlockEdit = ( props ) => {
 
     const setBlogAttribute = ( value ) => {
         props.setAttributes( { hpuBlogSelector: value } );
+        fetchCategories( value );
     };
-    const setTaxonomyAttribute = ( value ) => {
-        props.setAttributes( { hpuTaxonomySelector: value } );
+    const fetchCategories = ( blogId ) => {
+        fetch(`/wp-json/custom/v1/blogs/${ blogId }/categories`)
+            .then((response) => response.json())
+            .then((data) => setCategories(data))
+            .catch((error) => console.error('Error fetching taxonomies:', error));
+    };
+    const setCategoryAttribute = ( value ) => {
+        props.setAttributes( { hpuCategorySelector: value } );
     };
     const setPostAttribute = ( value ) => {
         props.setAttributes( { hpuPostSelector: value } );
     };
     // retrieve all blogs id from network
+    const blogIdsOptions = [
+        {
+            label: 'Select Site',
+            value: '',
+        },
+        ...blogs.map(( blog ) => ({
+            label: blog.name,
+            value: blog.id,
+        })),
+    ];
+    // retrieve all categories id from network
+    const categoryIdsOptions = [
+        {
+            label: 'Select Category',
+            value: '',
+        },
+        ...categories.map(( category ) => ({
+            label: category.name,
+            value: category.id,
+        })),
+    ];
 
     return (
         <InspectorControls>
@@ -57,52 +86,40 @@ const BlockEdit = ( props ) => {
                 header="HPU Blocks Query Setting"
             >
                 <SelectControl
-                    label="Select Site"
+                    label="1. Select Site"
                     value={ props.attributes.hpuBlogSelector }
-                    options={ blogs.map(( blog ) => ({
-                        label: blog.name,
-                        value: blog.id,
-                    })) }
+                    options={ blogIdsOptions }
                     onChange={ setBlogAttribute }
                 />
-                <SelectControl
-                    label="Select Taxonomy"
-                    value={ props.attributes.hpuTaxonomySelector }
-                    options={ [
-                        {
-                            label: 'Taxonomy 1',
-                            value: '1',
-                        },
-                        {
-                            label: 'Taxonomy 2',
-                            value: '2',
-                        },
-                        {
-                            label: 'Taxonomy 3',
-                            value: '3',
-                        },
-                    ] }
-                    onChange={ setTaxonomyAttribute }
-                />
-                <SelectControl
-                    label="Select Post"
-                    value={ props.attributes.hpuPostSelector }
-                    options={ [
-                        {
-                            label: 'Post 1',
-                            value: '1',
-                        },
-                        {
-                            label: 'Post 2',
-                            value: '2',
-                        },
-                        {
-                            label: 'Post 3',
-                            value: '3',
-                        },
-                    ] }
-                    onChange={ setPostAttribute }
-                />
+                { props.attributes.hpuBlogSelector && (
+                    <SelectControl
+                        label="2. Select Category"
+                        value={ props.attributes.hpuCategorySelector }
+                        options={ categoryIdsOptions }
+                        onChange={ setCategoryAttribute }
+                    />
+                )}
+                { props.attributes.hpuCategorySelector && (
+                    <SelectControl
+                        label="3. Select Post"
+                        value={ props.attributes.hpuPostSelector }
+                        options={ [
+                            {
+                                label: 'Post 1',
+                                value: '1',
+                            },
+                            {
+                                label: 'Post 2',
+                                value: '2',
+                            },
+                            {
+                                label: 'Post 3',
+                                value: '3',
+                            },
+                        ] }
+                        onChange={ setPostAttribute }
+                    />
+                )}
             </Panel>
         </InspectorControls>
     );
@@ -112,8 +129,8 @@ const generateQueryClassName = ( attributes ) => {
     if ( attributes.hpuBlogSelector ) {
         string += `${ attributes.hpuBlogSelector } `;
     }
-    if ( attributes.hpuTaxonomySelector ) {
-        string += `${ attributes.hpuTaxonomySelector } `;
+    if ( attributes.hpuCategorySelector ) {
+        string += `${ attributes.hpuCategorySelector } `;
     }
     if ( attributes.hpuPostSelector ) {
         string += `${ attributes.hpuPostSelector } `;

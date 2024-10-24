@@ -4,6 +4,8 @@ import './style.scss';
 import './selector';
 // Button block variation style selector
 import './block-variations/button/index.js';
+// Query block variation style selector
+import './block-variations/query/index.js';
 
 const ghostedBlocks = [
     // --> core/archives                        // completed 

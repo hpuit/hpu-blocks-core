@@ -41,7 +41,7 @@ const BlockEdit = ( props ) => {
 	return (
 		<InspectorControls>
 			<Panel
-				header="HPU Blocks Paragraph Setting"
+				header="HPU Blocks Style Setting"
 				className="hpu-blocks-emphasis-style"
 			>
 				<SelectControl

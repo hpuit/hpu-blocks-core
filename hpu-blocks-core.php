@@ -159,3 +159,28 @@ add_action('init', 'hpu_blocks_core_register_init');
 function hpu_blocks_core_register_init()
 {
 }
+
+add_action('rest_api_init', function () {
+    register_rest_route('custom/v1', '/blogs', array(
+        'methods' => 'GET',
+        'callback' => 'get_all_blogs',
+        'permission_callback' => '__return_true',
+    ));
+});
+function get_all_blogs() {
+    if (!is_multisite()) {
+        return new WP_Error('not_multisite', 'This is not a multisite installation', array('status' => 400));
+    }
+
+    $sites = get_sites();
+    $blogs = array();
+
+    foreach ($sites as $site) {
+        $blogs[] = array(
+            'id' => $site->blog_id,
+            'name' => get_blog_option($site->blog_id, 'blogname'),
+        );
+    }
+
+    return $blogs;
+}
